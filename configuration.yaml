@@ -1,0 +1,209 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+homeassistant:
+    latitude: -31.923172
+    longitude: 116.082237
+    elevation: 149
+    unit_system: metric
+    time_zone: Australia/Perth
+    name: Home
+
+zone:
+    name: home
+    latitude: -31.923172
+    longitude: 116.082237
+    radius: 70
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+    base_url: https://hass.na.id.au/
+    use_x_forwarded_for: true
+    trusted_proxies:
+            - 192.168.30.1
+            - 2001:44b8:610b:3f30::1
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+frontend:
+  themes: !include themes.yaml
+
+discovery:
+  ignore:
+    - netgear_router
+
+mqtt:
+  broker: mqtt.na.id.au
+  port: 1883
+  username: hass
+  password: ***REMOVED***
+  discovery: true
+  discovery_prefix: homeassistant
+
+google_assistant:
+  project_id: hass
+  api_key: ***REMOVED***
+  exposed_domains:
+    - light
+    - alarm_control_panel
+  secure_devices_pin: ***REMOVED***
+
+notify:
+  - name: a_xmpp
+    platform: xmpp
+    sender: home@na.id.au
+    password: ***REMOVED***
+    recipient: a@na.id.au
+  - platform: html5
+    name: Push
+    vapid_pub_key: ***REMOVED***
+    vapid_prv_key: ***REMOVED***
+    vapid_email: Adrian.a.Woodley@gmail.com
+  - name: family
+    platform: group
+    services:
+      - service: mobile_app_adrians_phone
+      - service: mobile_app_nancy_s_phone
+      - service: a_xmpp
+
+alarm_control_panel:
+  - platform: mqtt
+    state_topic: "home/alarm"
+    command_topic: "home/alarm/set"
+    code_arm_required: false
+    code_disarm_required: false
+
+binary_sensor:
+  - platform: mqtt
+    state_topic: "home/alarm/zones/0"
+    name: "Front Door"
+    device_class: door
+  - platform: mqtt
+    state_topic: "home/alarm/zones/5"
+    name: "Laundry Door"
+    device_class: door
+  - platform: rpi_gpio
+    invert_logic: true
+    pull_mode: UP
+    ports:
+      27: Arm Alarm
+      22: Doorbell
+      23: Bedroom Light
+
+sensor:
+  - platform: mqtt
+    state_topic: "home/OpenMQTTGateway_ESP8266_RF/433toMQTT"
+    name: 'RF Button'
+    value_template: '{{value_json.value}}'
+    qos: 1
+    expire_after: 1
+  - platform: mqtt
+    state_topic: "home/OpenMQTTGateway_SRFB/SRFBtoMQTT"
+    name: 'RFB Button'
+    value_template: '{{value_json.value}}'
+    qos: 1
+    expire_after: 1
+
+
+light:
+  - platform: mqtt
+    name: "Music Room"
+    state_topic: "home/lights/stat/arlec1/POWER"
+    command_topic: "home/lights/cmnd/arlec1/POWER"
+    availability_topic: "home/lights/tele/arlec1/LWT"
+    brightness_state_topic: "home/lights/stat/arlec1/RESULT"
+    brightness_command_topic: "home/lights/cmnd/arlec1/Dimmer"
+    brightness_scale: 100
+    brightness_value_template: "{{value_json.Dimmer}}"
+    color_temp_command_topic: "home/lights/cmnd/arlec1/CT"
+    color_temp_state_topic: "home/lights/stat/arlec1/RESULT"
+    color_temp_value_template: "{{value_json.CT}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Master Bedroom"
+    state_topic: "home/lights/stat/arlec5/POWER"
+    command_topic: "home/lights/cmnd/arlec5/POWER"
+    availability_topic: "home/lights/tele/arlec5/LWT"
+    brightness_state_topic: "home/lights/stat/arlec5/RESULT"
+    brightness_command_topic: "home/lights/cmnd/arlec5/Dimmer"
+    brightness_scale: 100
+    brightness_value_template: "{{value_json.Dimmer}}"
+    color_temp_command_topic: "home/lights/cmnd/arlec5/CT"
+    color_temp_state_topic: "home/lights/stat/arlec5/RESULT"
+    color_temp_value_template: "{{value_json.CT}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: group
+    name: Welcome Lights
+    entities:
+      - light.lifx_d0_73_d5_3e_87_c9
+      - light.music_room
+
+
+device_tracker:
+  - platform: ubus
+    scan_interval: 60
+    consider_home: 120
+    host: 192.168.30.251
+    username: root
+    password: ***REMOVED***
+    dhcp_software: dnsmasq
+    new_device_defaults:
+      track_new_devices: false
+  - platform: ping
+    scan_interval: 60
+    consider_home: 120
+    hosts:
+      Adrians_Moto_G5s: 192.168.30.27
+      Nancys_Moto_G5s: 192.168.30.26
+#  - platform: netgear_macs
+#    scan_interval: 60
+#    consider_home: 120
+#    host: 192.168.30.250
+#    username: admin
+#    password: ***REMOVED***
+#    new_device_defaults:
+#      track_new_devices: false
+
+weather:
+  - platform: bom
+    station: IDW60901.95610
+
+media_player:
+  - platform: yamaha
+    name: Yamaha
+    host: 192.168.30.32
+    source_ignore:
+      - "AUX"
+      - "Radio"
+      - "HDMI3"
+      - "HDMI4"
+      - "AV1"
+      - "AV2"
+      - "AV3"
+      - "AV4"
+      - "AV5"
+      - "AV6"
+      - "TUNER"
+      - "NET RADIO"
+      - "USB"
+      - "V-AUX"
+      - "iPod (USB)"
+    source_names:
+      HDMI1: "Blu-Ray"
+      HDMI2: "ChromeCast"
+#  - platform: dlna_dmr
+#    url: http://192.168.30.35/dd.xml
+#    name: Cliff
