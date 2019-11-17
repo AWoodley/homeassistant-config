@@ -322,8 +322,8 @@
     at: '20:00:00'
   condition:
   - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
+    entity_id: alarm_control_panel.mqtt_alarm
+    state: disarmed
   - condition: state
     entity_id: group.family
     state: home
@@ -487,1392 +487,187 @@
   alias: TTS:Water-Heater:Sensor
   description: ''
   trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.water_heating
-    to: 'off'
-  condition:
-  - condition: time
-    before: '15:00:00'
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - service: tts.google_translate_say
-    data:
-      entity_id: media_player.kitchen_speaker, media_player.dining_room_display
-      message: The water is hot
-  mode: single
-- id: '1658155227206'
-  alias: Low-Battery-Alarm
-  description: ''
-  use_blueprint:
-    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
-    input:
-      exclude:
-        entity_id:
-        - sensor.nokia_5_3_battery_level
-        - sensor.david_s_phone_battery_level
-        - sensor.jonathan_s_phone_battery_level
-        - sensor.nancys_phone_battery_level
-      actions:
-      - service: notify.mobile_app_adrians_phone
-        data:
-          title: 'Low Battery '
-          message: '{{sensors}}'
-- id: '1658506699917'
-  alias: Thermostat:Master Bedroom:Time
-  description: ''
-  trigger:
-  - platform: time
-    at: '19:30:00'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  - condition: state
-    entity_id: group.family
-    state: home
-  - condition: numeric_state
-    entity_id: sensor.temperature_843c01d60760f228
-    below: '19'
-  action:
-  - service: climate.set_hvac_mode
-    data:
-      hvac_mode: heat
-    target:
-      device_id: 28c2ff856d68a09f870340d41b42ea48
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 30
-      milliseconds: 0
-  - service: climate.set_temperature
-    data:
-      temperature: 24
-    target:
-      device_id: 28c2ff856d68a09f870340d41b42ea48
-  - wait_for_trigger:
-    - platform: time
-      at: '20:30:00'
-  - service: climate.set_temperature
-    data:
-      temperature: 19
-    target:
-      device_id: 28c2ff856d68a09f870340d41b42ea48
-  mode: single
-- id: '1660579474503'
-  alias: Media:Volume:Volumio
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - media_player.yamaha_receiver_media_room
-    attribute: source
-    to: Volumio
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  - condition: numeric_state
-    entity_id: media_player.yamaha_receiver_media_room
-    attribute: volume_level
-    above: '0.6'
-  action:
-  - service: media_player.volume_set
-    data:
-      volume_level: 0.6
-    target:
-      entity_id: media_player.yamaha_receiver_media_room
-  mode: single
-- id: '1661337897543'
-  alias: Light/Cover:Jonathan:Morning
-  description: ''
-  use_blueprint:
-    path: light-morning.yaml
-    input:
-      light_id: light.lifx_jonathans_bedroom
-      cover_id: cover.jonathans_bedroom_rollershutter
-      temperature_sensor_id: sensor.outside_temperature
-      person_id: person.jonathan
-      schedule_id: schedule.roller_shutter_open
-- id: '1661337951517'
-  alias: Light/Cover:David:Morning
-  description: ''
-  use_blueprint:
-    path: light-morning.yaml
-    input:
-      light_id: light.lifx_davids_room
-      cover_id: cover.davids_bedroom_rollershutter
-      temperature_sensor_id: sensor.outside_temperature
-      person_id: person.david
-      schedule_id: schedule.roller_shutter_open
-- id: '1661338159225'
-  alias: Light/Cover:Master Bedroom:Morning
-  description: ''
-  use_blueprint:
-    path: light-morning.yaml
-    input:
-      light_id: light.light_masterbedroom_1
-      cover_id: cover.master_bedroom_rollershutter
-      temperature_sensor_id: sensor.outside_temperature
-      person_id: person.adrian
-      schedule_id: schedule.roller_shutter_open
-- id: '1667828983561'
-  alias: Switch:Media&TV:Yamaha
-  description: Turn on the Media Centre power switch and TV if the Yamaha is switch
-    to Chromecast or Blu-Ray
-  trigger:
-  - platform: state
-    entity_id:
-    - media_player.yamaha_receiver_media_room
-    attribute: source
-    to: ChromeCast
-  - platform: state
-    entity_id:
-    - media_player.yamaha_receiver_media_room
-    attribute: source
-    to: Blu-Ray
-  - platform: state
-    entity_id:
-    - media_player.yamaha_receiver_media_room
-    attribute: source
-    to: XBox
-  - platform: state
-    entity_id:
-    - media_player.yamaha_receiver_media_room
-    attribute: source
-    to: Kodi
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - if:
-    - condition: state
-      entity_id: switch.media_centre
-      state: 'off'
-    then:
-    - service: switch.turn_on
-      data: {}
-      target:
-        entity_id: switch.media_centre
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-  - if:
-    - condition: trigger
-      id: TV_Off
-    - condition: state
-      entity_id: media_player.ruby
-      state: 'off'
-    then:
-    - service: media_player.turn_on
-      data: {}
-      target:
-        entity_id: media_player.ruby
-  - if:
-    - condition: state
-      entity_id: switch.tv
-      state: 'off'
-    then:
-    - service: switch.turn_on
-      data: {}
-      target:
-        entity_id: switch.tv
-  mode: single
-- id: '1671383260632'
-  alias: Masterbedroom-Rollershutter:Close:Sunrise
-  description: ''
-  use_blueprint:
-    path: rollershutter-sunrise.yaml
-    input:
-      cover_id: cover.master_bedroom_rollershutter
-- id: '1671383308349'
-  alias: Davids-Rollershutter:Close:Sunrise
-  description: ''
-  use_blueprint:
-    path: rollershutter-sunrise.yaml
-    input:
-      cover_id: cover.davids_bedroom_rollershutter
-- id: '1671383334492'
-  alias: Jonathans-Rollershutter:Close:Sunrise
-  description: ''
-  use_blueprint:
-    path: rollershutter-sunrise.yaml
-    input:
-      cover_id: cover.jonathans_bedroom_rollershutter
-- id: '1671782593308'
-  alias: Dinningroom-Display:Pause:Lias
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - media_player.lias
-    from: idle
-  condition:
-  - condition: state
-    entity_id: switch.active
-    state: 'True'
-  action:
-  - service: media_player.media_pause
-    data: {}
-    target:
-      device_id: 8f3ebf674da343f89b4d135432bf52f0
-  mode: single
-- id: '1673271059602'
-  alias: Oven:TTS:At Temperature
-  description: ''
-  trigger:
-  - platform: numeric_state
-    entity_id: sensor.red_phase_derivative
-    below: -7
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - service: tts.google_translate_say
-    data:
-      entity_id: media_player.kitchen_speaker
-      message: The oven is warm.
-  - wait_for_trigger:
-    - platform: numeric_state
-      entity_id: sensor.red_phase_derivative
-      for:
-        hours: 1
-        minutes: 0
-        seconds: 0
-      above: -1
-      below: 1
-    continue_on_timeout: false
-  mode: single
-- id: '1675437422682'
-  alias: Cover:Midnight:Close to 20%
-  description: Close the bedroom roller shutters to 20% at Midnight if they're still
-    open
-  trigger:
-  - platform: time
-    at: '23:30:00'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - if:
-    - condition: numeric_state
-      entity_id: cover.master_bedroom_rollershutter
-      attribute: current_position
-      above: 20
-    then:
-    - service: cover.set_cover_position
-      data:
-        position: 3
-      target:
-        device_id: bb0e513dc9863cc93d9d2adf84bdeac7
-  - if:
-    - condition: numeric_state
-      entity_id: cover.davids_bedroom_rollershutter
-      attribute: current_position
-      above: 20
-    then:
-    - service: cover.set_cover_position
-      data:
-        position: 17
-      target:
-        device_id: 2d5c4db90acaec27809fc493544258ab
-  - if:
-    - condition: numeric_state
-      entity_id: cover.jonathans_bedroom_rollershutter
-      attribute: current_position
-      above: 20
-    then:
-    - service: cover.set_cover_position
-      data:
-        position: 17
-      target:
-        device_id: feea1151d882acf2ed0fe9ecf078df26
-  mode: single
-- id: '1678691891721'
-  alias: Alarm:Tag:Toggle
-  description: Toggle the alarm and locks when the tag is scanned.
-  trigger:
-  - platform: tag
-    tag_id: 0d3364de-a42f-4412-9fa0-d34111f39b77
-    id: Tag
-  - platform: state
-    entity_id:
-    - group.family
-    id: Family
-    for:
-      hours: 0
-      minutes: 1
-      seconds: 0
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - variables:
-      action_arm_alarm: '{{ ''ARM_ALARM_'' ~ context.id }}'
-      action_disarm_alarm: '{{ ''DISARM_ALARM_'' ~ context.id }}'
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: lock.front_door
-        state: unlocked
-      - condition: trigger
-        id:
-        - Tag
-      sequence:
-      - service: lock.lock
-        target:
-          entity_id: lock.front_door
-        data: {}
-      - if:
-        - condition: state
-          entity_id: person.adrian
-          state: home
-        then:
-        - service: notify.mobile_app_adrians_phone
-          data:
-            message: Arm the alarm?
-            data:
-              channel: Alarm
-              tag: alarm
-              importance: high
-              visibility: public
-              notification_icon: mdi:shield-house
-              actions:
-              - action: ' {{ action_disarm_alarm }} '
-                title: Home
-              - action: ' {{ action_arm_alarm }}'
-                title: Away
-      - if:
-        - condition: state
-          entity_id: person.nancy
-          state: home
-        then:
-        - service: notify.mobile_app_nancys_phone
-          data:
-            message: Arm the alarm?
-            data:
-              channel: Alarm
-              tag: arm_alarm
-              importance: high
-              visibility: public
-              notification_icon: mdi:shield-house
-              actions:
-              - action: ' {{ action_disarm_alarm }} '
-                title: Home
-              - action: ' {{ action_arm_alarm }}'
-                title: Away
-      - wait_for_trigger:
-        - platform: event
-          event_type: mobile_app_notification_action
-          event_data:
-            action: '{{ action_arm_alarm }}'
-        - platform: event
-          event_type: mobile_app_notification_action
-          event_data:
-            action: '{{ action_disarm_alarm }}'
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: '{{ wait.trigger.event.data.action == action_arm_alarm
-              }}'
-          sequence:
-          - service: alarm_control_panel.alarm_arm_away
-            data: {}
-            target:
-              entity_id: alarm_control_panel.mqtt_alarm
-        - conditions:
-          - condition: template
-            value_template: '{{ wait.trigger.event.data.action == action_disarm_alarm
-              }}'
-          sequence:
-          - service: alarm_control_panel.alarm_disarm
-            data: {}
-            target:
-              entity_id: alarm_control_panel.mqtt_alarm
-      - service: notify.parents
-        data:
-          message: clear_notification
-          data:
-            tag: arm_alarm
-    - conditions:
-      - condition: state
-        entity_id: lock.front_door
-        state: unlocked
-      - condition: trigger
-        id:
-        - Family
-      sequence:
-      - service: lock.lock
-        metadata: {}
-        data: {}
-        target:
-          entity_id: lock.front_door
-    default:
-    - condition: or
-      conditions:
-      - condition: trigger
-        id:
-        - Tag
-      - condition: state
-        entity_id: group.family
-        state: Home
-    - service: lock.unlock
-      target:
-        entity_id: lock.front_door
-      data: {}
-    - service: alarm_control_panel.alarm_disarm
-      data: {}
-      target:
-        entity_id: alarm_control_panel.mqtt_alarm
-  mode: single
-- id: '1679062442122'
-  alias: Tag:DSOTM
-  description: Play DSOTM on Lias
-  trigger:
-  - platform: tag
-    tag_id: 6a935bdb-d2b8-430a-adb3-a7821332dafd
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - service: media_player.select_source
-    data:
-      source: DSOTM
-    target:
-      entity_id: media_player.lias
-  mode: single
-- id: '1683198098958'
-  alias: Person:Untracked:Start
-  description: Set the status of untracked person entities on startup.
-  trigger:
-  - platform: homeassistant
-    event: start
-  condition: []
-  action:
-  - service: device_tracker.see
-    data:
-      dev_id: guest
-      location_name: not_home
-  - service: device_tracker.see
-    data:
-      dev_id: david
-      location_name: home
-  - service: device_tracker.see
-    data:
-      dev_id: jonathan
-      location_name: home
-  mode: single
-- id: '1683306290032'
-  alias: HASS:Heartbeat:Webhook
-  description: Receive the heartbeat via a webhook
-  trigger:
-  - platform: webhook
-    allowed_methods:
-    - GET
-    local_only: true
-    webhook_id: -RoEmpFdS7BtbJW7hijD-IM2z
-  - platform: homeassistant
-    event: start
-  condition: []
-  action:
-  - service: input_boolean.turn_off
-    data: {}
-    target:
-      entity_id: input_boolean.active
-  - delay:
-      hours: 0
-      minutes: 1
-      seconds: 5
-      milliseconds: 0
-  - service: input_boolean.turn_on
-    data: {}
-    target:
-      entity_id: input_boolean.active
-  mode: restart
-- id: '1683307199507'
-  alias: HASS:Heartbeat:Timer
-  description: Pat the standby instance watchdog
-  trigger:
-  - platform: time_pattern
-    seconds: '0'
-  - platform: state
-    entity_id:
-    - input_boolean.active
+  - entity_id: binary_sensor.front_door
+    from: 'off'
+    platform: state
     to: 'on'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - service: rest_command.heartbeat
-    data: {}
-  mode: single
-- id: '1683545992974'
-  alias: Tag:Abbey Road
-  description: Play Abbey Road on Lias
-  trigger:
-  - platform: tag
-    tag_id: a871e45a-c4fe-48f5-9453-01fad12372e0
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - service: media_player.select_source
-    data:
-      source: Abbey Road
-    target:
-      entity_id: media_player.lias
-  mode: single
-- id: '1683555439210'
-  alias: Tag:Bin:Toggle
-  description: Toggle the Bin input_boolean when the tag is scanned
-  trigger:
-  - platform: tag
-    tag_id: aa214b1c-41b7-4911-8c90-d20aa861fdb3
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - service: input_boolean.toggle
-    data: {}
-    target:
-      entity_id: input_boolean.bin_out
-  mode: single
-- id: '1683555482794'
-  alias: Tag:Recycling:Toggle
-  description: Toggle the Recycling input_boolean when the tag is scanned
-  trigger:
-  - platform: tag
-    tag_id: ae1dd00b-0ab3-43c6-9b83-ab6f07eaee3d
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - service: input_boolean.toggle
-    data: {}
-    target:
-      entity_id:
-      - input_boolean.recycling_out
-  mode: single
-- id: '1683770514419'
-  alias: Switch:Water Heater:Off
-  description: Turn off the water heater after a single cycle
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.water_heater
-    from: 'on'
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - service: switch.turn_off
-    data: {}
-    target:
-      entity_id: switch.water_heater
-  mode: single
-- id: '1684240631072'
-  alias: Light:Davids Bedroom Off:Light-on
-  description: Turn off the light in David's Bedroom after 30 minutes
-  trigger:
-  - platform: state
-    entity_id:
-    - light.lifx_davids_room
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - delay:
-      hours: 0
-      minutes: 30
-      seconds: 0
-      milliseconds: 0
-  - service: light.turn_off
-    data: {}
-    target:
-      entity_id: light.lifx_davids_room
-  mode: restart
-- id: '1684290109250'
-  alias: Light:Jonathans Bedroom Off:Light-on
-  description: Turn off the light in Jonathan's Bedroom after 30 minutes
-  trigger:
-  - platform: state
-    entity_id:
-    - light.lifx_jonathans_bedroom
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - delay:
-      hours: 0
-      minutes: 30
-      seconds: 0
-      milliseconds: 0
-  - service: light.turn_off
-    data: {}
-    target:
-      entity_id: light.lifx_jonathans_bedroom
-  mode: restart
-- id: '1685368433499'
-  alias: TTS:Laundry Door:Open
-  description: Send announcement if laundry door is left open for 5 minutes.
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.laundry_garage_door
-    to: 'on'
-    for:
-      hours: 0
-      minutes: 5
-      seconds: 0
-  condition:
-  - condition: numeric_state
-    entity_id: sensor.indoor_temperature_average
-    below: 22
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - service: tts.google_translate_say
-    data:
-      cache: false
-      entity_id: media_player.dining_room_display
-      message: The laundry door is open.
-  mode: single
-- id: '1688588261987'
-  alias: Switch:Media Centre On:IR
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.panasonic_tv_power
-    - binary_sensor.panasonic_tv_aux_power
-    - binary_sensor.yamaha_aux_power
-    to: 'on'
-    id: Chromecast
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - condition: state
-    entity_id: switch.media_centre
-    state: 'off'
-  - entity_id: switch.media_centre
-    service: switch.turn_on
-  - service: media_player.turn_on
-    data: {}
-    target:
-      entity_id: media_player.yamaha_receiver_media_room
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - if:
-    - condition: trigger
-      id: Chromecast
-    then:
-    - service: media_player.select_source
-      data:
-        source: ChromeCast
-      target:
-        entity_id: media_player.yamaha_receiver_media_room
-    else:
-    - service: media_player.select_source
-      data:
-        source: Kodi
-      target:
-        entity_id: media_player.yamaha_receiver_media_room
-  mode: single
-- id: '1691945017554'
-  alias: 'Kettle:Turn On: Nancy''s Phone Unplugged '
-  description: 'Turn on the kettle when Nancy unplugs her phone in the morning '
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.nancys_phone_is_charging
-    from: 'on'
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  - condition: time
-    after: 04:30:00
-    before: 09:30:00
-  action:
-  - wait_for_trigger:
-    - platform: event
-      event_type: esphome.rf_code_received
-      event_data:
-        code: '8334156'
-    - platform: event
-      event_type: esphome.rf_code_received
-      event_data:
-        code: '14330700'
-    - platform: state
-      entity_id:
-      - binary_sensor.family_room
-      - binary_sensor.media_room
-      to: 'on'
-  - service: switch.turn_on
-    data: {}
-    target:
-      entity_id: switch.kettle
-  mode: single
-- id: '1698205614482'
-  alias: Switch:Network:Voltage-Low
-  description: Switch on the Network power supply when the battery voltage drops below
-    12.5V
-  trigger:
-  - platform: numeric_state
-    entity_id: sensor.sensor_study_1_adc
-    for:
-      hours: 0
-      minutes: 1
-      seconds: 0
-    below: 12.1
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  - condition: state
-    entity_id: switch.network
-    state: 'off'
-  action:
-  - service: switch.turn_on
-    data: {}
-    target:
-      entity_id: switch.network
-  mode: single
-- id: '1698205702578'
-  alias: Switch:Network:Voltage-High
-  description: Switch off the Network power supply when the battery voltage rises
-    above 12.7V
-  trigger:
-  - platform: numeric_state
-    entity_id: sensor.sensor_study_1_adc
-    for:
-      hours: 0
-      minutes: 1
-      seconds: 0
-    above: 12.8
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  - condition: state
-    entity_id: switch.network
-    state: 'on'
-  action:
-  - service: switch.turn_off
-    data: {}
-    target:
-      entity_id: switch.network
-  mode: single
-- id: '1698648866024'
-  alias: Switch:Davids Computer:Screentime
-  description: Turn off David's Computer at the end of screentime
-  trigger:
-  - platform: state
-    entity_id:
-    - switch.davids_computer
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - delay:
-      hours: 0
-      minutes: 2
-      seconds: 0
-      milliseconds: 0
-  - repeat:
-      sequence:
-      - delay:
-          hours: 0
-          minutes: 1
-          seconds: 0
-          milliseconds: 0
-      - service: counter.decrement
-        data: {}
-        target:
-          entity_id: counter.davids_screen_time
-      while:
-      - condition: numeric_state
-        entity_id: counter.davids_screen_time
-        above: 0
-      - condition: state
-        entity_id: switch.davids_computer
-        state: 'on'
-  - condition: state
-    entity_id: switch.davids_computer
-    state: 'on'
-  - service: lifx.effect_pulse
-    data:
-      period: 1
-      cycles: 3
-      power_on: true
-      mode: ping
-      brightness: 255
-      color_name: Red
-    target:
-      entity_id: light.music_room_light
-  - variables:
-      action_shutdown: '{{ ''SHUTDOWN_'' ~ context.id }}'
-  - service: notify.parents
-    data:
-      message: David's screentime is up.
-      data:
-        channel: David's Computer
-        importance: high
-        visibility: public
-        notification_icon: mdi:desktop-classic
-        tag: davids_computer
-        actions:
-        - action: ' {{ action_shutdown }}'
-          title: Turn off now
-  - wait_for_trigger:
-    - platform: event
-      event_type: mobile_app_notification_action
-      event_data:
-        action: '{{ action_shutdown }}'
-    - platform: state
-      entity_id:
-      - switch.davids_computer
-      to: 'off'
-    continue_on_timeout: false
-  - service: notify.parents
-    data:
-      message: clear_notification
-      data:
-        tag: davids_computer
-  - service: switch.turn_off
-    data: {}
-    target:
-      entity_id: switch.davids_computer
-  mode: restart
-- id: '1698678437802'
-  alias: Switch:Jonathans Computer:Screentime
-  description: Turn off Jonathan's Computer at the end of screentime
-  trigger:
-  - platform: state
-    entity_id:
-    - switch.jonathans_computer
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - delay:
-      hours: 0
-      minutes: 2
-      seconds: 0
-      milliseconds: 0
-  - repeat:
-      sequence:
-      - delay:
-          hours: 0
-          minutes: 1
-          seconds: 0
-          milliseconds: 0
-      - service: counter.decrement
-        data: {}
-        target:
-          entity_id: counter.jonathans_screen_time
-      while:
-      - condition: numeric_state
-        entity_id: counter.jonathans_screen_time
-        above: 0
-      - condition: state
-        entity_id: switch.jonathans_computer
-        state: 'on'
-  - condition: state
-    entity_id: switch.jonathans_computer
-    state: 'on'
-  - service: lifx.effect_pulse
-    data:
-      period: 1
-      cycles: 3
-      power_on: true
-      mode: ping
-      brightness: 255
-      color_name: Blue
-    target:
-      entity_id: light.music_room_light
-  - variables:
-      action_shutdown: '{{ ''SHUTDOWN_'' ~ context.id }}'
-  - service: notify.parents
-    data:
-      message: Jonathan's screentime is up.
-      data:
-        channel: Jonathan's Computer
-        importance: high
-        visibility: public
-        notification_icon: mdi:desktop-classic
-        actions:
-        - action: ' {{ action_shutdown }}'
-          title: Turn off now
-        tag: jonathans_computer
-  - wait_for_trigger:
-    - platform: event
-      event_type: mobile_app_notification_action
-      event_data:
-        action: '{{ action_shutdown }}'
-    - platform: state
-      entity_id:
-      - switch.jonathans_computer
-      to: 'off'
-    continue_on_timeout: false
-  - service: notify.parents
-    data:
-      message: clear_notification
-      data:
-        tag: jonathans_computer
-  - service: switch.turn_off
-    data: {}
-    target:
-      entity_id: switch.jonathans_computer
-  mode: restart
-- id: '1698678587465'
-  alias: Time:Screentime:Reset
-  description: Reset the screentime for the day at midnight
-  trigger:
-  - platform: time
-    at: 00:01:00
-  condition: []
-  action:
-  - choose:
-    - conditions:
-      - condition: time
-        weekday:
-        - sat
-        - sun
-      sequence:
-      - service: counter.set_value
-        data:
-          value: 120
-        target:
-          entity_id:
-          - counter.davids_screen_time
-          - counter.jonathans_screen_time
-    default:
-    - service: counter.reset
-      data: {}
-      target:
-        entity_id:
-        - counter.davids_screen_time
-        - counter.jonathans_screen_time
-  mode: single
-- id: '1698689435015'
-  alias: Timer:Tidy-room:Notification
-  description: Find out if the boys rooms are tidy
-  trigger:
-  - platform: time
-    at: '20:00:00'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - variables:
-      action_david_clean: '{{ ''DAVID_CLEAN_'' ~ context.id }}'
-      action_david_messy: '{{ ''DAVID_MESSY_'' ~ context.id }}'
-      action_jono_clean: '{{ ''JONO_CLEAN_'' ~ context.id }}'
-      action_jono_messy: '{{ ''JONO_MESSY_'' ~ context.id }}'
-  - service: notify.parents
-    data:
-      message: Is David's room tidy?
-      data:
-        channel: David's Room
-        tag: davids_room
-        importance: high
-        visibility: public
-        notification_icon: mdi:comment-question
-        actions:
-        - action: ' {{ action_david_clean }}'
-          title: Clean
-        - action: ' {{ action_david_messy }}'
-          title: Messy
-  - wait_for_trigger:
-    - platform: event
-      event_type: mobile_app_notification_action
-      event_data:
-        action: '{{ action_david_clean }}'
-    - platform: event
-      event_type: mobile_app_notification_action
-      event_data:
-        action: '{{ action_david_messy }}'
-  - choose:
-    - conditions: '{{ wait.trigger.event.data.action == action_david_clean }}'
-      sequence:
-      - service: counter.increment
-        target:
-          entity_id: counter.davids_pocket_money
-        data: {}
-    - conditions: '{{ wait.trigger.event.data.action == action_david_messy }}'
-      sequence:
-      - service: counter.decrement
-        target:
-          entity_id: counter.davids_pocket_money
-        data: {}
-  - service: notify.parents
-    data:
-      message: clear_notification
-      data:
-        tag: davids_room
-  - service: notify.parents
-    data:
-      message: Is Jono's room tidy?
-      data:
-        channel: Jonathan's Room
-        tag: jonathans_room
-        importance: high
-        visibility: public
-        notification_icon: mdi:comment-question
-        actions:
-        - action: ' {{ action_jono_clean }}'
-          title: Clean
-        - action: ' {{ action_jono_messy }}'
-          title: Messy
-  - wait_for_trigger:
-    - platform: event
-      event_type: mobile_app_notification_action
-      event_data:
-        action: '{{ action_jono_clean }}'
-    - platform: event
-      event_type: mobile_app_notification_action
-      event_data:
-        action: '{{ action_jono_messy }}'
-  - choose:
-    - conditions: '{{ wait.trigger.event.data.action == action_jono_clean }}'
-      sequence:
-      - service: counter.increment
-        target:
-          entity_id: counter.jonathans_pocket_money
-        data: {}
-    - conditions: '{{ wait.trigger.event.data.action == action_jono_messy }}'
-      sequence:
-      - service: counter.decrement
-        target:
-          entity_id: counter.jonathans_pocket_money
-        data: {}
-  - service: notify.parents
-    data:
-      message: clear_notification
-      data:
-        tag: jonathans_room
-  mode: restart
-- id: '1707379195732'
-  alias: Door-Locks:Person:Away
-  description: Lock the entry doors when the last person leaves
-  trigger:
-  - platform: state
-    entity_id:
-    - person.adrian
-    to: not_home
-    id: Adrian_Away
-  - platform: state
-    entity_id:
-    - person.nancy
-    to: not_home
-    id: Nancy_Away
-  condition:
-  - condition: state
-    entity_id: group.family
-    state: not_home
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-  - service: lifx.effect_pulse
-    metadata: {}
-    data:
-      period: 1
-      cycles: 2
-      power_on: true
-      mode: blink
-      brightness: 255
-    target:
-      entity_id: light.lifx_front_door
-  - parallel:
-    - service: script.lock_entry
-      metadata: {}
-      data: {}
-    - if:
-      - condition: state
-        entity_id: alarm_control_panel.mqtt_alarm
-        state: disarmed
-      then:
-      - variables:
-          action_arm_alarm: '{{ ''ARM_ALARM_'' ~ context.id }}'
-          action_disarm_alarm: '{{ ''DISARM_ALARM_'' ~ context.id }}'
-      - choose:
-        - conditions:
-          - condition: trigger
-            id:
-            - Adrian_Away
-          sequence:
-          - service: notify.mobile_app_adrians_phone
-            metadata: {}
-            data:
-              message: Locking House
-              data:
-                channel: Arm Alarm
-                tag: arm_alarm
-                importance: high
-                visibility: public
-                notification_icon: mdi:shield-lock
-                actions:
-                - action: ' {{ action_arm_alarm }}'
-                  title: Arm Alarm
-                - action: ' {{ action_disarm_alarm }}'
-                  title: 'Off'
-        - conditions:
-          - condition: trigger
-            id:
-            - Nancy_Away
-          sequence:
-          - service: notify.mobile_app_nancys_phone
-            metadata: {}
-            data:
-              message: Locking House
-              data:
-                channel: Arm Alarm
-                tag: arm_alarm
-                importance: high
-                visibility: public
-                notification_icon: mdi:shield-lock
-                actions:
-                - action: ' {{ action_arm_alarm }}'
-                  title: Arm Alarm
-                - action: ' {{ action_disarm_alarm }}'
-                  title: 'Off'
-        default:
-        - service: notify.mobile_app_adrians_phone
-          metadata: {}
-          data:
-            message: Locking House
-            data:
-              channel: Arm Alarm
-              tag: arm_alarm
-              importance: high
-              visibility: public
-              notification_icon: mdi:shield-lock
-              actions:
-              - action: ' {{ action_arm_alarm }}'
-                title: Arm Alarm
-              - action: ' {{ action_disarm_alarm }}'
-                title: 'Off'
-      - wait_for_trigger:
-        - platform: event
-          event_type: mobile_app_notification_action
-          event_data:
-            action: ' {{ action_arm_alarm }}'
-        timeout:
-          hours: 0
-          minutes: 1
-          seconds: 0
-          milliseconds: 0
-        continue_on_timeout: false
-      - service: alarm_control_panel.alarm_arm_away
-        metadata: {}
-        data: {}
-        target:
-          entity_id: alarm_control_panel.mqtt_alarm
-  mode: restart
-- id: '1708188979929'
-  alias: Door-Locks:Person:Home
-  description: Unlock the entry doors when someone comes home, but re-lock of they
-    command.
-  trigger:
-  - platform: state
-    entity_id:
-    - person.adrian
+  - entity_id: person.adrian
+    from: not_home
+    platform: state
     to: home
-    id: Adrian
-  - platform: state
-    entity_id:
-    - person.nancy
+  - entity_id: person.nancy
+    from: not_home
+    platform: state
     to: home
-    id: Nancy
   condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
   action:
-  - variables:
-      action_lock: '{{ ''LOCK_'' ~ context.id }}'
-  - service: lifx.effect_pulse
-    metadata: {}
+  - alias: ''
     data:
-      period: 1
-      cycles: 2
-      power_on: true
-      mode: blink
       brightness: 255
-    target:
-      entity_id: light.lifx_front_door
-  - parallel:
-    - service: script.unlock_entry
-      metadata: {}
-      data: {}
-    - choose:
-      - conditions:
-        - condition: trigger
-          id:
-          - Adrian
-        sequence:
-        - service: notify.mobile_app_adrians_phone
-          metadata: {}
-          data:
-            message: Unlocking House
-            data:
-              channel: Unlock
-              tag: unlock
-              importance: high
-              visibility: public
-              notification_icon: mdi:shield-lock-open-outline
-              actions:
-              - action: ' {{ action_lock }}'
-                title: Keep Locked
-      - conditions:
-        - condition: trigger
-          id:
-          - Nancy
-        sequence:
-        - service: notify.mobile_app_nancys_phone
-          metadata: {}
-          data:
-            message: Unlocking House
-            data:
-              channel: Unlock
-              tag: unlock
-              importance: high
-              visibility: public
-              notification_icon: mdi:shield-lock-open-outline
-              actions:
-              - action: ' {{ action_lock }}'
-                title: Keep Locked
-      default:
-      - service: notify.mobile_app_adrians_phone
-        metadata: {}
-        data:
-          message: Unlocking House
-          data:
-            channel: Unlock
-            tag: unlock
-            importance: high
-            visibility: public
-            notification_icon: mdi:shield-lock-open-outline
-            actions:
-            - action: ' {{ action_lock }} '
-              title: Keep Locked
-  - wait_for_trigger:
-    - platform: event
-      event_type: mobile_app_notification_action
-      event_data:
-        action: ' {{ action_lock }}'
-    - platform: state
-      entity_id:
-      - binary_sensor.front_door
-      to: 'on'
-  - choose:
-    - conditions:
-      - condition: template
-        value_template: '{{ wait.trigger.event.data.action == action_lock }}'
-      sequence:
-      - service: script.lock_entry
-        metadata: {}
-        data: {}
-    default:
-    - service: notify.parents
-      metadata: {}
-      data:
-        message: clear_notification
-        data:
-          tag: unlock
-  mode: restart
-- id: '1709902440634'
-  alias: Media:Lias_Playing:B&O_On
-  description: Pause Lias until the B&O is on.
+      entity_id: light.welcome_lights
+    service: light.turn_on
+  - delay: 00:10:00
+  - data:
+      entity_id: light.welcome_lights
+    service: light.turn_off
+- id: '1570990825299'
+  alias: Entry Light Off
+  description: ''
   trigger:
-  - platform: state
-    entity_id:
-    - media_player.lias
-    from: idle
-    to: playing
-  condition:
-  - condition: state
-    entity_id: media_player.beocenter_7700
-    state: 'off'
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
+  - entity_id: light.lifx_d0_73_d5_3e_87_c9
+    for: '600'
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
   action:
-  - service: media_player.media_pause
-    metadata: {}
-    data: {}
-    target:
-      entity_id: media_player.lias
-  - wait_for_trigger:
-    - platform: state
-      entity_id:
-      - media_player.beocenter_7700
-      from: 'off'
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 5
-  - service: media_player.media_previous_track
-    metadata: {}
-    data: {}
-    target:
-      entity_id: media_player.lias
-  - service: media_player.media_play
-    metadata: {}
-    data: {}
-    target:
-      entity_id: media_player.lias
-  mode: single
-- id: '1712063014325'
-  alias: Lock:Evening:Lock
-  description: Lock the entry lock at 23:00
+  - device_id: 23c9569f55214533941f48beff102ceb
+    domain: light
+    entity_id: light.lifx_d0_73_d5_3e_87_c9
+    type: turn_off
+- id: '1571212561586'
+  alias: Alarm Armed
+  description: ''
   trigger:
-  - platform: time
-    at: '23:00:00'
-  condition:
-  - condition: state
-    entity_id: lock.entry
-    state: unlocked
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
+  - entity_id: alarm_control_panel.mqtt_alarm
+    platform: state
+    to: alarmed_away
+  condition: []
   action:
-  - service: lock.lock
-    metadata: {}
+  - data:
+      message: Armed
+      title: Alarm
+    service: notify.family
+  - data:
+      message: The alarm is armed
+    service: tts.google_translate_say
+  - data:
+      brightness: 255
+      cycles: 3
+      entity_id: light.lifx_d0_73_d5_3e_87_c9
+      mode: strobe
+      period: 1
+    service: light.lifx_effect_pulse
+- id: '1571213516784'
+  alias: Alarm Disarmed
+  description: ''
+  trigger:
+  - entity_id: alarm_control_panel.mqtt_alarm
+    from: pending
+    platform: state
+    to: disarmed
+  - entity_id: alarm_control_panel.mqtt_alarm
+    from: armed_away
+    platform: state
+    to: disarmed
+  condition: []
+  action:
+  - data:
+      message: The Alarm is disarmed.
+    service: tts.google_translate_say
+  - data:
+      brightness: 255
+      cycles: 3
+      entity_id: light.lifx_d0_73_d5_3e_87_c9
+      mode: strobe
+      period: 1
+    service: light.lifx_effect_pulse
+- id: '1571328771483'
+  alias: Wake Up Boys
+  description: ''
+  trigger:
+  - hours: '7'
+    minutes: '30'
+    platform: time_pattern
+    seconds: '00'
+  condition: []
+  action:
+  - alias: ''
     data: {}
-    target:
-      entity_id: lock.entry
-  mode: single
+    service: script.1571327987884
+- id: '1572019277815'
+  alias: Bedroom Light
+  description: ''
+  trigger:
+    entity_id: sensor.rfb_button
+    platform: state
+    to: '2364680'
+  condition: []
+  action:
+  - data_template:
+      brightness: ' {% if now().hour > 21 %} 5 {% elif now().hour < 5 %} 5 {% elif
+        now().hour < 7 %} 50 {% else %} 255 {% endif %} '
+      color_temp: ' {% if now().hour > 21 %} 500 {% elif now().hour < 7 %} 500 {%
+        else %} 153 {% endif %} '
+      entity_id: light.master_bedroom
+    service: light.toggle
+- id: '1572197002328'
+  alias: Music Room Light
+  description: ''
+  trigger:
+    entity_id: sensor.rfb_button
+    platform: state
+    to: '13767432'
+  condition: []
+  action:
+   - data_template:
+      brightness: ' {% if now().hour > 21 %} 5 {% elif now().hour < 5 %} 5 {% elif
+        now().hour < 7 %} 50 {% else %} 255 {% endif %} '
+      color_temp: ' {% if now().hour > 21 %} 500 {% elif now().hour < 7 %} 500 {%
+        else %} 153 {% endif %} '
+      entity_id: light.music_room
+    service: light.toggle
+- id: '1573474259634'
+  alias: New Automation
+  description: Boys Bedroom Light (Adjust)
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763496'
+  condition: []
+  action:
+  - data_template:
+      brightness: ' {% if now().hour > 20 %} 5 {% elif now().hour < 6 %} 5 {% elif
+        now().hour < 8 %} 50 {% else %} 255 {% endif %} '
+      color_temp: ' {% if now().hour > 20 %} 400 {% elif now().hour < 6 %} 400 {%
+        else %} 111 {% endif %} '
+      entity_id: light.lifx_mini_5386a2
+    service: light.toggle
+- id: '1573474201726'
+  alias: Boys Bedroom Light (Bright)
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763476'
+  condition: []
+  action:
+  - data:
+      entity_id: light.lifx_mini_5386a2
+      brightness: 255
+      color_temp: 400
+    service: light.toggle
+- id: '1573474201727'
+  alias: Boys Bedroom Light (Colours)
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763474'
+  condition: []
+  action:
+  - data:
+      entity_id: light.lifx_mini_5386a2
+      brightness: 255
+      period: 1
+      change: 35
+      power_on: true
+    service: light.lifx_effect_colorloop
+
+

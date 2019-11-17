@@ -1,389 +1,115 @@
----
+
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
 homeassistant:
-  latitude: -31.923172
-  longitude: 116.082237
-  elevation: 149
-  unit_system: metric
-  currency: AUD
-  time_zone: Australia/Perth
-  country: AU
-  name: !secret name
-  external_url: !secret external_url
-  internal_url: !secret internal_url
-  media_dirs:
-    local: /Media
+    latitude: -31.923172
+    longitude: 116.082237
+    elevation: 149
+    unit_system: metric
+    time_zone: Australia/Perth
+    name: Home
 
 zone:
-  - name: Home
+    name: home
     latitude: -31.923172
     longitude: 116.082237
     radius: 70
 
-
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 192.168.30.1
-    - 127.0.0.1
-    - 2001:44b8:610b:3f30::1
-
-logger:
-  default: warning
-
-
-config:
-
-recorder:
-  purge_keep_days: 5
-  db_url: !secret postgresql
-  exclude:
-    domains:
-      - device_tracker
-      - updater
-      # - media_player
-    entities:
-      - sun.sun
-      - binary_sensor.back_passage
-      - binary_sensor.family_room
-      - binary_sensor.laundry_garage_door
-      - binary_sensor.light_media_3
-      - binary_sensor.media_room
-      - binary_sensor.study
-      - binary_sensor.kitchen_display_face_detected
-      - sensor.time
-      - sensor.time_date
-      - automation.hass_heartbeat
-      - automation.hass_heartbeat_timer
-
-
-group: !include groups.yaml
-automation: !include_dir_merge_list automations
-script: !include scripts.yaml
-scene: !include scenes.yaml
-timer: !include timer.yaml
-shell_command: !include shell_commands.yaml
+    base_url: https://hass.na.id.au/
+    use_x_forwarded_for: true
+    trusted_proxies:
+            - 192.168.30.1
+            - 2001:44b8:610b:3f30::1
 
 # Text to speech
 tts:
   - platform: google_translate
-    cache: true
-    # base_url: http://192.168.30.1:8123
 
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
 
 frontend:
   themes: !include themes.yaml
 
-
-rest_command:
-  heartbeat:
-    url: !secret heartbeat_url
-    method: GET
-    timeout: 5
-
-powercalc:
+discovery:
+  ignore:
+    - netgear_router
 
 mqtt:
-  alarm_control_panel:
-  - state_topic: "home/alarm"
+  broker: mqtt.na.id.au
+  port: 1883
+  username: hass
+  password: ***REMOVED***
+  discovery: true
+  discovery_prefix: homeassistant
+
+google_assistant:
+  project_id: hass
+  api_key: ***REMOVED***
+  exposed_domains:
+    - light
+    - alarm_control_panel
+  secure_devices_pin: ***REMOVED***
+
+notify:
+  - name: a_xmpp
+    platform: xmpp
+    sender: home@na.id.au
+    password: ***REMOVED***
+    recipient: a@na.id.au
+  - platform: html5
+    name: Push
+    vapid_pub_key: ***REMOVED***
+    vapid_prv_key: ***REMOVED***
+    vapid_email: Adrian.a.Woodley@gmail.com
+  - name: family
+    platform: group
+    services:
+      - service: mobile_app_adrians_phone
+      - service: mobile_app_nancy_s_phone
+      - service: a_xmpp
+
+alarm_control_panel:
+  - platform: mqtt
+    state_topic: "home/alarm"
     command_topic: "home/alarm/set"
     code_arm_required: false
     code_disarm_required: false
-  binary_sensor:
-  - state_topic: "home/alarm/zones/0"
+
+binary_sensor:
+  - platform: mqtt
+    state_topic: "home/alarm/zones/0"
     name: "Front Door"
     device_class: door
-  - state_topic: "home/alarm/zones/1"
-    name: "Media Room"
-    device_class: moving
-  - state_topic: "home/alarm/zones/2"
-    name: "Family Room"
-    device_class: moving
-  - state_topic: "home/alarm/zones/3"
-    name: "Back Passage"
-    device_class: moving
-  - state_topic: "home/alarm/zones/4"
-    name: "Study"
-    device_class: moving
-  - state_topic: "home/alarm/zones/5"
-    name: "Laundry/Garage Door"
+  - platform: mqtt
+    state_topic: "home/alarm/zones/5"
+    name: "Laundry Door"
     device_class: door
-  sensor:
-  - state_topic: "home/+/SRFBtoMQTT"
+  - platform: rpi_gpio
+    invert_logic: true
+    pull_mode: UP
+    ports:
+      27: Arm Alarm
+      22: Doorbell
+      23: Bedroom Light
+
+sensor:
+  - platform: mqtt
+    state_topic: "home/OpenMQTTGateway_ESP8266_RF/433toMQTT"
+    name: 'RF Button'
+    value_template: '{{value_json.value}}'
+    qos: 1
+    expire_after: 1
+  - platform: mqtt
+    state_topic: "home/OpenMQTTGateway_SRFB/SRFBtoMQTT"
     name: 'RFB Button'
     value_template: '{{value_json.value}}'
     qos: 1
     expire_after: 1
-  - state_topic: "tele/tasmota/IR/+/RESULT"
-    name: 'IR Button'
-    value_template: "{{value_json.IrReceived.Data}}"
-    qos: 1
-    expire_after: 1
-  - state_topic: "tele/tasmota/IR/+/RESULT"
-    name: "IR Last"
-    value_template: "{{value_json.IrReceived.Data}}"
-    qos: 1
-  - state_topic: "homeassistant/status"
-    name: partner
-    expire_after: 65
-  switch:
-  - state_topic: "homeassistant/status"
-    command_topic: "homeassistant/status"
-    name: Active
-    # payload_on: "{{ states('sensor.local_ip') }}"
-    payload_off: "offline"
-    value_template: "{{ states('sensor.local_ip') == value}}"
-  # cover:
-  # # - unique_id: "D8BFC01A3A5F"
-  # #   name: "Master Bedroom Rollershutter"
-  # #   state_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0"
-  # #   command_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command"
-  # #   position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/pos"
-  # #   set_position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command/pos"
-  # #   payload_available: "true"
-  # #   payload_not_available: "false"
-  # #   payload_open: "open"
-  # #   payload_close: "close"
-  # #   payload_stop: "stop"
-  # #   state_closed: "close"
-  # #   state_stopped: "stop"
-  # #   position_open: 100
-  # #   position_closed: 0
-  # #   qos: 1
-  # #   retain: false
-  # #   optimistic: false
-  # - unique_id: "40F5200467D0"
-  #   name: "Jonathans Bedroom Rollershutter"
-  #   state_topic: "shellies/shellyswitch25-40F5200467D0/roller/0"
-  #   command_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command"
-  #   position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/pos"
-  #   set_position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command/pos"
-  #   payload_available: "true"
-  #   payload_not_available: "false"
-  #   payload_open: "open"
-  #   payload_close: "close"
-  #   payload_stop: "stop"
-  #   state_closed: "close"
-  #   state_stopped: "stop"
-  #   position_open: 100
-  #   position_closed: 0
-  #   qos: 1
-  #   retain: false
-  #   optimistic: false
-  # - unique_id: "40F520055224"
-  #   name: "Davids Bedroom Rollershutter"
-  #   state_topic: "shellies/shellyswitch25-40F520055224/roller/0"
-  #   command_topic: "shellies/shellyswitch25-40F520055224/roller/0/command"
-  #   position_topic: "shellies/shellyswitch25-40F520055224/roller/0/pos"
-  #   set_position_topic: "shellies/shellyswitch25-40F520055224/roller/0/command/pos"
-  #   payload_available: "true"
-  #   payload_not_available: "false"
-  #   payload_open: "open"
-  #   payload_close: "close"
-  #   payload_stop: "stop"
-  #   state_closed: "close"
-  #   state_stopped: "stop"
-  #   position_open: 100
-  #   position_closed: 0
-  #   qos: 1
-  #   retain: false
-  #   optimistic: false
-  # vacuum:
-  # - name: "Sammy"
-  #   schema: state
-  #   supported_features:
-  #     # - turn_on
-  #     # - turn_off
-  #     - return_home
-  #     - start
-  #     - pause
-  #     - stop
-  #   command_topic: "cmnd/tasmotas/irsend"
-  #   # payload_turn_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
-  #   # payload_turn_off: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
-  #   payload_return_to_base: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x8181807F\",\"DataLSB\":\"0x818101FE\",\"Repeat\":0}"
-  #   payload_start: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
-  #   payload_pause: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
-  #   payload_stop: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
-
-
-google_assistant:
-  project_id: hass
-  service_account: !include service_account.json
-  report_state: !secret google_report_state
-  secure_devices_pin: !secret pin
-  expose_by_default: false
-  entity_config:
-    light.passage_lights:
-      expose: true
-    light.dining_room_lights:
-      expose: true
-    light.entry_lights:
-      expose: true
-    light.alfresco_light_1:
-      expose: true
-    light.light_alfresco_2:
-      expose: true
-    light.light_backverandah_1:
-      expose: true
-    light.light_bedside_1:
-      expose: true
-    light.light_bedside_2:
-      expose: true
-    light.lifx_jonathans_bedroom:
-      expose: true
-    light.lifx_davids_room:
-      expose: true
-    light.light_christmas_1:
-      expose: true
-    light.light_familyroom_1:
-      expose: true
-    light.lifx_familyroom_stand:
-      expose: true
-    light.light_masterbedroom_1:
-      expose: true
-    light.light_media_1:
-      expose: true
-    light.light_media_3:
-      expose: true
-    light.kitchen_lights:
-      expose: true
-    light.music_room_light:
-      expose: true
-    light.lego_light:
-      expose: true
-      name: 'Lego Light'
-    light.puppy_light:
-      expose: true
-      name: 'Puppy Light'
-    switch.switch_kettle:
-      expose: true
-    switch.fireplace_fan:
-      expose: true
-    switch.tv:
-      expose: true
-    switch.media_centre:
-      expose: true
-    switch.jonathans_reading_light:
-      expose: true
-    switch.nancys_electric_blanket:
-      expose: true
-    switch.water_heater:
-      expose: true
-      name: 'Hot Water System'
-      aliases:
-        - 'Water Heater'
-        - 'Hot Water'
-    switch.jonathans_laptop:
-      expose: true
-      name: 'Jonathans Laptop'
-    switch.davids_laptop:
-      expose: true
-      name: 'Davids Laptop'
-    switch.jonathans_computer:
-      expose: true
-      name: 'Jonathans Computer'
-    switch.davids_computer:
-      expose: true
-      name: 'Davids Computer'
-    switch.hex:
-      expose: true
-      name: 'Hex'
-    switch.ponder:
-      expose: true
-      name: 'Ponder'
-    switch.ruby:
-      expose: true
-      name: 'Ruby'
-    media_player.ruby:
-      expose: true
-      name: 'Ruby'
-    input_boolean.guest:
-      expose: true
-      name: 'Guest'
-    script.1575974067886:
-      expose: true
-      name: 'Enough Christmas'
-    script.1626880666396:
-      expose: true
-      name: 'Party Lights'
-    script.1626880812487:
-      expose: true
-      name: 'The Fuzz'
-    script.1626882379646:
-      expose: true
-      name: 'DEFCON4'
-    script.20201106233201:
-      expose: true
-      name: 'Christmas Lights'
-    # vacuum.sammy:
-    #   expose: true
-    cover.dining_room_rollershutter:
-      expose: true
-    cover.master_bedroom_rollershutter:
-      expose: true
-    cover.jonathans_bedroom_rollershutter:
-      expose: true
-    cover.davids_bedroom_rollershutter:
-      expose: true
-    sensor.kitchen_temperature:
-      expose: true
-      name: 'Kitchen Temperature'
-    sensor.rollershutter_diningroom_ds18b20_temperature:
-      expose: true
-      name: 'Study Temperature'
-    climate.jonathans_thermostat:
-      expose: true
-    climate.davids_thermostat:
-      expose: true
-    climate.master_bedroom_ac:
-      expose: true
-    climate.daikin_ac:
-      expose: true
-    media_player.beocenter_7700:
-      expose: true
-      name: "Beocenter 7700"
-      aliases:
-        - "B and O"
-      room: "Family Room"
-    media_player.yamaha_receiver_media_room:
-      expose: true
-      name: "Yamaha"
-      aliases:
-        - 'Media Center'
-      room: "Media Room"
-    alarm_control_panel.mqtt_alarm:
-      expose: true
-
-
-# calendar:
-#   - platform: caldav
-#     url: "https://calendar.google.com/calendar/ical/rd12cc9q5lpepgi9ob36pu5k94%40group.calendar.google.com/public/basic.ics"
-
-
-notify:
-  - name: parents
-    platform: group
-    services:
-      - service: mobile_app_adrians_phone
-      - service: mobile_app_nancys_phone
-
-
-scrape:
-  - resource: https://my.mundaring.wa.gov.au/BinLocationInfo/Info?parcelNumber=104527&suburb=DARLINGTON
-    scan_interval: 600 # 21600
-    sensor:
-      - name: "Bin Day"
-        select: ".form-group"
-        index: 0
-        value_template: '{{ value.split(":")[1] }}'
-      - name: "Recycling Days"
-        select: ".form-group"
-        index: 1
-        value_template: '{{ (strptime(value.split(":")[1].strip(), "%d/%m/%Y").date() - now().date()).days }}'
 
 
 light: !include lights.yaml
@@ -778,18 +504,14 @@ sensor:
   #   round: 2
 
 media_player:
-  # - platform: mpd
-  #   host: 192.168.30.38
-  #   name: Imp
-  - platform: yamaha # takes too long to restart if yamaha off
-    name: Yamaha Receiver
-    # host: yamaha-proxy
+  - platform: yamaha
+    name: Yamaha
     host: 192.168.30.32
-    zone_names:
-      Main_Zone: "Media Room"
     source_ignore:
       - "AUX"
       - "Radio"
+      - "HDMI3"
+      - "HDMI4"
       - "AV1"
       - "AV2"
       - "AV3"
@@ -804,55 +526,6 @@ media_player:
     source_names:
       HDMI1: "Blu-Ray"
       HDMI2: "ChromeCast"
-      HDMI3: "Kodi"
-      HDMI4: "XBox"
-  - platform: universal
-    name: Beocenter 7700
-    children:
-      - media_player.family_room
-      - media_player.lias
-    device_class: receiver
-    unique_id: media_player.beocenter_7700
-    commands:
-      turn_on:
-        service: script.beocenter_on
-      turn_off:
-        service: script.beocenter_off
-      volume_up:
-        service: button.press
-        target:
-          entity_id: button.beocenter_volume_up
-      volume_down:
-        service: button.press
-        target:
-          entity_id: button.beocenter_volume_down
-      volume_mute:
-        service: button.press
-        target:
-          entity_id: button.beocenter_mute
-      volume_set:
-        service: number.set_value
-        target:
-          entity_id: number.beocenter_volume
-        data:
-          value: "{{ volume_level }}"
-    attributes:
-      volume_level: number.beocenter_volume
-      state: binary_sensor.beocenter_power
-  - platform: universal
-    name: Ruby
-    children:
-      - media_player.ruby_kodi
-    unique_id: media_player.ruby
-    commands:
-      turn_on:
-        service: wake_on_lan.send_magic_packet
-        data:
-          mac: 6C:4B:90:4C:E0:C1
-      turn_off:
-        service: kodi.call_method
-        data:
-          method: System.Suspend
-        target:
-          entity_id: media_player.ruby_kodi
-        
+#  - platform: dlna_dmr
+#    url: http://192.168.30.35/dd.xml
+#    name: Cliff
