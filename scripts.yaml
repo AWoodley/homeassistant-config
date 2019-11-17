@@ -1,0 +1,9 @@
+'1571327987884':
+  alias: Wake Up Music
+  sequence:
+  - alias: ''
+    data:
+      entity_id: media_player.cliff
+      media_content_id: http://192.168.30.1/music/MP3/Erich%20Kunzel%20%26%20Cincinnati%20Pops%20Orchestra/Tchaikovsky_%201812%20Overture/index.m3u
+      media_type: playlist
+    service: media_player.play_media
