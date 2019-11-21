@@ -52,7 +52,9 @@ google_assistant:
   api_key: ***REMOVED***
   exposed_domains:
     - light
+    - switch
     - alarm_control_panel
+    - media_player
   secure_devices_pin: ***REMOVED***
 
 notify:
@@ -87,7 +89,7 @@ binary_sensor:
     device_class: door
   - platform: mqtt
     state_topic: "home/alarm/zones/5"
-    name: "Laundry Door"
+    name: "Laundry/Garage Door"
     device_class: door
   - platform: rpi_gpio
     invert_logic: true
@@ -98,12 +100,6 @@ binary_sensor:
       23: Bedroom Light
 
 sensor:
-  - platform: mqtt
-    state_topic: "home/OpenMQTTGateway_ESP8266_RF/433toMQTT"
-    name: 'RF Button'
-    value_template: '{{value_json.value}}'
-    qos: 1
-    expire_after: 1
   - platform: mqtt
     state_topic: "home/OpenMQTTGateway_SRFB/SRFBtoMQTT"
     name: 'RFB Button'
