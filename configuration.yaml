@@ -52,7 +52,9 @@ google_assistant:
   api_key: AIzaSyDphJAjvcWYb1EExfDhkKCpHrAp_EMuaNM
   exposed_domains:
     - light
+    - switch
     - alarm_control_panel
+    - media_player
   secure_devices_pin: "0307"
 
 notify:
@@ -90,7 +92,7 @@ binary_sensor:
     device_class: door
   - platform: mqtt
     state_topic: "home/alarm/zones/5"
-    name: "Laundry Door"
+    name: "Laundry/Garage Door"
     device_class: door
   - platform: rpi_gpio
     invert_logic: true
@@ -101,12 +103,6 @@ binary_sensor:
       23: Bedroom Light
 
 sensor:
-  - platform: mqtt
-    state_topic: "home/OpenMQTTGateway_ESP8266_RF/433toMQTT"
-    name: 'RF Button'
-    value_template: '{{value_json.value}}'
-    qos: 1
-    expire_after: 1
   - platform: mqtt
     state_topic: "home/OpenMQTTGateway_SRFB/SRFBtoMQTT"
     name: 'RFB Button'
@@ -148,11 +144,67 @@ light:
     payload_off: "OFF"
     payload_available: "Online"
     payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Media Room Light Stand"
+    state_topic: "home/lights/stat/arlec6/POWER"
+    command_topic: "home/lights/cmnd/arlec6/POWER"
+    availability_topic: "home/lights/tele/arlec6/LWT"
+    brightness_state_topic: "home/lights/stat/arlec6/RESULT"
+    brightness_command_topic: "home/lights/cmnd/arlec6/Dimmer"
+    brightness_scale: 100
+    brightness_value_template: "{{value_json.Dimmer}}"
+    color_temp_command_topic: "home/lights/cmnd/arlec6/CT"
+    color_temp_state_topic: "home/lights/stat/arlec6/RESULT"
+    color_temp_value_template: "{{value_json.CT}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Media Room Reading Light"
+    state_topic: "home/lights/stat/arlec7/POWER"
+    command_topic: "home/lights/cmnd/arlec7/POWER"
+    availability_topic: "home/lights/tele/arlec7/LWT"
+    brightness_state_topic: "home/lights/stat/arlec7/RESULT"
+    brightness_command_topic: "home/lights/cmnd/arlec7/Dimmer"
+    brightness_scale: 100
+    brightness_value_template: "{{value_json.Dimmer}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Adrian's Bedside Table"
+    state_topic: "home/lights/stat/arlec4/POWER"
+    command_topic: "home/lights/cmnd/arlec4/POWER"
+    availability_topic: "home/lights/tele/arlec4/LWT"
+    brightness_state_topic: "home/lights/stat/arlec4/RESULT"
+    brightness_command_topic: "home/lights/cmnd/arlec4/Dimmer"
+    brightness_scale: 100
+    brightness_value_template: "{{value_json.Dimmer}}"
+    color_temp_command_topic: "home/lights/cmnd/arlec4/CT"
+    color_temp_state_topic: "home/lights/stat/arlec4/RESULT"
+    color_temp_value_template: "{{value_json.CT}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
   - platform: group
     name: Welcome Lights
     entities:
       - light.lifx_d0_73_d5_3e_87_c9
       - light.music_room
+  - platform: group
+    name: Media Room Lights
+    entities:
+      - light.media_room_light_stand
+      - light.media_room_reading_light
+  - platform: group
+    name: Master Bedroom Lights
+    entities:
+      - light.master_bedroom
+      - light.adrian_s_bedside_table
 
 
 device_tracker:
