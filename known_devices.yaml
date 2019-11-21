@@ -240,3 +240,19 @@ d8_0d_17_e8_33_24:
   name: d8 0d 17 e8 33 24
   picture:
   track: false
+
+4c_11_ae_0f_80_a3:
+  hide_if_away: false
+  icon:
+  mac: 4C:11:AE:0F:80:A3
+  name: 4c 11 ae 0f 80 a3
+  picture:
+  track: false
+
+4c_11_ae_0f_7c_15:
+  hide_if_away: false
+  icon:
+  mac: 4C:11:AE:0F:7C:15
+  name: 4c 11 ae 0f 7c 15
+  picture:
+  track: false
