@@ -245,6 +245,15 @@
       to: '9763496'
   condition: []
   action:
+    - condition: state
+      entity_id: light.lifx_mini_5386a2
+      state: 'on'
+    - data:
+        entity_id: light.lifx_mini_5386a2
+      service: light.turn_off
+    - condition: state
+      entity_id: light.lifx_mini_5386a2
+      state: 'off'
     - data_template:
         brightness: '
           {% if now().hour > 20 %} 5
@@ -260,7 +269,7 @@
           {% endif %}
           '
         entity_id: light.lifx_mini_5386a2
-      service: light.toggle
+      service: light.on
 - id: '1573474201726'
   alias: Boys Bedroom Light (Bright)
   description: ''
