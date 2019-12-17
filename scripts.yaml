@@ -110,3 +110,7 @@
       power: true
       transition: 900
     service: lifx.set_state
+'1576604054568':
+  alias: Dining Room Lights Fade Down
+  sequence:
+  - delay: 00:00:01
