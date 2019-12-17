@@ -1,337 +1,79 @@
----
-- id: '1569685800680'
-  alias: Alarm Triggered
+- id: '1575990406554'
+  alias: Dining Room Light
+  description: ''
   trigger:
-  - entity_id: alarm_control_panel.mqtt_alarm
+  - entity_id: sensor.rfb_button
     platform: state
-    to: triggered
+    to: '1153924'
   condition: []
   action:
   - data:
-      message: Triggered at '{{ now() }}'
-      title: Alarm
-    service: notify.family
-  - delay: 00:05:00
+      entity_id: light.dining_room_lights
+    service: light.toggle
+- id: '1576512904840'
+  alias: Dining Room Lights On
+  description: ''
+  trigger:
+  - event: sunset
+    offset: -01:00:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      brightness: 0
+      entity_id: light.dining_room_lights
+      power: true
+    service: lifx.set_state
+  - data:
+      brightness: 255
+      entity_id: light.dining_room_lights
+      power: true
+      transition: 3600
+    service: lifx.set_state
+- id: '1576515032563'
+  alias: Dining Room Lights Dim
+  description: ''
+  trigger:
+  - at: '20:30:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness: 0
+      color_name: white
+      entity_id: light.lifx_d0_73_d5_38_46_87
+      transition: 900
+    service: lifx.set_state
+  - delay: 00:15:00
   - alias: ''
-    data: {}
-    service: alarm_control_panel.alarm_arm_away
-- id: '1569866532936'
-  alias: Arm Alarm
-  trigger:
-    - entity_id: group.family
-      for: 00:02:00
-      from: home
-      platform: state
-      to: not_home
-    - entity_id: binary_sensor.arm_alarm
-      from: 'off'
-      platform: state
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: alarm_control_panel.mqtt_alarm
-      state: disarmed
-    - condition: state
-      entity_id: binary_sensor.front_door
-      state: 'off'
-  action:
-    - alias: ''
-      data:
-        entity_id: alarm_control_panel.mqtt_alarm
-      service: alarm_control_panel.alarm_arm_away
-- id: '1570546741751'
-  alias: Disarm Alarm
-  trigger:
-    - entity_id: binary_sensor.front_door
-      from: 'off'
-      platform: state
-      to: 'on'
-  condition:
-    - condition: and
-      conditions:
-        - condition: or
-          conditions:
-            - condition: state
-              entity_id: alarm_control_panel.mqtt_alarm
-              state: armed_away
-            - condition: state
-              entity_id: alarm_control_panel.mqtt_alarm
-              state: pending
-        - condition: state
-          entity_id: group.family
-          state: home
-  action:
-    - data:
-        entity_id: alarm_control_panel.mqtt_alarm
-      service: alarm_control_panel.alarm_disarm
-- id: '1570980280936'
-  alias: Welcome Light
+    data:
+      brightness: 0
+      color_name: white
+      entity_id: light.lifx_d0_73_d5_38_15_d3
+      transition: 900
+    service: lifx.set_state
+  - delay: 00:15:00
+  - data:
+      brightness: 0
+      color_name: white
+      entity_id: light.lifx_d0_73_d5_37_e4_e0
+      transition: 900
+    service: lifx.set_state
+  - delay: 00:15:00
+  - data:
+      brightness: 15
+      color_name: white
+      entity_id: light.lifx_d0_73_d5_37_e4_e0
+      transition: 900
+    service: lifx.set_state
+- id: '1576515841194'
+  alias: Dining Room Lights Off
   description: ''
   trigger:
-    - entity_id: binary_sensor.front_door
-      from: 'off'
-      platform: state
-      to: 'on'
-    - entity_id: person.adrian
-      from: not_home
-      platform: state
-      to: home
-    - entity_id: person.nancy
-      from: not_home
-      platform: state
-      to: home
-  condition:
-    - condition: or
-      conditions:
-        - before: sunrise
-          condition: sun
-        - after: sunset
-          condition: sun
-  action:
-    - alias: ''
-      data:
-        brightness: 255
-        entity_id: light.welcome_lights
-      service: light.turn_on
-    - delay: 00:10:00
-    - data:
-        entity_id: light.welcome_lights
-      service: light.turn_off
-- id: '1570990825299'
-  alias: Entry Light Off
-  description: ''
-  trigger:
-    - entity_id: light.lifx_d0_73_d5_3e_87_c9
-      for: '600'
-      from: 'off'
-      platform: state
-      to: 'on'
+  - event: sunrise
+    platform: sun
   condition: []
   action:
-    - device_id: 23c9569f55214533941f48beff102ceb
-      domain: light
-      entity_id: light.lifx_d0_73_d5_3e_87_c9
-      type: turn_off
-- id: '1571212561586'
-  alias: Alarm Armed
-  description: ''
-  trigger:
-    - entity_id: alarm_control_panel.mqtt_alarm
-      platform: state
-      to: alarmed_away
-  condition: []
-  action:
-    - data:
-        message: Armed
-        title: Alarm
-      service: notify.family
-    - data:
-        message: The alarm is armed
-      service: tts.google_translate_say
-    - data:
-        brightness: 255
-        cycles: 3
-        entity_id: light.lifx_d0_73_d5_3e_87_c9
-        mode: strobe
-        period: 1
-      service: light.lifx_effect_pulse
-- id: '1571213516784'
-  alias: Alarm Disarmed
-  description: ''
-  trigger:
-    - entity_id: alarm_control_panel.mqtt_alarm
-      from: pending
-      platform: state
-      to: disarmed
-    - entity_id: alarm_control_panel.mqtt_alarm
-      from: armed_away
-      platform: state
-      to: disarmed
-  condition: []
-  action:
-    - data:
-        message: The Alarm is disarmed.
-      service: tts.google_translate_say
-    - data:
-        brightness: 255
-        cycles: 3
-        entity_id: light.lifx_d0_73_d5_3e_87_c9
-        mode: strobe
-        period: 1
-      service: light.lifx_effect_pulse
-- id: '1571328771483'
-  alias: Wake Up Boys
-  description: ''
-  trigger:
-    - hours: '7'
-      minutes: '30'
-      platform: time_pattern
-      seconds: '00'
-  condition: []
-  action:
-    - alias: ''
-      data: {}
-      service: script.1571327987884
-- id: '1572019277815'
-  alias: Master Bedroom Light
-  description: ''
-  trigger:
-    entity_id: sensor.rfb_button
-    platform: state
-    to: '2364680'
-  condition: []
-  action:
-    - condition: state
-      entity_id: light.master_bedroom_lights
-      state: 'on'
-    - data:
-        entity_id: light.master_bedroom_lights
-      service: light.turn_off
-    - condition: state
-      entity_id: light.master_bedroom_lights
-      state: 'off'
-    - data_template:
-        brightness: '
-          {% if now().hour > 21 %} 5
-          {% elif now().hour < 5 %} 5
-          {% elif now().hour < 7 %} 50
-          {% else %} 255
-          {% endif %}
-          '
-        color_temp: '
-          {% if now().hour > 21 %} 500
-          {% elif now().hour < 7 %} 500
-          {% else %} 153
-          {% endif %}
-          '
-        entity_id: '
-          {% if now().house > 22 %} light.adrian_s_bedside_table
-          {% elif now().house < 5 %} light.adrians_s_bedside_table
-          {% else %} light.master_bedroom
-          {% endif %}
-          '
-      service: light.on
-- id: '1572197002328'
-  alias: Music Room Light
-  description: ''
-  trigger:
-    entity_id: sensor.rfb_button
-    platform: state
-    to: '13767432'
-  condition: []
-  action:
-    - data_template:
-        brightness: '
-          {% if now().hour > 21 %} 5
-          {% elif now().hour < 5 %} 5
-          {% elif now().hour < 7 %} 50
-          {% else %} 255
-          {% endif %}
-          '
-        color_temp: '
-          {% if now().hour > 21 %} 500
-          {% elif now().hour < 7 %} 500
-          {% else %} 153
-          {% endif %}
-          '
-        entity_id: light.music_room
-      service: light.toggle
-- id: '1573474259634'
-  alias: Boys Bedroom Light (Adjust)
-  description: Boys Bedroom Light (Adjust)
-  trigger:
-    - entity_id: sensor.rfb_button
-      platform: state
-      to: '9763496'
-  condition: []
-  action:
-    - condition: state
-      entity_id: light.lifx_mini_5386a2
-      state: 'on'
-    - data:
-        entity_id: light.lifx_mini_5386a2
-      service: light.turn_off
-    - condition: state
-      entity_id: light.lifx_mini_5386a2
-      state: 'off'
-    - data_template:
-        brightness: '
-          {% if now().hour > 20 %} 5
-          {% elif now().hour < 6 %} 5
-          {% elif now().hour < 8 %} 50
-          {% else %} 255
-          {% endif %}
-          '
-        color_temp: '
-          {% if now().hour > 20 %} 400
-          {% elif now().hour < 6 %} 400
-          {% else %} 111
-          {% endif %}
-          '
-        entity_id: light.lifx_mini_5386a2
-      service: light.on
-- id: '1573474201726'
-  alias: Boys Bedroom Light (Bright)
-  description: ''
-  trigger:
-    - entity_id: sensor.rfb_button
-      platform: state
-      to: '9763476'
-  condition: []
-  action:
-    - condition: state
-      entity_id: light.lifx_mini_5386a2
-      state: 'on'
-    - data:
-        entity_id: light.lifx_mini_5386a2
-      service: light.turn_off
-    - condition: state
-      entity_id: light.lifx_mini_5386a2
-      state: 'off'
-    - data:
-        brightness: 255
-        entity_id: light.lifx_mini_5386a2
-        kelvin: 4000
-      service: light.turn_on
-- id: '1573474201727'
-  alias: Boys Bedroom Light (Colours)
-  description: ''
-  trigger:
-    - entity_id: sensor.rfb_button
-      platform: state
-      to: '9763474'
-  condition: []
-  action:
-    - data:
-        entity_id: light.lifx_mini_5386a2
-        brightness: 255
-        period: 1
-        change: 35
-        power_on: true
-      service: light.lifx_effect_colorloop
-- id: '1574089299395'
-  alias: Turn Off Coffee Machine
-  description: ''
-  trigger:
-    - entity_id: switch.coffee_machine
-      for: 01:00:00
-      from: 'off'
-      platform: state
-      to: 'on'
-  condition: []
-  action:
-    - data:
-        entity_id: switch.coffee_machine
-      service: switch.turn_off
-- id: '1574089332890'
-  alias: Morning Coffee
-  description: ''
-  trigger:
-    - at: 07:00:00
-      platform: time
-  condition: []
-  action:
-    - device_id: 9738d0e7115a4d2aaa6f685d86ee56a0
-      domain: switch
-      entity_id: switch.coffee_machine
-      type: turn_on
+  - data:
+      entity_id: light.dining_room_lights
+    service: light.turn_off
