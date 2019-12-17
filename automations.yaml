@@ -11,7 +11,7 @@
       entity_id: light.dining_room_lights
     service: light.toggle
 - id: '1576512904840'
-  alias: Dining Room Lights On
+  alias: Dining Room Lights Fade Up
   description: ''
   trigger:
   - event: sunset
@@ -31,7 +31,7 @@
       transition: 3600
     service: lifx.set_state
 - id: '1576515032563'
-  alias: Dining Room Lights Dim
+  alias: Dining Room Lights Fade Down
   description: ''
   trigger:
   - at: '20:30:00'
@@ -41,30 +41,38 @@
   - data:
       brightness: 0
       color_name: white
-      entity_id: light.lifx_d0_73_d5_38_46_87
-      transition: 900
+      entity_id: light.lifx_d0_73_d5_37_e5_cd
+      transition: 10
     service: lifx.set_state
   - delay: 00:15:00
-  - alias: ''
-    data:
+  - data:
+      entity_id: light.lifx_d0_73_d5_37_e5_cd
+    service: light.turn_off
+  - data:
+      brightness: 0
+      color_name: white
+      entity_id: light.lifx_d0_73_d5_37_e4_e0
+      transition: 10
+    service: lifx.set_state
+  - delay: 00:15:00
+  - data:
+      entity_id: light.lifx_d0_73_d5_37_e4_e0
+    service: light.turn_off
+  - data:
       brightness: 0
       color_name: white
       entity_id: light.lifx_d0_73_d5_38_15_d3
-      transition: 900
+      transition: 10
     service: lifx.set_state
   - delay: 00:15:00
   - data:
-      brightness: 0
-      color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
-      transition: 900
-    service: lifx.set_state
-  - delay: 00:15:00
+      entity_id: light.lifx_d0_73_d5_38_15_d3
+    service: light.turn_off
   - data:
       brightness: 15
       color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
-      transition: 900
+      entity_id: light.lifx_d0_73_d5_38_46_87
+      transition: 10
     service: lifx.set_state
 - id: '1576515841194'
   alias: Dining Room Lights Off
