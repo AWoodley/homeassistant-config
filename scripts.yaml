@@ -72,3 +72,7 @@
   - data:
       entity_id: light.christmas_tree_lights
     service: light.turn_off
+'1576597525465':
+  alias: Fade Lights
+  sequence:
+  - delay: 00:01:00
