@@ -1,0 +1,65 @@
+- id: '1575815204559'
+  alias: Media Light Stand
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '11532968'
+  condition: []
+  action:
+  - data:
+      entity_id: light.media_room_light_stand
+    service: light.toggle
+- id: '1575815268208'
+  alias: Media Reading Light
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '11532948'
+  condition: []
+  action:
+  - data:
+      entity_id: light.media_room_reading_light
+    service: light.toggle
+- id: '1575815695650'
+  alias: Media Off - Lights On
+  description: ''
+  trigger:
+  - entity_id: media_player.glod
+    for: 00:00:30
+    from: playing
+    platform: state
+    to: idle
+  - entity_id: media_player.glod
+    for: 00:00:30
+    from: playing
+    platform: state
+    to: 'off'
+  - entity_id: media_player.glod
+    from: playing
+    platform: state
+    to: paused
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - data:
+      entity_id: light.media_room_light_stand
+    service: light.turn_on
+- id: '1575815947680'
+  alias: Media Playing - Lights Off
+  description: ''
+  trigger:
+  - entity_id: media_player.glod
+    platform: state
+    to: playing
+  condition: []
+  action:
+  - data:
+      entity_id: light.media_room_lights
+    service: light.turn_off

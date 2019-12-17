@@ -1,0 +1,19 @@
+- id: '1572197002328'
+  alias: Music Room Light
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '13767432'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2364680'
+  condition: []
+  action:
+  - data_template:
+      brightness: ' {% if now().hour > 21 %} 200 {% elif now().hour > 5 %} 255 {%
+        elif now().hour > 0 %} 200 {% else %} 255 {% endif %} '
+      color_temp: ' {% if now().hour > 21 %} 500 {% elif now().hour > 5 %} 153 {%
+        elif now().hour > 0 %} 500 {% else %} 153 {% endif %} '
+      entity_id: light.music_room
+    service: light.toggle

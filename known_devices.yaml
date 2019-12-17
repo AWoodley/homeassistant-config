@@ -256,3 +256,51 @@ d8_0d_17_e8_33_24:
   name: 4c 11 ae 0f 7c 15
   picture:
   track: false
+
+44_07_0b_d7_c0_1f:
+  hide_if_away: false
+  icon:
+  mac: 44:07:0B:D7:C0:1F
+  name: 44 07 0b d7 c0 1f
+  picture:
+  track: false
+
+10_0b_a9_72_96_7c:
+  hide_if_away: false
+  icon:
+  mac: 10:0B:A9:72:96:7C
+  name: 10 0b a9 72 96 7c
+  picture:
+  track: false
+
+c0_18_85_2a_bc_7d:
+  hide_if_away: false
+  icon:
+  mac: C0:18:85:2A:BC:7D
+  name: c0 18 85 2a bc 7d
+  picture:
+  track: false
+
+00_24_d7_7d_70_40:
+  hide_if_away: false
+  icon:
+  mac: 00:24:D7:7D:70:40
+  name: 00 24 d7 7d 70 40
+  picture:
+  track: false
+
+c4_4f_33_8b_0a_36:
+  hide_if_away: false
+  icon:
+  mac: C4:4F:33:8B:0A:36
+  name: c4 4f 33 8b 0a 36
+  picture:
+  track: false
+
+4c_11_ae_0f_82_62:
+  hide_if_away: false
+  icon:
+  mac: 4C:11:AE:0F:82:62
+  name: 4c 11 ae 0f 82 62
+  picture:
+  track: false
