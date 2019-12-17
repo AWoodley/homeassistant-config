@@ -1,0 +1,71 @@
+- id: '1570980280936'
+  alias: Welcome Light
+  description: ''
+  trigger:
+  - entity_id: person.adrian
+    from: not_home
+    platform: state
+    to: home
+  - entity_id: person.nancy
+    from: not_home
+    platform: state
+    to: home
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - alias: ''
+    data:
+      brightness: 255
+      entity_id: light.welcome_lights
+    service: light.turn_on
+- id: '1570990825299'
+  alias: Entry Light Off
+  description: ''
+  trigger:
+  - entity_id: light.lifx_d0_73_d5_3e_87_c9
+    for: '600'
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - alias: ''
+    data:
+      entity_id: light.lifx_d0_73_d5_3e_87_c9
+    service: light.turn_off
+- id: '1575220469153'
+  alias: Entry Light - Door
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.front_door
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - data:
+      entity_id: light.lifx_d0_73_d5_3e_87_c9
+    service: light.turn_on
+- id: '1575382143244'
+  alias: Entry Light - Button
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '3692692'
+  condition: []
+  action:
+  - data:
+      entity_id: light.lifx_d0_73_d5_3e_87_c9
+    service: light.toggle

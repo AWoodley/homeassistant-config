@@ -1,0 +1,128 @@
+---
+- id: '1572019277815'
+  alias: Master Bedroom Lights On
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1172993'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190612'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475684'
+  condition:
+    - condition: state
+      entity_id: light.master_bedroom_lights
+      state: 'off'
+  action:
+    service: script.1575388174358
+- id: '2019112917581'
+  alias: Master Bedroom Lights Bright
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1172994'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190612'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475682'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190610'
+  condition:
+    - condition: state
+      entity_id: light.master_bedroom
+      state: 'off'
+  action:
+  - data:
+      brightness: 255
+      color_temp: 153
+      entity_id: light.master_bedroom
+    service: light.turn_on
+- id: '2019112215410'
+  alias: Master Bedroom Lights Off
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1172993'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1172994'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190612'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190610'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475684'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475682'
+  condition:
+    - condition: state
+      entity_id: light.master_bedroom_lights
+      state: 'on'
+  action:
+    data:
+      entity_id: light.master_bedroom_lights
+    service: light.turn_off
+- id: '1575387552803'
+  alias: Nancy's Bedside Light
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475688'
+  action:
+  - data:
+      brightness: 255
+      color_temp: 120
+      entity_id: light.nancy_s_bedside_table
+    service: light.toggle
+- id: '1575387990661'
+  alias: Adrian's Bedside Light
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190632'
+  action:
+  - data:
+      brightness: 255
+      color_temp: 120
+      entity_id: light.adrian_s_bedside_table
+    service: light.toggle
+- id: '1575388925050'
+  alias: Master Bedroom Romantic
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190609'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475681'
+  action:
+  - data:
+      brightness: 150
+      color_temp: 500
+      entity_id: light.adrian_s_bedside_table
+    service: light.turn_on
+  - data:
+      brightness: 150
+      color_temp: 500
+      entity_id: light.nancy_s_bedside_table
+    service: light.turn_on
+  - data:
+      brightness: 15
+      color_temp: 500
+      entity_id: light.master_bedroom
+    service: light.turn_on

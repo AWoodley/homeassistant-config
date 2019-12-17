@@ -1,0 +1,94 @@
+- id: '1573474259634'
+  alias: Boys Bedroom Light (Adjust)
+  description: Boys Bedroom Light (Adjust)
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763496'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1058804'
+  condition:
+    - condition: state
+      entity_id: light.lifx_mini_5386a2
+      state: 'off'
+  action:
+  - data_template:
+      brightness: ' {% if now().hour > 19 %} 5 {% elif now().hour > 8 %} 255 {% elif
+        now().hour > 6 %} 50 {% elif now().hour > 0 %} 5 {% else %} 255 {% endif %} '
+      color_temp: ' {% if now().hour > 19 %} 400 {% elif now().hour > 6 %} 242 {%
+        elif now().hour > 0 %} 400 {% else %} 400 {% endif %} '
+      entity_id: light.lifx_mini_5386a2
+    service: light.turn_on
+- id: '1573474201726'
+  alias: Boys Bedroom Light (Bright)
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763476'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1058802'
+  condition:
+  - condition: state
+    entity_id: light.lifx_mini_5386a2
+    state: 'off'
+  action:
+  - data:
+      brightness: 255
+      color_temp: 242
+      entity_id: light.lifx_mini_5386a2
+    service: light.turn_on
+- id: '1573474201727'
+  alias: Boys Bedroom Light (Colours)
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763474'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1058801'
+  condition:
+  action:
+  - data:
+      entity_id: light.lifx_mini_5386a2
+      brightness: 255
+      period: 1
+      change: 35
+      power_on: true
+    service: lifx.effect_colorloop
+- id: '1574492068922'
+  alias: Boy's Bedroom Light (Off)
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763473'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763474'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763476'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763496'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1058804'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1058802'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1058801'
+  condition:
+  - condition: state
+    entity_id: light.lifx_mini_5386a2
+    state: 'on'
+  action:
+  - data:
+      entity_id: light.lifx_mini_5386a2
+    service: light.turn_off
