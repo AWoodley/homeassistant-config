@@ -1,138 +1,43 @@
+---
 - id: '1572019277815'
-  alias: Light:Master Bedroom:On:Adjust
-  description: 'Adjust brightness of Master Bedroom lights based on time of day'
+  alias: Master Bedroom Lights On
+  description: ''
   trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '8190612'  
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '2475684'
-  # - entity_id: sensor.rfb_button
-  #   platform: state
-  #   to: '10295124' #New wall Button, right
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1172993'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190612'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475684'
   condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
+    - condition: state
+      entity_id: light.master_bedroom_lights
+      state: 'off'
   action:
-  - data_template:
-      entity_id: >
-        {% if is_state('light.master_bedroom_lights', 'on') %}
-        scene.scene_master_bedroom_off
-        {% elif now().hour > 21 and is_state('person.nancy', 'home') %}
-        scene.scene_master_bedroom_night
-        {% elif now().hour > 20 %}
-        scene.scene_master_bedroom_evening
-        {% elif now().hour < 5 %}
-        scene.scene_master_bedroom_night
-        {% elif now().hour < 7 %}
-        scene.scene_master_bedroom_evening
-        {% else %}
-        scene.scene_master_bedroom_day
-        {% endif %}
-    service: scene.turn_on
+    service: script.1575388174358
 - id: '2019112917581'
-  alias: Light:Master Bedroom:On:Bright
+  alias: Master Bedroom Lights Bright
   description: ''
   trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '8190612'  
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '8190610'
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '10295122' # New Wall Button, middle
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1172994'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190612'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475682'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190610'
   condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - data_template:
-      entity_id: >
-        {% if is_state('light.master_bedroom_lights', 'on') %}
-        scene.scene_master_bedroom_off
-        {% else %}
-        scene.scene_master_bedroom_bright_2
-        {% endif %}
-    service: scene.turn_on
-# - id: '2019112215410'
-#   alias: Light:Master Bedroom:Off
-#   description: ''
-#   trigger:
-#   - entity_id: sensor.rfb_button
-#     platform: state
-#     to: '8190612'
-#   - entity_id: sensor.rfb_button
-#     platform: state
-#     to: '8190610'
-#   - entity_id: sensor.rfb_button
-#     platform: state
-#     to: '2475684'
-#   - entity_id: sensor.rfb_button
-#     platform: state
-#     to: '2475682'
-#   condition:
-#     - condition: state
-#       entity_id: light.master_bedroom_lights
-#       state: 'on'
-#   action:
-#     data:
-#       entity_id: light.master_bedroom_lights
-#     service: light.turn_off
-# - id: '1575387552803'
-#   alias: Light:Nancy's Bedside Table:Toggle
-#   description: ''
-#   trigger:
-#   - platform: event
-#     event_type: esphome.rf_code_received
-#     event_data:
-#       code: '2475688'
-#   condition:
-#   - condition: state
-#     entity_id: input_boolean.active
-#     state: 'on'
-#   action:
-#   - data:
-#       brightness: 255
-#       color_temp: 330
-#       entity_id: light.light_bedside_2
-#     service: light.toggle
-- id: '1637429824509'
-  alias: Light:Adrians-Bedside-Lamp:Step
-  description: ''
-  use_blueprint:
-    path: light-step-brightness.yaml
-    input:
-      button_id: '8190632'
-      light_id: light.light_bedside_1
-- id: '2021112511131'
-  alias: Light:Nancys-Bedside-Lamp:Step
-  description: ''
-  use_blueprint:
-    path: light-step-brightness.yaml
-    input:
-      button_id: '2475688'
-      light_id: light.light_bedside_2
-- id: '1575387990661'
-  alias: Light:Adrian's Bedside Table:Toggle
-  description: ''
-  trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '8190632'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
+    - condition: state
+      entity_id: light.master_bedroom
+      state: 'off'
   action:
   - data:
       brightness: 255
@@ -192,13 +97,24 @@
   alias: Switch:Nancys Electric Blanket
   description: ''
   trigger:
-  - platform: state
-    entity_id: person.nancy
-    to: home
-    id: home
-  - platform: time
-    at: '21:01:00'
-    id: time
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1172993'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1172994'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190612'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190610'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475684'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475682'
   condition:
   - condition: state
     entity_id: input_boolean.active
@@ -212,153 +128,58 @@
   - condition: time
     after: '21:00:00'
   action:
-  - service: switch.turn_on
-    target:
-      entity_id: switch.nancys_electric_blanket
-  - delay:
-      hours: 1
-      minutes: 0
-      seconds: 0
-      milliseconds: 0
-  - service: switch.turn_off
-    target:
-      entity_id: switch.nancys_electric_blanket
-  mode: restart
-- id: '1631637735336'
-  alias: Light:Master Bedroom:Step
-  description: ''
-  use_blueprint:
-    path: light-step-brightness.yaml
-    input:
-      button_id: '10295124'
-      light_id: light.light_masterbedroom_1
-- id: '1580492573046'
-  alias: Switch:Adrian's Phone Charger:Turn On
+    data:
+      entity_id: light.master_bedroom_lights
+    service: light.turn_off
+- id: '1575387552803'
+  alias: Nancy's Bedside Light
   description: ''
   trigger:
-  - platform: time
-    at: 06:00:00
-  - platform: numeric_state
-    entity_id: sensor.nokia_5_3_battery_level
-    below: '35'
-  - platform: state
-    entity_id: switch.adrian_s_phone_charger
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475688'
   action:
-  - service: switch.turn_on
-    entity_id: switch.adrian_s_phone_charger
-  - wait_for_trigger:
-    - platform: numeric_state
-      entity_id: sensor.nokia_5_3_battery_level
-      above: '95'
-  - service: switch.turn_off
-    entity_id: switch.adrian_s_phone_charger
-  - choose:
-    - conditions:
-      - condition: time
-        after: 02:00:00
-      sequence:
-      - delay:
-          hours: 6
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-    default: []
-  mode: single
-  max_exceeded: silent
-- id: '1580492902537'
-  alias: Switch:Nancy's Phone Charger:Turn On
+  - data:
+      brightness: 255
+      color_temp: 120
+      entity_id: light.nancy_s_bedside_table
+    service: light.toggle
+- id: '1575387990661'
+  alias: Adrian's Bedside Light
   description: ''
   trigger:
-  - platform: time
-    at: 03:30:00
-  - platform: numeric_state
-    entity_id: sensor.nancys_phone_battery_level
-    below: '35'
-  - platform: state
-    entity_id: switch.nancy_s_phone_charger
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190632'
   action:
-  - entity_id: switch.nancy_s_phone_charger
-    service: switch.turn_on
-  - wait_for_trigger:
-    - platform: numeric_state
-      entity_id: sensor.nancys_phone_battery_level
-      above: '85'
-  - service: switch.turn_off
-    entity_id: switch.nancy_s_phone_charger
-  mode: single
-  max_exceeded: silent
-- id: '1656090002268'
-  alias: Switch:Master Bedroom AirCon:Themostat
+  - data:
+      brightness: 255
+      color_temp: 120
+      entity_id: light.adrian_s_bedside_table
+    service: light.toggle
+- id: '1575388925050'
+  alias: Master Bedroom Romantic
   description: ''
   trigger:
-  - platform: state
-    entity_id:
-    - climate.master_bedroom_ac
-    from: 'off'
-    id: 'On'
-  - platform: state
-    entity_id:
-    - climate.master_bedroom_ac
-    to: 'off'
-    id: 'Off'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '8190609'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '2475681'
   action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: 'On'
-      - condition: state
-        entity_id: switch.master_bedroom_air_conditioner
-        state: 'off'
-      sequence:
-      - service: scene.create
-        data:
-          scene_id: master_bedroom_ac
-          snapshot_entities: climate.master_bedroom_ac
-      - service: climate.turn_off
-        data: {}
-        target:
-          entity_id: climate.master_bedroom_ac
-      - service: switch.turn_on
-        data: {}
-        target:
-          entity_id: switch.master_bedroom_air_conditioner
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 5
-          milliseconds: 0
-      - service: scene.turn_on
-        data: {}
-        target:
-          entity_id: scene.master_bedroom_ac
-    default:
-    - delay:
-        hours: 0
-        minutes: 5
-        seconds: 0
-        milliseconds: 0
-    - service: switch.turn_off
-      data: {}
-      target:
-        entity_id: switch.master_bedroom_air_conditioner
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 10
-      milliseconds: 0
-  mode: single
-  max_exceeded: silent
+  - data:
+      brightness: 150
+      color_temp: 500
+      entity_id: light.adrian_s_bedside_table
+    service: light.turn_on
+  - data:
+      brightness: 150
+      color_temp: 500
+      entity_id: light.nancy_s_bedside_table
+    service: light.turn_on
+  - data:
+      brightness: 15
+      color_temp: 500
+      entity_id: light.master_bedroom
+    service: light.turn_on

@@ -1,58 +1,70 @@
 - id: '1569866532936'
-  alias: Alarm:Arm
+  alias: Arm Alarm
   trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '3692696'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '3692696'
   condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
   - condition: state
     entity_id: alarm_control_panel.mqtt_alarm
     state: disarmed
   action:
-  - data:
+  - alias: ''
+    data:
       entity_id: alarm_control_panel.mqtt_alarm
     service: alarm_control_panel.alarm_arm_away
   - data:
-      entity_id: scene.scene_away
-    service: scene.turn_on
+      message: Arming the alarm.
+    service: tts.google_translate_say
   - data:
       cycles: 3
-      entity_id: light.lifx_front_door
+      entity_id: light.lifx_d0_73_d5_3e_87_c9
       mode: strobe
       period: 1
     service: lifx.effect_pulse
 - id: '1570546741751'
-  alias: Alarm:Disarm
+  alias: Disarm Alarm
   trigger:
   - entity_id: binary_sensor.front_door
     from: 'off'
     platform: state
     to: 'on'
   condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  - condition: state
-    entity_id: group.family
-    state: home
-  - condition: or
+  - condition: and
     conditions:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: alarm_control_panel.mqtt_alarm
+        state: armed_away
+      - condition: state
+        entity_id: alarm_control_panel.mqtt_alarm
+        state: pending
     - condition: state
-      entity_id: alarm_control_panel.mqtt_alarm
-      state: armed_away
-    - condition: state
-      entity_id: alarm_control_panel.mqtt_alarm
-      state: pending
+      entity_id: group.family
+      state: home
   action:
   - data:
       entity_id: alarm_control_panel.mqtt_alarm
     service: alarm_control_panel.alarm_disarm
+- id: '1571212561586'
+  alias: Alarm Armed
+  description: ''
+  trigger:
+  - entity_id: alarm_control_panel.mqtt_alarm
+    platform: state
+    to: alarmed_away
+  condition: []
+  action:
+  - data:
+      brightness: 255
+      cycles: 3
+      entity_id: light.lifx_d0_73_d5_3e_87_c9
+      mode: strobe
+      period: 1
+    service: lifx.effect_pulse
 - id: '1571213516784'
-  alias: Alarm:Disarmed
+  alias: Alarm Disarmed
   description: ''
   trigger:
   - entity_id: alarm_control_panel.mqtt_alarm
@@ -63,30 +75,26 @@
     from: armed_away
     platform: state
     to: disarmed
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
+  condition: []
   action:
+  - data:
+      message: The Alarm is disarmed.
+    service: tts.google_translate_say
   - data:
       brightness: 255
       cycles: 3
-      entity_id: light.lifx_front_door
+      entity_id: light.lifx_d0_73_d5_3e_87_c9
       mode: strobe
       period: 1
     service: lifx.effect_pulse
 - id: '1575382803862'
-  alias: Alarm:Disarm Pending Alarm
+  alias: Disarm Pending Alarm
   description: ''
   trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '3692696'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '3692696'
   condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
   - condition: state
     entity_id: alarm_control_panel.mqtt_alarm
     state: pending

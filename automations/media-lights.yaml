@@ -1,83 +1,29 @@
 - id: '1575815204559'
-  alias: Light:Media Room Lights:Centre-Off
+  alias: Media Light Stand
   description: ''
   trigger:
-    - platform: state
-      entity_id: switch.media_centre
-      from: 'on'
-      to: 'off'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  - condition: state
-    entity_id: sun.sun
-    state: 'below_horizon'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '11532968'
+  condition: []
   action:
   - data:
-      entity_id: light.light_media_3
-    service: light.turn_on
-- id: '2020032913141'
-  alias: Light:Media Room Lights:Toggle
+      entity_id: light.media_room_light_stand
+    service: light.toggle
+- id: '1575815268208'
+  alias: Media Reading Light
   description: ''
   trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '1944754'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - choose:
-    - conditions:
-      - condition: state
-        entity_id: input_boolean.light_effect_running
-        state: 'on'
-      sequence:
-      - service: input_boolean.turn_off
-        entity_id: input_boolean.light_effect_running
-    - conditions:
-      - condition: state
-        entity_id: light.media_room_lights
-        state: 'on'
-      sequence:
-      - service: light.turn_off
-        entity_id: light.light_media_1,light.light_media_3
-    default:
-      - service: light.turn_on
-        entity_id: light.light_media_3
-# - id: '1575815268208'
-#   alias: Light:Media Reading Light:Toggle
-#   description: ''
-#   trigger:
-#   - entity_id: sensor.rfb_button
-#     platform: state
-#     to: '11532948'
-#   condition: []
-#   action:
-#   - data:
-#       entity_id: light.light_media_2
-#     service: light.toggle
-- id: '2020032922141'
-  alias: Light:Media Light Stand:Toggle
-  description: ''
-  trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '11532968'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '11532948'
+  condition: []
   action:
   - data:
-      entity_id: light.light_media_1
+      entity_id: light.media_room_reading_light
     service: light.toggle
 - id: '1575815695650'
-  alias: Light:Media:On:Pause/Stop
+  alias: Media Off - Lights On
   description: ''
   trigger:
   - entity_id: media_player.glod
@@ -94,51 +40,25 @@
     from: playing
     platform: state
     to: paused
-  - entity_id: media_player.ruby
-    for: 00:00:30
-    from: playing
-    platform: state
-    to: idle
-  - entity_id: media_player.ruby
-    for: 00:00:30
-    from: playing
-    platform: state
-    to: 'off'
-  - entity_id: media_player.ruby
-    from: playing
-    platform: state
-    to: paused
   condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  - condition: state
-    entity_id: sun.sun
-    state: 'below_horizon'
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
   action:
   - data:
-      entity_id: light.light_media_1
+      entity_id: light.media_room_light_stand
     service: light.turn_on
 - id: '1575815947680'
-  alias: Light:Media:Off:Play
+  alias: Media Playing - Lights Off
   description: ''
   trigger:
   - entity_id: media_player.glod
     platform: state
     to: playing
-  - entity_id: media_player.ruby
-    platform: state
-    to: playing
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  - condition: not
-    conditions:
-    - condition: state
-      entity_id: media_player.glod
-      attribute: app_name
-      state: HASfit
+  condition: []
   action:
   - data:
       entity_id: light.media_room_lights
