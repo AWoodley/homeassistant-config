@@ -76,3 +76,7 @@
   alias: Fade Lights
   sequence:
   - delay: 00:01:00
+'1576603594014':
+  alias: Dining Room Lights Fade Up
+  sequence:
+  - delay: 00:01:00
