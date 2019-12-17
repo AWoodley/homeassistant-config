@@ -8,6 +8,9 @@
   condition: []
   action:
   - data:
+      entity_id: script.1575907804253
+    service: script.turn_on
+  - data:
       entity_id: light.dining_room_lights
     service: light.toggle
 - id: '1576512904840'
@@ -37,6 +40,9 @@
     platform: sun
   condition: []
   action:
+  - data:
+      entity_id: script.1575907804253
+    service: script.turn_on
   - data:
       entity_id: light.dining_room_lights
     service: light.turn_off
