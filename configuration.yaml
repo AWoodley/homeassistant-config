@@ -24,12 +24,15 @@ http:
     - 192.168.30.1
     - 2001:44b8:610b:3f30::1
 
+logger:
+  default: warning
+
 # Text to speech
 tts:
   - platform: google_translate
 
 group: !include groups.yaml
-automation: !include automations.yaml
+automation: !include_dir_merge_list automations
 script: !include scripts.yaml
 
 frontend:
@@ -50,12 +53,38 @@ mqtt:
 google_assistant:
   project_id: hass
   api_key: AIzaSyDphJAjvcWYb1EExfDhkKCpHrAp_EMuaNM
+  secure_devices_pin: "0307"
   exposed_domains:
     - light
     - switch
     - alarm_control_panel
     - media_player
-  secure_devices_pin: "0307"
+    - scene
+  entity_config:
+    group.all_automations:
+      expose: false
+    light.all_lights:
+      expose: false
+    light.master_bedroom_lights:
+      expose: false
+    light.lifx_d0_73_d5_37_e5_cd:
+      expose: false
+    light.lifx_d0_73_d5_37_e4_e0:
+      expose: false
+    light.lifx_d0_73_d5_38_15_d3:
+      expose: false
+    light.lifx_d0_73_d5_38_46_87:
+      expose: false
+    light.dinning_room_lights:
+      expose: true
+    media_player.googlehome4026:
+      expose: false
+    media_player.kitchen_speaker:
+      expose: false
+    script.1575907804253:
+      expose: true
+    script.1575974067886:
+      expose: true
 
 notify:
   - name: a_xmpp
@@ -113,7 +142,7 @@ sensor:
 
 light:
   - platform: mqtt
-    name: "Music Room"
+    name: "Master Bedroom"
     state_topic: "home/lights/stat/arlec1/POWER"
     command_topic: "home/lights/cmnd/arlec1/POWER"
     availability_topic: "home/lights/tele/arlec1/LWT"
@@ -129,7 +158,55 @@ light:
     payload_available: "Online"
     payload_not_available: "Offline"
   - platform: mqtt
-    name: "Master Bedroom"
+    name: "Music Room"
+    state_topic: "home/lights/stat/arlec2/POWER"
+    command_topic: "home/lights/cmnd/arlec2/POWER"
+    availability_topic: "home/lights/tele/arlec2/LWT"
+    brightness_state_topic: "home/lights/stat/arlec2/RESULT"
+    brightness_command_topic: "home/lights/cmnd/arlec2/Dimmer"
+    brightness_scale: 100
+    brightness_value_template: "{{value_json.Dimmer}}"
+    color_temp_command_topic: "home/lights/cmnd/arlec2/CT"
+    color_temp_state_topic: "home/lights/stat/arlec2/RESULT"
+    color_temp_value_template: "{{value_json.CT}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Media Room Light Stand"
+    state_topic: "home/lights/stat/arlec3/POWER"
+    command_topic: "home/lights/cmnd/arlec3/POWER"
+    availability_topic: "home/lights/tele/arlec3/LWT"
+    brightness_state_topic: "home/lights/stat/arlec3/RESULT"
+    brightness_command_topic: "home/lights/cmnd/arlec3/Dimmer"
+    brightness_scale: 100
+    brightness_value_template: "{{value_json.Dimmer}}"
+    color_temp_command_topic: "home/lights/cmnd/arlec3/CT"
+    color_temp_state_topic: "home/lights/stat/arlec3/RESULT"
+    color_temp_value_template: "{{value_json.CT}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Adrian's Bedside Table"
+    state_topic: "home/lights/stat/arlec4/POWER"
+    command_topic: "home/lights/cmnd/arlec4/POWER"
+    availability_topic: "home/lights/tele/arlec4/LWT"
+    brightness_state_topic: "home/lights/stat/arlec4/RESULT"
+    brightness_command_topic: "home/lights/cmnd/arlec4/Dimmer"
+    brightness_scale: 100
+    brightness_value_template: "{{value_json.Dimmer}}"
+    color_temp_command_topic: "home/lights/cmnd/arlec4/CT"
+    color_temp_state_topic: "home/lights/stat/arlec4/RESULT"
+    color_temp_value_template: "{{value_json.CT}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Nancy's Bedside Table"
     state_topic: "home/lights/stat/arlec5/POWER"
     command_topic: "home/lights/cmnd/arlec5/POWER"
     availability_topic: "home/lights/tele/arlec5/LWT"
@@ -145,7 +222,7 @@ light:
     payload_available: "Online"
     payload_not_available: "Offline"
   - platform: mqtt
-    name: "Media Room Light Stand"
+    name: "Study"
     state_topic: "home/lights/stat/arlec6/POWER"
     command_topic: "home/lights/cmnd/arlec6/POWER"
     availability_topic: "home/lights/tele/arlec6/LWT"
@@ -174,27 +251,31 @@ light:
     payload_available: "Online"
     payload_not_available: "Offline"
   - platform: mqtt
-    name: "Adrian's Bedside Table"
-    state_topic: "home/lights/stat/arlec4/POWER"
-    command_topic: "home/lights/cmnd/arlec4/POWER"
-    availability_topic: "home/lights/tele/arlec4/LWT"
-    brightness_state_topic: "home/lights/stat/arlec4/RESULT"
-    brightness_command_topic: "home/lights/cmnd/arlec4/Dimmer"
+    name: "Christmas Tree Lights"
+    state_topic: "home/lights/stat/arlec8/POWER"
+    command_topic: "home/lights/cmnd/arlec8/POWER"
+    availability_topic: "home/lights/tele/arlec8/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Play Room"
+    state_topic: "home/lights/stat/arlec9/POWER"
+    command_topic: "home/lights/cmnd/arlec9/POWER"
+    availability_topic: "home/lights/tele/arlec9/LWT"
+    brightness_state_topic: "home/lights/stat/arlec9/RESULT"
+    brightness_command_topic: "home/lights/cmnd/arlec9/Dimmer"
     brightness_scale: 100
     brightness_value_template: "{{value_json.Dimmer}}"
-    color_temp_command_topic: "home/lights/cmnd/arlec4/CT"
-    color_temp_state_topic: "home/lights/stat/arlec4/RESULT"
+    color_temp_command_topic: "home/lights/cmnd/arlec9/CT"
+    color_temp_state_topic: "home/lights/stat/arlec6/RESULT"
     color_temp_value_template: "{{value_json.CT}}"
     payload_on: "ON"
     payload_off: "OFF"
     payload_available: "Online"
     payload_not_available: "Offline"
 
-  - platform: group
-    name: Welcome Lights
-    entities:
-      - light.lifx_d0_73_d5_3e_87_c9
-      - light.music_room
   - platform: group
     name: Media Room Lights
     entities:
@@ -205,24 +286,38 @@ light:
     entities:
       - light.master_bedroom
       - light.adrian_s_bedside_table
+      - light.nancy_s_bedside_table
+  - platform: group
+    name: Welcome Lights
+    entities: 
+      - light.lifx_d0_73_d5_3e_87_c9
+      - light.music_room
+  - platform: group
+    name: Dining Room Lights
+    entities:
+      - light.lifx_d0_73_d5_38_46_87
+      - light.lifx_d0_73_d5_38_15_d3
+      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_d0_73_d5_37_e5_cd
 
 
-device_tracker:
-  - platform: ubus
-    scan_interval: 60
-    consider_home: 120
-    host: 192.168.30.251
-    username: root
-    password: eeTh1tae
-    dhcp_software: dnsmasq
-    new_device_defaults:
-      track_new_devices: false
-  - platform: ping
-    scan_interval: 60
-    consider_home: 120
-    hosts:
-      Adrians_Moto_G5s: 192.168.30.27
-      Nancys_Moto_G5s: 192.168.30.26
+
+# device_tracker:
+#  - platform: ubus
+#    scan_interval: 60
+#    consider_home: 120
+#    host: 192.168.30.251
+#    username: root
+#    password: eeTh1tae
+#    dhcp_software: dnsmasq
+#    new_device_defaults:
+#      track_new_devices: false
+#  - platform: ping
+#    scan_interval: 60
+#    consider_home: 120
+#    hosts:
+#      Adrians_Moto_G5s: 192.168.30.27
+#      Nancys_Moto_G5s: 192.168.30.26
 #  - platform: netgear_macs
 #    scan_interval: 60
 #    consider_home: 120
@@ -232,14 +327,9 @@ device_tracker:
 #    new_device_defaults:
 #      track_new_devices: false
 
-weather:
-  - platform: bom
-    station: IDW60901.95610
-
 media_player:
   - platform: yamaha
-    name: Yamaha
-    host: 192.168.30.32
+    name: Yamaha Receiver
     source_ignore:
       - "AUX"
       - "Radio"
