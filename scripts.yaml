@@ -149,3 +149,14 @@
       entity_id: light.lifx_d0_73_d5_38_46_87
       transition: 900
     service: lifx.set_state
+'1576604653358':
+  alias: Reset Dining Room Lights
+  sequence:
+  - data:
+      entity_id:
+      - script.1575907804253
+      - script.1575967544396
+      - script.1576603594014
+      - script.1576604054568
+    entity_id: script.1575907804253
+    service: script.turn_off
