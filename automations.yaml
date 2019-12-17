@@ -19,38 +19,7 @@
     platform: sun
   condition: []
   action:
-  action:
-  - data:
-      brightness: 255
-      color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e5_cd
-      power: true
-      transition: 900
-    service: lifx.set_state
-  - delay: 00:15:00
-  - data:
-      brightness: 255
-      color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
-      power: true
-      transition: 900
-    service: lifx.set_state
-  - delay: 00:15:00
-  - data:
-      brightness: 255
-      color_name: white
-      entity_id: light.lifx_d0_73_d5_38_15_d3
-      power: true
-      transition: 900
-    service: lifx.set_state
-  - delay: 00:15:00
-  - data:
-      brightness: 255
-      color_name: white
-      entity_id: light.lifx_d0_73_d5_38_46_87
-      power: true
-      transition: 900
-    service: lifx.set_state
+    service: script.1576603594014
 - id: '1576515032563'
   alias: Dining Room Lights Fade Down
   description: ''
