@@ -28,42 +28,7 @@
     platform: time
   condition: []
   action:
-  - data:
-      brightness: 0
-      color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e5_cd
-      transition: 900
-    service: lifx.set_state
-  - delay: 00:15:00
-  - data:
-      entity_id: light.lifx_d0_73_d5_37_e5_cd
-    service: light.turn_off
-  - data:
-      brightness: 0
-      color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
-      transition: 900
-    service: lifx.set_state
-  - delay: 00:15:00
-  - data:
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
-    service: light.turn_off
-  - data:
-      brightness: 0
-      color_name: white
-      entity_id: light.lifx_d0_73_d5_38_15_d3
-      transition: 900
-    service: lifx.set_state
-  - delay: 00:15:00
-  - data:
-      entity_id: light.lifx_d0_73_d5_38_15_d3
-    service: light.turn_off
-  - data:
-      brightness: 20
-      color_name: white
-      entity_id: light.lifx_d0_73_d5_38_46_87
-      transition: 900
-    service: lifx.set_state
+    service: script.1576604054568
 - id: '1576515841194'
   alias: Dining Room Lights Off
   description: ''
