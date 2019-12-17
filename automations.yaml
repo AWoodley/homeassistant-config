@@ -44,7 +44,7 @@
       entity_id: light.lifx_d0_73_d5_37_e5_cd
       transition: 10
     service: lifx.set_state
-  - delay: 00:15:00
+  - delay: 00:00:10
   - data:
       entity_id: light.lifx_d0_73_d5_37_e5_cd
     service: light.turn_off
@@ -54,7 +54,7 @@
       entity_id: light.lifx_d0_73_d5_37_e4_e0
       transition: 10
     service: lifx.set_state
-  - delay: 00:15:00
+  - delay: 00:00:10
   - data:
       entity_id: light.lifx_d0_73_d5_37_e4_e0
     service: light.turn_off
@@ -64,7 +64,7 @@
       entity_id: light.lifx_d0_73_d5_38_15_d3
       transition: 10
     service: lifx.set_state
-  - delay: 00:15:00
+  - delay: 00:00:10
   - data:
       entity_id: light.lifx_d0_73_d5_38_15_d3
     service: light.turn_off
