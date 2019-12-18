@@ -58,8 +58,10 @@
 '1575974067886':
   alias: Enough Christmas
   sequence:
+  - entity_id: input_boolean.christmas_lights
+    service: input_boolean.turn_off
   - data:
-      entity_id: script.1575907804253
+      entity_id: script.1576604653358
     service: script.turn_on
   - data:
       brightness: 255
