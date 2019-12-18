@@ -48,10 +48,13 @@
 '1575967544396':
   alias: Christmas Lights Loop
   sequence:
-  - delay: 00:00:05
-  - service: script.turn_on
-    data:
-      entity_id: script.1575907804253
+    - delay: 00:00:05
+    - condition: state
+      entity_id: input_boolean.christmas_lights
+      state: 'on'
+    - service: script.turn_on
+      data:
+        entity_id: script.1575907804253
 '1575974067886':
   alias: Enough Christmas
   sequence:
