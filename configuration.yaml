@@ -140,6 +140,10 @@ sensor:
     expire_after: 1
 
 
+input_boolean:
+  christmas_lights:
+    name: Keep Christmas light pattern running
+    
 light:
   - platform: mqtt
     name: "Master Bedroom"
