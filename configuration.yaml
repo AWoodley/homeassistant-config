@@ -55,7 +55,9 @@ mqtt:
 
 google_assistant:
   project_id: hass
-  api_key: ***REMOVED***
+  service_account: !include hass-870815de073b.json
+  report_state: true
+#  api_key: ***REMOVED***
   secure_devices_pin: ***REMOVED***
   exposed_domains:
     - light
