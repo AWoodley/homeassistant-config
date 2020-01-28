@@ -52,7 +52,9 @@ mqtt:
 
 google_assistant:
   project_id: hass
-  api_key: ***REMOVED***
+  service_account: !include hass-870815de073b.json
+  report_state: true
+#  api_key: ***REMOVED***
   secure_devices_pin: ***REMOVED***
   exposed_domains:
     - light
@@ -264,7 +266,7 @@ light:
     payload_available: "Online"
     payload_not_available: "Offline"
   - platform: mqtt
-    name: "Play Room"
+    name: "Family Room Flood"
     state_topic: "home/lights/stat/arlec9/POWER"
     command_topic: "home/lights/cmnd/arlec9/POWER"
     availability_topic: "home/lights/tele/arlec9/LWT"
@@ -273,8 +275,44 @@ light:
     brightness_scale: 100
     brightness_value_template: "{{value_json.Dimmer}}"
     color_temp_command_topic: "home/lights/cmnd/arlec9/CT"
-    color_temp_state_topic: "home/lights/stat/arlec6/RESULT"
+    color_temp_state_topic: "home/lights/stat/arlec9/RESULT"
     color_temp_value_template: "{{value_json.CT}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Alfresco Light"
+    state_topic: "home/lights/stat/arlec10/POWER"
+    command_topic: "home/lights/cmnd/arlec10/POWER"
+    availability_topic: "home/lights/tele/arlec10/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Entry Light 1"
+    state_topic: "home/lights/stat/arlec11/POWER"
+    command_topic: "home/lights/cmnd/arlec11/POWER"
+    availability_topic: "home/lights/tele/arlec11/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Entry Light 2"
+    state_topic: "home/lights/stat/arlec12/POWER"
+    command_topic: "home/lights/cmnd/arlec12/POWER"
+    availability_topic: "home/lights/tele/arlec12/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Entry Light 3"
+    state_topic: "home/lights/stat/arlec13/POWER"
+    command_topic: "home/lights/cmnd/arlec13/POWER"
+    availability_topic: "home/lights/tele/arlec13/LWT"
     payload_on: "ON"
     payload_off: "OFF"
     payload_available: "Online"
@@ -295,7 +333,9 @@ light:
     name: Welcome Lights
     entities: 
       - light.lifx_d0_73_d5_3e_87_c9
-      - light.music_room
+      - light.entry_light_1
+      - light.entry_light_2
+      - light.entry_light_3
   - platform: group
     name: Dining Room Lights
     entities:
@@ -303,7 +343,12 @@ light:
       - light.lifx_d0_73_d5_38_15_d3
       - light.lifx_d0_73_d5_37_e4_e0
       - light.lifx_d0_73_d5_37_e5_cd
-
+  - platform: group
+    name: Entry Lights
+    entities:
+      - light.entry_light_1
+      - light.entry_light_2
+      - light.entry_light_3
 
 
 # device_tracker:
