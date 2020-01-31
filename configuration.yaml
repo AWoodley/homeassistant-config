@@ -85,6 +85,10 @@ google_assistant:
       expose: false
     light.study:
       expose: false
+    switch.adrian_s_phone_charger:
+      expose: false
+    switch.nancy_s_phone_charger:
+      expose: false
     media_player.googlehome4026:
       expose: false
     media_player.glod:
