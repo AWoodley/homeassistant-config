@@ -79,6 +79,10 @@ google_assistant:
       expose: false
     light.dinning_room_lights:
       expose: true
+    light.welcome_lights:
+      expose: false
+    light.entry_lights:
+      expose: false
     media_player.googlehome4026:
       expose: false
     media_player.kitchen_speaker:
