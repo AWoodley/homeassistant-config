@@ -1,5 +1,5 @@
 - id: '1572197002328'
-  alias: Music Room Light
+  alias: Light:Music Room:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button

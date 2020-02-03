@@ -1,6 +1,6 @@
 - id: '1573474259634'
-  alias: Boys Bedroom Light (Adjust)
-  description: Boys Bedroom Light (Adjust)
+  alias: Light:Boy;s Bedroom:Adjust
+  description: 'Adjust brightness of light based on time of day'
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
@@ -21,8 +21,8 @@
       entity_id: light.lifx_mini_5386a2
     service: light.turn_on
 - id: '1573474201726'
-  alias: Boys Bedroom Light (Bright)
-  description: ''
+  alias: Light:Boy's Bedroom:Bright
+  description: 'Full brightness'
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
@@ -41,8 +41,8 @@
       entity_id: light.lifx_mini_5386a2
     service: light.turn_on
 - id: '1573474201727'
-  alias: Boys Bedroom Light (Colours)
-  description: ''
+  alias: Light:Boy's Bedroom:Colours
+  description: 'Cycle through disco light colours'
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
@@ -60,7 +60,7 @@
       power_on: true
     service: lifx.effect_colorloop
 - id: '1574492068922'
-  alias: Boy's Bedroom Light (Off)
+  alias: Light:Boy's Bedroom:Off
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
