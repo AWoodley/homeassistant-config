@@ -65,3 +65,62 @@
   action:
   - entity_id: light.family_room_flood
     service: light.toggle
+- id: '1580492573046'
+  alias: Switch:Adrian's Phone Charger:Turn On
+  description: ''
+  trigger:
+  - at: '21:00:00'
+    platform: time
+  condition: []
+  action:
+  - entity_id: switch.adrian_s_phone_charger
+    service: switch.turn_on
+- id: '1580492681958'
+  alias: Switch:Adrian's Phone Charger:Turn Off
+  description: ''
+  trigger:
+  - above: '85'
+    entity_id: sensor.adrian_s_g7_power_battery_sensor
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: switch.adrian_s_phone_charger
+    state: 'on'
+  action:
+  - entity_id: switch.adrian_s_phone_charger
+    service: switch.turn_off
+- id: '1580492785773'
+  alias: Switch:Nancy's Phone Charger:Turn Off
+  description: ''
+  trigger:
+  - above: '85'
+    entity_id: sensor.moto_g_7_power_battery_sensor
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: switch.nancy_s_phone_charger
+    state: 'on'
+  action:
+  - entity_id: switch.nancy_s_phone_charger
+    service: switch.turn_off
+- id: '1580492902537'
+  alias: Switch:Nancy's Phone Charger:Turn On
+  description: ''
+  trigger:
+  - at: '21:00:00'
+    platform: time
+  condition: []
+  action:
+  - entity_id: switch.nancy_s_phone_charger
+    service: switch.turn_on
+- id: '1580657898955'
+  alias: Light:Passage:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1945234'
+  condition: []
+  action:
+  - entity_id: light.passage1,light.passage2
+    service: light.toggle
