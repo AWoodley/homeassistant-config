@@ -1,5 +1,5 @@
 - id: '1569866532936'
-  alias: Arm Alarm
+  alias: Alarm:Arm
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
@@ -23,7 +23,7 @@
       period: 1
     service: lifx.effect_pulse
 - id: '1570546741751'
-  alias: Disarm Alarm
+  alias: Alarm:Disarm
   trigger:
   - entity_id: binary_sensor.front_door
     from: 'off'
@@ -47,24 +47,8 @@
   - data:
       entity_id: alarm_control_panel.mqtt_alarm
     service: alarm_control_panel.alarm_disarm
-- id: '1571212561586'
-  alias: Alarm Armed
-  description: ''
-  trigger:
-  - entity_id: alarm_control_panel.mqtt_alarm
-    platform: state
-    to: alarmed_away
-  condition: []
-  action:
-  - data:
-      brightness: 255
-      cycles: 3
-      entity_id: light.lifx_d0_73_d5_3e_87_c9
-      mode: strobe
-      period: 1
-    service: lifx.effect_pulse
 - id: '1571213516784'
-  alias: Alarm Disarmed
+  alias: Alarm:Disarmed
   description: ''
   trigger:
   - entity_id: alarm_control_panel.mqtt_alarm
@@ -88,7 +72,7 @@
       period: 1
     service: lifx.effect_pulse
 - id: '1575382803862'
-  alias: Disarm Pending Alarm
+  alias: Alarm:Disarm Pending Alarm
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
