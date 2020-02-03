@@ -5,6 +5,9 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '11532968'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1944754'
   condition: []
   action:
   - data:
