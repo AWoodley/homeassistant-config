@@ -1,7 +1,7 @@
 ---
 - id: '1572019277815'
-  alias: Master Bedroom Lights On
-  description: ''
+  alias: Light:Master Bedroom:On:Adjust
+  description: 'Adjust brightness of Master Bedroom lights based on time of day'
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
@@ -19,7 +19,7 @@
   action:
     service: script.1575388174358
 - id: '2019112917581'
-  alias: Master Bedroom Lights Bright
+  alias: Light:Master Bedroom:On:Bright
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
@@ -45,7 +45,7 @@
       entity_id: light.master_bedroom
     service: light.turn_on
 - id: '2019112215410'
-  alias: Master Bedroom Lights Off
+  alias: Light:Master Bedroom:Off
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
@@ -75,7 +75,7 @@
       entity_id: light.master_bedroom_lights
     service: light.turn_off
 - id: '1575387552803'
-  alias: Nancy's Bedside Light
+  alias: Light:Nancy's Bedside Table:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
@@ -88,7 +88,7 @@
       entity_id: light.nancy_s_bedside_table
     service: light.toggle
 - id: '1575387990661'
-  alias: Adrian's Bedside Light
+  alias: Light:Adrian's Bedside Table:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
@@ -101,7 +101,7 @@
       entity_id: light.adrian_s_bedside_table
     service: light.toggle
 - id: '1575388925050'
-  alias: Master Bedroom Romantic
+  alias: Light:Master Bedroom:On:Romantic
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
