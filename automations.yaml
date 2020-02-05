@@ -10,7 +10,9 @@
   - entity_id: input_boolean.christmas_lights
     service: input_boolean.turn_off
   - data:
-      entity_id: light.dining_room_lights
+      brightness: 255
+      color_name: white
+    entity_id: light.dining_room_lights
     service: light.toggle
 - id: '1576512904840'
   alias: Evening Lights
