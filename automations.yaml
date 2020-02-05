@@ -12,7 +12,7 @@
   - data:
       brightness: 255
       color_name: white
-    entity_id: light.dining_room_lights
+    entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
     service: light.toggle
 - id: '1576512904840'
   alias: Evening Lights
