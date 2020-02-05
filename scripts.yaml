@@ -55,14 +55,6 @@
   - data:
       entity_id: script.1575907804253
     service: script.turn_on
-  - condition: state
-    entity_id: input_boolean.christmas_lights
-    state: 'off'
-  - data:
-      brightness: 255
-      color_name: white
-    entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
-    service: lifx.set_state
 '1575974067886':
   alias: Enough Christmas
   sequence:
