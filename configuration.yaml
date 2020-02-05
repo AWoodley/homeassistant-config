@@ -162,16 +162,12 @@ sensor:
     expire_after: 1
 
 
-input_number:
+input_boolean:
   christmas_lights_state:
     name: Running state of the Christmas light pattern
-    initial: 1
-    min: 0
-    max: 2
 # States:
 # 0 - Christmas Lights Disabled
-# 1 - Christmas Lights Ready
-# 2 - Christmas Lights Running
+# 1 - Christmas Lights Running
     
 light: !include lights.yaml
 
