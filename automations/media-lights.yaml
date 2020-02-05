@@ -8,7 +8,7 @@
       to: 'off'
     - platform: state
       entity_id: switch.media_centre
-      from: 'of'
+      from: 'off'
       to: 'on'
   condition:
   - condition: or
