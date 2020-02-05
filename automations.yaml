@@ -9,6 +9,8 @@
   action:
   - entity_id: input_boolean.christmas_lights_state
     service: input_boolean.turn_off
+  - entity_id: light.dining_room_lights
+    service: light.toggle
   - data:
       brightness: 255
       color_name: white
