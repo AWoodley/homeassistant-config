@@ -165,6 +165,7 @@ sensor:
 input_boolean:
   christmas_lights_state:
     name: Running state of the Christmas light pattern
+    initial: off
 # States:
 # 0 - Christmas Lights Disabled
 # 1 - Christmas Lights Running
