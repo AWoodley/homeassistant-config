@@ -52,17 +52,23 @@
   - condition: state
     entity_id: input_boolean.christmas_lights
     state: 'on'
-  - service: script.turn_on
-    data:
+  - data:
       entity_id: script.1575907804253
+    service: script.turn_on
+  - condition: state
+    entity_id: input_boolean.christmas_lights
+    state: 'off'
+  - data:
+      brightness: 255
+      color_name: white
+    entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
+    service: lifx.set_state
 '1575974067886':
   alias: Enough Christmas
   sequence:
   - entity_id: input_boolean.christmas_lights
     service: input_boolean.turn_off
-  - data:
-      entity_id: script.1576604653358
-    service: script.turn_on
+  - delay: '6'
   - data:
       brightness: 255
       color_name: white
@@ -150,22 +156,4 @@
       color_name: white
       entity_id: light.lifx_d0_73_d5_38_46_87
       transition: 900
-    service: lifx.set_state
-'1576604653358':
-  alias: Reset Dining Room Lights
-  sequence:
-  - data: {}
-    entity_id: input_boolean.christmas_lights
-    service: input_boolean.turn_off
-  - data:
-      entity_id:
-      - script.1575907804253
-      - script.1575967544396
-      - script.1576603594014
-      - script.1576604054568
-    service: script.turn_off
-  - data:
-      brightness: 255
-      color_name: white
-    entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
     service: lifx.set_state
