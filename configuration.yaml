@@ -163,8 +163,11 @@ sensor:
 
 
 input_boolean:
-  christmas_lights:
-    name: Keep Christmas light pattern running
+  christmas_lights_state:
+    name: Running state of the Christmas light pattern
+# States:
+# 0 - Christmas Lights Disabled
+# 1 - Christmas Lights Ready/Running
     
 light:
   - platform: mqtt
