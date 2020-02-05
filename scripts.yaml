@@ -14,7 +14,7 @@
 '1575907804253':
   alias: Christmas Lights
   sequence:
-  - entity_id: input_boolean.christmas_lights
+  - entity_id: input_boolean.christmas_lights_state
     service: input_boolean.turn_on
   - data_template:
       color_name: '{{ ["white", "red", "green", "white"]|random }}'
@@ -52,7 +52,7 @@
   sequence:
   - delay: 00:00:05
   - condition: state
-    entity_id: input_boolean.christmas_lights
+    entity_id: input_boolean.christmas_lights_state
     state: 'on'
   - data:
       entity_id: script.1575907804253
