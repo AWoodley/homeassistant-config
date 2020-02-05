@@ -9,13 +9,9 @@
   action:
   - entity_id: input_boolean.christmas_lights
     service: input_boolean.turn_off
-  - data: {}
-    service: script.1576604653358
   - data:
       entity_id: light.dining_room_lights
     service: light.toggle
-  - entity_id: input_boolean.christmas_lights
-    service: input_boolean.turn_on
 - id: '1576512904840'
   alias: Evening Lights
   description: ''
