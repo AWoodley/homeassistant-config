@@ -16,7 +16,7 @@
     service: lifx.set_state
   - entity_id: light.dining_room_lights
     service_template: >
-      {% if lights.dining_room_lights == "on" %}
+      {% if light.dining_room_lights == "on" %}
       light.turn_off
       {% else %}
       light.turn_on
