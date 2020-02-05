@@ -14,6 +14,8 @@
 '1575907804253':
   alias: Christmas Lights
   sequence:
+  - entity_id: input_boolean.christmas_lights
+    service: input_boolean.turn_on
   - data_template:
       color_name: '{{ ["white", "red", "green", "white"]|random }}'
       entity_id: light.lifx_d0_73_d5_38_46_87
