@@ -7,7 +7,7 @@
     to: '1712152'
   condition: []
   action:
-  - entity_id: input_boolean.christmas_lights
+  - entity_id: input_boolean.christmas_lights_state
     service: input_boolean.turn_off
   - data:
       entity_id: light.dining_room_lights
