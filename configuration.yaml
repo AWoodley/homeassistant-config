@@ -27,6 +27,10 @@ http:
 logger:
   default: warning
 
+config:
+
+scene: !include scenes.yaml
+
 # Text to speech
 tts:
   - platform: google_translate
