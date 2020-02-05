@@ -122,3 +122,17 @@
   action:
   - entity_id: light.passage1,light.passage2
     service: light.toggle
+- id: '1580921810634'
+  alias: Switch:Media Centre:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '11532968'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1944754'
+  condition: []
+  action:
+  - entity_id: switch.media_centre
+    service: switch.toggle
