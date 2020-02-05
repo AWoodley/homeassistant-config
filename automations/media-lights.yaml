@@ -1,17 +1,20 @@
 - id: '1575815204559'
-  alias: Media Light Stand
+  alias: Light:Media Light Stand:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
     to: '11532968'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1944754'
   condition: []
   action:
   - data:
       entity_id: light.media_room_light_stand
     service: light.toggle
 - id: '1575815268208'
-  alias: Media Reading Light
+  alias: Light:Media Reading Light:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
@@ -23,7 +26,7 @@
       entity_id: light.media_room_reading_light
     service: light.toggle
 - id: '1575815695650'
-  alias: Media Off - Lights On
+  alias: Light:Media:On:Pause/Stop
   description: ''
   trigger:
   - entity_id: media_player.glod
@@ -52,7 +55,7 @@
       entity_id: light.media_room_light_stand
     service: light.turn_on
 - id: '1575815947680'
-  alias: Media Playing - Lights Off
+  alias: Light:Media:Off:Play
   description: ''
   trigger:
   - entity_id: media_player.glod
