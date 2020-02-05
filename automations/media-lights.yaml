@@ -2,17 +2,30 @@
   alias: Light:Media Light Stand:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '11532968'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1944754'
-  condition: []
+    - platform: state
+      entity_id: switch.media_centre
+      from: 'on'
+      to: 'off'
+    - platform: state
+      entity_id: switch.media_centre
+      from: 'of'
+      to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
   action:
-  - data:
+    service_template: >
+      {% if trigger.to_state.state == "on" %}
+      light.turn_on
+      {% elif trigger.to_state.state == "off" %}
+      light.turn_off
+      {% endif %}
+    data:
       entity_id: light.media_room_light_stand
-    service: light.toggle
 - id: '1575815268208'
   alias: Light:Media Reading Light:Toggle
   description: ''
