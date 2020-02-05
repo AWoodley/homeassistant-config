@@ -9,13 +9,18 @@
   action:
   - entity_id: input_boolean.christmas_lights_state
     service: input_boolean.turn_off
-  - entity_id: light.dining_room_lights
-    service: light.toggle
-  - data:
+  - entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
+    data:
       brightness: 255
       color_name: white
-    entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
-    service: light.toggle
+    service: lifx.set_state
+  - entity_id: light.dining_room_lights
+    service_template: >
+      {% if lights.dining_room_lights == "on" %}
+      light.turn_off
+      {% else %}
+      light.turn_on
+      {% endif %}
 - id: '1576512904840'
   alias: Evening Lights
   description: ''
