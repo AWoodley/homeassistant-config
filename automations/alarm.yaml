@@ -9,8 +9,7 @@
     entity_id: alarm_control_panel.mqtt_alarm
     state: disarmed
   action:
-  - alias: ''
-    data:
+  - data:
       entity_id: alarm_control_panel.mqtt_alarm
     service: alarm_control_panel.alarm_arm_away
   - data:
