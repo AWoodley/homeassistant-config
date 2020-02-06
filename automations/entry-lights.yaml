@@ -1,5 +1,5 @@
 - id: '2019122921351'
-  alias: Entry Lights - Button
+  alias: Light:Entry:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
