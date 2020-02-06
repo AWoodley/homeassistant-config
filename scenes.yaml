@@ -16,8 +16,6 @@
     script.1576603594014:
       can_cancel: true
       friendly_name: Dining Room Lights Fade Up
-      last_action: delay 0:15:00
-      last_triggered: '2020-02-06T17:03:01.651324+00:00'
       state: 'on'
 - id: '1581008695083'
   name: Night Lights
@@ -37,17 +35,11 @@
     script.1576604054568:
       can_cancel: true
       friendly_name: Dining Room Lights Fade Down
-      last_triggered:
-      state: 'off'
+      state: 'on'
 - id: '1581009635529'
   name: Morning Lights
- entities:
+  entities:
      script.1576604054568:
       can_cancel: true
       friendly_name: Dining Room Lights Fade Down
-      last_triggered:
-      state: 'off'
-    light.entry_lights:
-      friendly_name: Entry Lights
-      state: 'off'
-      supported_features: 0
+      state: 'on'
