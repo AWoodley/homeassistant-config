@@ -12,4 +12,9 @@
   action:
   - data:
       entity_id: light.entry_lights
-    service: light.toggle
+    service_template: >
+      {% if is_state('light.entry_lights', 'on') %}
+      light.turn_off
+      {% else %}
+      light.turn_on
+      {% endif %}
