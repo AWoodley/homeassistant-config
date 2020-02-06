@@ -39,3 +39,15 @@
       friendly_name: Dining Room Lights Fade Down
       last_triggered:
       state: 'off'
+- id: '1581009635529'
+  name: Morning Lights
+ entities:
+     script.1576604054568:
+      can_cancel: true
+      friendly_name: Dining Room Lights Fade Down
+      last_triggered:
+      state: 'off'
+    light.entry_lights:
+      friendly_name: Entry Lights
+      state: 'off'
+      supported_features: 0
