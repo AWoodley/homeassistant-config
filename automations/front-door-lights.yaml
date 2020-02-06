@@ -1,5 +1,5 @@
 - id: '1570980280936'
-  alias: Welcome Light
+  alias: Light:Welcome:Home
   description: ''
   trigger:
   - entity_id: person.adrian
@@ -18,13 +18,12 @@
     - after: sunset
       condition: sun
   action:
-  - alias: ''
     data:
       brightness: 255
       entity_id: light.welcome_lights
     service: light.turn_on
 - id: '1570990825299'
-  alias: Front Door Light Off
+  alias: Light:Front Door:Off:Timer
   description: ''
   trigger:
   - entity_id: light.lifx_d0_73_d5_3e_87_c9
@@ -34,12 +33,11 @@
     to: 'on'
   condition: []
   action:
-  - alias: ''
     data:
       entity_id: light.lifx_d0_73_d5_3e_87_c9
     service: light.turn_off
 - id: '1575220469153'
-  alias: Front Door Light - Door
+  alias: Light:Front Door:On:Door
   description: ''
   trigger:
   - entity_id: binary_sensor.front_door
@@ -58,7 +56,7 @@
       entity_id: light.lifx_d0_73_d5_3e_87_c9
     service: light.turn_on
 - id: '1575382143244'
-  alias: Front Door Light - Button
+  alias: Light:Front Door:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
