@@ -10,12 +10,6 @@
   - entity_id: input_boolean.christmas_lights_state
     service: input_boolean.turn_off
   - entity_id: light.dining_room_lights
-<<<<<<< HEAD
-    service_template: '{% if is_state(''light.dining_room_lights'', ''on'') %} light.turn_off
-      {% else %} light.turn_on {% endif %}
-
-      '
-=======
     service_template: >
       {% if is_state('light.dining_room_lights', 'on') %}
       light.turn_off
@@ -27,7 +21,6 @@
       brightness: 255
       color_name: white
     service: lifx.set_state
->>>>>>> 1e54e3b7509d6fe996d1933ea8b4acd2f8156035
 - id: '1576512904840'
   alias: Lights:Dusk:Scene
   description: ''
