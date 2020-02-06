@@ -17,14 +17,12 @@
       color_name: white
     service: lifx.set_state
   - entity_id: light.dining_room_lights
-    service_template: >
-      {% if is_state('light.dining_room_lights', 'on') %}
-      light.turn_off
-      {% else %}
-      light.turn_on
-      {% endif %}
+    service_template: '{% if is_state(''light.dining_room_lights'', ''on'') %} light.turn_off
+      {% else %} light.turn_on {% endif %}
+
+      '
 - id: '1576512904840'
-  alias: Evening Lights
+  alias: Lights:Dusk:Scene
   description: ''
   trigger:
   - event: sunset
@@ -32,9 +30,7 @@
     platform: sun
   condition: []
   action:
-  - entity_id: light.entry_light_2
-    service: light.turn_on
-  - service: script.1576603594014
+  - scene: scene.dusk_lights
 - id: '1576515032563'
   alias: Dining Room Lights Fade Down
   description: ''
@@ -62,7 +58,7 @@
       entity_id: light.dining_room_lights
     service: light.turn_off
 - id: '1577291453719'
-  alias: Family Room Flood Light
+  alias: Light:Family Room Flood:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
@@ -145,3 +141,12 @@
   action:
   - entity_id: switch.media_centre
     service: switch.toggle
+- id: '1581009244170'
+  alias: Lights:Night:Scene
+  description: ''
+  trigger:
+  - at: 00:21:00
+    platform: time
+  condition: []
+  action:
+  - scene: scene.night_lights
