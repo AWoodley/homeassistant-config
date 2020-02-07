@@ -178,9 +178,9 @@
 - platform: group
   name: Master Bedroom Lights
   entities:
-    - light.master_bedroom
-    - light.adrian_s_bedside_table
-    - light.nancy_s_bedside_table
+    - light.master_bedroom_1
+    - light.bedside_1
+    - light.bedside_2
 - platform: group
   name: Welcome Lights
   entities: 
