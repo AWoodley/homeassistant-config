@@ -1,45 +1,63 @@
 - id: '1581008608226'
   name: Dusk Lights
   entities:
-    light.entry_light_1:
-      friendly_name: Entry Light 1
+    light.light_entry_1:
+      friendly_name: Entry 1
       state: 'off'
       supported_features: 0
-    light.entry_light_2:
-      friendly_name: Entry Light 2
+    light.light_entry_2:
+      friendly_name: Entry 2
       state: 'on'
       supported_features: 0
-    light.entry_light_3:
-      friendly_name: Entry Light 3
+    light.light_entry_3:
+      friendly_name: Entry 3
       state: 'off'
       supported_features: 0
     script.1576603594014:
       can_cancel: true
       friendly_name: Dining Room Lights Fade Up
+      last_action: delay 0:15:00
+      last_triggered: '2020-02-07T17:09:58.637076+00:00'
       state: 'on'
 - id: '1581008695083'
   name: Night Lights
   entities:
-    light.entry_light_1:
-      friendly_name: Entry Light 1
+    light.light_entry_1:
+      friendly_name: Entry 1
       state: 'on'
       supported_features: 0
-    light.entry_light_2:
-      friendly_name: Entry Light 2
+    light.light_entry_2:
+      friendly_name: Entry 2
       state: 'off'
       supported_features: 0
-    light.entry_light_3:
-      friendly_name: Entry Light 3
+    light.light_entry_3:
+      friendly_name: Entry 3
       state: 'off'
       supported_features: 0
     script.1576604054568:
       can_cancel: true
       friendly_name: Dining Room Lights Fade Down
+      last_action: delay 0:15:00
+      last_triggered: '2020-02-07T17:10:31.438389+00:00'
       state: 'on'
 - id: '1581009635529'
   name: Morning Lights
   entities:
-     script.1576604054568:
+    light.light_entry_1:
+      friendly_name: Entry 1
+      state: 'off'
+      supported_features: 0
+    light.light_entry_2:
+      friendly_name: Entry 2
+      state: 'off'
+      supported_features: 0
+    light.light_entry_3:
+      friendly_name: Entry 3
+      state: 'off'
+      supported_features: 0
+    script.1576604054568:
       can_cancel: true
       friendly_name: Dining Room Lights Fade Down
+      last_action: delay 0:15:00
+      last_triggered: '2020-02-07T17:10:31.438389+00:00'
       state: 'on'
