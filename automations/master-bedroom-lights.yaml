@@ -36,13 +36,13 @@
     to: '8190610'
   condition:
     - condition: state
-      entity_id: light.master_bedroom
+      entity_id: light.master_bedroom_1
       state: 'off'
   action:
   - data:
       brightness: 255
       color_temp: 153
-      entity_id: light.master_bedroom
+      entity_id: light.master_bedroom_1
     service: light.turn_on
 - id: '2019112215410'
   alias: Light:Master Bedroom:Off
@@ -124,5 +124,5 @@
   - data:
       brightness: 15
       color_temp: 500
-      entity_id: light.master_bedroom
+      entity_id: light.master_bedroom_1
     service: light.turn_on
