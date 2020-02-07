@@ -173,21 +173,21 @@
 - platform: group
   name: Media Room Lights
   entities:
-    - light.media_room_light_stand
-    - light.media_room_reading_light
+    - light.light_media_1
+    - light.light_media_2
 - platform: group
   name: Master Bedroom Lights
   entities:
-    - light.master_bedroom_1
-    - light.bedside_1
-    - light.bedside_2
+    - light.light_masterbedroom_1
+    - light.light_bedside_1
+    - light.light_bedside_2
 - platform: group
   name: Welcome Lights
   entities: 
     - light.lifx_d0_73_d5_3e_87_c9
-    - light.entry_light_1
-    - light.entry_light_2
-    - light.entry_light_3
+    - light.light_entry_1
+    - light.light_entry_2
+    - light.light_entry_3
 - platform: group
   name: Dining Room Lights
   entities:
@@ -198,6 +198,6 @@
 - platform: group
   name: Entry Lights
   entities:
-    - light.entry_light_1
-    - light.entry_light_2
-    - light.entry_light_3
+    - light.light_entry_1
+    - light.light_entry_2
+    - light.light_entry_3
