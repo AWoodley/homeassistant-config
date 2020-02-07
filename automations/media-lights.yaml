@@ -25,7 +25,7 @@
       light.turn_off
       {% endif %}
     data:
-      entity_id: light.media_room_light_stand
+      entity_id: light.light_media_1
 - id: '1575815268208'
   alias: Light:Media Reading Light:Toggle
   description: ''
@@ -36,7 +36,7 @@
   condition: []
   action:
   - data:
-      entity_id: light.media_room_reading_light
+      entity_id: light.light_media_2
     service: light.toggle
 - id: '1575815695650'
   alias: Light:Media:On:Pause/Stop
@@ -65,7 +65,7 @@
       condition: sun
   action:
   - data:
-      entity_id: light.media_room_light_stand
+      entity_id: light.light_media_1
     service: light.turn_on
 - id: '1575815947680'
   alias: Light:Media:Off:Play
