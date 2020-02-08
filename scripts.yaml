@@ -7,8 +7,8 @@
         endif %} '
       color_temp: ' {% if now().hour > 20 %} 500 {% elif now().hour < 7 %} 500 {%
         else %} 153 {% endif %} '
-      entity_id: ' {% if now().hour > 21 %} light.adrian_s_bedside_table {% elif now().hour
-        < 5 %} light.adrian_s_bedside_table {% else %} light.master_bedroom {% endif
+      entity_id: ' {% if now().hour > 21 %} light.light_bedside_1 {% elif now().hour
+        < 5 %} light.light_bedside_1 {% else %} light.light_masterbedroom_1 {% endif
         %} '
     service: light.turn_on
 '1575907804253':
