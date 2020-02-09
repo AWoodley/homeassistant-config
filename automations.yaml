@@ -10,36 +10,45 @@
   - entity_id: input_boolean.christmas_lights_state
     service: input_boolean.turn_off
   - entity_id: light.dining_room_lights
-    service_template: >
-      {% if is_state('light.dining_room_lights', 'on') %}
-      light.turn_off
-      {% else %}
-      light.turn_on
-      {% endif %}
+    service_template: '{% if is_state(''light.dining_room_lights'', ''on'') %} light.turn_off
+      {% else %} light.turn_on {% endif %}
+
+      '
   - entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
     data:
       brightness: 255
       color_name: white
     service: lifx.set_state
 - id: '1576512904840'
-  alias: Lights:Dusk:Scene
+  alias: Lights:Dusk:Sunset
   description: ''
   trigger:
   - event: sunset
-    offset: -00:30:00
+    offset: -01:30:00
     platform: sun
   condition: []
   action:
-  - scene: scene.dusk_lights
+  - data: {}
+    entity_id: script.1576603594014
+    service: script.turn_on
+  - entity_id: light.light_entry_2
+    service: light.turn_on
+  - entity_id: light.light_entry_1,light.light_entry_3
+    service: light.turn_off
 - id: '1576515032563'
-  alias: Dining Room Lights Fade Down
+  alias: Lights:Night:Timer
   description: ''
   trigger:
   - at: '20:30:00'
     platform: time
   condition: []
   action:
-    service: script.1576604054568
+  - entity_id: script.1576604054568
+    service: script.turn_on
+  - entity_id: light.light_entry_3
+    service: light.turn_on
+  - entity_id: light.light_entry_1,light.light_entry_2
+    service: light.turn_off
 - id: '1576515841194'
   alias: Dining Room Lights Off
   description: ''
@@ -72,7 +81,7 @@
   alias: Switch:Adrian's Phone Charger:Turn On
   description: ''
   trigger:
-  - at: '21:00:00'
+  - at: 02:00:00
     platform: time
   condition: []
   action:
@@ -97,7 +106,7 @@
   description: ''
   trigger:
   - above: '85'
-    entity_id: sensor.moto_g_7_power_battery_sensor
+    entity_id: sensor.nancy_s_g7_power_battery_sensor
     platform: numeric_state
   condition:
   - condition: state
@@ -142,11 +151,17 @@
   - entity_id: switch.media_centre
     service: switch.toggle
 - id: '1581009244170'
-  alias: Lights:Night:Scene
+  alias: Lights:Night:Time
   description: ''
   trigger:
   - at: 00:21:00
     platform: time
   condition: []
   action:
-  - scene: scene.night_lights
+  - data: {}
+    entity_id: script.1576604054568
+    service: script.turn_on
+  - entity_id: light.light_entry_3
+    service: light.turn_on
+  - entity_id: light.light_entry_2
+    service: light.turn_off
