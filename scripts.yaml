@@ -150,3 +150,17 @@
       entity_id: light.lifx_d0_73_d5_38_46_87
       transition: 900
     service: lifx.set_state
+create_every_light_group:
+  sequence:
+    - service: group.set
+      data_template:
+        object_id: "every_light"
+        entities: >
+          {{ states.light | map(attribute='entity_id') | join(',') }}
+create_every_automation_group:
+  sequence:
+    - service: group.set
+      data_template:
+        object_id: "every_automation"
+        entities: >
+          {{ states.automation | map(attribute='entity_id') | join(',') }}
