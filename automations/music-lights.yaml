@@ -15,5 +15,5 @@
         elif now().hour > 0 %} 200 {% else %} 255 {% endif %} '
       color_temp: ' {% if now().hour > 21 %} 500 {% elif now().hour > 5 %} 153 {%
         elif now().hour > 0 %} 500 {% else %} 153 {% endif %} '
-      entity_id: light.music_room
+      entity_id: light.light_musicroom_1
     service: light.toggle
