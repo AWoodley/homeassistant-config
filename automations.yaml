@@ -75,7 +75,7 @@
     to: '1712146'
   condition: []
   action:
-  - entity_id: light.family_room_flood
+  - entity_id: light.light_familyroom_1
     service: light.toggle
 - id: '1580492573046'
   alias: Switch:Adrian's Phone Charger:Turn On
