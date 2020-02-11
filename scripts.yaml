@@ -2,15 +2,14 @@
   alias: Master Bedroom Lights Adjust
   sequence:
   - data_template:
-      brightness: ' {% if now().hour > 21 %} 150 {% elif now().hour > 20 %} 85 {%
-        elif now().hour < 5 %} 150 {% elif now().hour < 7 %} 85 {% else %} 255 {%
-        endif %} '
-      color_temp: ' {% if now().hour > 20 %} 500 {% elif now().hour < 7 %} 500 {%
-        else %} 153 {% endif %} '
-      entity_id: ' {% if now().hour > 21 %} light.light_bedside_1 {% elif now().hour
-        < 5 %} light.light_bedside_1 {% else %} light.light_masterbedroom_1 {% endif
-        %} '
-    service: light.turn_on
+      entity_id: >
+        {% if now().hour > 21 %} scene.scene_master_bedroom_night
+        {% elif now().hour > 20 %} scene.scene_master_bedroom_evening
+        {% elif now().hour < 5 %} scene.scene_master_bedroom_night
+        {% elif now().hour < 7 %} scene.scene_master_bedroom_evening
+        {% else %} scene.scene_master_bedroom_day
+        {% endif %}
+    service: scene.turn_on
 '1575907804253':
   alias: Christmas Lights
   sequence:
