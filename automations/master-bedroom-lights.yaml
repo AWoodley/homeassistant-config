@@ -84,7 +84,7 @@
   action:
   - data:
       brightness: 255
-      color_temp: 120
+      color_temp: 330
       entity_id: light.light_bedside_2
     service: light.toggle
 - id: '1575387990661'
@@ -97,7 +97,7 @@
   action:
   - data:
       brightness: 255
-      color_temp: 120
+      color_temp: 330
       entity_id: light.light_bedside_1
     service: light.toggle
 - id: '1575388925050'
