@@ -61,3 +61,123 @@
       last_action: delay 0:15:00
       last_triggered: '2020-02-07T17:10:31.438389+00:00'
       state: 'on'
+- id: '1581353978950'
+  name: Scene:Master Bedroom:Night
+  entities:
+    light.light_bedside_1:
+      brightness: 33
+      color_temp: 500
+      friendly_name: Adrian's Bedside Light
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+    light.light_bedside_2:
+      friendly_name: Nancy's Bedside Light
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 3
+    light.light_masterbedroom_1:
+      friendly_name: Master Bedroom
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 3
+- id: '1581381305129'
+  name: Scene:Master Bedroom:Evening
+  entities:
+    light.light_masterbedroom_1:
+      brightness: 130
+      color_temp: 500
+      friendly_name: Master Bedroom
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+- id: '1581381445621'
+  name: Scene:Master Bedroom:Romantic
+  entities:
+    light.light_bedside_1:
+      brightness: 173
+      color_temp: 500
+      friendly_name: Adrian's Bedside Light
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+    light.light_bedside_2:
+      brightness: 196
+      color_temp: 500
+      friendly_name: Nancy's Bedside Light
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+    light.light_masterbedroom_1:
+      brightness: 38
+      color_temp: 499
+      friendly_name: Master Bedroom
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+- id: '1581381525704'
+  name: Scene:Master Bedroom:Bright
+  entities:
+    light.light_bedside_1:
+      brightness: 255
+      color_temp: 153
+      friendly_name: Adrian's Bedside Light
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+    light.light_bedside_2:
+      brightness: 255
+      color_temp: 153
+      friendly_name: Nancy's Bedside Light
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+    light.light_masterbedroom_1:
+      brightness: 255
+      color_temp: 153
+      friendly_name: Master Bedroom
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+- id: '1581381589729'
+  name: Scene:Master Bedroom:Day
+  entities:
+    light.light_masterbedroom_1:
+      brightness: 255
+      color_temp: 328
+      friendly_name: Master Bedroom
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+- id: '1581381643292'
+  name: Scene:Master Bedroom:Off
+  entities:
+    light.light_bedside_1:
+      friendly_name: Adrian's Bedside Light
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 3
+    light.light_bedside_2:
+      friendly_name: Nancy's Bedside Light
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 3
+    light.light_masterbedroom_1:
+      friendly_name: Master Bedroom
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 3
