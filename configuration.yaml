@@ -49,7 +49,7 @@ mqtt:
   broker: mqtt.na.id.au
   port: 1883
   username: hass
-  password: ***REMOVED***
+  password: !secret mqtt
   discovery: true
   discovery_prefix: homeassistant
 
@@ -57,8 +57,7 @@ google_assistant:
   project_id: hass
   service_account: !include hass-870815de073b.json
   report_state: true
-#  api_key: ***REMOVED***
-  secure_devices_pin: ***REMOVED***
+  secure_devices_pin: !secret pin
   exposed_domains:
     - light
     - switch
@@ -95,7 +94,7 @@ notify:
   - name: a_xmpp
     platform: xmpp
     sender: home@na.id.au
-    password: ***REMOVED***
+    password: !secret xmpp
     recipient: a@na.id.au
   - platform: html5
     name: Push
@@ -555,6 +554,4 @@ media_player:
     source_names:
       HDMI1: "Blu-Ray"
       HDMI2: "ChromeCast"
-#  - platform: dlna_dmr
-#    url: http://192.168.30.35/dd.xml
-#    name: Cliff
+
