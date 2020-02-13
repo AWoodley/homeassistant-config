@@ -45,9 +45,9 @@
   action:
   - entity_id: script.1576604054568
     service: script.turn_on
-  - entity_id: light.light_entry_3
+  - entity_id: light.light_entry_1
     service: light.turn_on
-  - entity_id: light.light_entry_1,light.light_entry_2
+  - entity_id: light.light_entry_3,light.light_entry_2
     service: light.turn_off
 - id: '1576515841194'
   alias: Dining Room Lights Off
@@ -81,8 +81,11 @@
   alias: Switch:Adrian's Phone Charger:Turn On
   description: ''
   trigger:
-  - at: 02:00:00
+  - at: 05:00:00
     platform: time
+  - below: '35'
+    entity_id: sensor.adrian_s_g7_power_battery_sensor
+    platform: numeric_state
   condition: []
   action:
   - entity_id: switch.adrian_s_phone_charger
@@ -91,7 +94,7 @@
   alias: Switch:Adrian's Phone Charger:Turn Off
   description: ''
   trigger:
-  - above: '85'
+  - above: '80'
     entity_id: sensor.adrian_s_g7_power_battery_sensor
     platform: numeric_state
   condition:
@@ -119,8 +122,11 @@
   alias: Switch:Nancy's Phone Charger:Turn On
   description: ''
   trigger:
-  - at: '21:00:00'
+  - at: 05:00:00
     platform: time
+  - below: '35'
+    entity_id: sensor.nancy_s_g7_power_battery_sensor
+    platform: numeric_state
   condition: []
   action:
   - entity_id: switch.nancy_s_phone_charger
@@ -165,3 +171,16 @@
     service: light.turn_on
   - entity_id: light.light_entry_2
     service: light.turn_off
+- id: '1581407669990'
+  alias: Phantom:Adrian
+  description: ''
+  trigger:
+  - entity_id: person.adrian
+    platform: state
+  condition: []
+  action:
+  - data:
+      payload_template:
+        '[object Object]':
+      topic: homeassistant/person/adrian
+    service: mqtt.publish
