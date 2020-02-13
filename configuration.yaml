@@ -50,7 +50,7 @@ mqtt:
   broker: mqtt.na.id.au
   port: 1883
   username: hass
-  password: KaGhusoh1moh
+  password: !secret mqtt
   discovery: true
   discovery_prefix: homeassistant
 
@@ -58,8 +58,7 @@ google_assistant:
   project_id: hass
   service_account: !include hass-870815de073b.json
   report_state: true
-#  api_key: AIzaSyDphJAjvcWYb1EExfDhkKCpHrAp_EMuaNM
-  secure_devices_pin: "0307"
+  secure_devices_pin: !secret pin
   exposed_domains:
     - light
     - switch
@@ -112,14 +111,14 @@ notify:
   - name: a_xmpp
     platform: xmpp
     sender: home@na.id.au
-    password: Hoh4ooQuagei6Eeg
+    password: !secret xmpp
     recipient: a@na.id.au
   - platform: html5
     name: Push
     vapid_pub_key:
-      BAqb0EstOGHjF2jkubGmwBV84Xhz4glE1BPuwCwR9OUcqcU13xa4Epj0in49-eXnbn_gNqCTYf7PkFnHZvLzKmQ
+      !secret vapid_pub
     vapid_prv_key:
-      YOW3fqbzpNiPfaLjUbeBcOHNAPGMI3OpnE_lEkP28sE
+      !secret vapid_prv
     vapid_email:
       Adrian.a.Woodley@gmail.com
   - name: family
@@ -172,32 +171,6 @@ input_boolean:
     
 light: !include lights.yaml
 
-
-# device_tracker:
-#  - platform: ubus
-#    scan_interval: 60
-#    consider_home: 120
-#    host: 192.168.30.251
-#    username: root
-#    password: eeTh1tae
-#    dhcp_software: dnsmasq
-#    new_device_defaults:
-#      track_new_devices: false
-#  - platform: ping
-#    scan_interval: 60
-#    consider_home: 120
-#    hosts:
-#      Adrians_Moto_G5s: 192.168.30.27
-#      Nancys_Moto_G5s: 192.168.30.26
-#  - platform: netgear_macs
-#    scan_interval: 60
-#    consider_home: 120
-#    host: 192.168.30.250
-#    username: admin
-#    password: eeTh1tae
-#    new_device_defaults:
-#      track_new_devices: false
-
 media_player:
   - platform: yamaha
     name: Yamaha Receiver
@@ -220,6 +193,4 @@ media_player:
     source_names:
       HDMI1: "Blu-Ray"
       HDMI2: "ChromeCast"
-#  - platform: dlna_dmr
-#    url: http://192.168.30.35/dd.xml
-#    name: Cliff
+
