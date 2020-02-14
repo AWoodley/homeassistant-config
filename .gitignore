@@ -4,3 +4,4 @@ html5_push_registrations.conf
 home-assistant.log
 home-assistant_v2.db
 .vscode/settings.json
+tts
