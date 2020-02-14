@@ -13,12 +13,6 @@
       friendly_name: Entry 3
       state: 'off'
       supported_features: 0
-    script.1576603594014:
-      can_cancel: true
-      friendly_name: Dining Room Lights Fade Up
-      last_action: delay 0:15:00
-      last_triggered: '2020-02-07T17:09:58.637076+00:00'
-      state: 'on'
 - id: '1581008695083'
   name: Night Lights
   entities:
@@ -34,12 +28,6 @@
       friendly_name: Entry 3
       state: 'off'
       supported_features: 0
-    script.1576604054568:
-      can_cancel: true
-      friendly_name: Dining Room Lights Fade Down
-      last_action: delay 0:15:00
-      last_triggered: '2020-02-07T17:10:31.438389+00:00'
-      state: 'on'
 - id: '1581009635529'
   name: Morning Lights
   entities:
@@ -55,12 +43,6 @@
       friendly_name: Entry 3
       state: 'off'
       supported_features: 0
-    script.1576604054568:
-      can_cancel: true
-      friendly_name: Dining Room Lights Fade Down
-      last_action: delay 0:15:00
-      last_triggered: '2020-02-07T17:10:31.438389+00:00'
-      state: 'on'
 - id: '1581353978950'
   name: Scene:Master Bedroom:Night
   entities:
@@ -181,3 +163,46 @@
       min_mireds: 153
       state: 'off'
       supported_features: 3
+- id: '1581648349111'
+  name: Scene:Boys Bedroom:Off
+  entities:
+    light.lifx_mini_5386a2:
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Boy's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'off'
+      supported_features: 55
+- id: '1581648416152'
+  name: Scene:Boys Bedroom:Bright
+  entities:
+    light.lifx_mini_5386a2:
+      brightness: 255
+      color_temp: 242
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Boy's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+- id: '1581648464177'
+  name: Scene:Boys Bedroom:Dim
+  entities:
+    light.lifx_mini_5386a2:
+      brightness: 67
+      color_temp: 351
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Boy's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55

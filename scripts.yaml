@@ -2,13 +2,12 @@
   alias: Master Bedroom Lights Adjust
   sequence:
   - data_template:
-      entity_id: >
-        {% if now().hour > 21 %} scene.scene_master_bedroom_night
-        {% elif now().hour > 20 %} scene.scene_master_bedroom_evening
-        {% elif now().hour < 5 %} scene.scene_master_bedroom_night
-        {% elif now().hour < 7 %} scene.scene_master_bedroom_evening
-        {% else %} scene.scene_master_bedroom_day
-        {% endif %}
+      entity_id: '{% if now().hour > 21 %} scene.scene_master_bedroom_night {% elif
+        now().hour > 20 %} scene.scene_master_bedroom_evening {% elif now().hour <
+        5 %} scene.scene_master_bedroom_night {% elif now().hour < 7 %} scene.scene_master_bedroom_evening
+        {% else %} scene.scene_master_bedroom_day {% endif %}
+
+        '
     service: scene.turn_on
 '1575907804253':
   alias: Christmas Lights
@@ -116,50 +115,52 @@
   - data:
       brightness: 0
       color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e5_cd
       transition: 900
+    entity_id: light.lifx_d0_73_d5_37_e5_cd
     service: lifx.set_state
   - delay: 00:15:00
-  - data:
-      entity_id: light.lifx_d0_73_d5_37_e5_cd
+  - entity_id: light.lifx_d0_73_d5_37_e5_cd
     service: light.turn_off
   - data:
       brightness: 0
       color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
       transition: 900
+    entity_id: light.lifx_d0_73_d5_37_e4_e0
     service: lifx.set_state
   - delay: 00:15:00
-  - data:
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
+  - data: {}
+    entity_id: light.lifx_d0_73_d5_37_e4_e0
     service: light.turn_off
   - data:
       brightness: 0
       color_name: white
-      entity_id: light.lifx_d0_73_d5_38_15_d3
       transition: 900
+    entity_id: light.lifx_d0_73_d5_38_15_d3
     service: lifx.set_state
   - delay: 00:15:00
-  - data:
-      entity_id: light.lifx_d0_73_d5_38_15_d3
+  - data: {}
+    entity_id: light.lifx_d0_73_d5_38_15_d3
     service: light.turn_off
   - data:
       brightness: 20
       color_name: white
-      entity_id: light.lifx_d0_73_d5_38_46_87
       transition: 900
+    entity_id: light.lifx_d0_73_d5_38_46_87
     service: lifx.set_state
 create_every_light_group:
   sequence:
-    - service: group.set
-      data_template:
-        object_id: "every_light"
-        entities: >
-          {{ states.light | map(attribute='entity_id') | join(',') }}
+  - service: group.set
+    data_template:
+      object_id: every_light
+      entities: '{{ states.light | map(attribute=''entity_id'') | join('','') }}
+
+        '
 create_every_automation_group:
   sequence:
-    - service: group.set
-      data_template:
-        object_id: "every_automation"
-        entities: >
-          {{ states.automation | map(attribute='entity_id') | join(',') }}
+  - service: group.set
+    data_template:
+      object_id: every_automation
+      entities: '{{ states.automation | map(attribute=''entity_id'') | join('','')
+        }}
+
+        '
