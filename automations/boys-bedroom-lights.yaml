@@ -4,9 +4,6 @@
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
-    to: '9763496'
-  - entity_id: sensor.rfb_button
-    platform: state
     to: '1058804'
   condition: []
   action:
@@ -30,9 +27,6 @@
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
-    to: '9763476'
-  - entity_id: sensor.rfb_button
-    platform: state
     to: '1058802'
   condition: []
   action:
@@ -48,9 +42,6 @@
   alias: Light:Boy's Bedroom:Colours
   description: 'Cycle through disco light colours'
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763474'
   - entity_id: sensor.rfb_button
     platform: state
     to: '1058801'
