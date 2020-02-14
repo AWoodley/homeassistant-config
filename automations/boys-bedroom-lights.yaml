@@ -1,5 +1,5 @@
 - id: '1573474259634'
-  alias: Light:Boy;s Bedroom:Adjust
+  alias: Light:Boy's Bedroom:Adjust
   description: 'Adjust brightness of light based on time of day'
   trigger:
   - entity_id: sensor.rfb_button
@@ -56,11 +56,15 @@
     to: '1058801'
   condition: []
   action:
-  - data_template:
-      entity_id: >
-        {% if is_state('light.lifx_mini_5386a2', 'on') %}
-        scene.scene_boys_bedroom_off
-        {% else %}
-        scene.scene_boys_bedroom_colours
-        {% endif %}
-    service: scene.turn_on
+  - data:
+      entity_id: light.lifx_mini_5386a2
+      brightness: 255
+      period: 1
+      change: 35
+      power_on: true
+    service_template: >
+      {% if is_state('light.lifx_mini_5386a2', 'on') %}
+      light.turn_off
+      {% else %}
+      lifx.effect_colorloop
+      {% endif %}
