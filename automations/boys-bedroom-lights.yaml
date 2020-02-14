@@ -8,18 +8,22 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1058804'
-  condition:
-    - condition: state
-      entity_id: light.lifx_mini_5386a2
-      state: 'off'
+  condition: []
   action:
   - data_template:
-      brightness: ' {% if now().hour > 19 %} 5 {% elif now().hour > 8 %} 255 {% elif
-        now().hour > 6 %} 50 {% elif now().hour > 0 %} 5 {% else %} 255 {% endif %} '
-      color_temp: ' {% if now().hour > 19 %} 400 {% elif now().hour > 6 %} 242 {%
-        elif now().hour > 0 %} 400 {% else %} 400 {% endif %} '
-      entity_id: light.lifx_mini_5386a2
-    service: light.turn_on
+      entity_id: >
+        {% if is_state('light.lifx_mini_5386a2', 'on') %}
+        scene.scene_boys_bedroom_off
+        {% elif now().hour > 19 %}
+        scene.scene_boys_bedroom_dim
+        {% elif now().hour > 8 %}
+        scene.scene_boys_bedroom_bright
+        {% elif now().hour > 0 %}
+        scene.scene_boys_bedroom_dim
+        {% else %}
+        scene.scene_boys_bedroom_bright
+        {% endif %}
+    service: scene.turn_on
 - id: '1573474201726'
   alias: Light:Boy's Bedroom:Bright
   description: 'Full brightness'
@@ -30,16 +34,16 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1058802'
-  condition:
-  - condition: state
-    entity_id: light.lifx_mini_5386a2
-    state: 'off'
+  condition: []
   action:
-  - data:
-      brightness: 255
-      color_temp: 242
-      entity_id: light.lifx_mini_5386a2
-    service: light.turn_on
+  - data_template:
+      entity_id: >
+        {% if is_state('light.lifx_mini_5386a2', 'on') %}
+        scene.scene_boys_bedroom_off
+        {% else %}
+        scene.scene_boys_bedroom_bright
+        {% endif %}
+    service: scene.turn_on
 - id: '1573474201727'
   alias: Light:Boy's Bedroom:Colours
   description: 'Cycle through disco light colours'
@@ -50,45 +54,13 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1058801'
-  condition:
+  condition: []
   action:
-  - data:
-      entity_id: light.lifx_mini_5386a2
-      brightness: 255
-      period: 1
-      change: 35
-      power_on: true
-    service: lifx.effect_colorloop
-- id: '1574492068922'
-  alias: Light:Boy's Bedroom:Off
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763473'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763474'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763476'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763496'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1058804'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1058802'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1058801'
-  condition:
-  - condition: state
-    entity_id: light.lifx_mini_5386a2
-    state: 'on'
-  action:
-  - data:
-      entity_id: light.lifx_mini_5386a2
-    service: light.turn_off
+  - data_template:
+      entity_id: >
+        {% if is_state('light.lifx_mini_5386a2', 'on') %}
+        scene.scene_boys_bedroom_off
+        {% else %}
+        scene.scene_boys_bedroom_colours
+        {% endif %}
+    service: scene.turn_on
