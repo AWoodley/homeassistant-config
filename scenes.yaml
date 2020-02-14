@@ -181,3 +181,61 @@
       min_mireds: 153
       state: 'off'
       supported_features: 3
+- id: '1581648349111'
+  name: Scene:Boys Bedroom:Off
+  entities:
+    light.lifx_mini_5386a2:
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Boy's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'off'
+      supported_features: 55
+- id: '1581648416152'
+  name: Scene:Boys Bedroom:Bright
+  entities:
+    light.lifx_mini_5386a2:
+      brightness: 255
+      color_temp: 242
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Boy's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+- id: '1581648464177'
+  name: Scene:Boys Bedroom:Dim
+  entities:
+    light.lifx_mini_5386a2:
+      brightness: 67
+      color_temp: 351
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Boy's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+- id: '1581648563639'
+  name: Scene:Boys Bedroom:Colours
+  entities:
+    light.lifx_mini_5386a2:
+      brightness: 255
+      color_temp: 263
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Boy's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
