@@ -12,3 +12,5 @@
   payload_return_to_base: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x8181807F\",\"DataLSB\":\"0x818101FE\",\"Repeat\":0}"
   payload_start_pause: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
   payload_stop: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
+  google_assistant: 'true'
+  google_assistant_type: 'switch'
