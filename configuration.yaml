@@ -59,7 +59,7 @@ google_assistant:
   service_account: !include hass-870815de073b.json
   report_state: true
   secure_devices_pin: !secret pin
-  expose_by_defaut: false
+  expose_by_default: false
   entity_config:
     light.light_bedside_1:
       expose: true
