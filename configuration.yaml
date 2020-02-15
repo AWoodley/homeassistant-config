@@ -108,7 +108,7 @@ google_assistant:
       expose: true
     vacuum.sammy:
       expose: true
-      google_assistant_type: 'switch’
+
 
 notify:
   - name: a_xmpp
