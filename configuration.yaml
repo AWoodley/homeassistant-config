@@ -106,6 +106,9 @@ google_assistant:
       expose: true
     script.1575974067886:
       expose: true
+    vacuum.sammy:
+      google_assistant: 'true’
+      google_assistant_type: 'switch’
 
 notify:
   - name: a_xmpp
