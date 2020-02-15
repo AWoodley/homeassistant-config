@@ -107,7 +107,7 @@ google_assistant:
     script.1575974067886:
       expose: true
     vacuum.sammy:
-      google_assistant: 'true’
+      expose: 'true'
       google_assistant_type: 'switch’
 
 notify:
