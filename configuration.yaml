@@ -59,49 +59,32 @@ google_assistant:
   service_account: !include hass-870815de073b.json
   report_state: true
   secure_devices_pin: !secret pin
-  exposed_domains:
-    - light
-    - switch
-    - alarm_control_panel
-    - media_player
-    - scene
+  expose_by_defaut: false
   entity_config:
-    group.all_automations:
-      expose: false
-    light.all_lights:
-      expose: false
-    light.master_bedroom_lights:
-      expose: false
-    light.lifx_d0_73_d5_37_e5_cd:
-      expose: false
-    light.lifx_d0_73_d5_37_e4_e0:
-      expose: false
-    light.lifx_d0_73_d5_38_15_d3:
-      expose: false
-    light.lifx_d0_73_d5_38_46_87:
-      expose: false
+    light.light_bedside_1:
+      expose: true
+    light.light_bedside_2:
+      expose: true
+    light.light_familyroom_1:
+      expose: true
+    light.light_masterbedroom_1:
+      expose: true
+    light.light_media_1:
+      expose: true
+    light.light_media_2:
+      expose: true
+    light.light_musicroom_1:
+      expose: true
     light.dinning_room_lights:
       expose: true
-    light.welcome_lights:
-      expose: false
     light.entry_lights:
-      expose: false
-    light.study:
-      expose: false
-    switch.adrian_s_phone_charger:
-      expose: false
-    switch.nancy_s_phone_charger:
-      expose: false
-    media_player.googlehome4026:
-      expose: false
-    media_player.glod:
-      expose: false
-    media_player.lias:
-      expose: false
-    media_player.cliff:
-      expose: false
-    media_player.kitchen_speaker:
-      expose: false
+      expose: true
+    light.lifx_mini_5386a2:
+      expose: true
+    light.lifx_d0_73_d5_3e_87_c9:
+      expose: true
+    switch.media_centre:
+      expose: true
     script.1575907804253:
       expose: true
     script.1575974067886:
