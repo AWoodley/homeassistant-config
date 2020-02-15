@@ -171,6 +171,8 @@ input_boolean:
     
 light: !include lights.yaml
 
+vacuum: !include vacuum.yaml
+
 media_player:
   - platform: yamaha
     name: Yamaha Receiver
