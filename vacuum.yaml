@@ -2,8 +2,8 @@
   name: "Sammy"
   schema: state
   supported_features:
-    - turn_on
-    - turn_off
+    # - turn_on
+    # - turn_off
     - return_home
     - pause
     - stop
