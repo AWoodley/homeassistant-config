@@ -140,7 +140,7 @@ binary_sensor:
 
 sensor:
   - platform: mqtt
-    state_topic: "home/OpenMQTTGateway_SRFB/SRFBtoMQTT"
+    state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
     value_template: '{{value_json.value}}'
     qos: 1
