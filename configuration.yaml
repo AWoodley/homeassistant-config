@@ -145,6 +145,19 @@ sensor:
     value_template: '{{value_json.value}}'
     qos: 1
     expire_after: 1
+  - platform: mqtt
+    state_topic: "tele/tasmota/+/RESULT"
+    name: 'IR Button'
+    value_template: '{{value_json.IrReceived}}'
+    qos: 1
+    expire_after: 1
+
+
+switch:
+  - platform: mqtt
+    name: Sammy
+    command_topic: "sonoffs/cmnd/irsend"
+    payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
 
 
 input_boolean:
