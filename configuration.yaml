@@ -163,7 +163,7 @@ switch:
 cover:
   - platform: mqtt
     name: "Dining Room Rollershutter"
-    command_topic: cmnd/tasmota/4A78A8/Backlog
+    command_topic: tasmota/4A78A8/Backlog
     payload_open: "Power1 on"
     payload_stop: "Power2 on"
     payload_close: "Power3 on"
