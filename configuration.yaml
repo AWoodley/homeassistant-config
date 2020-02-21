@@ -160,6 +160,15 @@ switch:
     payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
 
 
+cover:
+  - platform: mqtt
+    name: "Dining Room Rollershutter"
+    command_topic: cmnd/tasmota/4A78A8/Backlog
+    payload_open: "Power1 on"
+    payload_stop: "Power2 on"
+    payload_close: "Power3 on"
+
+
 input_boolean:
   christmas_lights_state:
     name: Running state of the Christmas light pattern
