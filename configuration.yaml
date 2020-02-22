@@ -91,6 +91,8 @@ google_assistant:
       expose: true
     vacuum.sammy:
       expose: true
+    cover.dining_room_rollershutter:
+      expose: true
 
 
 notify:
