@@ -50,7 +50,7 @@ mqtt:
   broker: mqtt.na.id.au
   port: 1883
   username: hass
-  password: KaGhusoh1moh
+  password: !secret mqtt
   discovery: true
   discovery_prefix: homeassistant
 
@@ -58,68 +58,55 @@ google_assistant:
   project_id: hass
   service_account: !include hass-870815de073b.json
   report_state: true
-#  api_key: AIzaSyDphJAjvcWYb1EExfDhkKCpHrAp_EMuaNM
-  secure_devices_pin: "0307"
-  exposed_domains:
-    - light
-    - switch
-    - alarm_control_panel
-    - media_player
-    - scene
+  secure_devices_pin: !secret pin
+  expose_by_default: false
   entity_config:
-    group.all_automations:
-      expose: false
-    light.all_lights:
-      expose: false
-    light.master_bedroom_lights:
-      expose: false
-    light.lifx_d0_73_d5_37_e5_cd:
-      expose: false
-    light.lifx_d0_73_d5_37_e4_e0:
-      expose: false
-    light.lifx_d0_73_d5_38_15_d3:
-      expose: false
-    light.lifx_d0_73_d5_38_46_87:
-      expose: false
+    light.light_bedside_1:
+      expose: true
+    light.light_bedside_2:
+      expose: true
+    light.light_familyroom_1:
+      expose: true
+    light.light_masterbedroom_1:
+      expose: true
+    light.light_media_1:
+      expose: true
+    light.light_media_2:
+      expose: true
+    light.light_musicroom_1:
+      expose: true
     light.dinning_room_lights:
       expose: true
-    light.welcome_lights:
-      expose: false
     light.entry_lights:
-      expose: false
-    light.study:
-      expose: false
-    switch.adrian_s_phone_charger:
-      expose: false
-    switch.nancy_s_phone_charger:
-      expose: false
-    media_player.googlehome4026:
-      expose: false
-    media_player.glod:
-      expose: false
-    media_player.lias:
-      expose: false
-    media_player.cliff:
-      expose: false
-    media_player.kitchen_speaker:
-      expose: false
+      expose: true
+    light.lifx_mini_5386a2:
+      expose: true
+    light.lifx_d0_73_d5_3e_87_c9:
+      expose: true
+    switch.media_centre:
+      expose: true
     script.1575907804253:
       expose: true
     script.1575974067886:
       expose: true
+    vacuum.sammy:
+      expose: true
+    cover.dining_room_rollershutter:
+      expose: true
+
 
 notify:
   - name: a_xmpp
     platform: xmpp
     sender: home@na.id.au
-    password: Hoh4ooQuagei6Eeg
+    password: !secret xmpp
     recipient: a@na.id.au
   - platform: html5
     name: Push
     vapid_pub_key:
-      BAqb0EstOGHjF2jkubGmwBV84Xhz4glE1BPuwCwR9OUcqcU13xa4Epj0in49-eXnbn_gNqCTYf7PkFnHZvLzKmQ
+      !secret vapid_pub
     vapid_prv_key:
-      YOW3fqbzpNiPfaLjUbeBcOHNAPGMI3OpnE_lEkP28sE
+      !secret vapid_prv
     vapid_email:
       Adrian.a.Woodley@gmail.com
   - name: family
@@ -155,11 +142,33 @@ binary_sensor:
 
 sensor:
   - platform: mqtt
-    state_topic: "home/OpenMQTTGateway_SRFB/SRFBtoMQTT"
+    state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
     value_template: '{{value_json.value}}'
     qos: 1
     expire_after: 1
+  - platform: mqtt
+    state_topic: "tele/tasmota/+/RESULT"
+    name: 'IR Button'
+    value_template: '{{value_json.IrReceived}}'
+    qos: 1
+    expire_after: 1
+
+
+switch:
+  - platform: mqtt
+    name: Sammy
+    command_topic: "sonoffs/cmnd/irsend"
+    payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
+
+
+cover:
+  - platform: mqtt
+    name: "Dining Room Rollershutter"
+    command_topic: tasmota/4A78A8/cmnd/BACKLOG
+    payload_open: "Power1 on"
+    payload_stop: "Power2 on"
+    payload_close: "Power3 on"
 
 
 input_boolean:
@@ -172,35 +181,12 @@ input_boolean:
     
 light: !include lights.yaml
 
-
-# device_tracker:
-#  - platform: ubus
-#    scan_interval: 60
-#    consider_home: 120
-#    host: 192.168.30.251
-#    username: root
-#    password: eeTh1tae
-#    dhcp_software: dnsmasq
-#    new_device_defaults:
-#      track_new_devices: false
-#  - platform: ping
-#    scan_interval: 60
-#    consider_home: 120
-#    hosts:
-#      Adrians_Moto_G5s: 192.168.30.27
-#      Nancys_Moto_G5s: 192.168.30.26
-#  - platform: netgear_macs
-#    scan_interval: 60
-#    consider_home: 120
-#    host: 192.168.30.250
-#    username: admin
-#    password: eeTh1tae
-#    new_device_defaults:
-#      track_new_devices: false
+vacuum: !include vacuum.yaml
 
 media_player:
   - platform: yamaha
     name: Yamaha Receiver
+    host: 192.168.30.32
     source_ignore:
       - "AUX"
       - "Radio"
@@ -220,6 +206,4 @@ media_player:
     source_names:
       HDMI1: "Blu-Ray"
       HDMI2: "ChromeCast"
-#  - platform: dlna_dmr
-#    url: http://192.168.30.35/dd.xml
-#    name: Cliff
+
