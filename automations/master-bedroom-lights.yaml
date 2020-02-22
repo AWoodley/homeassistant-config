@@ -12,12 +12,24 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '2475684'
-  condition:
-    - condition: state
-      entity_id: light.master_bedroom_lights
-      state: 'off'
+  condition: []
   action:
-    service: script.1575388174358
+  - data_template:
+      entity_id: >
+        {% if is_state('light.master_bedroom_lights', 'on') %}
+        scene.scene_master_bedroom_off
+        {% elif now().hour > 21 %}
+        scene.scene_master_bedroom_night
+        {% elif now().hour > 20 %}
+        scene.scene_master_bedroom_evening
+        {% elif now().hour < 5 %}
+        scene.scene_master_bedroom_night
+        {% elif now().hour < 7 %}
+        scene.scene_master_bedroom_evening
+        {% else %}
+        scene.scene_master_bedroom_day
+        {% endif %}
+    service: scene.turn_on
 - id: '2019112917581'
   alias: Light:Master Bedroom:On:Bright
   description: ''
@@ -34,46 +46,46 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '8190610'
-  condition:
-    - condition: state
-      entity_id: light.light_masterbedroom_1
-      state: 'off'
+  condition: []
   action:
-  - data:
-      brightness: 255
-      color_temp: 153
-      entity_id: light.light_masterbedroom_1
-    service: light.turn_on
-- id: '2019112215410'
-  alias: Light:Master Bedroom:Off
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1172993'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1172994'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '8190612'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '8190610'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '2475684'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '2475682'
-  condition:
-    - condition: state
-      entity_id: light.master_bedroom_lights
-      state: 'on'
-  action:
-    data:
-      entity_id: light.master_bedroom_lights
-    service: light.turn_off
+  - data_template:
+      entity_id: >
+        {% if is_state('light.master_bedroom_lights', 'on') %}
+        scene.scene_master_bedroom_off
+        {% else %}
+        scene.scene_master_bedroom_bright_2
+        {% endif %}
+    service: scene.turn_on
+# - id: '2019112215410'
+#   alias: Light:Master Bedroom:Off
+#   description: ''
+#   trigger:
+#   - entity_id: sensor.rfb_button
+#     platform: state
+#     to: '1172993'
+#   - entity_id: sensor.rfb_button
+#     platform: state
+#     to: '1172994'
+#   - entity_id: sensor.rfb_button
+#     platform: state
+#     to: '8190612'
+#   - entity_id: sensor.rfb_button
+#     platform: state
+#     to: '8190610'
+#   - entity_id: sensor.rfb_button
+#     platform: state
+#     to: '2475684'
+#   - entity_id: sensor.rfb_button
+#     platform: state
+#     to: '2475682'
+#   condition:
+#     - condition: state
+#       entity_id: light.master_bedroom_lights
+#       state: 'on'
+#   action:
+#     data:
+#       entity_id: light.master_bedroom_lights
+#     service: light.turn_off
 - id: '1575387552803'
   alias: Light:Nancy's Bedside Table:Toggle
   description: ''
@@ -84,7 +96,7 @@
   action:
   - data:
       brightness: 255
-      color_temp: 120
+      color_temp: 330
       entity_id: light.light_bedside_2
     service: light.toggle
 - id: '1575387990661'
@@ -97,7 +109,7 @@
   action:
   - data:
       brightness: 255
-      color_temp: 120
+      color_temp: 330
       entity_id: light.light_bedside_1
     service: light.toggle
 - id: '1575388925050'
@@ -110,19 +122,8 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '2475681'
+  condition: []
   action:
   - data:
-      brightness: 150
-      color_temp: 500
-      entity_id: light.light_bedside_1
-    service: light.turn_on
-  - data:
-      brightness: 150
-      color_temp: 500
-      entity_id: light.light_bedside_2
-    service: light.turn_on
-  - data:
-      brightness: 15
-      color_temp: 500
-      entity_id: light.light_masterbedroom_1
-    service: light.turn_on
+      entity_id: scene.scene_master_bedroom_romantic
+    service: scene.turn_on
