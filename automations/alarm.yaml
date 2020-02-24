@@ -61,9 +61,6 @@
   condition: []
   action:
   - data:
-      message: The Alarm is disarmed.
-    service: tts.google_translate_say
-  - data:
       brightness: 255
       cycles: 3
       entity_id: light.lifx_d0_73_d5_3e_87_c9
