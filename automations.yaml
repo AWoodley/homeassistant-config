@@ -180,8 +180,7 @@
   condition: []
   action:
   - data:
-      payload_template:
-        '[object Object]':
+      payload_template: {{ states('person.adrian')}}
       topic: homeassistant/person/adrian
     service: mqtt.publish
 - id: '1582300595341'

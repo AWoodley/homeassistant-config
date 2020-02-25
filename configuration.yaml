@@ -158,7 +158,7 @@ sensor:
 switch:
   - platform: mqtt
     name: Sammy
-    command_topic: "sonoffs/cmnd/irsend"
+    command_topic: "tasmotas/cmnd/irsend"
     payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
 
 
