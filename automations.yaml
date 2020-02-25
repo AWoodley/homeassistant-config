@@ -81,7 +81,7 @@
   alias: Switch:Adrian's Phone Charger:Turn On
   description: ''
   trigger:
-  - at: 05:00:00
+  - at: 06:00:00
     platform: time
   - below: '35'
     entity_id: sensor.adrian_s_g7_power_battery_sensor
@@ -122,7 +122,7 @@
   alias: Switch:Nancy's Phone Charger:Turn On
   description: ''
   trigger:
-  - at: 05:00:00
+  - at: 05:30:00
     platform: time
   - below: '35'
     entity_id: sensor.nancy_s_g7_power_battery_sensor
@@ -184,3 +184,46 @@
         '[object Object]':
       topic: homeassistant/person/adrian
     service: mqtt.publish
+- id: '1582300595341'
+  alias: Rollershutter:Dining:Day
+  description: ''
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.open_cover
+- id: '1582300676427'
+  alias: Rollershutter:Dining:Afternoon
+  description: ''
+  trigger:
+  - at: '13:00'
+    platform: time
+  condition: []
+  action:
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.close_cover
+- id: '1582646302706'
+  alias: Rollershutter:Dining:Dusk
+  description: ''
+  trigger:
+  - at: '15:00'
+    platform: time
+  - entity_id: group.family
+    platform: state
+    to: home
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+  - after: '14:59'
+    condition: time
+  - condition: state
+    entity_id: cover.dining_room_rollershutter
+    state: close
+  - before: sunset
+    condition: sun
+  action:
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.open_cover
