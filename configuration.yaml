@@ -141,7 +141,7 @@ binary_sensor:
     name: "Laundry/Garage Door"
     device_class: door
   - platform: mqtt
-    static_topic: "home/hass/johnson"
+    state_topic: "home/hass/johnson"
     device_class: connectivity
     payload_on: "online"
     payload_off: "offline"
