@@ -53,6 +53,12 @@ mqtt:
   password: !secret mqtt
   discovery: true
   discovery_prefix: homeassistant
+  birth_message:
+    topic: 'home/hass/leonard'
+    payload: 'online'
+  will_message:
+    topic: 'home/hass/leonard'
+    payload: 'offline'
 
 google_assistant:
   project_id: hass
@@ -132,13 +138,13 @@ binary_sensor:
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
-  - platform: rpi_gpio
-    invert_logic: true
-    pull_mode: UP
-    ports:
-      27: Arm Alarm
-      22: Doorbell
-      23: Bedroom Light
+  # - platform: rpi_gpio
+  #   invert_logic: true
+  #   pull_mode: UP
+  #   ports:
+  #     27: Arm Alarm
+  #     22: Doorbell
+  #     23: Bedroom Light
 
 sensor:
   - platform: mqtt
