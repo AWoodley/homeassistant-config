@@ -35,6 +35,9 @@
     service: light.turn_on
   - entity_id: light.light_entry_1,light.light_entry_3
     service: light.turn_off
+  - delay: 00:45:00
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.close_cover
 - id: '1576515032563'
   alias: Lights:Night:Timer
   description: ''
@@ -180,7 +183,7 @@
   condition: []
   action:
   - data:
-      payload_template: "{{ states('person.adrian')}}"
+      payload_template: '{{ states(''person.adrian'')}}'
       topic: homeassistant/person/adrian
     service: mqtt.publish
 - id: '1582300595341'
@@ -226,3 +229,42 @@
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
+- id: '1582675757394'
+  alias: Light:Dining Room:Rollershutters
+  description: ''
+  trigger:
+  - entity_id: cover.dining_room_rollershutter
+    platform: state
+    to: open
+  condition:
+  - condition: and
+    conditions:
+    - before: sunset
+      condition: sun
+    - after: sunrise
+      condition: sun
+  action:
+  - data: {}
+    entity_id: light.dining_room_lights,light.light_musicroom_1
+    service: light.turn_off
+- id: '1582898443205'
+  alias: Alert:Adrian's Phone:Button
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763496'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763476'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763474'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763473'
+  condition: []
+  action:
+  - data:
+      message: Boy's Help Button
+    service: notify.mobile_app_adrian_s_g7_power
