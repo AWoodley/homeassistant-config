@@ -47,7 +47,7 @@ discovery:
     - netgear_router
 
 mqtt:
-  broker: mqtt.na.id.au
+  broker: localhost
   port: 1883
   username: hass
   password: !secret mqtt
