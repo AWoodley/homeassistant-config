@@ -56,9 +56,11 @@ mqtt:
   birth_message:
     topic: 'home/hass/leonard'
     payload: 'online'
+    retain: 'true'
   will_message:
     topic: 'home/hass/leonard'
     payload: 'offline'
+    retain: 'true'
 
 google_assistant:
   project_id: hass
@@ -138,6 +140,11 @@ binary_sensor:
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
+  - platform: mqtt
+    static_topic: "home/hass/johnson"
+    device_class: connectivity
+    payload_on: "online"
+    payload_off: "offline"
   # - platform: rpi_gpio
   #   invert_logic: true
   #   pull_mode: UP
