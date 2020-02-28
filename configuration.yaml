@@ -56,11 +56,11 @@ mqtt:
   birth_message:
     topic: 'home/hass/leonard'
     payload: 'online'
-    retain: 'true'
+    retain: 'false'
   will_message:
     topic: 'home/hass/leonard'
     payload: 'offline'
-    retain: 'true'
+    retain: 'false'
 
 google_assistant:
   project_id: hass
