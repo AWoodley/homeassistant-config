@@ -60,7 +60,7 @@ mqtt:
   will_message:
     topic: 'home/hass/leonard'
     payload: 'offline'
-    retain: 'false'
+    retain: 'falseme a'
 
 google_assistant:
   project_id: hass
@@ -101,6 +101,10 @@ google_assistant:
       expose: true
     cover.dining_room_rollershutter:
       expose: true
+
+calendar:
+  - platform: caldav
+  url: https://calendar.google.com/calendar/ical/rd12cc9q5lpepgi9ob36pu5k94%40group.calendar.google.com/public/basic.ics
 
 
 notify:
