@@ -60,7 +60,7 @@ mqtt:
   will_message:
     topic: 'home/hass/leonard'
     payload: 'offline'
-    retain: 'falseme a'
+    retain: 'false'
 
 google_assistant:
   project_id: hass
