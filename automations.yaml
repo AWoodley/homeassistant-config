@@ -299,3 +299,15 @@
   - data: {}
     entity_id: group.every_automation
     service: automation.standby
+- id: '1583253390883'
+  alias: HASS:Heartbeat
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '0'
+  condition: []
+  action:
+  - data:
+      payload: leonard
+      topic: home/hass/active
+    service: mqtt.publish
