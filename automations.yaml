@@ -289,7 +289,7 @@
   alias: HASS:Active
   description: ''
   trigger:
-  - entity_id: binary_sensor.leonard
+  - entity_id: sensor.partner
     from: !secret partner
     platform: state
   condition: []
