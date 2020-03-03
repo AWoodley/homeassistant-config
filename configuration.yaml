@@ -53,12 +53,12 @@ mqtt:
   discovery: true
   discovery_prefix: homeassistant
   birth_message:
-    topic: 'home/hass/leonard'
-    payload: 'online'
+    topic: 'home/hass/active'
+    payload: !secret hostname
     retain: 'false'
   will_message:
-    topic: 'home/hass/leonard'
-    payload: 'offline'
+    topic: 'home/hass/active'
+    payload: !secret partner
     retain: 'false'
 
 google_assistant:
@@ -144,10 +144,11 @@ binary_sensor:
     name: "Laundry/Garage Door"
     device_class: door
   - platform: mqtt
-    state_topic: "home/hass/johnson"
+    state_topic: "home/hass/active"
+    name: partner
     device_class: connectivity
-    payload_on: "online"
-    payload_off: "offline"
+    payload_on: !secret hostname
+    payload_off: !secret partner
   # - platform: rpi_gpio
   #   invert_logic: true
   #   pull_mode: UP
