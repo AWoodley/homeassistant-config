@@ -274,7 +274,7 @@
   trigger:
   - entity_id: sensor.partner
     platform: state
-    to: !secret partner
+    to: johnson
   condition: []
   action:
   - data: {}
@@ -290,7 +290,7 @@
   description: ''
   trigger:
   - entity_id: sensor.partner
-    from: !secret partner
+    from: johnson
     platform: state
   condition: []
   action:
@@ -298,7 +298,7 @@
     service: script.create_every_automation_group
   - data: {}
     entity_id: group.every_automation
-    service: automation.standby
+    service: automation.turn_on
 - id: '1583253390883'
   alias: HASS:Heartbeat
   description: ''
@@ -308,6 +308,6 @@
   condition: []
   action:
   - data:
-      payload: !secret hostname
+      payload: leonard
       topic: home/hass/active
     service: mqtt.publish
