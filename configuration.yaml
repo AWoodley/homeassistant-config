@@ -59,7 +59,7 @@ mqtt:
 google_assistant:
   project_id: hass
   service_account: !include hass-870815de073b.json
-  report_state: true
+  report_state: !secret google_report_state
   secure_devices_pin: !secret pin
   exposed_domains:
     - light
