@@ -298,4 +298,4 @@
     service: script.create_every_automation_group
   - data: {}
     entity_id: group.every_automation
-    service: automation.turn_on
+    service: automation.
