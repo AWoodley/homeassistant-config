@@ -167,7 +167,6 @@ sensor:
   - platform: mqtt
     state_topic: "home/hass/active"
     name: partner
-    device_class: connectivity
     expire_after: 65
 
 
