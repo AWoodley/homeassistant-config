@@ -35,6 +35,9 @@
     service: light.turn_on
   - entity_id: light.light_entry_1,light.light_entry_3
     service: light.turn_off
+  - delay: 00:45:00
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.close_cover
 - id: '1576515032563'
   alias: Lights:Night:Timer
   description: ''
@@ -81,7 +84,7 @@
   alias: Switch:Adrian's Phone Charger:Turn On
   description: ''
   trigger:
-  - at: 05:00:00
+  - at: 06:00:00
     platform: time
   - below: '35'
     entity_id: sensor.adrian_s_g7_power_battery_sensor
@@ -122,7 +125,7 @@
   alias: Switch:Nancy's Phone Charger:Turn On
   description: ''
   trigger:
-  - at: 05:00:00
+  - at: 05:30:00
     platform: time
   - below: '35'
     entity_id: sensor.nancy_s_g7_power_battery_sensor
@@ -180,7 +183,119 @@
   condition: []
   action:
   - data:
-      payload_template:
-        '[object Object]':
+      payload_template: '{{ states(''person.adrian'')}}'
       topic: homeassistant/person/adrian
     service: mqtt.publish
+- id: '1582300595341'
+  alias: Rollershutter:Dining:Day
+  description: ''
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.open_cover
+- id: '1582300676427'
+  alias: Rollershutter:Dining:Afternoon
+  description: ''
+  trigger:
+  - at: '13:00'
+    platform: time
+  condition: []
+  action:
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.close_cover
+- id: '1582646302706'
+  alias: Rollershutter:Dining:Dusk
+  description: ''
+  trigger:
+  - at: '15:00'
+    platform: time
+  - entity_id: group.family
+    platform: state
+    to: home
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+  - after: '14:59'
+    condition: time
+  - condition: state
+    entity_id: cover.dining_room_rollershutter
+    state: close
+  - before: sunset
+    condition: sun
+  action:
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.open_cover
+- id: '1582675757394'
+  alias: Light:Dining Room:Rollershutters
+  description: ''
+  trigger:
+  - entity_id: cover.dining_room_rollershutter
+    platform: state
+    to: open
+  condition:
+  - condition: and
+    conditions:
+    - before: sunset
+      condition: sun
+    - after: sunrise
+      condition: sun
+  action:
+  - data: {}
+    entity_id: light.dining_room_lights,light.light_musicroom_1
+    service: light.turn_off
+- id: '1582898443205'
+  alias: Alert:Adrian's Phone:Button
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763496'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763476'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763474'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763473'
+  condition: []
+  action:
+  - data:
+      message: Boy's Help Button
+    service: notify.mobile_app_adrian_s_g7_power
+- id: '1582909860207'
+  alias: HASS:Standby
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.leonard
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    service: script.create_every_automation_group
+  - data: {}
+    entity_id: group.every_automation
+    service: automation.turn_off
+  - data: {}
+    entity_id: automation.hass_active
+    service: automation.turn_on
+- id: '1582910169504'
+  alias: HASS:Active
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.leonard
+    from: 'on'
+    platform: state
+  condition: []
+  action:
+  - data: {}
+    service: script.create_every_automation_group
+  - data: {}
+    entity_id: group.every_automation
+    service: automation.standby
