@@ -1,5 +1,4 @@
 ---
-aliases: !include aliases.yaml
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
@@ -9,7 +8,7 @@ homeassistant:
   elevation: 149
   unit_system: metric
   time_zone: Australia/Perth
-  name: *name
+  name: !secret name
 
 zone:
   name: home
@@ -65,7 +64,7 @@ mqtt:
 google_assistant:
   project_id: hass
   service_account: !include hass-870815de073b.json
-  report_state: *google_report_state
+  report_state: !secret google_report_state
   secure_devices_pin: !secret pin
   expose_by_default: false
   entity_config:
