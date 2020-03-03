@@ -272,9 +272,9 @@
   alias: HASS:Standby
   description: ''
   trigger:
-  - entity_id: binary_sensor.leonard
+  - entity_id: sensor.partner
     platform: state
-    to: 'on'
+    to: !secret partner
   condition: []
   action:
   - data: {}
@@ -290,7 +290,7 @@
   description: ''
   trigger:
   - entity_id: binary_sensor.leonard
-    from: 'on'
+    from: !secret partner
     platform: state
   condition: []
   action:
