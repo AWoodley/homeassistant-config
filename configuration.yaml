@@ -8,7 +8,7 @@ homeassistant:
   elevation: 149
   unit_system: metric
   time_zone: Australia/Perth
-  name: Home
+  name: !secret name
 
 zone:
   name: home
@@ -29,15 +29,14 @@ logger:
 
 config:
 
+group: !include groups.yaml
+automation: !include_dir_merge_list automations
+script: !include scripts.yaml
 scene: !include scenes.yaml
 
 # Text to speech
 tts:
   - platform: google_translate
-
-group: !include groups.yaml
-automation: !include_dir_merge_list automations
-script: !include scripts.yaml
 
 frontend:
   themes: !include themes.yaml
@@ -47,17 +46,25 @@ discovery:
     - netgear_router
 
 mqtt:
-  broker: mqtt.na.id.au
+  broker: localhost
   port: 1883
   username: hass
   password: !secret mqtt
   discovery: true
   discovery_prefix: homeassistant
+  birth_message:
+    topic: 'home/hass/active'
+    payload: !secret hostname
+    retain: 'false'
+  will_message:
+    topic: 'home/hass/active'
+    payload: !secret partner
+    retain: 'false'
 
 google_assistant:
   project_id: hass
   service_account: !include hass-870815de073b.json
-  report_state: true
+  report_state: !secret google_report_state
   secure_devices_pin: !secret pin
   expose_by_default: false
   entity_config:
@@ -93,6 +100,10 @@ google_assistant:
       expose: true
     cover.dining_room_rollershutter:
       expose: true
+
+calendar:
+  - platform: caldav
+    url: https://calendar.google.com/calendar/ical/rd12cc9q5lpepgi9ob36pu5k94%40group.calendar.google.com/public/basic.ics
 
 
 notify:
@@ -132,13 +143,19 @@ binary_sensor:
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
-  - platform: rpi_gpio
-    invert_logic: true
-    pull_mode: UP
-    ports:
-      27: Arm Alarm
-      22: Doorbell
-      23: Bedroom Light
+  - platform: mqtt
+    state_topic: "home/hass/active"
+    name: partner
+    device_class: connectivity
+    payload_on: !secret hostname
+    payload_off: !secret partner
+  # - platform: rpi_gpio
+  #   invert_logic: true
+  #   pull_mode: UP
+  #   ports:
+  #     27: Arm Alarm
+  #     22: Doorbell
+  #     23: Bedroom Light
 
 sensor:
   - platform: mqtt
@@ -158,7 +175,7 @@ sensor:
 switch:
   - platform: mqtt
     name: Sammy
-    command_topic: "sonoffs/cmnd/irsend"
+    command_topic: "tasmotas/cmnd/irsend"
     payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
 
 
@@ -183,27 +200,27 @@ light: !include lights.yaml
 
 vacuum: !include vacuum.yaml
 
-media_player:
-  - platform: yamaha
-    name: Yamaha Receiver
-    host: 192.168.30.32
-    source_ignore:
-      - "AUX"
-      - "Radio"
-      - "HDMI3"
-      - "HDMI4"
-      - "AV1"
-      - "AV2"
-      - "AV3"
-      - "AV4"
-      - "AV5"
-      - "AV6"
-      - "TUNER"
-      - "NET RADIO"
-      - "USB"
-      - "V-AUX"
-      - "iPod (USB)"
-    source_names:
-      HDMI1: "Blu-Ray"
-      HDMI2: "ChromeCast"
+# media_player:
+#   - platform: yamaha
+#     name: Yamaha Receiver
+#     host: 192.168.30.32
+#     source_ignore:
+#       - "AUX"
+#       - "Radio"
+#       - "HDMI3"
+#       - "HDMI4"
+#       - "AV1"
+#       - "AV2"
+#       - "AV3"
+#       - "AV4"
+#       - "AV5"
+#       - "AV6"
+#       - "TUNER"
+#       - "NET RADIO"
+#       - "USB"
+#       - "V-AUX"
+#       - "iPod (USB)"
+#     source_names:
+#       HDMI1: "Blu-Ray"
+#       HDMI2: "ChromeCast"
 
