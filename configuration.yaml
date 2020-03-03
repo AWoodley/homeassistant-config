@@ -143,12 +143,6 @@ binary_sensor:
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
-  - platform: mqtt
-    state_topic: "home/hass/active"
-    name: Active
-    device_class: connectivity
-    payload_on: !secret hostname
-    payload_off: !secret partner
   # - platform: rpi_gpio
   #   invert_logic: true
   #   pull_mode: UP
@@ -181,6 +175,12 @@ switch:
     name: Sammy
     command_topic: "tasmotas/cmnd/irsend"
     payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
+  - platform: mqtt
+    state_topic: "home/hass/active"
+    command_topic: "home/hass/active"
+    name: Active
+    payload_on: !secret hostname
+    payload_off: !secret partner
 
 
 cover:
