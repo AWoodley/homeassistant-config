@@ -1,0 +1,3 @@
+  - &hostname leonard
+  - &name Home
+  - &google_report_state true

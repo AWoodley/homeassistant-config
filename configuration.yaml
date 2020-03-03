@@ -1,4 +1,5 @@
 ---
+aliases: !include aliases.yaml
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
@@ -8,7 +9,7 @@ homeassistant:
   elevation: 149
   unit_system: metric
   time_zone: Australia/Perth
-  name: Home
+  name: *name
 
 zone:
   name: home
@@ -29,15 +30,14 @@ logger:
 
 config:
 
+group: !include groups.yaml
+automation: !include_dir_merge_list automations
+script: !include scripts.yaml
 scene: !include scenes.yaml
 
 # Text to speech
 tts:
   - platform: google_translate
-
-group: !include groups.yaml
-automation: !include_dir_merge_list automations
-script: !include scripts.yaml
 
 frontend:
   themes: !include themes.yaml
@@ -65,7 +65,7 @@ mqtt:
 google_assistant:
   project_id: hass
   service_account: !include hass-870815de073b.json
-  report_state: true
+  report_state: *google_report_state
   secure_devices_pin: !secret pin
   expose_by_default: false
   entity_config:
