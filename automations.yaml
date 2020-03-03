@@ -308,6 +308,6 @@
   condition: []
   action:
   - data:
-      payload: leonard
+      payload: !secret hostname
       topic: home/hass/active
     service: mqtt.publish
