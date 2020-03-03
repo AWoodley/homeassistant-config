@@ -143,6 +143,12 @@ binary_sensor:
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
+  - platform: mqtt
+    state_topic: "home/hass/active"
+    name: Active
+    device_class: connectivity
+    payload_on: !secret hostname
+    payload_off: !secret partner
   # - platform: rpi_gpio
   #   invert_logic: true
   #   pull_mode: UP
