@@ -180,7 +180,7 @@ sensor:
       - wind_dir
       - wind_spd_kmh
   - platform: bom_forecast
-    product_id:  IDW60901
+    product_id:  IDW12300
     name: Perth
     forecast_days: 6
     rest_of_today: True
