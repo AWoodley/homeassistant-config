@@ -156,6 +156,7 @@ binary_sensor:
 sensor:
   - platform: bom
     station: IDW60901.94615
+    monitored_conditions:
       - apparent_t
       - cloud
       - cloud_base_m
