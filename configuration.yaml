@@ -8,7 +8,7 @@ homeassistant:
   elevation: 149
   unit_system: metric
   time_zone: Australia/Perth
-  name: Home
+  name: !secret name
 
 zone:
   name: home
@@ -29,15 +29,14 @@ logger:
 
 config:
 
+group: !include groups.yaml
+automation: !include_dir_merge_list automations
+script: !include scripts.yaml
 scene: !include scenes.yaml
 
 # Text to speech
 tts:
   - platform: google_translate
-
-group: !include groups.yaml
-automation: !include_dir_merge_list automations
-script: !include scripts.yaml
 
 frontend:
   themes: !include themes.yaml
@@ -47,65 +46,65 @@ discovery:
     - netgear_router
 
 mqtt:
-  broker: mqtt.na.id.au
+  broker: localhost
   port: 1883
   username: hass
   password: !secret mqtt
   discovery: true
   discovery_prefix: homeassistant
+  birth_message:
+    topic: 'home/hass/active'
+    payload: !secret hostname
+    retain: 'false'
+  will_message:
+    topic: 'home/hass/active'
+    payload: !secret partner
+    retain: 'false'
 
 google_assistant:
   project_id: hass
   service_account: !include hass-870815de073b.json
-  report_state: true
+  report_state: !secret google_report_state
   secure_devices_pin: !secret pin
-  exposed_domains:
-    - light
-    - switch
-    - alarm_control_panel
-    - media_player
-    - scene
+  expose_by_default: false
   entity_config:
-    group.all_automations:
-      expose: false
-    light.all_lights:
-      expose: false
-    light.master_bedroom_lights:
-      expose: false
-    light.lifx_d0_73_d5_37_e5_cd:
-      expose: false
-    light.lifx_d0_73_d5_37_e4_e0:
-      expose: false
-    light.lifx_d0_73_d5_38_15_d3:
-      expose: false
-    light.lifx_d0_73_d5_38_46_87:
-      expose: false
+    light.light_bedside_1:
+      expose: true
+    light.light_bedside_2:
+      expose: true
+    light.light_familyroom_1:
+      expose: true
+    light.light_masterbedroom_1:
+      expose: true
+    light.light_media_1:
+      expose: true
+    light.light_media_2:
+      expose: true
+    light.light_musicroom_1:
+      expose: true
     light.dinning_room_lights:
       expose: true
-    light.welcome_lights:
-      expose: false
     light.entry_lights:
-      expose: false
-    light.study:
-      expose: false
-    switch.adrian_s_phone_charger:
-      expose: false
-    switch.nancy_s_phone_charger:
-      expose: false
-    media_player.googlehome4026:
-      expose: false
-    media_player.glod:
-      expose: false
-    media_player.lias:
-      expose: false
-    media_player.cliff:
-      expose: false
-    media_player.kitchen_speaker:
-      expose: false
+      expose: true
+    light.lifx_mini_5386a2:
+      expose: true
+    light.lifx_d0_73_d5_3e_87_c9:
+      expose: true
+    switch.media_centre:
+      expose: true
     script.1575907804253:
       expose: true
     script.1575974067886:
       expose: true
+    vacuum.sammy:
+      expose: true
+    cover.dining_room_rollershutter:
+      expose: true
+
+calendar:
+  - platform: caldav
+    url: https://calendar.google.com/calendar/ical/rd12cc9q5lpepgi9ob36pu5k94%40group.calendar.google.com/public/basic.ics
+
 
 notify:
   - name: a_xmpp
@@ -144,21 +143,53 @@ binary_sensor:
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
-  - platform: rpi_gpio
-    invert_logic: true
-    pull_mode: UP
-    ports:
-      27: Arm Alarm
-      22: Doorbell
-      23: Bedroom Light
+  # - platform: rpi_gpio
+  #   invert_logic: true
+  #   pull_mode: UP
+  #   ports:
+  #     27: Arm Alarm
+  #     22: Doorbell
+  #     23: Bedroom Light
 
 sensor:
   - platform: mqtt
-    state_topic: "home/OpenMQTTGateway_SRFB/SRFBtoMQTT"
+    state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
     value_template: '{{value_json.value}}'
     qos: 1
     expire_after: 1
+  - platform: mqtt
+    state_topic: "tele/tasmota/+/RESULT"
+    name: 'IR Button'
+    value_template: '{{value_json.IrReceived}}'
+    qos: 1
+    expire_after: 1
+  - platform: mqtt
+    state_topic: "home/hass/active"
+    name: partner
+    expire_after: 65
+
+
+switch:
+  - platform: mqtt
+    name: Sammy
+    command_topic: "tasmotas/cmnd/irsend"
+    payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
+  - platform: mqtt
+    state_topic: "home/hass/active"
+    command_topic: "home/hass/active"
+    name: Active
+    payload_on: !secret hostname
+    payload_off: !secret partner
+
+
+cover:
+  - platform: mqtt
+    name: "Dining Room Rollershutter"
+    command_topic: tasmota/4A78A8/cmnd/BACKLOG
+    payload_open: "Power1 on"
+    payload_stop: "Power2 on"
+    payload_close: "Power3 on"
 
 
 input_boolean:
@@ -171,27 +202,29 @@ input_boolean:
     
 light: !include lights.yaml
 
-media_player:
-  - platform: yamaha
-    name: Yamaha Receiver
-    host: 192.168.30.32
-    source_ignore:
-      - "AUX"
-      - "Radio"
-      - "HDMI3"
-      - "HDMI4"
-      - "AV1"
-      - "AV2"
-      - "AV3"
-      - "AV4"
-      - "AV5"
-      - "AV6"
-      - "TUNER"
-      - "NET RADIO"
-      - "USB"
-      - "V-AUX"
-      - "iPod (USB)"
-    source_names:
-      HDMI1: "Blu-Ray"
-      HDMI2: "ChromeCast"
+vacuum: !include vacuum.yaml
+
+# media_player:
+#   - platform: yamaha
+#     name: Yamaha Receiver
+#     host: 192.168.30.32
+#     source_ignore:
+#       - "AUX"
+#       - "Radio"
+#       - "HDMI3"
+#       - "HDMI4"
+#       - "AV1"
+#       - "AV2"
+#       - "AV3"
+#       - "AV4"
+#       - "AV5"
+#       - "AV6"
+#       - "TUNER"
+#       - "NET RADIO"
+#       - "USB"
+#       - "V-AUX"
+#       - "iPod (USB)"
+#     source_names:
+#       HDMI1: "Blu-Ray"
+#       HDMI2: "ChromeCast"
 
