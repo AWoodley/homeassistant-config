@@ -106,6 +106,8 @@ calendar:
     url: https://calendar.google.com/calendar/ical/rd12cc9q5lpepgi9ob36pu5k94%40group.calendar.google.com/public/basic.ics
 
 
+
+
 notify:
   - name: a_xmpp
     platform: xmpp
@@ -152,6 +154,44 @@ binary_sensor:
   #     23: Bedroom Light
 
 sensor:
+  - platform: bom
+    station: IDW60901.94615
+      - apparent_t
+      - cloud
+      - cloud_base_m
+      - cloud_oktas
+      - cloud_type_id
+      - delta_t
+      - gust_kmh
+      - gust_kt
+      - air_temp
+      - dewpt
+      - local_date_time
+      - local_date_time_full
+      - press
+      - press_qnh
+      - press_msl
+      - press_tend
+      - rain_trace
+      - rel_hum
+      - vis_km
+      - weather
+      - wind_dir
+      - wind_spd_kmh
+  - platform: bom_forecast
+    product_id:  IDW60901
+    name: Perth
+    forecast_days: 6
+    rest_of_today: True
+    friendly: True
+    friendly_state_format: '{max}, {summary}'
+    monitored_conditions:
+      - 'max'
+      - 'min'
+      - 'chance_of_rain'
+      - 'possible_rainfall'
+      - 'summary'
+      - 'detailed_summary'
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
