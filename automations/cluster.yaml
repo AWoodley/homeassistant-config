@@ -1,0 +1,43 @@
+- id: '1582909860207'
+  alias: HASS:Standby
+  description: ''
+  trigger:
+  - entity_id: sensor.partner
+    platform: state
+    to: !secret partner
+  condition: []
+  action:
+  - data: {}
+    service: script.create_every_automation_group
+  - data: {}
+    entity_id: group.every_automation
+    service: automation.turn_off
+  - data: {}
+    entity_id: automation.hass_active
+    service: automation.turn_on
+- id: '1582910169504'
+  alias: HASS:Active
+  description: ''
+  trigger:
+  - entity_id: sensor.partner
+    from: !secret partner
+    platform: state
+  condition: []
+  action:
+  - data: {}
+    service: script.create_every_automation_group
+  - data: {}
+    entity_id: group.every_automation
+    service: automation.turn_on
+- id: '1583253390883'
+  alias: HASS:Heartbeat
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: '0'
+  condition: []
+  action:
+  - data:
+      payload: !secret hostname
+      topic: home/hass/active
+    service: mqtt.publish
