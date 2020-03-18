@@ -146,15 +146,15 @@ binary_sensor:
     name: "Media Room"
     device_class: motion
   - platform: mqtt
-    state_topic: "home/alarm/zomes/2"
+    state_topic: "home/alarm/zones/2"
     name: "Family Room"
     device_class: motion
   - platform: mqtt
-    state_topic: "home/alarm/zomes/3"
+    state_topic: "home/alarm/zones/3"
     name: "Back Passage"
     device_class: motion
   - platform: mqtt
-    state_topic: "home/alarm/zomes/4"
+    state_topic: "home/alarm/zones/4"
     name: "Study"
     device_class: motion
   - platform: mqtt
@@ -162,7 +162,7 @@ binary_sensor:
     name: "Laundry/Garage Door"
     device_class: door
   - platform: mqtt
-    state_topic: "home/alarm/zomes/6"
+    state_topic: "home/alarm/zones/6"
     name: "Master Bedroom"
     device_class: motion
   # - platform: rpi_gpio
