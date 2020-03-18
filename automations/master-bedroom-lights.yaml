@@ -12,13 +12,16 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '2475684'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '12318220'
   condition: []
   action:
   - data_template:
       entity_id: >
         {% if is_state('light.master_bedroom_lights', 'on') %}
         scene.scene_master_bedroom_off
-        {% elif now().hour > 21 %}
+        {% elif now().hour > 21 and is_state('person.nancy', 'home') %}
         scene.scene_master_bedroom_night
         {% elif now().hour > 20 %}
         scene.scene_master_bedroom_evening
