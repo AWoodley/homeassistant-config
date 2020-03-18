@@ -142,9 +142,29 @@ binary_sensor:
     name: "Front Door"
     device_class: door
   - platform: mqtt
+    state_topic: "home/alarm/zones/1"
+    name: "Media Room"
+    device_class: motion
+  - platform: mqtt
+    state_topic: "home/alarm/zomes/2"
+    name: "Family Room"
+    device_class: motion
+  - platform: mqtt
+    state_topic: "home/alarm/zomes/3"
+    name: "Back Passage"
+    device_class: motion
+  - platform: mqtt
+    state_topic: "home/alarm/zomes/4"
+    name: "Study"
+    device_class: motion
+  - platform: mqtt
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
+  - platform: mqtt
+    state_topic: "home/alarm/zomes/6"
+    name: "Master Bedroom"
+    device_class: motion
   # - platform: rpi_gpio
   #   invert_logic: true
   #   pull_mode: UP
