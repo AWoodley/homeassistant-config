@@ -12,9 +12,6 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '2475684'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '12318220'
   condition: []
   action:
   - data_template:
@@ -51,9 +48,9 @@
         scene.scene_master_bedroom_night
         {% elif now().hour > 20 %}
         scene.scene_master_bedroom_evening
-        {% elif now().hour < 5 %}
-        scene.scene_master_bedroom_night
         {% elif now().hour < 7 %}
+        scene.scene_master_bedroom_night
+        {% elif now().hour < 9 %}
         scene.scene_master_bedroom_evening
         {% else %}
         scene.scene_master_bedroom_day
