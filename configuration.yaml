@@ -101,9 +101,9 @@ google_assistant:
     cover.dining_room_rollershutter:
       expose: true
 
-calendar:
-  - platform: caldav
-    url: "https://calendar.google.com/calendar/ical/rd12cc9q5lpepgi9ob36pu5k94%40group.calendar.google.com/public/basic.ics"
+# calendar:
+#   - platform: caldav
+#     url: "https://calendar.google.com/calendar/ical/rd12cc9q5lpepgi9ob36pu5k94%40group.calendar.google.com/public/basic.ics"
 
 
 
