@@ -30,3 +30,8 @@
     - light.light_entry_1
     - light.light_entry_2
     - light.light_entry_3
+- platform: group
+  name: Back Passage Lights
+  entities:
+    - light.passage1
+    - light.passage2
