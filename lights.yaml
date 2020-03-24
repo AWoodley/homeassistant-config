@@ -13,7 +13,7 @@
 - platform: group
   name: Welcome Lights
   entities: 
-    - light.lifx_d0_73_d5_3e_87_c9
+    - light.light_frontdoor_1
     - light.light_entry_1
     - light.light_entry_2
     - light.light_entry_3
@@ -35,3 +35,8 @@
   entities:
     - light.passage1
     - light.passage2
+- platform: group
+  name: Study Lights
+  entities:
+    - light.light_study_1
+    - light.light_study_2
