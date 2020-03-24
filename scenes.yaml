@@ -206,3 +206,63 @@
       min_mireds: 111
       state: 'on'
       supported_features: 55
+- id: '1585068568443'
+  name: Scene:Study:Normal
+  entities:
+    light.light_study_1:
+      brightness: 255
+      color_temp: 250
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      friendly_name: Light-Study-1
+      max_mireds: 666
+      min_mireds: 250
+      state: 'on'
+      supported_features: 39
+    light.light_study_2:
+      friendly_name: Light-Study-2
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 3
+- id: '1585068607563'
+  name: Scene:Study:Bright
+  entities:
+    light.light_study_1:
+      brightness: 255
+      color_temp: 250
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      friendly_name: Light-Study-1
+      max_mireds: 666
+      min_mireds: 250
+      state: 'on'
+      supported_features: 39
+    light.light_study_2:
+      brightness: 255
+      color_temp: 336
+      friendly_name: Light-Study-2
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+- id: '1585068650709'
+  name: Scene:Study:Off
+  entities:
+    light.light_study_1:
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      friendly_name: Light-Study-1
+      max_mireds: 666
+      min_mireds: 250
+      state: 'off'
+      supported_features: 39
+    light.light_study_2:
+      friendly_name: Light-Study-2
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 3
