@@ -196,13 +196,19 @@
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
+  - data: {}
+    entity_id: light.dining_room_lights, light.light_familyroom_1, light.light_musicroom_1
+    service: light.turn_off
 - id: '1582300676427'
   alias: Rollershutter:Dining:Afternoon
   description: ''
   trigger:
   - at: '13:00'
     platform: time
-  condition: []
+  condition:
+  - above: '24'
+    condition: numeric_state
+    entity_id: sensor.bom_feels_like_c
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.close_cover
@@ -273,18 +279,18 @@
   description: ''
   trigger:
   - entity_id: switch.switch_arlec_1
+    for: 00:00:15
     platform: state
     to: 'on'
-  condition: []
-  action:
-  - delay: 00:00:10
-  - above: '5'
-    condition: numeric_state
+  condition:
+  - condition: state
     entity_id: sensor.switch_arlec_1_energy_current
+    state: '0.0'
+  action:
   - data:
       message: The kettle has not started.
       title: Kettle
-    service: notify.push_adrian_s_g7_power
+    service: notify.mobile_app_adrian_s_g7_power
 - id: '1584460382480'
   alias: Switch:Kettle:Finished
   description: ''
@@ -292,22 +298,177 @@
   - below: '5'
     entity_id: sensor.switch_arlec_1_energy_current
     platform: numeric_state
-  condition: []
+  condition:
+  - condition: device
+    device_id: 24270fe8bcce46d7a35d5929c4f467f0
+    domain: switch
+    entity_id: switch.switch_arlec_1
+    type: is_on
   action:
   - data:
       message: The kettle has boiled.
       title: Kettle
     service: notify.mobile_app_adrian_s_g7_power
-  - delay: 00:05:00
+  - delay: 1min
+  - condition: state
+    entity_id: binary_sensor.switch_arlec_1_button1
+    state: 'on'
+  - data:
+      message: The kettle has not been reset
+      title: Kettle
+    service: notify.mobile_app_adrian_s_g7_power
   - device_id: 24270fe8bcce46d7a35d5929c4f467f0
     domain: switch
     entity_id: switch.switch_arlec_1
+    type: turn_off
+- id: '1584896652882'
+  alias: Light:Family Room Flood:PIR:On
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.family_room
+    platform: state
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - device_id: db1d35248fbf4a069418535ee7ebabcd
+    domain: light
+    entity_id: light.light_familyroom_1
     type: turn_on
-  - delay: 00:00:05
-  - below: '5'
-    condition: numeric_state
-    entity_id: sensor.switch_arlec_1_energy_current
-  - data:
-      message: The kettle has not been reset.
-      title: Kettle
-    service: notify.mobile_app_adrian_s_g7_power
+- id: '1584897263982'
+  alias: Light:Media Room:PIR:On
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.media_room
+    platform: state
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - device_id: 0e1cca1bd65e4d5f8e5afce92b3e51ea
+    domain: light
+    entity_id: light.light_media_1
+    type: turn_on
+- id: '1584897466331'
+  alias: Light:Music Room:PIR:On
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '14330700'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - device_id: 336224c42a8e49f5b7e4bc18afdf8739
+    domain: light
+    entity_id: light.light_musicroom_1
+    type: turn_on
+  - data: {}
+    entity_id: timer.light_music_room
+    service: timer.start
+- id: '1584898261946'
+  alias: Light:Family Room Flood:PIR:Off
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.family_room
+    for: 00:05:00
+    platform: state
+    to: 'off'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - device_id: db1d35248fbf4a069418535ee7ebabcd
+    domain: light
+    entity_id: light.light_familyroom_1
+    type: turn_off
+- id: '1584898397848'
+  alias: Light:Media Room:PIR:Off
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.media_room
+    for: 00:05:00
+    platform: state
+    to: 'off'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - device_id: 0e1cca1bd65e4d5f8e5afce92b3e51ea
+    domain: light
+    entity_id: light.light_media_1
+    type: turn_off
+- id: '1584982860133'
+  alias: Light:Music Room:PIR:Off
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: timer.light_music_room
+    event_type: timer.finished
+    platform: event
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - device_id: 336224c42a8e49f5b7e4bc18afdf8739
+    domain: light
+    entity_id: light.light_musicroom_1
+    type: turn_off
+- id: '1584983332319'
+  alias: Light:Back Passage:PIR:On
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.back_passage
+    platform: state
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - data: {}
+    entity_id: light.back_passage_lights
+    service: light.turn_on
+- id: '1584983557204'
+  alias: Light:Back Passage:PIR:Off
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.back_passage
+    for: 00:02:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.back_passage_lights
+    service: light.turn_off
