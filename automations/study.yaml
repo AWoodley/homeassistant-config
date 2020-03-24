@@ -9,7 +9,7 @@
   action:
   - data_template:
       entity_id: >
-        {% if is_state('light.study_lights', 'on') %}
+        {% if is_state('input_select.study_scene', 'scene.scene_study_normal') %}
         scene.scene_study_off
         {% else %}
         scene.scene_study_normal
@@ -26,7 +26,7 @@
   action:
   - data_template:
       entity_id: >
-        {% if is_state('light.study_lights', 'on') %}
+        {% if is_state('input_select.study_scene', 'scene.scene_study_bright') %}
         scene.scene_study_off
         {% else %}
         scene.scene_study_bright

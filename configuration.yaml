@@ -247,7 +247,17 @@ input_boolean:
 # States:
 # 0 - Christmas Lights Disabled
 # 1 - Christmas Lights Running
-    
+
+input_select:
+  study_scene:
+    name: Currently Active Scene for Study
+    options:
+      - unknown
+      - scene.scene_study_off
+      - scene.scene_study_normal
+      - scene.scene_study_bright
+    initial: unknown
+
 light: !include lights.yaml
 
 vacuum: !include vacuum.yaml
