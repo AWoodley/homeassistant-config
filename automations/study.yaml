@@ -1,5 +1,5 @@
 - id: '2020032501'
-  alias: Light:Study:Toggle
+  alias: Light:Study:Normal
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
@@ -16,7 +16,7 @@
         {% endif %}
     service: scene.turn_on
 - id: '2020032502'
-  alias: Light:Study:Toggle
+  alias: Light:Study:Bright
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
