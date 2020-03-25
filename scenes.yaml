@@ -166,11 +166,7 @@
 - id: '1581648349111'
   name: Scene:Boys Bedroom:Off
   entities:
-    light.lifx_mini_5386a2:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
+    light.light_boys_bedroom:
       friendly_name: Boy's Bedroom
       max_mireds: 400
       min_mireds: 111
@@ -179,13 +175,9 @@
 - id: '1581648416152'
   name: Scene:Boys Bedroom:Bright
   entities:
-    light.lifx_mini_5386a2:
+    light.light_boys_bedroom:
       brightness: 255
       color_temp: 242
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
       friendly_name: Boy's Bedroom
       max_mireds: 400
       min_mireds: 111
@@ -194,13 +186,9 @@
 - id: '1581648464177'
   name: Scene:Boys Bedroom:Dim
   entities:
-    light.lifx_mini_5386a2:
+    light.light_boys_bedroom:
       brightness: 2
       color_temp: 400
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
       friendly_name: Boy's Bedroom
       max_mireds: 400
       min_mireds: 111
