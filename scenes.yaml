@@ -166,6 +166,16 @@
 - id: '1581648349111'
   name: Scene:Boys Bedroom:Off
   entities:
+    input_select.boys_bedroom_scene:
+      editable: false
+      friendly_name: Currently Active Scene for Boy's Bedroom
+      options:
+      - unknown
+      - scene.scene_boys_bedroom_off
+      - scene.scene_boys_bedroom_dim
+      - scene.scene_boys_bedroom_bright
+      - scene.scene_boys_bedroom_disco
+      state: scene.scene_boys_bedroom_off
     light.light_boys_bedroom:
       friendly_name: Boy's Bedroom
       max_mireds: 400
@@ -181,7 +191,7 @@
       options:
       - unknown
       - scene.scene_boys_bedroom_off
-      - scene.scene_boys_bedroom_adjust
+      - scene.scene_boys_bedroom_dim
       - scene.scene_boys_bedroom_bright
       - scene.scene_boys_bedroom_disco
       state: scene.scene_boys_bedroom_bright
@@ -206,10 +216,10 @@
       options:
       - unknown
       - scene.scene_boys_bedroom_off
-      - scene.scene_boys_bedroom_adjust
+      - scene.scene_boys_bedroom_dim
       - scene.scene_boys_bedroom_bright
       - scene.scene_boys_bedroom_disco
-      state: scene.scene_boys_bedroom_adjust
+      state: scene.scene_boys_bedroom_dim
     light.light_boys_bedroom:
       brightness: 2
       color_temp: 400

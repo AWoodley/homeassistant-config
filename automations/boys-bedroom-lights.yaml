@@ -9,16 +9,16 @@
   action:
   - data_template:
       entity_id: >
-        {% if is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_adjust') %}
-        scene.scene_boys_bedroom_off
-        {% elif now().hour > 19 %}
+        {% if now().hour > 19 % and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_dim') %}
         scene.scene_boys_bedroom_dim
-        {% elif now().hour > 8 %}
+        {% elif now().hour > 8 and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_bright') %}
         scene.scene_boys_bedroom_bright
-        {% elif now().hour > 0 %}
+        {% elif now().hour > 0 and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_dim') %}
         scene.scene_boys_bedroom_dim
+        {% elif not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_bright') %}
+        scene.scene_boys_bedroom_bright
         {% else %}
-        scene.scene_boys_bedroom_bright
+        scene.scene_boys_bedroom_off
         {% endif %}
     service: scene.turn_on
 - id: '1573474201726'

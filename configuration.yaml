@@ -262,7 +262,7 @@ input_select:
     options:
       - unknown
       - scene.scene_boys_bedroom_off
-      - scene.scene_boys_bedroom_adjust
+      - scene.scene_boys_bedroom_dim
       - scene.scene_boys_bedroom_bright
       - scene.scene_boys_bedroom_disco
     initial: unknown
