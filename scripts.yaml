@@ -171,7 +171,7 @@ create_every_automation_group:
       brightness: 255
       change: 35
       entity_id:
-        '[object Object]':
+        '{{ entity }}':
       period: 1
       power_on: true
     service: lifx.effect_colorloop
