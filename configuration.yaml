@@ -257,6 +257,15 @@ input_select:
       - scene.scene_study_normal
       - scene.scene_study_bright
     initial: unknown
+  boys_bedroom_scene:
+    name: Currently Active Scene for Boy's Bedroom
+    options:
+      - unknown
+      - scene.scene_boys_bedroom_off
+      - scene.scene_boys_bedroom_adjust
+      - scene.scene_boys_bedroom_bright
+      - scene.scene_boys_bedroom_disco
+    initial: unknown
 
 light: !include lights.yaml
 
