@@ -293,10 +293,3 @@
       min_mireds: 153
       state: 'off'
       supported_features: 3
-- id: '1585109256780'
-  name: Scene:Boys Bedroom:Disco
-  entities:
-    script.1585108924524:
-      friendly_name: Script:Disco Lights
-      last_triggered:
-      state: 'off'
