@@ -175,9 +175,23 @@
 - id: '1581648416152'
   name: Scene:Boys Bedroom:Bright
   entities:
+    input_select.boys_bedroom_scene:
+      editable: false
+      friendly_name: Currently Active Scene for Boy's Bedroom
+      options:
+      - unknown
+      - scene.scene_boys_bedroom_off
+      - scene.scene_boys_bedroom_adjust
+      - scene.scene_boys_bedroom_bright
+      - scene.scene_boys_bedroom_disco
+      state: scene.scene_boys_bedroom_bright
     light.light_boys_bedroom:
       brightness: 255
       color_temp: 242
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
       friendly_name: Boy's Bedroom
       max_mireds: 400
       min_mireds: 111
@@ -186,9 +200,23 @@
 - id: '1581648464177'
   name: Scene:Boys Bedroom:Dim
   entities:
+    input_select.boys_bedroom_scene:
+      editable: false
+      friendly_name: Currently Active Scene for Boy's Bedroom
+      options:
+      - unknown
+      - scene.scene_boys_bedroom_off
+      - scene.scene_boys_bedroom_adjust
+      - scene.scene_boys_bedroom_bright
+      - scene.scene_boys_bedroom_disco
+      state: scene.scene_boys_bedroom_adjust
     light.light_boys_bedroom:
       brightness: 2
       color_temp: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
       friendly_name: Boy's Bedroom
       max_mireds: 400
       min_mireds: 111
