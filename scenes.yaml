@@ -294,7 +294,7 @@
       state: 'off'
       supported_features: 3
 - id: '1585109256780'
-  name: New Scene
+  name: Scene:Boys Bedroom:Disco
   entities:
     script.1585108924524:
       friendly_name: Script:Disco Lights
