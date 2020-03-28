@@ -500,7 +500,7 @@
       state: 'off'
     switch.rollershutter_dining_down:
       friendly_name: Rollershutter-Dining-Down
-      state: 'off'
+      state: 'on'
     switch.rollershutter_dining_stop:
       friendly_name: Rollershutter-Dining-Stop
       state: 'off'
