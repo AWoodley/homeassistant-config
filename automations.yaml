@@ -157,7 +157,10 @@
     to: '1944754'
   - entity_id: sensor.ir_button
     platform: state
-    to: '0xFE800AF5'
+    to: '0xFE800AF5' # Yamaha Receiver remote Aux Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x40040D00BCB1' # Panasonic TV Remote Aux Power
   condition: []
   action:
   - entity_id: switch.media_centre
