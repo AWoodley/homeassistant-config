@@ -165,6 +165,26 @@
   action:
   - entity_id: switch.media_centre
     service: switch.toggle
+- id: '2020032901131'
+  alias: Switch:Media Centre:IR
+  description: ''
+  trigger:
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x40040100BCBD' # Panasonic TV Remote Main Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x7E8154AB' # Yamaha Receiver Power Main Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x926D20DF' # Cambridge Bluray Power Main Power
+  condition:
+    - condition: state
+      entity_id: switch.media_centre
+      state: off
+  action:
+  - entity_id: switch.media_centre
+    service: switch.turn_on
 - id: '1581009244170'
   alias: Lights:Night:Time
   description: ''
