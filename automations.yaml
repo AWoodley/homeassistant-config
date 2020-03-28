@@ -309,7 +309,7 @@
       message: The kettle has boiled.
       title: Kettle
     service: notify.mobile_app_adrian_s_g7_power
-  - delay: 1min
+  - delay: 00:01:00
   - condition: state
     entity_id: binary_sensor.switch_arlec_1_button1
     state: 'on'
@@ -472,3 +472,16 @@
   - data: {}
     entity_id: light.back_passage_lights
     service: light.turn_off
+- id: '1585332194151'
+  alias: Lights:Alfresco:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1712148'
+  condition: []
+  action:
+  - device_id: 1fa3e2fb09b748f8a3ba7c85a4d4bda2
+    domain: light
+    entity_id: light.light_alfresco_2
+    type: toggle

@@ -261,6 +261,9 @@
       min_mireds: 153
       state: 'off'
       supported_features: 3
+    switch.switch_study_1:
+      friendly_name: Switch-Study-1
+      state: 'on'
 - id: '1585068607563'
   name: Scene:Study:Bright
   entities:
@@ -292,6 +295,9 @@
       min_mireds: 153
       state: 'on'
       supported_features: 3
+    switch.switch_study_1:
+      friendly_name: Switch-Study-1
+      state: 'on'
 - id: '1585068650709'
   name: Scene:Study:Off
   entities:
@@ -319,3 +325,6 @@
       min_mireds: 153
       state: 'off'
       supported_features: 3
+    switch.switch_study_1:
+      friendly_name: Switch-Study-1
+      state: 'off'
