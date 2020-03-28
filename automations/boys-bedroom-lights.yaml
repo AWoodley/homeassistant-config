@@ -9,7 +9,7 @@
   action:
   - data_template:
       entity_id: >
-        {% if now().hour > 19 % and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_dim') %}
+        {% if now().hour > 19 and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_dim') %}
         scene.scene_boys_bedroom_dim
         {% elif now().hour > 8 and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_bright') %}
         scene.scene_boys_bedroom_bright

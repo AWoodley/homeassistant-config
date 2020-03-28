@@ -4,6 +4,7 @@
   entities:
     - light.light_media_1
     - light.light_media_2
+    - light.light_media_3
 - platform: group
   name: Master Bedroom Lights
   entities:
