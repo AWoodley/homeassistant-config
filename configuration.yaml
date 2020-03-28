@@ -207,7 +207,7 @@ sensor:
     qos: 1
     expire_after: 1
   - platform: mqtt
-    state_topic: "tele/tasmota/+/RESULT"
+    state_topic: "tasmota/IR/+/tele/RESULT"
     name: 'IR Button'
     value_template: '{{value_json.IrReceived}}'
     qos: 1
