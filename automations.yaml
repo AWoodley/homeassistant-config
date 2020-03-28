@@ -155,6 +155,9 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1944754'
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0xFE800AF5'
   condition: []
   action:
   - entity_id: switch.media_centre
