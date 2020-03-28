@@ -213,6 +213,11 @@ sensor:
     qos: 1
     expire_after: 1
   - platform: mqtt
+    state_topic: "tasmota/IR/+/tele/RESULT"
+    name: 'IR Last'
+    value_template: '{{value_json.IrReceived.Data}}'
+    qos: 1
+  - platform: mqtt
     state_topic: "home/hass/active"
     name: partner
     expire_after: 65
