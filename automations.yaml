@@ -181,7 +181,7 @@
   condition:
     - condition: state
       entity_id: switch.media_centre
-      state: off
+      state: 'off'
   action:
   - entity_id: switch.media_centre
     service: switch.turn_on
