@@ -79,3 +79,46 @@
   - data:
       entity_id: light.media_room_lights
     service: light.turn_off
+- id: '1580921810634'
+  alias: Switch:Media Centre:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '11532968'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1944754'
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0xFE800AF5' # Yamaha Receiver remote Aux Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x40040D00BCB1' # Panasonic TV Remote Aux Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x140A' # Cambridge Bluray Remote Aux Power
+  condition: []
+  action:
+  - entity_id: switch.media_centre
+    service: switch.toggle
+- id: '2020032901131'
+  alias: Switch:Media Centre:IR
+  description: ''
+  trigger:
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x40040100BCBD' # Panasonic TV Remote Main Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x7E8154AB' # Yamaha Receiver Power Main Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x926D20DF' # Cambridge Bluray Power Main Power
+  condition:
+    - condition: state
+      entity_id: switch.media_centre
+      state: 'off'
+  action:
+  - entity_id: switch.media_centre
+    service: switch.turn_on
