@@ -1,5 +1,5 @@
 - id: '1575815204559'
-  alias: Light:Media Light Stand:Toggle
+  alias: Light:Media Room Lights:Toggle
   description: ''
   trigger:
     - platform: state
@@ -25,7 +25,7 @@
       light.turn_off
       {% endif %}
     data:
-      entity_id: light.light_media_1
+      entity_id: light.light_media_3
 - id: '1575815268208'
   alias: Light:Media Reading Light:Toggle
   description: ''
