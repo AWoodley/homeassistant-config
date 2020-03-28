@@ -161,6 +161,9 @@
   - entity_id: sensor.ir_button
     platform: state
     to: '0x40040D00BCB1' # Panasonic TV Remote Aux Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x140A' # Cambridge Bluray Remote Aux Power
   condition: []
   action:
   - entity_id: switch.media_centre
