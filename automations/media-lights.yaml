@@ -26,14 +26,14 @@
     to: '1944754'
   action:
     service_template: >
-      {% if is_state('light.light_media_3', 'on') %}
+      {% if is_state('light.media_room_lights', 'on') %}
       light.turn_off
       {% else %}
       light.turn_on
       {% endif %}
     data_template:
       entity_id: >
-        {% if is_state('light.light_media_3', 'on') %}
+        {% if is_state('light.media_room_lights', 'on') %}
         light.media_room_lights
         {% else %}
         light.light_media_3
