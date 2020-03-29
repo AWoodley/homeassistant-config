@@ -1,31 +1,44 @@
-- id: '1575815204559'
+# - id: '1575815204559'
+#   alias: Light:Media Room Lights:Toggle
+#   description: ''
+#   trigger:
+#     - platform: state
+#       entity_id: switch.media_centre
+#       from: 'on'
+#       to: 'off'
+#     - platform: state
+#       entity_id: switch.media_centre
+#       from: 'off'
+#       to: 'on'
+#   condition:
+#   - condition: or
+#     conditions:
+#     - before: sunrise
+#       condition: sun
+#     - after: sunset
+#       condition: sun
+#   action:
+#     service_template: >
+#       {% if trigger.to_state.state == "on" %}
+#       light.turn_on
+#       {% elif trigger.to_state.state == "off" %}
+#       light.turn_off
+#       {% endif %}
+#     data:
+#       entity_id: light.light_media_3
+- id: '2020032913141'
   alias: Light:Media Room Lights:Toggle
   description: ''
   trigger:
-    - platform: state
-      entity_id: switch.media_centre
-      from: 'on'
-      to: 'off'
-    - platform: state
-      entity_id: switch.media_centre
-      from: 'off'
-      to: 'on'
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '11532968'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1944754'
   action:
-    service_template: >
-      {% if trigger.to_state.state == "on" %}
-      light.turn_on
-      {% elif trigger.to_state.state == "off" %}
-      light.turn_off
-      {% endif %}
-    data:
-      entity_id: light.light_media_3
+    service: light.toggle
+    entity_id: light.light_media_3
 - id: '1575815268208'
   alias: Light:Media Reading Light:Toggle
   description: ''
@@ -83,12 +96,6 @@
   alias: Switch:Media Centre:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '11532968'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1944754'
   - entity_id: sensor.ir_button
     platform: state
     to: '0xFE800AF5' # Yamaha Receiver remote Aux Power
