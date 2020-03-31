@@ -15,8 +15,6 @@
         scene.scene_boys_bedroom_bright
         {% elif now().hour > 0 and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_dim') %}
         scene.scene_boys_bedroom_dim
-        # {% elif not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_bright') and is_state('light.light_boys_bedroom', 'on') %}
-        # scene.scene_boys_bedroom_bright
         {% else %}
         scene.scene_boys_bedroom_off
         {% endif %}
