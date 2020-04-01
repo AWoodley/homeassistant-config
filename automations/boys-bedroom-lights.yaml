@@ -1,5 +1,5 @@
 - id: '1573474259634'
-  alias: Light:Boy's Bedroom:Adjust
+  alias: Light:Boy's Bedroom:Dim
   description: 'Adjust brightness of light based on time of day'
   trigger:
   - entity_id: sensor.rfb_button
@@ -9,14 +9,8 @@
   action:
   - data_template:
       entity_id: >
-        {% if now().hour > 19 and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_dim') %}
+        {% if not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_dim') %}
         scene.scene_boys_bedroom_dim
-        {% elif now().hour > 8 and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_bright') %}
-        scene.scene_boys_bedroom_bright
-        {% elif now().hour > 0 and not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_dim') %}
-        scene.scene_boys_bedroom_dim
-        {% elif not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_bright') %}
-        scene.scene_boys_bedroom_bright
         {% else %}
         scene.scene_boys_bedroom_off
         {% endif %}
