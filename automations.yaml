@@ -326,25 +326,6 @@
     domain: light
     entity_id: light.light_familyroom_1
     type: turn_on
-- id: '1584897263982'
-  alias: Light:Media Room:PIR:On
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.media_room
-    platform: state
-    to: 'on'
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
-  action:
-  - device_id: 0e1cca1bd65e4d5f8e5afce92b3e51ea
-    domain: light
-    entity_id: light.light_media_1
-    type: turn_on
 - id: '1584897466331'
   alias: Light:Music Room:PIR:On
   description: ''
@@ -386,26 +367,6 @@
   - device_id: db1d35248fbf4a069418535ee7ebabcd
     domain: light
     entity_id: light.light_familyroom_1
-    type: turn_off
-- id: '1584898397848'
-  alias: Light:Media Room:PIR:Off
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.media_room
-    for: 00:05:00
-    platform: state
-    to: 'off'
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
-  action:
-  - device_id: 0e1cca1bd65e4d5f8e5afce92b3e51ea
-    domain: light
-    entity_id: light.light_media_1
     type: turn_off
 - id: '1584982860133'
   alias: Light:Music Room:PIR:Off
