@@ -189,7 +189,7 @@
   - at: '13:00'
     platform: time
   condition:
-  - above: '24'
+  - above: '28'
     condition: numeric_state
     entity_id: sensor.bom_feels_like_c
   action:
@@ -429,3 +429,12 @@
     domain: light
     entity_id: light.light_alfresco_2
     type: toggle
+- id: '1587003968926'
+  alias: Scene:Study:Input
+  description: ''
+  trigger:
+  - entity_id: input_select.study_scene
+    platform: state
+  condition: []
+  action:
+  - scene: scene.scene_study_normal
