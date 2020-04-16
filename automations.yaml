@@ -437,4 +437,7 @@
     platform: state
   condition: []
   action:
-  - scene: scene.scene_study_normal
+    service: scene.turn_on
+    data_template:
+      entity_id: >
+        {{ states('input_select.study_scene') }}
