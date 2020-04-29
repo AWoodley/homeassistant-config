@@ -441,6 +441,7 @@
         {% set mapper =
           { '9763474': state_attr('media_player.imp', 'volume_level') | float + 0.1,
             '9763473': state_attr('media_player.imp', 'volume_level') | float - 0.1 } %}
+        {{ mapper[trigger.to_state.state] }}
     entity_id: media_player.imp
     service_template: >
       {% set mapper =
