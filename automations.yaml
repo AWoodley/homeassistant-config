@@ -236,27 +236,6 @@
   - data: {}
     entity_id: light.dining_room_lights,light.light_musicroom_1
     service: light.turn_off
-- id: '1582898443205'
-  alias: Alert:Adrian's Phone:Button
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763496'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763476'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763474'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763473'
-  condition: []
-  action:
-  - data:
-      message: Boy's Help Button
-    service: notify.mobile_app_adrian_s_g7_power
 - id: '1584459956003'
   alias: Switch:Kettle:Started
   description: ''
