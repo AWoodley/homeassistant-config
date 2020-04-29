@@ -447,5 +447,4 @@
         { '9763496':'media_player.media_play_pause',
           '9763474':'media_player.volume_set',
           '9763473':'media_player.volume_set'} %}
-      {% volume = media_player.imp.}
       {{ mapper[trigger.to_state.state] }}
