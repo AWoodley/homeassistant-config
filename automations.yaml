@@ -436,11 +436,16 @@
     to: '9763473'
   condition: []
   action:
-  - data: {}
+  - data_template:
+      volume_level: >
+        {% set mapper =
+          { '9763474': state_attr('media_player.imp', 'volume_level') | float + 0.1,
+            '9763473': state_attr('media_player.imp', 'volume_level') | float - 0.1 } %}
     entity_id: media_player.imp
     service_template: >
       {% set mapper =
         { '9763496':'media_player.media_play_pause',
-          '9763474':'media_player.volume_up',
-          '9763473':'media_player.volume_down'} %}
+          '9763474':'media_player.volume_set',
+          '9763473':'media_player.volume_set'} %}
+      {% volume = media_player.imp.}
       {{ mapper[trigger.to_state.state] }}
