@@ -430,7 +430,7 @@
     to: '9763496'
   condition: []
   action:
-  - data: []
+  - data: {}
     entity_id: media_player.imp
     service: media_player.media_play_pause
 - id: '1588128530550'
