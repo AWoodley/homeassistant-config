@@ -421,7 +421,7 @@
       entity_id: '{{ states(''input_select.study_scene'') }}
 
         '
-- id: '1588128530549'
+- id: '20200429123001'
   alias: Media:Imp:Play-Pause
   description: ''
   trigger:
