@@ -428,8 +428,19 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '9763496'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763494'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763493'
   condition: []
   action:
   - data: {}
     entity_id: media_player.imp
-    service: media_player.media_play_pause
+    service_template: >
+      {% set mapper =
+        { '9763496':'media_player.media_play_pause',
+          '9763494':'media_player.volume_up',
+          '9763493':'media_player.volume_down'} %}
+      {{ mapper[trigger.to_state.state] }}
