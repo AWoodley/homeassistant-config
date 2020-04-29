@@ -418,5 +418,18 @@
   action:
     service: scene.turn_on
     data_template:
-      entity_id: >
-        {{ states('input_select.study_scene') }}
+      entity_id: '{{ states(''input_select.study_scene'') }}
+
+        '
+- id: '1588128530549'
+  alias: Media:Imp:Play-Pause
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763496'
+  condition: []
+  action:
+  - data: {}
+    entity_id: media_player.imp
+    service: media_player.media_play_pause
