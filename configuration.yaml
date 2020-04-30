@@ -110,11 +110,6 @@ google_assistant:
 
 
 notify:
-  - name: a_xmpp
-    platform: xmpp
-    sender: home@na.id.au
-    password: !secret xmpp
-    recipient: a@na.id.au
   - platform: html5
     name: Push
     vapid_pub_key:
@@ -128,7 +123,16 @@ notify:
     services:
       - service: mobile_app_adrians_phone
       - service: mobile_app_nancy_s_phone
-      - service: a_xmpp
+
+
+tplink:
+  discovery: true
+  switch:
+    - host: 192.168.29.71
+    - host: 192.168.29.72
+    - host: 192.168.29.73
+    - host: 192.168.29.74
+
 
 alarm_control_panel:
   - platform: mqtt
