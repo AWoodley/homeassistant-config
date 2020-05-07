@@ -64,7 +64,15 @@ mqtt:
 
 lifx:
   light:
-    - broadcast: 192.168.29.59
+    - broadcast: 192.168.29.51 # Dining-1
+    - broadcast: 192.168.29.52 # Dining-2
+    - broadcast: 192.168.29.53 # Dining-3
+    - broadcast: 192.168.29.54 # Dining-4
+    - broadcast: 192.168.29.55 # Boys-Bedroom-1
+    - broadcast: 192.168.29.56 # Study-1
+    - broadcast: 192.168.29.57 # Passage-1
+    - broadcast: 192.168.29.58 # Passage-2
+    - broadcast: 192.168.29.59 # Entrance-1
 
 google_assistant:
   project_id: hass
