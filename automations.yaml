@@ -265,6 +265,10 @@
     device_id: 24270fe8bcce46d7a35d5929c4f467f0
     domain: switch
     entity_id: switch.switch_arlec_1
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
     type: is_on
   action:
   - data:
@@ -446,10 +450,32 @@
   condition: []
   action:
   - data_template:
-      volume_level: >
-        {% set mapper =
-          { '9763474': state_attr('media_player.imp', 'volume_level') | float + 0.1,
-            '9763473': state_attr('media_player.imp', 'volume_level') | float - 0.1 } %}
-        {{ mapper[trigger.to_state.state] }}
+      volume_level: "{% set mapper =\n  { '9763474': state_attr('media_player.imp',\
+        \ 'volume_level') | float + 0.1,\n    '9763473': state_attr('media_player.imp',\
+        \ 'volume_level') | float - 0.1 } %}\n{{ mapper[trigger.to_state.state] }}\n"
     entity_id: media_player.imp
     service: media_player.volume_set
+- id: '1589216051030'
+  alias: Switch:Boy's Heater:Off
+  description: ''
+  trigger:
+  - at: 07:30
+    platform: time
+  condition: []
+  action:
+  - device_id: ebeeda6f09d4479bb461324e79f6f2a8
+    domain: switch
+    entity_id: switch.boy_s_heater
+    type: turn_off
+- id: '1589216101517'
+  alias: Switch:Boy's Heater:On
+  description: ''
+  trigger:
+  - at: '20:00'
+    platform: time
+  condition: []
+  action:
+  - device_id: ebeeda6f09d4479bb461324e79f6f2a8
+    domain: switch
+    entity_id: switch.boy_s_heater
+    type: turn_on
