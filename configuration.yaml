@@ -252,11 +252,13 @@ switch:
     payload_off: !secret partner
 
 
-# cover:
-#   - platform: mqtt
-#     name: "Dining Room Rollershutter"
-#     command_topic: tasmota/4A78A8/cmnd/BACKLOG
-#     payload_stop: "Power3 on"
+cover:
+  - platform: mqtt
+    name: "Dining Room Rollershutter"
+    command_topic: tasmota/4A78A8/cmnd/
+    payload_open: "ShutterOpen1 1"
+    payload_close: "ShutterClose1 1"
+    payload_stop: "Power3 1"
 
 
 input_boolean:
