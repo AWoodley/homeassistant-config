@@ -255,10 +255,12 @@ switch:
 cover:
   - platform: mqtt
     name: "Dining Room Rollershutter"
-    command_topic: tasmota/4A78A8/cmnd/
+    command_topic: tasmota/4A78A8/cmnd/BACKLOG
     payload_open: "ShutterOpen1 1"
     payload_close: "ShutterClose1 1"
     payload_stop: "Power3 1"
+    position_topic: tasmota/4A78A8/stat/RESULT
+    value_template:  '{ value_json.shutter1.position }'
 
 
 input_boolean:
