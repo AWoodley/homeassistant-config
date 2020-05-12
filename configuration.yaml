@@ -259,8 +259,8 @@ cover:
     payload_open: "ShutterOpen1 1"
     payload_close: "ShutterClose1 1"
     payload_stop: "Power3 1"
-    position_topic: tasmota/4A78A8/stat/RESULT
-    value_template:  '{ value_json.Shutter1.Position }'
+    # position_topic: tasmota/4A78A8/stat/RESULT
+    # value_template:  '{ value_json.Shutter1.Position }'
 
 
 input_boolean:
