@@ -295,9 +295,9 @@ light: !include lights.yaml
 vacuum: !include vacuum.yaml
 
 media_player:
-    - platform: dlna
+    - platform: dlna_dmr
       name: Cliff
-      host: 192.168.30.35
+      url: http://192.168.30.35/dd.xml
 #   - platform: yamaha
 #     name: Yamaha Receiver
 #     host: 192.168.30.32
