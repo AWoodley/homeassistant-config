@@ -68,18 +68,39 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "light.light_masterbedroom_1"
+                                    "entity": "light.light_masterbedroom_1",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "light.toggle",
+                                        "service_data": {
+                                            "entity_id": "light.light_masterbedroom_1"
+                                        }
+                                    }
                                 },
                                 {
                                     "entity": "light.light_bedside_1",
-                                    "icon": "mdi:lamp"
+                                    "icon": "mdi:lamp",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "light.toggle",
+                                        "service_data": {
+                                            "entity_id": "light.light_bedside_1"
+                                        }
+                                    }
                                 },
                                 {
                                     "entity": "light.light_bedside_2",
-                                    "icon": "mdi:lamp"
+                                    "icon": "mdi:lamp",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "light.toggle",
+                                        "service_data": {
+                                            "entity_id": "light.light_bedside_2"
+                                        }
+                                    }
                                 }
                             ],
-                            "show_state": true,
+                            "show_state": false,
                             "title": "Master Bedroom",
                             "type": "glance"
                         },
@@ -227,7 +248,14 @@
                             "entities": [
                                 {
                                     "entity": "switch.media_centre",
-                                    "icon": "mdi:television"
+                                    "icon": "mdi:television",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.media_centre"
+                                        }
+                                    }
                                 },
                                 {
                                     "entity": "scene.scene_movie_time",
@@ -260,6 +288,10 @@
                             "entity": "media_player.volumio_imp_local",
                             "name": "Imp",
                             "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.cliff",
+                            "type": "media-control"
                         }
                     ],
                     "path": "media",
@@ -268,20 +300,6 @@
                 {
                     "badges": [],
                     "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.adrian_s_g7_power_battery_sensor"
-                                },
-                                {
-                                    "entity": "sensor.nancy_s_g7_power_battery_sensor"
-                                }
-                            ],
-                            "hours_to_show": 24,
-                            "refresh_interval": 0,
-                            "title": "Phone Batteries",
-                            "type": "history-graph"
-                        },
                         {
                             "entities": [
                                 {
@@ -300,29 +318,70 @@
                                 {
                                     "entity": "switch.switch_arlec_1",
                                     "icon": "mdi:kettle",
-                                    "name": "Kettle"
+                                    "name": "Kettle",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.switch_arlec_1"
+                                        }
+                                    }
                                 },
                                 {
                                     "entity": "switch.switch_study_1",
                                     "icon": "mdi:monitor",
-                                    "name": "Monitors"
+                                    "name": "Monitors",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.switch_study_1"
+                                        }
+                                    }
                                 },
                                 {
                                     "entity": "switch.boy_s_heater",
                                     "icon": "mdi:radiator",
-                                    "name": "Boy's Heater"
+                                    "name": "Boy's Heater",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.boy_s_heater"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "vacuum.sammy"
+                                },
+                                {
+                                    "entity": "cover.dining_room_rollershutter",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "cover.toggle",
+                                        "service_data": {
+                                            "entity_id": "cover.dining_room_rollershutter"
+                                        }
+                                    }
                                 }
                             ],
+                            "show_state": false,
                             "title": "Switches",
                             "type": "glance"
                         },
                         {
                             "entities": [
                                 {
-                                    "entity": "vacuum.sammy"
+                                    "entity": "sensor.adrian_s_g7_power_battery_sensor"
+                                },
+                                {
+                                    "entity": "sensor.nancy_s_g7_power_battery_sensor"
                                 }
                             ],
-                            "type": "entities"
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "title": "Phone Batteries",
+                            "type": "history-graph"
                         },
                         {
                             "entities": [
@@ -337,10 +396,6 @@
                                 }
                             ],
                             "type": "glance"
-                        },
-                        {
-                            "entity": "cover.dining_room_rollershutter",
-                            "type": "entity"
                         }
                     ],
                     "path": "devices",
