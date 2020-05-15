@@ -253,6 +253,7 @@ switch:
   - platform: mqtt
     name: TV
     icon: mdi:television
+    optimistic: false
     command_topic: "tasmotas/cmnd/irsend"
     payload_on: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
 
