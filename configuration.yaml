@@ -9,6 +9,8 @@ homeassistant:
   unit_system: metric
   time_zone: Australia/Perth
   name: !secret name
+  external_url: https://hass.na.id.au
+  internal_url: !secret internal_url
 
 zone:
   name: home
@@ -17,12 +19,11 @@ zone:
   radius: 70
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-http:
-  base_url: https://hass.na.id.au/
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 192.168.30.1
-    - 2001:44b8:610b:3f30::1
+#http:
+#  use_x_forwarded_for: true
+#  trusted_proxies:
+#    - 192.168.30.1
+#    - 2001:44b8:610b:3f30::1
 
 logger:
   default: warning
