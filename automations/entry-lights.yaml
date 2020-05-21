@@ -5,13 +5,27 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '3692690'
+  condition: []
+  action:
+  - data:
+      entity_id: light.entry_lights
+    service_template: >
+      {% if is_state('light.entry_lights', 'on') %}
+      light.turn_off
+      {% else %}
+      light.turn_on
+      {% endif %}
+- id: '20200514225301'
+  alias: Light:Night:Toggle
+  description: ''
+  trigger:
   - entity_id: sensor.rfb_button
     platform: state
     to: '1172996'
   condition: []
   action:
   - data:
-      entity_id: light.entry_lights
+      entity_id: light.entry_lights, light.light_musicroom_1, light.dining_room_lights, light.light_familyroom_1
     service_template: >
       {% if is_state('light.entry_lights', 'on') %}
       light.turn_off
