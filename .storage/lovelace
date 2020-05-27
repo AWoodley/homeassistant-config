@@ -248,7 +248,7 @@
                             "entities": [
                                 {
                                     "entity": "switch.media_centre",
-                                    "icon": "mdi:television",
+                                    "icon": "mdi:video-vintage",
                                     "tap_action": {
                                         "action": "call-service",
                                         "service": "switch.toggle",
@@ -265,6 +265,16 @@
                                         "service": "scene.turn_on",
                                         "service_data": {
                                             "entity_id": "scene.scene_movie_time"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "switch.tv",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.turn_on",
+                                        "service_data": {
+                                            "entity_id": "switch.tv"
                                         }
                                     }
                                 }

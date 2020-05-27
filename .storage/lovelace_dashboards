@@ -1,0 +1,16 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "lovelace_dashboard",
+                "mode": "storage",
+                "require_admin": false,
+                "show_in_sidebar": true,
+                "title": "Dashboard",
+                "url_path": "lovelace-dashboard"
+            }
+        ]
+    },
+    "key": "lovelace_dashboards",
+    "version": 1
+}
