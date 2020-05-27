@@ -108,11 +108,58 @@
                         },
                         {
                             "entities": [
-                                "sensor.bom_air_temp_c",
-                                "sensor.bom_delta_temp_c",
-                                "sensor.bom_dew_point_c"
+                                {
+                                    "entity": "switch.switch_arlec_1",
+                                    "icon": "mdi:kettle",
+                                    "name": "Kettle",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.switch_arlec_1"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "switch.switch_study_1",
+                                    "icon": "mdi:monitor",
+                                    "name": "Monitors",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.switch_study_1"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "switch.boy_s_heater",
+                                    "icon": "mdi:radiator",
+                                    "name": "Boy's Heater",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.boy_s_heater"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "vacuum.sammy"
+                                },
+                                {
+                                    "entity": "cover.dining_room_rollershutter",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "cover.toggle",
+                                        "service_data": {
+                                            "entity_id": "cover.dining_room_rollershutter"
+                                        }
+                                    }
+                                }
                             ],
-                            "title": "Devices",
+                            "show_state": false,
+                            "title": "Switches",
                             "type": "glance"
                         },
                         {
