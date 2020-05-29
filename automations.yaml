@@ -48,7 +48,6 @@
   action:
   - entity_id: script.1576604054568
     service: script.turn_on
-  - scene: scene.scene_entry_night
 - id: '1576515841194'
   alias: Dining Room Lights Off
   description: ''

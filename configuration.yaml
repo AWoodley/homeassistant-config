@@ -96,19 +96,33 @@ google_assistant:
       expose: true
     light.light_musicroom_1:
       expose: true
-    light.dinning_room_lights:
+    light.dining_room_lights:
       expose: true
     light.entry_lights:
       expose: true
-    light.lifx_mini_5386a2:
+    light.light_boys_bedroom:
       expose: true
-    light.lifx_d0_73_d5_3e_87_c9:
+    light.study_lights:
+      expose: true
+    light.back_passage_lights:
+      expose: true
+    light.alfresco_light_1:
+      expose: true
+    light.light_alfresco_2:
+      expose: true
+    light.light_backverandah_1:
       expose: true
     switch.media_centre:
+      expose: true
+    switch.boy_s_heater:
+      expose: true
+    switch.switch_arlec_1:
       expose: true
     script.1575907804253:
       expose: true
     script.1575974067886:
+      expose: true
+    switch.tv:
       expose: true
     vacuum.sammy:
       expose: true
