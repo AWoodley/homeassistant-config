@@ -880,7 +880,7 @@
   name: Scene:Whole-House:Dim
   entities:
     light.lifx_d0_73_d5_37_e4_e0:
-      brightness: 55
+      brightness: 50
       color_temp: 285
       effect_list:
       - effect_colorloop
@@ -892,7 +892,7 @@
       state: 'on'
       supported_features: 55
     light.lifx_d0_73_d5_37_e5_cd:
-      brightness: 53
+      brightness: 50
       color_temp: 285
       effect_list:
       - effect_colorloop
@@ -904,7 +904,7 @@
       state: 'on'
       supported_features: 55
     light.lifx_d0_73_d5_38_15_d3:
-      brightness: 56
+      brightness: 50
       color_temp: 285
       effect_list:
       - effect_colorloop
@@ -916,8 +916,8 @@
       state: 'on'
       supported_features: 55
     light.lifx_d0_73_d5_38_46_87:
-      brightness: 55
-      color_temp: 285
+      brightness: 50
+      color_temp: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
@@ -928,7 +928,7 @@
       state: 'on'
       supported_features: 55
     light.light_boys_bedroom:
-      brightness: 49
+      brightness: 50
       color_temp: 400
       effect_list:
       - effect_colorloop
@@ -952,24 +952,24 @@
       state: 'on'
       supported_features: 0
     light.light_familyroom_1:
-      brightness: 102
-      color_temp: 500
+      brightness: 100
+      color_temp: 400
       friendly_name: Family Room Flood
       max_mireds: 500
       min_mireds: 153
       state: 'on'
       supported_features: 3
     light.light_musicroom_1:
-      brightness: 112
-      color_temp: 490
+      brightness: 100
+      color_temp: 400
       friendly_name: Music Room
       max_mireds: 500
       min_mireds: 153
       state: 'on'
       supported_features: 3
     light.passage1:
-      brightness: 29
-      color_temp: 326
+      brightness: 25
+      color_temp: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
@@ -980,8 +980,8 @@
       state: 'on'
       supported_features: 55
     light.passage2:
-      brightness: 26
-      color_temp: 326
+      brightness: 25
+      color_temp: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
