@@ -876,3 +876,118 @@
     switch.switch_study_1:
       friendly_name: Switch-Study-1
       state: 'on'
+- id: '1591098339633'
+  name: Scene:Whole-House:Dim
+  entities:
+    light.lifx_d0_73_d5_37_e4_e0:
+      brightness: 55
+      color_temp: 285
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Light-DiningRoom-3
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.lifx_d0_73_d5_37_e5_cd:
+      brightness: 53
+      color_temp: 285
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Light-DiningRoom-4
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.lifx_d0_73_d5_38_15_d3:
+      brightness: 56
+      color_temp: 285
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Light-DiningRoom-2
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.lifx_d0_73_d5_38_46_87:
+      brightness: 55
+      color_temp: 285
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Light-DiningRoom-1
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.light_boys_bedroom:
+      brightness: 49
+      color_temp: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Boy's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.light_entry_1:
+      friendly_name: Light-Entry-1
+      state: 'off'
+      supported_features: 0
+    light.light_entry_2:
+      friendly_name: Light Entry 2
+      state: 'off'
+      supported_features: 0
+    light.light_entry_3:
+      friendly_name: Light-Entry-3
+      state: 'on'
+      supported_features: 0
+    light.light_familyroom_1:
+      brightness: 102
+      color_temp: 500
+      friendly_name: Family Room Flood
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+    light.light_musicroom_1:
+      brightness: 112
+      color_temp: 490
+      friendly_name: Music Room
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 3
+    light.passage1:
+      brightness: 29
+      color_temp: 326
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Passage Light 2
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.passage2:
+      brightness: 26
+      color_temp: 326
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Passage Light 1
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
