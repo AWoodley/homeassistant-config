@@ -13,11 +13,11 @@
       entity_id: alarm_control_panel.mqtt_alarm
     service: alarm_control_panel.alarm_arm_away
   - data:
-      message: Arming the alarm.
-    service: tts.google_translate_say
+      entity_id: scene.scene_away
+    service: scene.turn_on
   - data:
       cycles: 3
-      entity_id: light.lifx_d0_73_d5_3e_87_c9
+      entity_id: light.light_frontdoor_1
       mode: strobe
       period: 1
     service: lifx.effect_pulse
@@ -63,7 +63,7 @@
   - data:
       brightness: 255
       cycles: 3
-      entity_id: light.lifx_d0_73_d5_3e_87_c9
+      entity_id: light.light_frontdoor_1
       mode: strobe
       period: 1
     service: lifx.effect_pulse

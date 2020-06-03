@@ -18,13 +18,39 @@
       entity_id: >
         {% if is_state('light.master_bedroom_lights', 'on') %}
         scene.scene_master_bedroom_off
-        {% elif now().hour > 21 %}
+        {% elif now().hour > 21 and is_state('person.nancy', 'home') %}
         scene.scene_master_bedroom_night
         {% elif now().hour > 20 %}
         scene.scene_master_bedroom_evening
         {% elif now().hour < 5 %}
         scene.scene_master_bedroom_night
         {% elif now().hour < 7 %}
+        scene.scene_master_bedroom_evening
+        {% else %}
+        scene.scene_master_bedroom_day
+        {% endif %}
+    service: scene.turn_on
+- id: '2020031801151'
+  alias: Light:Master Bedroom:On:Door
+  description: 'Adjust brightness of Master Bedroom lights based on time of day, triggered by the door sensor'
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '12318220'
+  condition:
+    - condition: state
+      entity_id: light.master_bedroom_lights
+      state: 'off'
+  action:
+  - data_template:
+      entity_id: >
+        {% if now().hour > 21 and is_state('person.nancy', 'home') %}
+        scene.scene_master_bedroom_night
+        {% elif now().hour > 20 %}
+        scene.scene_master_bedroom_evening
+        {% elif now().hour < 7 %}
+        scene.scene_master_bedroom_night
+        {% elif now().hour < 9 %}
         scene.scene_master_bedroom_evening
         {% else %}
         scene.scene_master_bedroom_day

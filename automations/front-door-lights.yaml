@@ -26,7 +26,7 @@
   alias: Light:Front Door:Off:Timer
   description: ''
   trigger:
-  - entity_id: light.lifx_d0_73_d5_3e_87_c9
+  - entity_id: light.light_frontdoor_1
     for: '600'
     from: 'off'
     platform: state
@@ -34,7 +34,7 @@
   condition: []
   action:
     data:
-      entity_id: light.lifx_d0_73_d5_3e_87_c9
+      entity_id: light.light_frontdoor_1
     service: light.turn_off
 - id: '1575220469153'
   alias: Light:Front Door:On:Door
@@ -53,7 +53,7 @@
       condition: sun
   action:
   - data:
-      entity_id: light.lifx_d0_73_d5_3e_87_c9
+      entity_id: light.light_frontdoor_1
     service: light.turn_on
 - id: '1575382143244'
   alias: Light:Front Door:Toggle
@@ -65,5 +65,5 @@
   condition: []
   action:
   - data:
-      entity_id: light.lifx_d0_73_d5_3e_87_c9
+      entity_id: light.light_frontdoor_1
     service: light.toggle

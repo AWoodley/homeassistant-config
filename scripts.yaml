@@ -164,3 +164,14 @@ create_every_automation_group:
         }}
 
         '
+#'1585108924524':
+#  alias: Script:Disco Lights
+#  sequence:
+#  - data_template:
+#      brightness: 255
+#      change: 35
+#      entity_id:
+#        '{{ entity }}'
+#      period: 1
+#      power_on: true
+#    service: lifx.effect_colorloop

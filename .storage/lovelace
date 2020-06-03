@@ -1,0 +1,419 @@
+{
+    "data": {
+        "config": {
+            "title": "Home",
+            "views": [
+                {
+                    "badges": [
+                        {
+                            "entity": "binary_sensor.updater"
+                        },
+                        {
+                            "entity": "person.adrian"
+                        },
+                        {
+                            "entity": "person.nancy"
+                        },
+                        {
+                            "entity": "sensor.partner"
+                        },
+                        {
+                            "entity": "sun.sun"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "entity": "alarm_control_panel.mqtt_alarm",
+                            "name": "Alarm",
+                            "states": [
+                                "arm_away"
+                            ],
+                            "type": "alarm-panel"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.front_door"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.laundry_garage_door"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "sensor.bom_forecast_perth_0",
+                            "type": "weather-forecast"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.active"
+                                }
+                            ],
+                            "type": "glance"
+                        }
+                    ],
+                    "path": "default_view",
+                    "title": "Home"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.light_masterbedroom_1",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "light.toggle",
+                                        "service_data": {
+                                            "entity_id": "light.light_masterbedroom_1"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "light.light_bedside_1",
+                                    "icon": "mdi:lamp",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "light.toggle",
+                                        "service_data": {
+                                            "entity_id": "light.light_bedside_1"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "light.light_bedside_2",
+                                    "icon": "mdi:lamp",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "light.toggle",
+                                        "service_data": {
+                                            "entity_id": "light.light_bedside_2"
+                                        }
+                                    }
+                                }
+                            ],
+                            "show_state": false,
+                            "title": "Master Bedroom",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.lifx_d0_73_d5_38_46_87"
+                                },
+                                {
+                                    "entity": "light.lifx_d0_73_d5_38_15_d3"
+                                },
+                                {
+                                    "entity": "light.lifx_d0_73_d5_37_e4_e0"
+                                },
+                                {
+                                    "entity": "light.lifx_d0_73_d5_37_e5_cd"
+                                }
+                            ],
+                            "title": "Dining Room",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.light_media_3"
+                                },
+                                {
+                                    "entity": "light.light_media_1"
+                                },
+                                {
+                                    "entity": "light.light_media_2"
+                                }
+                            ],
+                            "title": "Media Room",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.light_study_1"
+                                },
+                                {
+                                    "entity": "light.light_study_2"
+                                },
+                                {
+                                    "entity": "light.light_study_3"
+                                },
+                                {
+                                    "entity": "input_select.study_scene"
+                                }
+                            ],
+                            "title": "Study",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.light_boys_bedroom"
+                                },
+                                {
+                                    "entity": "input_select.boys_bedroom_scene"
+                                }
+                            ],
+                            "title": "Boys Bedroom",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.passage1"
+                                },
+                                {
+                                    "entity": "light.passage2"
+                                }
+                            ],
+                            "title": "Passage Lights",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.light_entry_1"
+                                },
+                                {
+                                    "entity": "light.light_entry_2"
+                                },
+                                {
+                                    "entity": "light.light_entry_3"
+                                },
+                                {
+                                    "entity": "light.light_frontdoor_1"
+                                }
+                            ],
+                            "title": "Entry Lights",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.light_alfresco_2"
+                                },
+                                {
+                                    "entity": "light.alfresco_light_1"
+                                },
+                                {
+                                    "entity": "light.light_backverandah_1"
+                                }
+                            ],
+                            "title": "Alfresco",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "input_select.study_scene",
+                            "hold_action": {
+                                "action": "call-service",
+                                "service": "input_select.select_option",
+                                "service_data": {
+                                    "entity_id": "input_select.study_scene",
+                                    "option": "scene_study_bright"
+                                }
+                            },
+                            "icon": "mdi:lightbulb-group-outline",
+                            "name": "Study Lights",
+                            "show_icon": true,
+                            "show_name": true,
+                            "tap_action": {
+                                "action": "call-service",
+                                "service": "input_select.select_option",
+                                "service_data": {
+                                    "entity_id": "input_select.study_scene",
+                                    "option": "scene_study_normal"
+                                }
+                            },
+                            "type": "button"
+                        }
+                    ],
+                    "icon": "",
+                    "path": "lights",
+                    "title": "Lights"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.media_centre",
+                                    "icon": "mdi:video-vintage",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.media_centre"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "scene.scene_movie_time",
+                                    "icon": "mdi:movie-open",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "scene.turn_on",
+                                        "service_data": {
+                                            "entity_id": "scene.scene_movie_time"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "switch.tv",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.turn_on",
+                                        "service_data": {
+                                            "entity_id": "switch.tv"
+                                        }
+                                    }
+                                }
+                            ],
+                            "show_state": false,
+                            "type": "glance"
+                        },
+                        {
+                            "entity": "media_player.glod",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.kitchen_speaker",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.googlehome4026",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.volumio_imp_local",
+                            "name": "Imp",
+                            "type": "media-control"
+                        },
+                        {
+                            "entity": "media_player.cliff",
+                            "type": "media-control"
+                        }
+                    ],
+                    "path": "media",
+                    "title": "Media"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.adrian_s_phone_charger",
+                                    "icon": "mdi:cellphone-dock"
+                                },
+                                {
+                                    "entity": "switch.nancy_s_phone_charger",
+                                    "icon": "mdi:cellphone-dock"
+                                }
+                            ],
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.switch_arlec_1",
+                                    "icon": "mdi:kettle",
+                                    "name": "Kettle",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.switch_arlec_1"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "switch.switch_study_1",
+                                    "icon": "mdi:monitor",
+                                    "name": "Monitors",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.switch_study_1"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "switch.boy_s_heater",
+                                    "icon": "mdi:radiator",
+                                    "name": "Boy's Heater",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.boy_s_heater"
+                                        }
+                                    }
+                                },
+                                {
+                                    "entity": "vacuum.sammy"
+                                },
+                                {
+                                    "entity": "cover.dining_room_rollershutter",
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "cover.toggle",
+                                        "service_data": {
+                                            "entity_id": "cover.dining_room_rollershutter"
+                                        }
+                                    }
+                                }
+                            ],
+                            "show_state": false,
+                            "title": "Switches",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.adrian_s_g7_power_battery_sensor"
+                                },
+                                {
+                                    "entity": "sensor.nancy_s_g7_power_battery_sensor"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "title": "Phone Batteries",
+                            "type": "history-graph"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.gatewaysrfb"
+                                },
+                                {
+                                    "entity": "sensor.gatewaysrfb_2"
+                                },
+                                {
+                                    "entity": "sensor.gatewaysrfb_3"
+                                }
+                            ],
+                            "type": "glance"
+                        }
+                    ],
+                    "path": "devices",
+                    "title": "Devices"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}

@@ -9,6 +9,8 @@ homeassistant:
   unit_system: metric
   time_zone: Australia/Perth
   name: !secret name
+  external_url: https://hass.na.id.au
+  internal_url: !secret internal_url
 
 zone:
   name: home
@@ -17,12 +19,11 @@ zone:
   radius: 70
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-http:
-  base_url: https://hass.na.id.au/
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 192.168.30.1
-    - 2001:44b8:610b:3f30::1
+#http:
+#  use_x_forwarded_for: true
+#  trusted_proxies:
+#    - 192.168.30.1
+#    - 2001:44b8:610b:3f30::1
 
 logger:
   default: warning
@@ -33,6 +34,7 @@ group: !include groups.yaml
 automation: !include_dir_merge_list automations
 script: !include scripts.yaml
 scene: !include scenes.yaml
+timer: !include timer.yaml
 
 # Text to speech
 tts:
@@ -61,6 +63,18 @@ mqtt:
     payload: !secret partner
     retain: 'false'
 
+lifx:
+  light:
+    - broadcast: 192.168.29.51 # Dining-1
+    - broadcast: 192.168.29.52 # Dining-2
+    - broadcast: 192.168.29.53 # Dining-3
+    - broadcast: 192.168.29.54 # Dining-4
+    - broadcast: 192.168.29.55 # Boys-Bedroom-1
+    - broadcast: 192.168.29.56 # Study-1
+    - broadcast: 192.168.29.57 # Passage-1
+    - broadcast: 192.168.29.58 # Passage-2
+    - broadcast: 192.168.29.59 # Entrance-1
+
 google_assistant:
   project_id: hass
   service_account: !include hass-870815de073b.json
@@ -82,36 +96,47 @@ google_assistant:
       expose: true
     light.light_musicroom_1:
       expose: true
-    light.dinning_room_lights:
+    light.dining_room_lights:
       expose: true
     light.entry_lights:
       expose: true
-    light.lifx_mini_5386a2:
+    light.light_boys_bedroom:
       expose: true
-    light.lifx_d0_73_d5_3e_87_c9:
+    light.study_lights:
+      expose: true
+    light.back_passage_lights:
+      expose: true
+    light.alfresco_light_1:
+      expose: true
+    light.light_alfresco_2:
+      expose: true
+    light.light_backverandah_1:
       expose: true
     switch.media_centre:
+      expose: true
+    switch.boy_s_heater:
+      expose: true
+    switch.switch_arlec_1:
       expose: true
     script.1575907804253:
       expose: true
     script.1575974067886:
+      expose: true
+    switch.tv:
       expose: true
     vacuum.sammy:
       expose: true
     cover.dining_room_rollershutter:
       expose: true
 
-calendar:
-  - platform: caldav
-    url: https://calendar.google.com/calendar/ical/rd12cc9q5lpepgi9ob36pu5k94%40group.calendar.google.com/public/basic.ics
+# calendar:
+#   - platform: caldav
+#     url: "https://calendar.google.com/calendar/ical/rd12cc9q5lpepgi9ob36pu5k94%40group.calendar.google.com/public/basic.ics"
+
+
 
 
 notify:
-  - name: a_xmpp
-    platform: xmpp
-    sender: home@na.id.au
-    password: !secret xmpp
-    recipient: a@na.id.au
   - platform: html5
     name: Push
     vapid_pub_key:
@@ -125,7 +150,16 @@ notify:
     services:
       - service: mobile_app_adrians_phone
       - service: mobile_app_nancy_s_phone
-      - service: a_xmpp
+
+
+tplink:
+  discovery: true
+  switch:
+    - host: 192.168.29.71
+    - host: 192.168.29.72
+    - host: 192.168.29.73
+    - host: 192.168.29.74
+
 
 alarm_control_panel:
   - platform: mqtt
@@ -140,6 +174,22 @@ binary_sensor:
     name: "Front Door"
     device_class: door
   - platform: mqtt
+    state_topic: "home/alarm/zones/1"
+    name: "Media Room"
+    device_class: motion
+  - platform: mqtt
+    state_topic: "home/alarm/zones/2"
+    name: "Family Room"
+    device_class: motion
+  - platform: mqtt
+    state_topic: "home/alarm/zones/3"
+    name: "Back Passage"
+    device_class: motion
+  - platform: mqtt
+    state_topic: "home/alarm/zones/4"
+    name: "Study"
+    device_class: motion
+  - platform: mqtt
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
@@ -152,6 +202,31 @@ binary_sensor:
   #     23: Bedroom Light
 
 sensor:
+  - platform: bom
+    station: IDW60901.94615
+    monitored_conditions:
+      - air_temp
+      - delta_t
+      - dewpt
+      - apparent_t
+      - rel_hum
+      - wind_dir
+      - gust_kmh
+      - wind_spd_kmh
+  - platform: bom_forecast
+    product_id:  IDW12300
+    name: Perth
+    forecast_days: 6
+    rest_of_today: True
+    friendly: True
+    friendly_state_format: '{max}, {summary}'
+    monitored_conditions:
+      - 'max'
+      - 'min'
+      - 'chance_of_rain'
+      - 'possible_rainfall'
+      - 'summary'
+      - 'detailed_summary'
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
@@ -159,11 +234,16 @@ sensor:
     qos: 1
     expire_after: 1
   - platform: mqtt
-    state_topic: "tele/tasmota/+/RESULT"
+    state_topic: "tasmota/IR/+/tele/RESULT"
     name: 'IR Button'
-    value_template: '{{value_json.IrReceived}}'
+    value_template: '{{value_json.IrReceived.Data}}'
     qos: 1
     expire_after: 1
+  - platform: mqtt
+    state_topic: "tasmota/IR/+/tele/RESULT"
+    name: 'IR Last'
+    value_template: '{{value_json.IrReceived.Data}}'
+    qos: 1
   - platform: mqtt
     state_topic: "home/hass/active"
     name: partner
@@ -181,15 +261,25 @@ switch:
     name: Active
     payload_on: !secret hostname
     payload_off: !secret partner
+  - platform: mqtt
+    name: TV
+    icon: mdi:television
+    optimistic: false
+    command_topic: "tasmotas/cmnd/irsend"
+    payload_on: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
+
+
 
 
 cover:
   - platform: mqtt
     name: "Dining Room Rollershutter"
     command_topic: tasmota/4A78A8/cmnd/BACKLOG
-    payload_open: "Power1 on"
-    payload_stop: "Power2 on"
-    payload_close: "Power3 on"
+    payload_open: "ShutterOpen1 1"
+    payload_close: "ShutterClose1 1"
+    payload_stop: "Power3 1"
+    # position_topic: tasmota/4A78A8/stat/RESULT
+    # value_template:  '{ value_json.Shutter1.Position }'
 
 
 input_boolean:
@@ -199,12 +289,34 @@ input_boolean:
 # States:
 # 0 - Christmas Lights Disabled
 # 1 - Christmas Lights Running
-    
+
+input_select:
+  study_scene:
+    name: Currently Active Scene for Study
+    options:
+      - unknown
+      - scene.scene_study_off
+      - scene.scene_study_normal
+      - scene.scene_study_bright
+    initial: unknown
+  boys_bedroom_scene:
+    name: Currently Active Scene for Boy's Bedroom
+    options:
+      - unknown
+      - scene.scene_boys_bedroom_off
+      - scene.scene_boys_bedroom_dim
+      - scene.scene_boys_bedroom_bright
+      - scene.scene_boys_bedroom_disco
+    initial: unknown
+
 light: !include lights.yaml
 
 vacuum: !include vacuum.yaml
 
-# media_player:
+media_player:
+    - platform: dlna_dmr
+      name: Cliff
+      url: http://192.168.30.35/dd.xml
 #   - platform: yamaha
 #     name: Yamaha Receiver
 #     host: 192.168.30.32

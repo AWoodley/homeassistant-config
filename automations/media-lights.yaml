@@ -1,15 +1,11 @@
 - id: '1575815204559'
-  alias: Light:Media Light Stand:Toggle
+  alias: Light:Media Room Lights:Centre-Off
   description: ''
   trigger:
     - platform: state
       entity_id: switch.media_centre
       from: 'on'
       to: 'off'
-    - platform: state
-      entity_id: switch.media_centre
-      from: 'off'
-      to: 'on'
   condition:
   - condition: or
     conditions:
@@ -18,14 +14,30 @@
     - after: sunset
       condition: sun
   action:
+  - data:
+      entity_id: light.light_media_3
+    service: light.turn_on
+- id: '2020032913141'
+  alias: Light:Media Room Lights:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1944754'
+  action:
     service_template: >
-      {% if trigger.to_state.state == "on" %}
-      light.turn_on
-      {% elif trigger.to_state.state == "off" %}
+      {% if is_state('light.media_room_lights', 'on') %}
       light.turn_off
+      {% else %}
+      light.turn_on
       {% endif %}
-    data:
-      entity_id: light.light_media_1
+    data_template:
+      entity_id: >
+        {% if is_state('light.media_room_lights', 'on') %}
+        light.media_room_lights
+        {% else %}
+        light.light_media_3
+        {% endif %}
 - id: '1575815268208'
   alias: Light:Media Reading Light:Toggle
   description: ''
@@ -37,6 +49,17 @@
   action:
   - data:
       entity_id: light.light_media_2
+    service: light.toggle
+- id: '2020032922141'
+  alias: Light:Media Light Stand:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '11532968'
+  action:
+  - data:
+      entity_id: light.light_media_1
     service: light.toggle
 - id: '1575815695650'
   alias: Light:Media:On:Pause/Stop
@@ -79,3 +102,43 @@
   - data:
       entity_id: light.media_room_lights
     service: light.turn_off
+- id: '1580921810634'
+  alias: Switch:Media Centre:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0xFE800AF5' # Yamaha Receiver remote Aux Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x40040D00BCB1' # Panasonic TV Remote Aux Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x40040190CB5A' # Panasonic TV Remote Aux Power alternate
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x140A' # Cambridge Bluray Remote Aux Power
+  condition: []
+  action:
+  - entity_id: switch.media_centre
+    service: switch.toggle
+- id: '2020032901131'
+  alias: Switch:Media Centre:IR
+  description: ''
+  trigger:
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x40040100BCBD' # Panasonic TV Remote Main Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x7E8154AB' # Yamaha Receiver Power Main Power
+  - entity_id: sensor.ir_button
+    platform: state
+    to: '0x926D20DF' # Cambridge Bluray Power Main Power
+  condition:
+    - condition: state
+      entity_id: switch.media_centre
+      state: 'off'
+  action:
+  - entity_id: switch.media_centre
+    service: switch.turn_on

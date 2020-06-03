@@ -1,0 +1,34 @@
+- id: '2020032501'
+  alias: Light:Study:Normal
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1153924'
+  condition: []
+  action:
+  - data_template:
+      entity_id: >
+        {% if is_state('input_select.study_scene', 'scene.scene_study_normal') %}
+        scene.scene_study_off
+        {% else %}
+        scene.scene_study_normal
+        {% endif %}
+    service: scene.turn_on
+- id: '2020032502'
+  alias: Light:Study:Bright
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1153922'
+  condition: []
+  action:
+  - data_template:
+      entity_id: >
+        {% if is_state('input_select.study_scene', 'scene.scene_study_bright') %}
+        scene.scene_study_off
+        {% else %}
+        scene.scene_study_bright
+        {% endif %}
+    service: scene.turn_on
