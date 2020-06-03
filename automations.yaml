@@ -121,7 +121,7 @@
   alias: Switch:Nancy's Phone Charger:Turn On
   description: ''
   trigger:
-  - at: 05:30:00
+  - at: 03:30:00
     platform: time
   - below: '35'
     entity_id: sensor.nancy_s_g7_power_battery_sensor
@@ -319,6 +319,9 @@
       condition: sun
     - after: sunset
       condition: sun
+  - condition: state
+    entity_id: input_boolean.music_room_pir
+    state: 'on'
   action:
   - device_id: 336224c42a8e49f5b7e4bc18afdf8739
     domain: light
@@ -362,6 +365,9 @@
       condition: sun
     - after: sunset
       condition: sun
+  - condition: state
+    entity_id: input_boolean.music_room_pir
+    state: 'on'
   action:
   - device_id: 336224c42a8e49f5b7e4bc18afdf8739
     domain: light
@@ -393,7 +399,10 @@
     for: 00:02:00
     platform: state
     to: 'off'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: input_boolean.back_passage_pir
+    state: 'on'
   action:
   - data: {}
     entity_id: light.back_passage_lights
