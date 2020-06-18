@@ -267,8 +267,22 @@ switch:
     optimistic: false
     command_topic: "tasmotas/cmnd/irsend"
     payload_on: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
-
-
+  - platform: flux
+    lights:
+      - light.light_familyroom_1
+      - light.light_musicroom_1
+      - light.light_study_1
+      - light.light_study_2
+      - light.light_study_3
+      - light.passage1
+      - light.passage2
+    name: Fluxer
+    start_time: '7:00'
+    stop_time: '23:00'
+    start_colortemp: 4000
+    sunset_colortemp: 3000
+    stop_colortemp: 1900
+    mode: mired
 
 
 cover:
