@@ -525,18 +525,12 @@
     switch.rollershutter_dining_down:
       friendly_name: Rollershutter-Dining-Down
       state: 'on'
-    switch.rollershutter_dining_stop:
-      friendly_name: Rollershutter-Dining-Stop
-      state: 'off'
-    switch.rollershutter_dining_up:
-      friendly_name: Rollershutter-Dining-Up
-      state: 'off'
     switch.switch_arlec_1:
       friendly_name: Switch-Kettle-1
       state: 'off'
     switch.switch_study_1:
       friendly_name: Switch-Study-1
-      state: 'on'
+      state: 'off'
 - id: '1585885759447'
   name: Scene:Entry:Night
   entities:
