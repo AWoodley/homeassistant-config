@@ -30,6 +30,11 @@ logger:
 
 config:
 
+recorder:
+  purge_keep_days: 5
+  db_url: !secret postgresql
+
+
 group: !include groups.yaml
 automation: !include_dir_merge_list automations
 script: !include scripts.yaml
@@ -274,16 +279,15 @@ switch:
       - light.light_familyroom_1
       - light.light_musicroom_1
       - light.light_study_1
-      - light.light_study_2
-      - light.light_study_3
-      - light.passage1
-      - light.passage2
+      - light.back_passage_lights
+      - light.dining_room_lights
     name: Fluxer
     start_time: '7:00'
-    stop_time: '23:00'
+    stop_time: '20:00'
     start_colortemp: 6500
     sunset_colortemp: 3030
     stop_colortemp: 2000
+    disable_brightness_adjust: true
     mode: mired
 
 
