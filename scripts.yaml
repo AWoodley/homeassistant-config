@@ -164,6 +164,37 @@ create_every_automation_group:
         }}
 
         '
+'20200625150601':
+  alias: Party Lights
+  sequence:
+  - data_template:
+      entity_id: light.lifx_d0_73_d5_38_46_87
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 35
+      power_on: true
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.lifx_d0_73_d5_38_15_d3
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 35
+      power_on: true
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.lifx_d0_73_d5_37_e4_e0
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 35
+      power_on: true
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.lifx_d0_73_d5_37_e5_cd
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 35
+      power_on: true
+    service: lifx.effect_colorloop
 #'1585108924524':
 #  alias: Script:Disco Lights
 #  sequence:
