@@ -520,9 +520,12 @@
       friendly_name: Media Centre
       state: 'off'
 <<<<<<< HEAD
+<<<<<<< HEAD
     switch.rollershutter_dining_down:
       friendly_name: Rollershutter-Dining-Down
       state: 'on'
+=======
+>>>>>>> 3acd170... More local updates to be merged
 =======
 >>>>>>> 3acd170... More local updates to be merged
     switch.switch_arlec_1:
