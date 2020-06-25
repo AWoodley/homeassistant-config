@@ -122,6 +122,8 @@ google_assistant:
       expose: true
     script.1575974067886:
       expose: true
+    script.20200625150601:
+      expose: true
     switch.tv:
       expose: true
     vacuum.sammy:
