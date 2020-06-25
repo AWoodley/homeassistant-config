@@ -364,7 +364,7 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Dining Room 3
+      friendly_name: Light-DiningRoom-3
       max_mireds: 400
       min_mireds: 111
       state: 'off'
@@ -374,7 +374,7 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Dining Room 4
+      friendly_name: Light-DiningRoom-4
       max_mireds: 400
       min_mireds: 111
       state: 'off'
@@ -384,7 +384,7 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Dining Room 2
+      friendly_name: Light-DiningRoom-2
       max_mireds: 400
       min_mireds: 111
       state: 'off'
@@ -394,11 +394,10 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Dining Room 1
+      friendly_name: Light-DiningRoom-1
       max_mireds: 400
       min_mireds: 111
-      restored: true
-      state: unavailable
+      state: 'off'
       supported_features: 55
     light.light_alfresco_2:
       friendly_name: Alfresco Lights
@@ -431,15 +430,15 @@
       state: 'off'
       supported_features: 55
     light.light_entry_1:
-      friendly_name: Entry 1
+      friendly_name: Light-Entry-1
       state: 'off'
       supported_features: 0
     light.light_entry_2:
-      friendly_name: Entry 2
+      friendly_name: Light Entry 2
       state: 'off'
       supported_features: 0
     light.light_entry_3:
-      friendly_name: Entry 3
+      friendly_name: Light-Entry-3
       state: 'off'
       supported_features: 0
     light.light_familyroom_1:
@@ -469,7 +468,7 @@
       state: 'off'
       supported_features: 0
     light.light_musicroom_1:
-      friendly_name: Music Room
+      friendly_name: Light-MusicRoom-1
       max_mireds: 500
       min_mireds: 153
       state: 'off'
@@ -478,7 +477,7 @@
       effect_list:
       - effect_pulse
       - effect_stop
-      friendly_name: Light-Study-1
+      friendly_name: Study Light 1
       max_mireds: 666
       min_mireds: 250
       state: 'off'
@@ -494,10 +493,9 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Light-Passage-2
+      friendly_name: Passage Light 2
       max_mireds: 400
       min_mireds: 111
-      restored: true
       state: unavailable
       supported_features: 55
     light.passage2:
@@ -505,11 +503,10 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Light-Passage-1
+      friendly_name: Passage Light 1
       max_mireds: 400
       min_mireds: 111
-      restored: true
-      state: unavailable
+      state: 'off'
       supported_features: 55
     media_player.googlehome4026:
       friendly_name: Master Bedroom speaker
@@ -522,9 +519,12 @@
     switch.media_centre:
       friendly_name: Media Centre
       state: 'off'
+<<<<<<< HEAD
     switch.rollershutter_dining_down:
       friendly_name: Rollershutter-Dining-Down
       state: 'on'
+=======
+>>>>>>> 3acd170... More local updates to be merged
     switch.switch_arlec_1:
       friendly_name: Switch-Kettle-1
       state: 'off'

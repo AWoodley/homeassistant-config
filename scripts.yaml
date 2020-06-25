@@ -167,6 +167,9 @@ create_every_automation_group:
 '20200625150601':
   alias: Party Lights
   sequence:
+  - data:
+      entity_id: switch.fluxer
+    service: switch.turn_off
   - data_template:
       entity_id: light.lifx_d0_73_d5_38_46_87
       brightness: 255
