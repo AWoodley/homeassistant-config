@@ -33,6 +33,14 @@ config:
 recorder:
   purge_keep_days: 5
   db_url: !secret postgresql
+  exclude:
+    entities:
+      - binary_sensor.back_passage
+      - binary_sensor.family_room
+      - binary_sensor.laundry_garage_door
+      - binary_sensor.light_media_3
+      - binary_sensor.media_room
+      - binary_sensor.study
 
 
 group: !include groups.yaml
