@@ -11,6 +11,7 @@
     service: script.create_every_automation_group
   - data: {}
     entity_id: group.every_automation
+    stop_actions: no
     service: automation.turn_off
   - data: {}
     entity_id: automation.hass_active
