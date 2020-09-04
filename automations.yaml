@@ -10,10 +10,12 @@
   - entity_id: input_boolean.christmas_lights_state
     service: input_boolean.turn_off
   - entity_id: light.dining_room_lights
-    service_template: '{% if is_state(''light.dining_room_lights'', ''on'') %} light.turn_off
-      {% else %} light.turn_on {% endif %}
-
-      '
+    service_template: >
+      {% if is_state('light.dining_room_lights', 'on') %}
+      light.turn_off
+      {% else %}
+      light.turn_on
+      {% endif %}
   - service: lifx.set_state
     entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
     data:
@@ -65,24 +67,13 @@
   - service: light.turn_off
     data:
       entity_id: light.dining_room_lights
-- id: '1577291453719'
-  alias: Light:Family Room Flood:Toggle
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1712146'
-  condition: []
-  action:
-  - entity_id: light.light_familyroom_1
-    service: light.toggle
 - id: '1580492573046'
   alias: Switch:Adrian's Phone Charger:Turn On
   description: ''
   trigger:
   - at: 06:00:00
     platform: time
-  - below: '35'
+  - below: 35
     entity_id: sensor.adrian_s_g7_power_battery_sensor
     platform: numeric_state
   condition: []
@@ -93,7 +84,7 @@
   alias: Switch:Adrian's Phone Charger:Turn Off
   description: ''
   trigger:
-  - above: '80'
+  - above: 80
     entity_id: sensor.adrian_s_g7_power_battery_sensor
     platform: numeric_state
   condition:
@@ -107,7 +98,7 @@
   alias: Switch:Nancy's Phone Charger:Turn Off
   description: ''
   trigger:
-  - above: '85'
+  - above: 85
     entity_id: sensor.nancy_s_g7_power_battery_sensor
     platform: numeric_state
   condition:
@@ -123,7 +114,7 @@
   trigger:
   - at: 03:30:00
     platform: time
-  - below: '35'
+  - below: 35
     entity_id: sensor.nancy_s_g7_power_battery_sensor
     platform: numeric_state
   condition: []
@@ -164,7 +155,7 @@
   - event: sunrise
     platform: sun
   condition:
-  - above: '18'
+  - above: 18
     condition: numeric_state
     entity_id: sensor.bom_air_temp_c
   action:
@@ -177,10 +168,10 @@
   alias: Rollershutter:Dining:Afternoon
   description: ''
   trigger:
-  - at: '13:00'
+  - at: '13:00:00'
     platform: time
   condition:
-  - above: '28'
+  - above: 28
     condition: numeric_state
     entity_id: sensor.bom_feels_like_c
   action:
@@ -190,7 +181,7 @@
   alias: Rollershutter:Dining:Dusk
   description: ''
   trigger:
-  - at: '15:00'
+  - at: '15:00:00'
     platform: time
   - entity_id: group.family
     platform: state
@@ -199,7 +190,7 @@
   - condition: state
     entity_id: group.family
     state: home
-  - after: '14:59'
+  - after: '14:59:00'
     condition: time
   - condition: state
     entity_id: cover.dining_room_rollershutter
@@ -248,7 +239,7 @@
   alias: Switch:Kettle:Finished
   description: ''
   trigger:
-  - below: '200'
+  - below: 200
     entity_id: sensor.switch_arlec_1_energy_voltage
     platform: numeric_state
   condition:
@@ -278,45 +269,6 @@
     domain: switch
     entity_id: switch.switch_arlec_1
     type: turn_off
-- id: '1584896652882'
-  alias: Light:Family Room Flood:PIR:On
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.family_room
-    platform: state
-    to: 'on'
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
-  action:
-  - device_id: db1d35248fbf4a069418535ee7ebabcd
-    domain: light
-    entity_id: light.light_familyroom_1
-    type: turn_on
-- id: '1584898261946'
-  alias: Light:Family Room Flood:PIR:Off
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.family_room
-    for: 00:05:00
-    platform: state
-    to: 'off'
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
-  action:
-  - device_id: db1d35248fbf4a069418535ee7ebabcd
-    domain: light
-    entity_id: light.light_familyroom_1
-    type: turn_off
 - id: '1585332194151'
   alias: Lights:Alfresco:Toggle
   description: ''
@@ -330,54 +282,11 @@
     domain: light
     entity_id: light.light_alfresco_2
     type: toggle
-- id: '1587003968926'
-  alias: Scene:Study:Input
-  description: ''
-  trigger:
-  - entity_id: input_select.study_scene
-    platform: state
-  condition: []
-  action:
-    service: scene.turn_on
-    data_template:
-      entity_id: '{{ states(''input_select.study_scene'') }}
-
-        '
-- id: '20200429123001'
-  alias: Media:Imp:Play-Pause
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763496'
-  condition: []
-  action:
-  - service: media_player.media_play_pause
-    entity_id: media_player.imp
-    data: {}
-- id: '1588128530550'
-  alias: Media:Imp:Volume
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763474'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763473'
-  condition: []
-  action:
-  - data_template:
-      volume_level: "{% set mapper =\n  { '9763474': state_attr('media_player.imp',\
-        \ 'volume_level') | float + 0.1,\n    '9763473': state_attr('media_player.imp',\
-        \ 'volume_level') | float - 0.1 } %}\n{{ mapper[trigger.to_state.state] }}\n"
-    entity_id: media_player.imp
-    service: media_player.volume_set
 - id: '1589216051030'
   alias: Switch:Boy's Heater:Off
   description: ''
   trigger:
-  - at: 07:30
+  - at: 07:30:00
     platform: time
   condition: []
   action:
@@ -389,7 +298,7 @@
   alias: Switch:Boy's Heater:On
   description: ''
   trigger:
-  - at: '20:00'
+  - at: '20:00:00'
     platform: time
   condition: []
   action:
@@ -397,52 +306,52 @@
     domain: switch
     entity_id: switch.boy_s_heater
     type: turn_on
-- id: '1592500817583'
-  alias: Light:Flux Update
-  description: ''
-  trigger:
-  - device_id: db1d35248fbf4a069418535ee7ebabcd
-    domain: light
-    entity_id: light.light_familyroom_1
-    platform: device
-    type: turned_on
-  - device_id: 336224c42a8e49f5b7e4bc18afdf8739
-    domain: light
-    entity_id: light.light_musicroom_1
-    platform: device
-    type: turned_on
-  - device_id: 23c9569f55214533941f48beff102ceb
-    domain: light
-    entity_id: light.light_study_1
-    platform: device
-    type: turned_on
-  - device_id: 4503817917a44f8cb4c6c4bf99babf97
-    domain: light
-    entity_id: light.light_study_2
-    platform: device
-    type: turned_on
-  - device_id: 0f5515ab10944374bcb61a193a24416c
-    domain: light
-    entity_id: light.light_study_3
-    platform: device
-    type: turned_on
-  - device_id: 2c2c196d0c684397b0ab1cf03a0ccf04
-    domain: light
-    entity_id: light.passage2
-    platform: device
-    type: turned_on
-  - device_id: 922a7c760bcc443b84c278cfd302d8c2
-    domain: light
-    entity_id: light.passage1
-    platform: device
-    type: turned_on
-  condition:
-  - condition: state
-    entity_id: switch.fluxer
-    state: 'on'
-  action:
-  - service: switch.fluxer_update
-    data: {}
+# - id: '1592500817583'
+#   alias: Light:Flux Update
+#   description: ''
+#   trigger:
+#   - device_id: db1d35248fbf4a069418535ee7ebabcd
+#     domain: light
+#     entity_id: light.light_familyroom_1
+#     platform: device
+#     type: turned_on
+#   - device_id: 336224c42a8e49f5b7e4bc18afdf8739
+#     domain: light
+#     entity_id: light.light_musicroom_1
+#     platform: device
+#     type: turned_on
+#   - device_id: 23c9569f55214533941f48beff102ceb
+#     domain: light
+#     entity_id: light.light_study_1
+#     platform: device
+#     type: turned_on
+#   - device_id: 4503817917a44f8cb4c6c4bf99babf97
+#     domain: light
+#     entity_id: light.light_study_2
+#     platform: device
+#     type: turned_on
+#   - device_id: 0f5515ab10944374bcb61a193a24416c
+#     domain: light
+#     entity_id: light.light_study_3
+#     platform: device
+#     type: turned_on
+#   - device_id: 2c2c196d0c684397b0ab1cf03a0ccf04
+#     domain: light
+#     entity_id: light.passage2
+#     platform: device
+#     type: turned_on
+#   - device_id: 922a7c760bcc443b84c278cfd302d8c2
+#     domain: light
+#     entity_id: light.passage1
+#     platform: device
+#     type: turned_on
+#   condition:
+#   - condition: state
+#     entity_id: switch.fluxer
+#     state: 'on'
+#   action:
+#   - service: switch.fluxer_update
+#     data: {}
 - id: '1592566987204'
   alias: Light:Boys Bedroom:Off
   description: ''

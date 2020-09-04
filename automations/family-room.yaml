@@ -1,0 +1,63 @@
+- id: '1577291453719'
+  alias: Light:Family Room Flood:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1712146'
+  condition: []
+  action:
+  - entity_id: light.light_familyroom_1
+    service: light.toggle
+  - entity_id: input_boolean.family_room_pir
+    service_template: >
+      {% if is_state('light.light_familyroom_1', 'on') %}
+      input_boolean.turn_off
+      {% else %}
+      input_boolean.turn_on
+      {% endif %}
+- id: '1584896652882'
+  alias: Light:Family Room Flood:PIR:On
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.family_room
+    platform: state
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  - condition: state
+    entity_id: input_boolean.family_room_pir
+    state: 'on'
+  action:
+  - device_id: db1d35248fbf4a069418535ee7ebabcd
+    domain: light
+    entity_id: light.light_familyroom_1
+    type: turn_on
+- id: '1584898261946'
+  alias: Light:Family Room Flood:PIR:Off
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.family_room
+    for: 00:05:00
+    platform: state
+    to: 'off'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  - condition: state
+    entity_id: input_boolean.family_room_pir
+    state: 'on'
+  action:
+  - device_id: db1d35248fbf4a069418535ee7ebabcd
+    domain: light
+    entity_id: light.light_familyroom_1
+    type: turn_off

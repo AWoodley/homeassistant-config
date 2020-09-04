@@ -41,8 +41,8 @@
   - service: light.turn_on
     entity_id: light.back_passage_lights
     data:
-      brightness: 50
-      color_temp: 300
+      brightness: 25
+      color_temp: 350
 - id: '1584983557204'
   alias: Light:Back Passage:PIR:Off
   description: ''

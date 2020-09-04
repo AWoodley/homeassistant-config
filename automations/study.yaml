@@ -32,3 +32,44 @@
         scene.scene_study_bright
         {% endif %}
     service: scene.turn_on
+- id: '1587003968926'
+  alias: Scene:Study:Input
+  description: ''
+  trigger:
+  - entity_id: input_select.study_scene
+    platform: state
+  condition: []
+  action:
+    service: scene.turn_on
+    data_template:
+      entity_id: '{{ states(''input_select.study_scene'') }}'
+- id: '20200429123001'
+  alias: Media:Imp:Play-Pause
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763496'
+  condition: []
+  action:
+  - service: media_player.media_play_pause
+    entity_id: media_player.imp
+    data: {}
+- id: '1588128530550'
+  alias: Media:Imp:Volume
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763474'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '9763473'
+  condition: []
+  action:
+  - data_template:
+      volume_level: "{% set mapper =\n  { '9763474': state_attr('media_player.imp',\
+        \ 'volume_level') | float + 0.1,\n    '9763473': state_attr('media_player.imp',\
+        \ 'volume_level') | float - 0.1 } %}\n{{ mapper[trigger.to_state.state] }}\n"
+    entity_id: media_player.imp
+    service: media_player.volume_set
