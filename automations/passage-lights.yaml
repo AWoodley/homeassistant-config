@@ -33,11 +33,14 @@
       condition: sun
     - after: sunset
       condition: sun
+  - condition: state
+    entity_id: input_boolean.back_passage_pir
+    state: 'on'
   action:
   - service: light.turn_on
     entity_id: light.back_passage_lights
     data:
-      brightness: 75
+      brightness: 50
       color_temp: 300
 - id: '1584983557204'
   alias: Light:Back Passage:PIR:Off
