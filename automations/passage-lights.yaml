@@ -1,0 +1,52 @@
+- id: '1580657898955'
+  alias: Light:Passage:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1945234'
+  condition: []
+  action:
+  - entity_id: light.back_passage_lights
+    service: light.toggle
+  - entity_id: input_boolean.back_passage_pir
+    service_template: >
+      {% if is_state('light.back_passage_lights', 'on') %}
+      input_boolean.turn_off
+      {% else %}
+      input_boolean.turn_on
+      {% endif %}
+- id: '1584983332319'
+  alias: Light:Back Passage:PIR:On
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.back_passage
+    platform: state
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  action:
+  - data: {}
+    entity_id: light.back_passage_lights
+    service: light.turn_on
+- id: '1584983557204'
+  alias: Light:Back Passage:PIR:Off
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.back_passage
+    for: 00:02:00
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.back_passage_pir
+    state: 'on'
+  action:
+  - data: {}
+    entity_id: light.back_passage_lights
+    service: light.turn_off

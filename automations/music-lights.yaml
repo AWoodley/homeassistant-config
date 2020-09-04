@@ -10,10 +10,66 @@
     to: '2364680'
   condition: []
   action:
-  - data_template:
-      brightness: ' {% if now().hour > 21 %} 200 {% elif now().hour > 5 %} 255 {%
-        elif now().hour > 0 %} 200 {% else %} 255 {% endif %} '
-      color_temp: ' {% if now().hour > 21 %} 500 {% elif now().hour > 5 %} 153 {%
-        elif now().hour > 0 %} 500 {% else %} 153 {% endif %} '
+  - data:
+      brightness: 255
+      color_temp: 500
       entity_id: light.light_musicroom_1
     service: light.toggle
+  - entity_id: input_boolean.music_room_pir
+    service_template: >
+      {% if is_state('light.light_musicroom_1', 'on') %}
+      input_boolean.turn_off
+      {% else %}
+      input_boolean.turn_on
+      {% endif %}
+- id: '1584897466331'
+  alias: Light:Music Room:PIR:On
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '14330700'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  - condition: state
+    entity_id: input_boolean.music_room_pir
+    state: 'on'
+  action:
+  - data:
+      brightness: 125
+      color_temp: 500
+  - device_id: 336224c42a8e49f5b7e4bc18afdf8739
+    domain: light
+    entity_id: light.light_musicroom_1
+    type: turn_on
+  - data: {}
+    entity_id: timer.light_music_room
+    service: timer.start
+- id: '1584982860133'
+  alias: Light:Music Room:PIR:Off
+  description: ''
+  trigger:
+  - event_data:
+      entity_id: timer.light_music_room
+    event_type: timer.finished
+    platform: event
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  - condition: state
+    entity_id: input_boolean.music_room_pir
+    state: 'on'
+  action:
+  - device_id: 336224c42a8e49f5b7e4bc18afdf8739
+    domain: light
+    entity_id: light.light_musicroom_1
+    type: turn_off

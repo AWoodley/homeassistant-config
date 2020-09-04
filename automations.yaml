@@ -130,17 +130,6 @@
   action:
   - entity_id: switch.nancy_s_phone_charger
     service: switch.turn_on
-- id: '1580657898955'
-  alias: Light:Passage:Toggle
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1945234'
-  condition: []
-  action:
-  - entity_id: light.passage1,light.passage2
-    service: light.toggle
 - id: '1581009244170'
   alias: Lights:Night:Time
   description: ''
@@ -308,31 +297,6 @@
     domain: light
     entity_id: light.light_familyroom_1
     type: turn_on
-- id: '1584897466331'
-  alias: Light:Music Room:PIR:On
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '14330700'
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
-  - condition: state
-    entity_id: input_boolean.music_room_pir
-    state: 'on'
-  action:
-  - device_id: 336224c42a8e49f5b7e4bc18afdf8739
-    domain: light
-    entity_id: light.light_musicroom_1
-    type: turn_on
-  - data: {}
-    entity_id: timer.light_music_room
-    service: timer.start
 - id: '1584898261946'
   alias: Light:Family Room Flood:PIR:Off
   description: ''
@@ -353,63 +317,6 @@
     domain: light
     entity_id: light.light_familyroom_1
     type: turn_off
-- id: '1584982860133'
-  alias: Light:Music Room:PIR:Off
-  description: ''
-  trigger:
-  - event_data:
-      entity_id: timer.light_music_room
-    event_type: timer.finished
-    platform: event
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
-  - condition: state
-    entity_id: input_boolean.music_room_pir
-    state: 'on'
-  action:
-  - device_id: 336224c42a8e49f5b7e4bc18afdf8739
-    domain: light
-    entity_id: light.light_musicroom_1
-    type: turn_off
-- id: '1584983332319'
-  alias: Light:Back Passage:PIR:On
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.back_passage
-    platform: state
-    to: 'on'
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
-  action:
-  - data: {}
-    entity_id: light.back_passage_lights
-    service: light.turn_on
-- id: '1584983557204'
-  alias: Light:Back Passage:PIR:Off
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.back_passage
-    for: 00:02:00
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: input_boolean.back_passage_pir
-    state: 'on'
-  action:
-  - data: {}
-    entity_id: light.back_passage_lights
-    service: light.turn_off
 - id: '1585332194151'
   alias: Lights:Alfresco:Toggle
   description: ''
