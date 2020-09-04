@@ -14,11 +14,11 @@
       {% else %} light.turn_on {% endif %}
 
       '
-  - entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
+  - service: lifx.set_state
+    entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
     data:
       brightness: 255
       color_name: white
-    service: lifx.set_state
 - id: '1576512904840'
   alias: Lights:Dusk:Sunset
   description: ''
@@ -28,9 +28,9 @@
     platform: sun
   condition: []
   action:
-  - data: {}
+  - service: script.turn_on
     entity_id: script.1576603594014
-    service: script.turn_on
+    data: {}
   - entity_id: light.light_entry_2
     service: light.turn_on
   - entity_id: light.light_entry_1,light.light_entry_3
@@ -59,12 +59,12 @@
   - entity_id: input_boolean.christmas_lights
     service: input_boolean.turn_off
   - delay: 00:00:10
-  - data:
+  - service: script.turn_on
+    data:
       entity_id: script.1576604653358
-    service: script.turn_on
-  - data:
+  - service: light.turn_off
+    data:
       entity_id: light.dining_room_lights
-    service: light.turn_off
 - id: '1577291453719'
   alias: Light:Family Room Flood:Toggle
   description: ''
@@ -138,9 +138,9 @@
     platform: time
   condition: []
   action:
-  - data: {}
+  - service: script.turn_on
     entity_id: script.1576604054568
-    service: script.turn_on
+    data: {}
   - entity_id: light.light_entry_3
     service: light.turn_on
   - entity_id: light.light_entry_2
@@ -153,10 +153,10 @@
     platform: state
   condition: []
   action:
-  - data:
+  - service: mqtt.publish
+    data:
       payload_template: '{{ states(''person.adrian'')}}'
       topic: homeassistant/person/adrian
-    service: mqtt.publish
 - id: '1582300595341'
   alias: Rollershutter:Dining:Day
   description: ''
@@ -170,9 +170,9 @@
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
-  - data: {}
+  - service: light.turn_off
     entity_id: light.dining_room_lights, light.light_familyroom_1, light.light_musicroom_1
-    service: light.turn_off
+    data: {}
 - id: '1582300676427'
   alias: Rollershutter:Dining:Afternoon
   description: ''
@@ -224,9 +224,9 @@
     - after: sunrise
       condition: sun
   action:
-  - data: {}
+  - service: light.turn_off
     entity_id: light.dining_room_lights,light.light_musicroom_1
-    service: light.turn_off
+    data: {}
 - id: '1584459956003'
   alias: Switch:Kettle:Started
   description: ''
@@ -240,10 +240,10 @@
     entity_id: sensor.switch_arlec_1_energy_current
     state: '0.0'
   action:
-  - data:
+  - service: notify.mobile_app_adrian_s_g7_power
+    data:
       message: The kettle has not started.
-      title: Kettle
-    service: notify.mobile_app_adrian_s_g7_power
+      title: Kettle 
 - id: '1584460382480'
   alias: Switch:Kettle:Finished
   description: ''
@@ -262,18 +262,18 @@
       seconds: 10
     type: is_on
   action:
-  - data:
+  - service: notify.mobile_app_adrian_s_g7_power
+    data:
       message: The kettle has boiled.
-      title: Kettle
-    service: notify.mobile_app_adrian_s_g7_power
+      title: Kettle 
   - delay: 00:01:00
   - condition: state
     entity_id: binary_sensor.switch_arlec_1_button1
     state: 'on'
-  - data:
+  - service: notify.mobile_app_adrian_s_g7_power
+    data:
       message: The kettle has not been reset
       title: Kettle
-    service: notify.mobile_app_adrian_s_g7_power
   - device_id: 24270fe8bcce46d7a35d5929c4f467f0
     domain: switch
     entity_id: switch.switch_arlec_1
@@ -352,9 +352,9 @@
     to: '9763496'
   condition: []
   action:
-  - data: {}
+  - service: media_player.media_play_pause
     entity_id: media_player.imp
-    service: media_player.media_play_pause
+    data: {}
 - id: '1588128530550'
   alias: Media:Imp:Volume
   description: ''
@@ -441,8 +441,8 @@
     entity_id: switch.fluxer
     state: 'on'
   action:
-  - data: {}
-    service: switch.fluxer_update
+  - service: switch.fluxer_update
+    data: {}
 - id: '1592566987204'
   alias: Light:Boys Bedroom:Off
   description: ''

@@ -10,11 +10,11 @@
     to: '2364680'
   condition: []
   action:
-  - data:
+  - service: light.toggle
+    entity_id: light.light_musicroom_1
+    data:
       brightness: 255
-      color_temp: 500
-      entity_id: light.light_musicroom_1
-    service: light.toggle
+      color_temp: 500   
   - entity_id: input_boolean.music_room_pir
     service_template: >
       {% if is_state('light.light_musicroom_1', 'on') %}
@@ -47,9 +47,9 @@
     data:
       brightness: 125
       color_temp: 500
-  - data: {}
+  - service: timer.start
     entity_id: timer.light_music_room
-    service: timer.start
+    data: {}
 - id: '1584982860133'
   alias: Light:Music Room:PIR:Off
   description: ''

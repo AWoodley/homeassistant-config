@@ -351,28 +351,28 @@ media_player:
     - platform: dlna_dmr
       name: Cliff
       url: http://192.168.30.35/dd.xml
-    - platform: yamaha
-      name: Yamaha Receiver
-      host: 192.168.30.32
-      source_ignore:
-        - "AUX"
-        - "Radio"
-        - "HDMI3"
-        - "HDMI4"
-        - "AV1"
-        - "AV2"
-        - "AV3"
-        - "AV4"
-        - "AV5"
-        - "AV6"
-        - "TUNER"
-        - "NET RADIO"
-        - "USB"
-        - "V-AUX"
-        - "iPod (USB)"
-      source_names:
-        HDMI1: "Blu-Ray"
-        HDMI2: "ChromeCast"
+    # - platform: yamaha # takes too long to restart if yamaha off
+    #   name: Yamaha Receiver
+    #   host: 192.168.30.32
+    #   source_ignore:
+    #     - "AUX"
+    #     - "Radio"
+    #     - "HDMI3"
+    #     - "HDMI4"
+    #     - "AV1"
+    #     - "AV2"
+    #     - "AV3"
+    #     - "AV4"
+    #     - "AV5"
+    #     - "AV6"
+    #     - "TUNER"
+    #     - "NET RADIO"
+    #     - "USB"
+    #     - "V-AUX"
+    #     - "iPod (USB)"
+    #   source_names:
+    #     HDMI1: "Blu-Ray"
+    #     HDMI2: "ChromeCast"
 
 # panasonic_viera: # didn't work with this model TV
 #   host: 192.168.30.31
