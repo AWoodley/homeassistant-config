@@ -40,10 +40,8 @@
     entity_id: input_boolean.music_room_pir
     state: 'on'
   action:
-  - device_id: 336224c42a8e49f5b7e4bc18afdf8739
-    domain: light
+  - service: light.turn_on
     entity_id: light.light_musicroom_1
-    type: turn_on
     data:
       brightness: 125
       color_temp: 500
