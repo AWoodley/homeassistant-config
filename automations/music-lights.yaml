@@ -18,7 +18,7 @@
   - service: timer.cancel
     entity_id: timer.light_music_room
     data: {}
-  - delay: 00:00:02
+  - delay: 00:00:01
   - entity_id: input_boolean.music_room_pir
     service_template: >
       {% if is_state('light.light_musicroom_1', 'on') %}
