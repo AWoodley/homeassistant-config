@@ -12,6 +12,7 @@
     data:
       brightness: 255
       color_temp: 300
+  - delay: 00:00:02
   - entity_id: input_boolean.back_passage_pir
     service_template: >
       {% if is_state('light.back_passage_lights', 'on') %}
