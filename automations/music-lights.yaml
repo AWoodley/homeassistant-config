@@ -14,7 +14,10 @@
     entity_id: light.light_musicroom_1
     data:
       brightness: 255
-      color_temp: 400   
+      color_temp: 400
+  - service: timer.cancel
+    entity_id: timer.light_music_room
+    data: {}
   - entity_id: input_boolean.music_room_pir
     service_template: >
       {% if is_state('light.light_musicroom_1', 'on') %}

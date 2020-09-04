@@ -9,6 +9,9 @@
   action:
   - entity_id: light.back_passage_lights
     service: light.toggle
+    data:
+      brightness: 255
+      color_temp: 300
   - entity_id: input_boolean.back_passage_pir
     service_template: >
       {% if is_state('light.back_passage_lights', 'on') %}
@@ -33,7 +36,9 @@
   action:
   - service: light.turn_on
     entity_id: light.back_passage_lights
-    data: {}
+    data:
+      brightness: 75
+      color_temp: 300
 - id: '1584983557204'
   alias: Light:Back Passage:PIR:Off
   description: ''
