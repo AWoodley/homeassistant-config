@@ -74,7 +74,7 @@
   - at: 06:00:00
     platform: time
   - below: 35
-    entity_id: sensor.nokia_5_3_nokia_5_3_battery_sensor
+    entity_id: sensor.nokia_5_3_battery_level
     platform: numeric_state
   condition: []
   action:
@@ -85,7 +85,7 @@
   description: ''
   trigger:
   - above: 80
-    entity_id: sensor.nokia_5_3_nokia_5_3_battery_sensor
+    entity_id: sensor.nokia_5_3_battery_level
     platform: numeric_state
   condition:
   - condition: state
