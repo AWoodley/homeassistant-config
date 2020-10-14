@@ -9,7 +9,7 @@
   action:
   - data:
       entity_id: light.entry_lights
-    service_template: >
+    service: >
       {% if is_state('light.entry_lights', 'on') %}
       light.turn_off
       {% else %}
@@ -21,12 +21,15 @@
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
-    to: '1172996'
+    to: '1172996' # Old Wall Button, left
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '10295128' # New Wall Button, left
   condition: []
   action:
   - data:
       entity_id: light.entry_lights, light.light_musicroom_1, light.dining_room_lights, light.light_familyroom_1
-    service_template: >
+    service: >
       {% if is_state('light.entry_lights', 'on') %}
       light.turn_off
       {% else %}

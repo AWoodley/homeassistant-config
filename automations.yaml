@@ -10,9 +10,10 @@
   - entity_id: input_boolean.christmas_lights_state
     service: input_boolean.turn_off
   - entity_id: light.dining_room_lights
-    service_template: '{% if is_state(''light.dining_room_lights'', ''on'') %} light.turn_off
+    service: 
+      '
+      {% if is_state(''light.dining_room_lights'', ''on'') %} light.turn_off
       {% else %} light.turn_on {% endif %}
-
       '
   - service: lifx.set_state
     entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
@@ -238,7 +239,7 @@
   alias: Switch:Kettle:Finished
   description: ''
   trigger:
-  - below: '200'
+  - below: 200
     entity_id: sensor.switch_arlec_1_energy_voltage
     platform: numeric_state
   condition:
@@ -260,7 +261,7 @@
   - condition: state
     entity_id: binary_sensor.switch_arlec_1_button1
     state: 'on'
-  - service: notify.mobile_app_adrian_s_g7_power
+  - service: notify.mobile_app_adrian_s_phone
     data:
       message: The kettle has not been reset
       title: Kettle

@@ -70,11 +70,13 @@ mqtt:
   birth_message:
     topic: 'home/hass/active'
     payload: !secret hostname
-    retain: 'false'
+    retain: false
+    qos: 0
   will_message:
     topic: 'home/hass/active'
     payload: !secret partner
-    retain: 'false'
+    retain: false
+    qos: 0
 
 lifx:
   light:
