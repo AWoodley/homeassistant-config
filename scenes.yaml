@@ -278,43 +278,41 @@
   name: Scene:Study:Bright
   entities:
     input_select.study_scene:
-      editable: false
-      friendly_name: Currently Active Scene for Study
       options:
       - unknown
       - scene.scene_study_off
       - scene.scene_study_normal
       - scene.scene_study_bright
+      editable: false
+      friendly_name: Currently Active Scene for Study
       state: scene.scene_study_bright
     light.light_study_1:
-      brightness: 255
-      color_temp: 250
+      min_mireds: 250
+      max_mireds: 666
       effect_list:
       - effect_pulse
       - effect_stop
-      friendly_name: Light-Study-1
-      max_mireds: 666
-      min_mireds: 250
-      state: 'on'
+      friendly_name: Study Light 1
       supported_features: 39
+      state: 'off'
     light.light_study_2:
+      min_mireds: 153
+      max_mireds: 500
       brightness: 255
       color_temp: 336
-      friendly_name: Light-Study-2
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
+      friendly_name: Light-Study-2 Light-Study-2
       supported_features: 3
+      state: 'on'
     light.light_study_3:
+      min_mireds: 153
+      max_mireds: 500
       brightness: 255
       color_temp: 323
-      friendly_name: Light-Study-3
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
+      friendly_name: Light-Study-3 Light-Study-3
       supported_features: 3
+      state: 'on'
     switch.switch_study_1:
-      friendly_name: Switch-Study-1
+      friendly_name: Switch-Study-1 Switch-Study-1
       state: 'on'
 - id: '1585068650709'
   name: Scene:Study:Off
