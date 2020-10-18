@@ -4,7 +4,10 @@
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
-    to: '1712148'
+    to: '1712148' # Dining Room button
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1764164' # Back door button
   condition: []
   action:
     service: >
@@ -20,7 +23,10 @@
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
-    to: '1172996'
+    to: '1172996' # Outside button
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1764168' # Back door button
   condition: []
   action:
   - device_id: 1fa3e2fb09b748f8a3ba7c85a4d4bda2
@@ -33,7 +39,10 @@
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
-    to: '1172994'
+    to: '1172994' # Outside button
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1764162' # Back door button
   condition: []
   action:
   - device_id: 1fa3e2fb09b748f8a3ba7c85a4d4bda2
