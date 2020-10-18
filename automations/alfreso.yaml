@@ -11,7 +11,7 @@
   condition: []
   action:
     service: >
-        {% if is_state('light.master_bedroom_lights', 'on') %}
+        {% if is_state('light.alfresco_lights', 'on') %}
         light.turn_off
         {% else %}
         light.turn_on
