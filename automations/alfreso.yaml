@@ -40,7 +40,7 @@
     domain: light
     entity_id: light.light_alfresco_2
     type: toggle
-- id: '20201018205402'
+- id: '20201018205403'
   alias: Lights:Alfresco Flood Light:Toggle
   description: ''
   trigger:
