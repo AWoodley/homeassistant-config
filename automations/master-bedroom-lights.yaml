@@ -39,9 +39,6 @@
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
-    to: '1172994'
-  - entity_id: sensor.rfb_button
-    platform: state
     to: '8190612'
   - entity_id: sensor.rfb_button
     platform: state
@@ -69,9 +66,6 @@
 #   - entity_id: sensor.rfb_button
 #     platform: state
 #     to: '1172993'
-#   - entity_id: sensor.rfb_button
-#     platform: state
-#     to: '1172994'
 #   - entity_id: sensor.rfb_button
 #     platform: state
 #     to: '8190612'

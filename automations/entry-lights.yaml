@@ -21,10 +21,7 @@
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
-    to: '1172996' # Old Wall Button, left
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '10295128' # New Wall Button, left
+    to: '10295128' # BedroomWall Button, left
   condition: []
   action:
   - data:
