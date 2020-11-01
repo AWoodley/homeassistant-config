@@ -11,6 +11,8 @@ homeassistant:
   name: !secret name
   external_url: https://hass.na.id.au
   internal_url: !secret internal_url
+  media_dirs:
+    local: /Media
 
 zone:
   name: home
