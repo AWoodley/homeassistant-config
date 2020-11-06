@@ -42,6 +42,13 @@
       transition: 2
       brightness: 255
     service: lifx.set_state
+  - data_template:
+      color_name: '{{ ["white", "red", "green", "white"]|random }}'
+      entity_id: light.music_room_light
+      power: true
+      transition: 2
+      brightness: 255
+    service: lifx.set_state
   - service: script.turn_on
     data:
       entity_id: script.1575967544396
@@ -193,6 +200,13 @@ create_every_automation_group:
     service: lifx.effect_colorloop
   - data_template:
       entity_id: light.lifx_d0_73_d5_37_e5_cd
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 35
+      power_on: true
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.music_room_light
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
       change: 35
