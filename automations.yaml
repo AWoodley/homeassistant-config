@@ -1,23 +1,3 @@
-- id: '1575990406554'
-  alias: Light:Dining Room:Toggle
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1712152'
-  condition: []
-  action:
-  - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
-    service: input_boolean.turn_off
-  - entity_id: light.dining_room_lights
-    service: ' {% if is_state(''light.dining_room_lights'', ''on'') %} light.turn_off
-      {% else %} light.turn_on {% endif %} '
-  - service: lifx.set_state
-    entity_id: light.dining_room_lights
-    data:
-      brightness: 255
-      color_name: white
-  mode: single
 - id: '1576512904840'
   alias: Lights:Dusk:Sunset
   description: ''
@@ -47,23 +27,7 @@
   action:
   - entity_id: script.1576604054568
     service: script.turn_on
-- id: '1576515841194'
-  alias: Dining Room Lights Off
-  description: ''
-  trigger:
-  - event: sunrise
-    platform: sun
-  condition: []
-  action:
-  - entity_id: input_boolean.christmas_lights
-    service: input_boolean.turn_off
-  - delay: 00:00:10
-  - service: script.turn_on
-    data:
-      entity_id: script.1576604653358
-  - service: light.turn_off
-    data:
-      entity_id: light.dining_room_lights
+
 - id: '1580492573046'
   alias: Switch:Adrian's Phone Charger:Turn On
   description: ''
@@ -189,24 +153,6 @@
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
-- id: '1582675757394'
-  alias: Light:Dining Room:Rollershutters
-  description: ''
-  trigger:
-  - entity_id: cover.dining_room_rollershutter
-    platform: state
-    to: open
-  condition:
-  - condition: and
-    conditions:
-    - before: sunset
-      condition: sun
-    - after: sunrise
-      condition: sun
-  action:
-  - service: light.turn_off
-    entity_id: light.dining_room_lights,light.music_room_light
-    data: {}
 - id: '1584459956003'
   alias: Switch:Kettle:Started
   description: ''
