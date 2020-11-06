@@ -7,19 +7,17 @@
     to: '1712152'
   condition: []
   action:
-  - entity_id: input_boolean.christmas_lights_state
+  - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
     service: input_boolean.turn_off
   - entity_id: light.dining_room_lights
-    service: 
-      '
-      {% if is_state(''light.dining_room_lights'', ''on'') %} light.turn_off
-      {% else %} light.turn_on {% endif %}
-      '
+    service: ' {% if is_state(''light.dining_room_lights'', ''on'') %} light.turn_off
+      {% else %} light.turn_on {% endif %} '
   - service: lifx.set_state
-    entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd
+    entity_id: light.dining_room_lights
     data:
       brightness: 255
       color_name: white
+  mode: single
 - id: '1576512904840'
   alias: Lights:Dusk:Sunset
   description: ''
@@ -153,10 +151,6 @@
   trigger:
   - event: sunrise
     platform: sun
-  # condition:
-  # - above: 18
-  #   condition: numeric_state
-  #   entity_id: sensor.bom_air_temp_c
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
@@ -169,10 +163,6 @@
   trigger:
   - at: '13:00:00'
     platform: time
-  # condition:
-  # - above: 28
-  #   condition: numeric_state
-  #   entity_id: sensor.bom_feels_like_c
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.close_cover
