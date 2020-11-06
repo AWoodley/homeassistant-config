@@ -91,6 +91,7 @@ lifx:
     - broadcast: 192.168.29.57 # Passage-1
     - broadcast: 192.168.29.58 # Passage-2
     - broadcast: 192.168.29.59 # Entrance-1
+    - broadcast: 192.168.29.60 # Music-Rooom-1
 
 google_assistant:
   project_id: hass
