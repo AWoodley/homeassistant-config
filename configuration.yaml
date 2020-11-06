@@ -228,17 +228,17 @@ binary_sensor:
   #     23: Bedroom Light
 
 sensor:
-  - platform: bom
-    station: IDW60901.94615
-    monitored_conditions:
-      - air_temp
-      - delta_t
-      - dewpt
-      - apparent_t
-      - rel_hum
-      - wind_dir
-      - gust_kmh
-      - wind_spd_kmh
+  # - platform: bom
+  #   station: IDW60901.94615
+  #   monitored_conditions:
+  #     - air_temp
+  #     - delta_t
+  #     - dewpt
+  #     - apparent_t
+  #     - rel_hum
+  #     - wind_dir
+  #     - gust_kmh
+  #     - wind_spd_kmh
   - platform: bom_forecast
     product_id:  IDW12300
     name: Perth
