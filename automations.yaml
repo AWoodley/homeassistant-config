@@ -153,7 +153,7 @@
   trigger:
   - event: sunrise
     platform: sun
-  condition:
+  # condition:
   # - above: 18
   #   condition: numeric_state
   #   entity_id: sensor.bom_air_temp_c
@@ -161,7 +161,7 @@
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
   - service: light.turn_off
-    entity_id: light.dining_room_lights, light.light_familyroom_1, light.light_musicroom_1
+    entity_id: light.dining_room_lights, light.light_familyroom_1, light.music_room_light
     data: {}
 - id: '1582300676427'
   alias: Rollershutter:Dining:Afternoon
@@ -169,7 +169,7 @@
   trigger:
   - at: '13:00:00'
     platform: time
-  condition:
+  # condition:
   # - above: 28
   #   condition: numeric_state
   #   entity_id: sensor.bom_feels_like_c
@@ -215,7 +215,7 @@
       condition: sun
   action:
   - service: light.turn_off
-    entity_id: light.dining_room_lights,light.light_musicroom_1
+    entity_id: light.dining_room_lights,light.music_room_light
     data: {}
 - id: '1584459956003'
   alias: Switch:Kettle:Started

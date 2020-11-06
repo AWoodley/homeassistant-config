@@ -11,7 +11,7 @@
   condition: []
   action:
   - service: light.toggle
-    entity_id: light.light_musicroom_1
+    entity_id: light.music_room_light
     data:
       brightness: 255
       color_temp: 400
@@ -20,8 +20,8 @@
     data: {}
   - delay: 00:00:01
   - entity_id: input_boolean.music_room_pir
-    service_template: >
-      {% if is_state('light.light_musicroom_1', 'on') %}
+    service: >
+      {% if is_state('light.music_room_light', 'on') %}
       input_boolean.turn_off
       {% else %}
       input_boolean.turn_on
@@ -45,7 +45,7 @@
     state: 'on'
   action:
   - service: light.turn_on
-    entity_id: light.light_musicroom_1
+    entity_id: light.music_room_light
     data:
       brightness: 60
       color_temp: 400
@@ -73,5 +73,5 @@
   action:
   - device_id: 336224c42a8e49f5b7e4bc18afdf8739
     domain: light
-    entity_id: light.light_musicroom_1
+    entity_id: light.music_room_light
     type: turn_off
