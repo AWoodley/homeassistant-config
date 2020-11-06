@@ -154,9 +154,9 @@
   - event: sunrise
     platform: sun
   condition:
-  - above: 18
-    condition: numeric_state
-    entity_id: sensor.bom_air_temp_c
+  # - above: 18
+  #   condition: numeric_state
+  #   entity_id: sensor.bom_air_temp_c
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
@@ -170,9 +170,9 @@
   - at: '13:00:00'
     platform: time
   condition:
-  - above: 28
-    condition: numeric_state
-    entity_id: sensor.bom_feels_like_c
+  # - above: 28
+  #   condition: numeric_state
+  #   entity_id: sensor.bom_feels_like_c
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.close_cover
