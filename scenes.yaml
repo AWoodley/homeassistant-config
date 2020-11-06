@@ -465,8 +465,8 @@
       friendly_name: Light-Media-3
       state: 'off'
       supported_features: 0
-    light.light_musicroom_1:
-      friendly_name: Light-MusicRoom-1
+    light.music_room_light:
+      friendly_name: Music Room Light
       max_mireds: 500
       min_mireds: 153
       state: 'off'
@@ -677,8 +677,8 @@
       min_mireds: 153
       state: 'off'
       supported_features: 3
-    light.light_musicroom_1:
-      friendly_name: Music Room
+    light.music_room_light:
+      friendly_name: Music Room Light
       max_mireds: 500
       min_mireds: 153
       state: 'off'
@@ -948,10 +948,10 @@
       min_mireds: 153
       state: 'on'
       supported_features: 3
-    light.light_musicroom_1:
+    light.music_room_light:
       brightness: 100
       color_temp: 400
-      friendly_name: Music Room
+      friendly_name: Music Room Light
       max_mireds: 500
       min_mireds: 153
       state: 'on'
