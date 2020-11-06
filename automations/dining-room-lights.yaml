@@ -101,7 +101,7 @@
   - data:
       brightness: 255
       color_name: white
-      entity_id: light.dinning_room_lights, light.music_room_light
+      entity_id: light.dining_room_lights, light.music_room_light
     service: light.turn_on
   # '1575967544396':
   #   alias: Christmas Lights Loop
