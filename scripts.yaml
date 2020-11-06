@@ -9,69 +9,64 @@
 
         '
     service: scene.turn_on
-'1575907804253':
-  alias: Christmas Lights
-  sequence:
-  - entity_id: input_boolean.christmas_lights_state
-    service: input_boolean.turn_on
-  - data_template:
-      color_name: '{{ ["white", "red", "green", "white"]|random }}'
-      entity_id: light.lifx_d0_73_d5_38_46_87
-      power: true
-      transition: 2
-      brightness: 255
-    service: lifx.set_state
-  - data_template:
-      color_name: '{{ ["white", "red", "green", "white"]|random }}'
-      entity_id: light.lifx_d0_73_d5_38_15_d3
-      power: true
-      transition: 2
-      brightness: 255
-    service: lifx.set_state
-  - data_template:
-      color_name: '{{ ["white", "red", "green", "white"]|random }}'
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
-      power: true
-      transition: 2
-      brightness: 255
-    service: lifx.set_state
-  - data_template:
-      color_name: '{{ ["white", "red", "green", "white"]|random }}'
-      entity_id: light.lifx_d0_73_d5_37_e5_cd
-      power: true
-      transition: 2
-      brightness: 255
-    service: lifx.set_state
-  - data_template:
-      color_name: '{{ ["white", "red", "green", "white"]|random }}'
-      entity_id: light.music_room_light
-      power: true
-      transition: 2
-      brightness: 255
-    service: lifx.set_state
-  - service: script.turn_on
-    data:
-      entity_id: script.1575967544396
-'1575967544396':
-  alias: Christmas Lights Loop
-  sequence:
-  - delay: 00:00:05
-  - condition: state
-    entity_id: input_boolean.christmas_lights_state
-    state: 'on'
-  - entity_id: script.1575907804253
-    service: script.turn_on
+# '1575907804253':
+#   alias: Christmas Lights
+#   sequence:
+#   - entity_id: input_boolean.christmas_lights_state
+#     service: input_boolean.turn_on
+#   - data_template:
+#       color_name: '{{ ["white", "red", "green", "white"]|random }}'
+#       entity_id: light.lifx_d0_73_d5_38_46_87
+#       power: true
+#       transition: 2
+#       brightness: 255
+#     service: lifx.set_state
+#   - data_template:
+#       color_name: '{{ ["white", "red", "green", "white"]|random }}'
+#       entity_id: light.lifx_d0_73_d5_38_15_d3
+#       power: true
+#       transition: 2
+#       brightness: 255
+#     service: lifx.set_state
+#   - data_template:
+#       color_name: '{{ ["white", "red", "green", "white"]|random }}'
+#       entity_id: light.lifx_d0_73_d5_37_e4_e0
+#       power: true
+#       transition: 2
+#       brightness: 255
+#     service: lifx.set_state
+#   - data_template:
+#       color_name: '{{ ["white", "red", "green", "white"]|random }}'
+#       entity_id: light.lifx_d0_73_d5_37_e5_cd
+#       power: true
+#       transition: 2
+#       brightness: 255
+#     service: lifx.set_state
+#   - data_template:
+#       color_name: '{{ ["white", "red", "green", "white"]|random }}'
+#       entity_id: light.music_room_light
+#       power: true
+#       transition: 2
+#       brightness: 255
+#     service: lifx.set_state
+#   - service: script.turn_on
+#     data:
+#       entity_id: script.1575967544396
+# '1575967544396':
+#   alias: Christmas Lights Loop
+#   sequence:
+#   - delay: 00:00:05
+#   - condition: state
+#     entity_id: input_boolean.christmas_lights_state
+#     state: 'on'
+#   - entity_id: script.1575907804253
+#     service: script.turn_on
 '1575974067886':
   alias: Enough Christmas
   sequence:
   - entity_id: input_boolean.christmas_lights
     service: input_boolean.turn_off
   - delay: '6'
-  - data:
-      brightness: 255
-      color_name: white
-      entity_id: light.dinning_room_lights
-    service: light.turn_on
   - data:
       entity_id: media_player.kitchen_speaker
     service: media_player.turn_off
@@ -171,47 +166,47 @@ create_every_automation_group:
         }}
 
         '
-'20200625150601':
-  alias: Party Lights
-  sequence:
-  - data:
-      entity_id: switch.fluxer
-    service: switch.turn_off
-  - data_template:
-      entity_id: light.lifx_d0_73_d5_38_46_87
-      brightness: 255
-      period: '{{ (range(1, 4)|random) }}'
-      change: 35
-      power_on: true
-    service: lifx.effect_colorloop
-  - data_template:
-      entity_id: light.lifx_d0_73_d5_38_15_d3
-      brightness: 255
-      period: '{{ (range(1, 4)|random) }}'
-      change: 35
-      power_on: true
-    service: lifx.effect_colorloop
-  - data_template:
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
-      brightness: 255
-      period: '{{ (range(1, 4)|random) }}'
-      change: 35
-      power_on: true
-    service: lifx.effect_colorloop
-  - data_template:
-      entity_id: light.lifx_d0_73_d5_37_e5_cd
-      brightness: 255
-      period: '{{ (range(1, 4)|random) }}'
-      change: 35
-      power_on: true
-    service: lifx.effect_colorloop
-  - data_template:
-      entity_id: light.music_room_light
-      brightness: 255
-      period: '{{ (range(1, 4)|random) }}'
-      change: 35
-      power_on: true
-    service: lifx.effect_colorloop
+# '20200625150601':
+#   alias: Party Lights
+#   sequence:
+#   - data:
+#       entity_id: switch.fluxer
+#     service: switch.turn_off
+#   - data_template:
+#       entity_id: light.lifx_d0_73_d5_38_46_87
+#       brightness: 255
+#       period: '{{ (range(1, 4)|random) }}'
+#       change: 35
+#       power_on: true
+#     service: lifx.effect_colorloop
+#   - data_template:
+#       entity_id: light.lifx_d0_73_d5_38_15_d3
+#       brightness: 255
+#       period: '{{ (range(1, 4)|random) }}'
+#       change: 35
+#       power_on: true
+#     service: lifx.effect_colorloop
+#   - data_template:
+#       entity_id: light.lifx_d0_73_d5_37_e4_e0
+#       brightness: 255
+#       period: '{{ (range(1, 4)|random) }}'
+#       change: 35
+#       power_on: true
+#     service: lifx.effect_colorloop
+#   - data_template:
+#       entity_id: light.lifx_d0_73_d5_37_e5_cd
+#       brightness: 255
+#       period: '{{ (range(1, 4)|random) }}'
+#       change: 35
+#       power_on: true
+#     service: lifx.effect_colorloop
+#   - data_template:
+#       entity_id: light.music_room_light
+#       brightness: 255
+#       period: '{{ (range(1, 4)|random) }}'
+#       change: 35
+#       power_on: true
+#     service: lifx.effect_colorloop
 #'1585108924524':
 #  alias: Script:Disco Lights
 #  sequence:
