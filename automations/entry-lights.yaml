@@ -25,7 +25,7 @@
   condition: []
   action:
   - data:
-      entity_id: light.entry_lights, light.light_musicroom_1, light.dining_room_lights, light.light_familyroom_1
+      entity_id: light.entry_lights, light.music_room_light, light.dining_room_lights, light.light_familyroom_1
     service: >
       {% if is_state('light.entry_lights', 'on') %}
       light.turn_off
