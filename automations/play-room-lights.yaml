@@ -1,0 +1,12 @@
+- id: '20201109164701'
+  alias: Light:Play Room Light:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1905218'
+  condition: []
+  action:
+  - data:
+      entity_id: light.play_room_light
+    service: light.toggle

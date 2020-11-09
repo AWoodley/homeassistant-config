@@ -42,7 +42,7 @@
   condition: []
   action:
   - data:
-      entity_id: light.light_boys_bedroom
+      entity_id: light.light_boys_bedroom,light.play_room_light
       brightness: 255
       period: 1
       change: 35
