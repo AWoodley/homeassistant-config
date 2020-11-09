@@ -9,4 +9,6 @@
   action:
   - data:
       entity_id: light.play_room_light
+      brightness: 255
+      color_name: white
     service: light.toggle
