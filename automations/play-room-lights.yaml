@@ -10,5 +10,5 @@
   - data:
       entity_id: light.play_room_light
       brightness: 255
-      color_name: white
+      color: 250
     service: light.toggle
