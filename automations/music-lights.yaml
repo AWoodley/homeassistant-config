@@ -14,7 +14,7 @@
     entity_id: light.music_room_light
     data:
       brightness: 255
-      color_name: white
+      color_temp: 370
   - service: timer.cancel
     entity_id: timer.light_music_room
     data: {}
@@ -48,7 +48,7 @@
     entity_id: light.music_room_light
     data:
       brightness: 60
-      color_temp: 250
+      color_temp: 370
   - service: timer.start
     entity_id: timer.light_music_room
     data: {}

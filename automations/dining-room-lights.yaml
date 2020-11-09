@@ -16,7 +16,7 @@
     entity_id: light.dining_room_lights
     data:
       brightness: 255
-      color_name: white
+      color_temp: 370
   mode: single
 - id: '1576515841194'
   alias: Dining Room Lights Off
@@ -137,7 +137,7 @@
   action:
   - data:
       brightness: 255
-      color_name: white
+      color_temp: 370
       entity_id: light.dining_room_lights,light.music_room_light
     service: light.turn_on
 - id: '1582675757394'
