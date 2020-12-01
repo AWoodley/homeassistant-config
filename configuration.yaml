@@ -101,9 +101,25 @@ google_assistant:
   secure_devices_pin: !secret pin
   expose_by_default: false
   entity_config:
+    light.back_passage_lights:
+      expose: true
+    light.dining_room_lights:
+      expose: true
+    light.entry_lights:
+      expose: true
+    light.alfresco_light_1:
+      expose: true
+    light.light_alfresco_2:
+      expose: true
+    light.light_backverandah_1:
+      expose: true
     light.light_bedside_1:
       expose: true
     light.light_bedside_2:
+      expose: true
+    light.light_boys_bedroom:
+      expose: true
+    light.light_christmas_1:
       expose: true
     light.light_familyroom_1:
       expose: true
@@ -113,29 +129,15 @@ google_assistant:
       expose: true
     light.light_media_2:
       expose: true
+    light.light_media_3:
+      expose: true
     light.music_room_light:
       expose: true
-    light.dining_room_lights:
-      expose: true
-    light.entry_lights:
-      expose: true
-    light.light_boys_bedroom:
-      expose: true
-    light.study_lights:
-      expose: true
-    light.back_passage_lights:
-      expose: true
-    light.alfresco_light_1:
-      expose: true
-    light.light_alfresco_2:
-      expose: true
-    light.light_backverandah_1:
+    light.play_room_light:
       expose: true
     switch.media_centre:
       expose: true
     switch.boy_s_heater:
-      expose: true
-    switch.switch_arlec_1:
       expose: true
     input_boolean.party_lights:
       expose: true
