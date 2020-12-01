@@ -53,7 +53,7 @@
                                         {
                                             "entities": [
                                                 {
-                                                    "entity": "light.alfresco_light_1"
+                                                    "entity": "light.light_alfresco_1"
                                                 },
                                                 {
                                                     "entity": "light.light_alfresco_2"
@@ -62,7 +62,7 @@
                                                     "entity": "light.back_passage_lights"
                                                 },
                                                 {
-                                                    "entity": "light.light_backverandah_1"
+                                                    "entity": "light.light_backverandah"
                                                 },
                                                 {
                                                     "entity": "light.light_boys_bedroom"
@@ -71,7 +71,8 @@
                                                     "entity": "light.play_room_light"
                                                 },
                                                 {
-                                                    "entity": "light.dining_room_lights"
+                                                    "entity": "light.dining_room_lights",
+                                                    "icon": "mdi:vanity-light"
                                                 },
                                                 {
                                                     "entity": "light.entry_lights"
@@ -81,6 +82,9 @@
                                                 },
                                                 {
                                                     "entity": "light.light_bedside_2"
+                                                },
+                                                {
+                                                    "entity": "light.light_christmas_1"
                                                 },
                                                 {
                                                     "entity": "light.light_familyroom_1"
@@ -116,14 +120,12 @@
                                         {
                                             "entities": [
                                                 {
-                                                    "entity": "switch.switch_arlec_1",
-                                                    "icon": "mdi:kettle",
-                                                    "name": "Kettle",
+                                                    "entity": "switch.switch_kettle_1",
                                                     "tap_action": {
                                                         "action": "call-service",
                                                         "service": "switch.toggle",
                                                         "service_data": {
-                                                            "entity_id": "switch.switch_arlec_1"
+                                                            "entity_id": "switch.switch_kettle_1"
                                                         }
                                                     }
                                                 },

@@ -1,0 +1,54 @@
+{
+    "version": 1,
+    "key": "lovelace.boys_dashboard",
+    "data": {
+        "config": {
+            "views": [
+                {
+                    "title": "Lights",
+                    "path": "lights",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "light.light_boys_bedroom"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "light.dining_room_lights"
+                        }
+                    ]
+                },
+                {
+                    "title": "Media",
+                    "path": "media",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "switch.media_centre"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.kitchen_speaker"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.kitchen_display"
+                        }
+                    ]
+                }
+            ],
+            "title": "Boy's Dashboard"
+        }
+    }
+}

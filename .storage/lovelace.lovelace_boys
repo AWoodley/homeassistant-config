@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "key": "lovelace.lovelace_boys",
+    "data": {
+        "config": {
+            "views": [
+                {
+                    "panel": false,
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "light.light_boys_bedroom",
+                                    "show_state": false
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "light.play_room_light"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "input_boolean.party_lights"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "input_boolean.christmas_lights",
+                                    "icon": "hass:toggle-switch-outline"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
