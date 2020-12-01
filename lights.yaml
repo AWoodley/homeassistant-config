@@ -25,6 +25,7 @@
     - light.lifx_d0_73_d5_38_15_d3
     - light.lifx_d0_73_d5_37_e4_e0
     - light.lifx_d0_73_d5_37_e5_cd
+  icon: 'mdi:vanity-light'
 - platform: group
   name: Entry Lights
   entities:
