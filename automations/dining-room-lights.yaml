@@ -5,6 +5,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1712152'
+  - entity_id: input_boolean.christmas_lights
+    platform: state
+    to: 'off'
+  mode: restart
   condition: []
   action:
   - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
@@ -14,7 +18,6 @@
     data:
       brightness: 255
       color_temp: 280
-  mode: single
 - id: '1576515841194'
   alias: Dining Room Lights Off
   description: ''

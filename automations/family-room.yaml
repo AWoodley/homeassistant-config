@@ -8,6 +8,7 @@
   - entity_id: input_boolean.christmas_lights
     platform: state
     to: 'off'
+  mode: restart
   condition: []
   action:
   - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
