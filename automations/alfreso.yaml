@@ -60,5 +60,5 @@
   action:
   - device_id: 1fa3e2fb09b748f8a3ba7c85a4d4bda2
     domain: light
-    entity_id: light.alfresco_light_1
+    entity_id: light.light_alfresco_1
     type: toggle
