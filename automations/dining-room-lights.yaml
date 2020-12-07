@@ -31,7 +31,7 @@
       entity_id: script.1576604653358
   - service: light.turn_off
     data:
-      entity_id: light.dining_room_lights
+      entity_id: light.dining_room_lights,light.light_familyroom_1,light.music_room_light
 - id: '1575907804253'
   alias: Christmas Lights
   trigger:
