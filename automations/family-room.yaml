@@ -5,7 +5,9 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1712146'
-  - entity_id: input_boolean.christmas_lights
+  - entity_id: 
+    - input_boolean.party_lights
+    - input_boolean.christmas_lights
     platform: state
     to: 'off'
   mode: restart
@@ -18,6 +20,7 @@
     data:
       brightness: 255
       color_temp: 280
+  - delay: 00:00:01
   - entity_id: input_boolean.family_room_pir
     service: >
       {% if is_state('light.light_familyroom_1', 'on') %}

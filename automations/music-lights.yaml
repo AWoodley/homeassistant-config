@@ -8,12 +8,17 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '2364680'
-  - entity_id: input_boolean.christmas_lights
+  - entity_id: 
+    - input_boolean.party_lights
+    - input_boolean.christmas_lights
     platform: state
     to: 'off'
+  mode: restart
   condition: []
   action:
-  - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
+  - entity_id: 
+    - input_boolean.party_lights
+    - input_boolean.christmas_lights
     service: input_boolean.turn_off
   - service: light.toggle
     entity_id: light.music_room_light
