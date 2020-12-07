@@ -158,7 +158,7 @@
           service: lifx.effect_pulse
         - delay: '{{ (range(5, 60)|random) }}'
 - id: '20200120719381'
-  alias: Party Lights
+  alias: Crazy Lights
   trigger:
     - entity_id: input_boolean.crazy_lights
       platform: state
@@ -171,21 +171,20 @@
       cycles: 100
       power_on: true
     service: lifx.effect_pulse
-- id: '20201106230801'
-  alias: Light FX Off
-  trigger:
-  - entity_id: input_boolean.christmas_lights
-    platform: state
-    to: 'off'
-  - entity_id: input_boolean.party_lights
-    platform: state
-    to: 'off'
-  action:
-  - data:
-      brightness: 255
-      color_temp: 280
-      entity_id: light.dining_room_lights,light.music_room_light
-    service: light.turn_on
+# - id: '20201106230801'
+#   alias: Light FX Off
+#   trigger:
+#   - entity_id:
+#     - input_boolean.christmas_lights
+#     - input_boolean.party_lights
+#     platform: state
+#     to: 'off'
+#   action:
+#   - data:
+#       brightness: 255
+#       color_temp: 280
+#       entity_id: light.dining_room_lights,light.music_room_light,light.light_familyroom_1
+#     service: light.turn_on
 - id: '1582675757394'
   alias: Light:Dining Room:Rollershutters
   description: ''
