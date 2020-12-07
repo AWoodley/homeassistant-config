@@ -97,7 +97,7 @@
     repeat:
       while:
         - condition: state
-          entity_id: input_boolean.christmas_lights
+          entity_id: input_boolean.party_lights
           state: 'on'
       sequence:
       - data_template:
