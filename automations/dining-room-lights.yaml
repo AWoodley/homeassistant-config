@@ -149,6 +149,7 @@
           cycles: 30
           power_on: true
         service: lifx.effect_pulse
+      - delay: 5
 - id: '20201106230801'
   alias: Light FX Off
   trigger:
