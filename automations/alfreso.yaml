@@ -38,7 +38,7 @@
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
-    to: '17641628' # Back door button Left
+    to: '1764168' # Back door button Left
   condition: []
   action:
   - service: light.toggle
