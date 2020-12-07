@@ -80,6 +80,13 @@
           transition: 2
           brightness: 255
         service: lifx.set_state
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.light_familyroom_1
+          power: true
+          transition: 2
+          brightness: 255
+        service: lifx.set_state
 - id: '20200625150601'
   alias: Party Lights
   trigger:
@@ -117,6 +124,13 @@
     service: lifx.effect_colorloop
   - data_template:
       entity_id: light.music_room_light
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 35
+      power_on: true
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.light_familyroom_1
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
       change: 35

@@ -10,7 +10,7 @@
   - entity_id: light.light_familyroom_1
     service: light.toggle
   - entity_id: input_boolean.family_room_pir
-    service_template: >
+    service: >
       {% if is_state('light.light_familyroom_1', 'on') %}
       input_boolean.turn_off
       {% else %}
