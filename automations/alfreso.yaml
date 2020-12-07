@@ -10,31 +10,16 @@
     to: '1764164' # Back door button
   condition: []
   action:
-    service: >
-        {% if is_state('light.alfresco_lights', 'on') %}
-        light.turn_off
-        {% else %}
-        light.turn_on
-        {% endif %}
+    service: light.toggle
+    # service: >
+    #     {% if is_state('light.alfresco_lights', 'on') %}
+    #     light.turn_off
+    #     {% else %}
+    #     light.turn_on
+    #     {% endif %}
     entity_id:  light.alfresco_lights
-- id: '20201018205401'
-  alias: Lights:Back Verandah:Toggle
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1172996' # Outside button
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1764168' # Back door button
-  condition: []
-  action:
-  - device_id: 1fa3e2fb09b748f8a3ba7c85a4d4bda2
-    domain: light
-    entity_id: light.light_backverandah_1
-    type: toggle
 - id: '20201018205402'
-  alias: Lights:Alfresco Lights:Toggle
+  alias: Lights:Alfresco Party Lights:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
@@ -45,12 +30,10 @@
     to: '1764162' # Back door button
   condition: []
   action:
-  - device_id: 1fa3e2fb09b748f8a3ba7c85a4d4bda2
-    domain: light
+  - service: light.toggle
     entity_id: light.light_alfresco_2
-    type: toggle
 - id: '20201018205403'
-  alias: Lights:Alfresco Flood Light:Toggle
+  alias: Lights:BBQ Flood Light:Toggle
   description: ''
   trigger:
   - entity_id: sensor.rfb_button
@@ -58,7 +41,16 @@
     to: '1172993'
   condition: []
   action:
-  - device_id: 1fa3e2fb09b748f8a3ba7c85a4d4bda2
-    domain: light
+  - service: light.toggle
     entity_id: light.light_alfresco_1
-    type: toggle
+- id: '20201018205401'
+  alias: Lights:Alfresco Flood Light:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1172996' # Outside button
+  condition: []
+  action:
+  - service: light.toggle
+    entity_id: light.light_alfresco_3
