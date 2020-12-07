@@ -5,11 +5,12 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1712146'
-  - entity_id: 
-    - input_boolean.party_lights
-    - input_boolean.christmas_lights
+  - entity_id:
+    - automation.christmas_lights
+    - automation.party_lights
     platform: state
-    to: 'off'
+    attribute: current
+    to: 0
   mode: single
   condition: []
   action:
