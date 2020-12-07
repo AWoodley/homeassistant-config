@@ -150,6 +150,20 @@
           power_on: true
         service: lifx.effect_pulse
       - delay: '{{ (range(5, 60)|random) }}'
+- id: '20200625150601'
+  alias: Party Lights
+  trigger:
+    - entity_id: input_boolean.crazy_lights
+      platform: state
+      to: 'on'   
+  action:
+  - data:
+      entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_d0_73_d5_37_e5_cd,light.music_room_light,light.light_familyroom_1
+      brightness: 255
+      mode: strobe
+      cycles: 100
+      power_on: true
+    service: lifx.effect_pulse
 - id: '20201106230801'
   alias: Light FX Off
   trigger:
