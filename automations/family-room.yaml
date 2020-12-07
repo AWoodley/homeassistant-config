@@ -20,7 +20,7 @@
     data:
       brightness: 255
       color_temp: 280
-  - delay: 00:00:01
+  - delay: 00:00:05
   - entity_id: input_boolean.family_room_pir
     service: >
       {% if is_state('light.light_familyroom_1', 'on') %}
