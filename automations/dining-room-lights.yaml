@@ -150,7 +150,7 @@
           power_on: true
         service: lifx.effect_pulse
       - delay: '{{ (range(5, 60)|random) }}'
-- id: '20200625150601'
+- id: '20200120719381'
   alias: Party Lights
   trigger:
     - entity_id: input_boolean.crazy_lights
