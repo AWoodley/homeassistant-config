@@ -39,54 +39,56 @@
     platform: state
     to: 'on'
   action:
-    repeat:
-      while:
-        - condition: state
-          entity_id: input_boolean.christmas_lights
-          state: 'on'
-      sequence:
-      - data_template:
-          color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.lifx_d0_73_d5_38_46_87
-          power: true
-          transition: 2
-          brightness: 255
-        service: lifx.set_state
-      - data_template:
-          color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.lifx_d0_73_d5_38_15_d3
-          power: true
-          transition: 2
-          brightness: 255
-        service: lifx.set_state
-      - data_template:
-          color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.lifx_d0_73_d5_37_e4_e0
-          power: true
-          transition: 2
-          brightness: 255
-        service: lifx.set_state
-      - data_template:
-          color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.lifx_d0_73_d5_37_e5_cd
-          power: true
-          transition: 2
-          brightness: 255
-        service: lifx.set_state
-      - data_template:
-          color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.music_room_light
-          power: true
-          transition: 2
-          brightness: 255
-        service: lifx.set_state
-      - data_template:
-          color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.light_familyroom_1
-          power: true
-          transition: 2
-          brightness: 255
-        service: lifx.set_state
+    - entity_id: input_boolean.family_room_pir,input_boolean.music_room_pir
+      service: input_boolean.turn_off
+    - repeat:
+        while:
+          - condition: state
+            entity_id: input_boolean.christmas_lights
+            state: 'on'
+        sequence:
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.lifx_d0_73_d5_38_46_87
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.lifx_d0_73_d5_38_15_d3
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.lifx_d0_73_d5_37_e4_e0
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.lifx_d0_73_d5_37_e5_cd
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.music_room_light
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.light_familyroom_1
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
 - id: '20200625150601'
   alias: Party Lights
   trigger:
@@ -94,62 +96,64 @@
       platform: state
       to: 'on'   
   action:
-    repeat:
-      while:
-        - condition: state
-          entity_id: input_boolean.party_lights
-          state: 'on'
-      sequence:
-      - data_template:
-          entity_id: light.lifx_d0_73_d5_38_46_87
-          brightness: 255
-          period: '{{ (range(1, 4)|random) }}'
-          change: 35
-          power_on: true
-        service: lifx.effect_colorloop
-      - data_template:
-          entity_id: light.lifx_d0_73_d5_38_15_d3
-          brightness: 255
-          period: '{{ (range(1, 4)|random) }}'
-          change: 35
-          power_on: true
-        service: lifx.effect_colorloop
-      - data_template:
-          entity_id: light.lifx_d0_73_d5_37_e4_e0
-          brightness: 255
-          period: '{{ (range(1, 4)|random) }}'
-          change: 35
-          power_on: true
-        service: lifx.effect_colorloop
-      - data_template:
-          entity_id: light.lifx_d0_73_d5_37_e5_cd
-          brightness: 255
-          period: '{{ (range(1, 4)|random) }}'
-          change: 35
-          power_on: true
-        service: lifx.effect_colorloop
-      - data_template:
-          entity_id: light.music_room_light
-          brightness: 255
-          period: '{{ (range(1, 4)|random) }}'
-          change: 35
-          power_on: true
-        service: lifx.effect_colorloop
-      - data_template:
-          entity_id: light.light_familyroom_1
-          brightness: 255
-          period: '{{ (range(1, 4)|random) }}'
-          change: 35
-          power_on: true
-        service: lifx.effect_colorloop
-      - data_template:
-          entity_id: '{{ ["light.lifx_d0_73_d5_38_46_87", "light.lifx_d0_73_d5_38_15_d3", "light.lifx_d0_73_d5_37_e4_e0", "light.lifx_d0_73_d5_37_e5_cd", "light.music_room_light", "light.light_familyroom_1"]|random }}'
-          brightness: 255
-          mode: strobe
-          cycles: 30
-          power_on: true
-        service: lifx.effect_pulse
-      - delay: '{{ (range(5, 60)|random) }}'
+    - entity_id: input_boolean.family_room_pir,input_boolean.music_room_pir
+      service: input_boolean.turn_off
+    - repeat:
+        while:
+          - condition: state
+            entity_id: input_boolean.party_lights
+            state: 'on'
+        sequence:
+        - data_template:
+            entity_id: light.lifx_d0_73_d5_38_46_87
+            brightness: 255
+            period: '{{ (range(1, 4)|random) }}'
+            change: 35
+            power_on: true
+          service: lifx.effect_colorloop
+        - data_template:
+            entity_id: light.lifx_d0_73_d5_38_15_d3
+            brightness: 255
+            period: '{{ (range(1, 4)|random) }}'
+            change: 35
+            power_on: true
+          service: lifx.effect_colorloop
+        - data_template:
+            entity_id: light.lifx_d0_73_d5_37_e4_e0
+            brightness: 255
+            period: '{{ (range(1, 4)|random) }}'
+            change: 35
+            power_on: true
+          service: lifx.effect_colorloop
+        - data_template:
+            entity_id: light.lifx_d0_73_d5_37_e5_cd
+            brightness: 255
+            period: '{{ (range(1, 4)|random) }}'
+            change: 35
+            power_on: true
+          service: lifx.effect_colorloop
+        - data_template:
+            entity_id: light.music_room_light
+            brightness: 255
+            period: '{{ (range(1, 4)|random) }}'
+            change: 35
+            power_on: true
+          service: lifx.effect_colorloop
+        - data_template:
+            entity_id: light.light_familyroom_1
+            brightness: 255
+            period: '{{ (range(1, 4)|random) }}'
+            change: 35
+            power_on: true
+          service: lifx.effect_colorloop
+        - data_template:
+            entity_id: '{{ ["light.lifx_d0_73_d5_38_46_87", "light.lifx_d0_73_d5_38_15_d3", "light.lifx_d0_73_d5_37_e4_e0", "light.lifx_d0_73_d5_37_e5_cd", "light.music_room_light", "light.light_familyroom_1"]|random }}'
+            brightness: 255
+            mode: strobe
+            cycles: 30
+            power_on: true
+          service: lifx.effect_pulse
+        - delay: '{{ (range(5, 60)|random) }}'
 - id: '20200120719381'
   alias: Party Lights
   trigger:
