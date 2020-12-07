@@ -7,7 +7,7 @@
     to: '1712148' # Dining Room button
   - entity_id: sensor.rfb_button
     platform: state
-    to: '1764164' # Back door button
+    to: '1764164' # Back door button Right
   condition: []
   action:
     service: light.toggle
@@ -27,11 +27,22 @@
     to: '1172994' # Outside button
   - entity_id: sensor.rfb_button
     platform: state
-    to: '1764162' # Back door button
+    to: '1764162' # Back door button Middle
   condition: []
   action:
   - service: light.toggle
     entity_id: light.light_alfresco_2
+- id: '202012072170301'
+  alias: Lights:Back Verandah:Toggle
+  description: ''
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '17641628' # Back door button Left
+  condition: []
+  action:
+  - service: light.toggle
+    entity_id: light.light_backverandah
 - id: '20201018205403'
   alias: Lights:BBQ Flood Light:Toggle
   description: ''
