@@ -47,6 +47,8 @@
   action:
     - entity_id: input_boolean.family_room_pir,input_boolean.music_room_pir
       service: input_boolean.turn_off
+    - entity_id: light.light_christmas_1
+      service: light.turn_on
     - repeat:
         while:
           - condition: state
