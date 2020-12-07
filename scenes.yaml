@@ -686,167 +686,9 @@
 - id: '1589245592715'
   name: Scene:House:Away
   entities:
-    light.alfresco_light_1:
-      friendly_name: Alfresco Flood Light
+    light.all_lights:
+      friendly_name: All Lights
       state: 'off'
-      supported_features: 0
-    light.lifx_d0_73_d5_37_e4_e0:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Light-DiningRoom-3
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
-      supported_features: 55
-    light.lifx_d0_73_d5_37_e5_cd:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Light-DiningRoom-4
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
-      supported_features: 55
-    light.lifx_d0_73_d5_38_15_d3:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Light-DiningRoom-2
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
-      supported_features: 55
-    light.lifx_d0_73_d5_38_46_87:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Light-DiningRoom-1
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
-      supported_features: 55
-    light.light_alfresco_2:
-      friendly_name: Alfresco Lights
-      state: 'off'
-      supported_features: 0
-    light.light_backverandah_1:
-      friendly_name: Back Verandah
-      state: 'off'
-      supported_features: 0
-    light.light_bedside_1:
-      friendly_name: Adrian's Bedside Light
-      max_mireds: 500
-      min_mireds: 153
-      state: 'off'
-      supported_features: 3
-    light.light_bedside_2:
-      friendly_name: Nancy's Bedside Light
-      max_mireds: 500
-      min_mireds: 153
-      state: 'off'
-      supported_features: 3
-    light.light_boys_bedroom:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Boy's Bedroom
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
-      supported_features: 55
-    light.light_entry_1:
-      friendly_name: Light-Entry-1
-      state: 'off'
-      supported_features: 0
-    light.light_entry_2:
-      friendly_name: Light Entry 2
-      state: 'off'
-      supported_features: 0
-    light.light_entry_3:
-      friendly_name: Light-Entry-3
-      state: 'off'
-      supported_features: 0
-    light.light_familyroom_1:
-      friendly_name: Family Room Flood
-      max_mireds: 500
-      min_mireds: 153
-      state: 'off'
-      supported_features: 3
-    light.light_masterbedroom_1:
-      friendly_name: Master Bedroom
-      max_mireds: 500
-      min_mireds: 153
-      state: 'off'
-      supported_features: 3
-    light.light_media_1:
-      friendly_name: Light Stand
-      max_mireds: 500
-      min_mireds: 153
-      state: 'off'
-      supported_features: 3
-    light.light_media_2:
-      friendly_name: Reading Light
-      state: 'off'
-      supported_features: 1
-    light.light_media_3:
-      friendly_name: Light-Media-3
-      state: 'off'
-      supported_features: 0
-    light.light_musicroom_1:
-      friendly_name: Music Room
-      max_mireds: 500
-      min_mireds: 153
-      state: 'off'
-      supported_features: 3
-    light.light_study_1:
-      brightness: 255
-      color_temp: 250
-      effect_list:
-      - effect_pulse
-      - effect_stop
-      friendly_name: Study Light 1
-      max_mireds: 666
-      min_mireds: 250
-      state: 'on'
-      supported_features: 39
-    light.light_study_2:
-      friendly_name: Light-Study-2
-      max_mireds: 500
-      min_mireds: 153
-      state: 'off'
-      supported_features: 3
-    light.light_study_3:
-      friendly_name: Light-Study-3
-      max_mireds: 500
-      min_mireds: 153
-      state: 'off'
-      supported_features: 3
-    light.passage1:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Passage Light 2
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
-      supported_features: 55
-    light.passage2:
-      effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Passage Light 1
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
-      supported_features: 55
     switch.boy_s_heater:
       friendly_name: Boy's Heater
       state: 'off'
@@ -855,16 +697,13 @@
       state: 'off'
     switch.rollershutter_dining_down:
       friendly_name: Rollershutter-Dining-Down
-      state: 'off'
-    switch.rollershutter_dining_stop:
-      friendly_name: Rollershutter-Dining-Stop
-      state: 'off'
-    switch.rollershutter_dining_up:
-      friendly_name: Rollershutter-Dining-Up
-      state: 'off'
+      state: 'on'
     switch.switch_study_1:
       friendly_name: Switch-Study-1
-      state: 'on'
+      state: 'off'
+    switch.switch_kettle_1:
+      friendly_name: Kettle
+      state: 'off'
 - id: '1591098339633'
   name: Scene:Whole-House:Dim
   entities:
