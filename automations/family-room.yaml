@@ -16,37 +16,6 @@
   action:
   - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
     service: input_boolean.turn_off
-  - entity_id: light.light_familyroom_1
-    service: light.toggle
-    data:
-      brightness: 255
-      color_temp: 280
-  - delay: 00:00:05
-  - entity_id: input_boolean.family_room_pir
-    service: >
-      {% if is_state('light.light_familyroom_1', 'on') %}
-      input_boolean.turn_off
-      {% else %}
-      input_boolean.turn_on
-      {% endif %}
-- id: '1577291453719'
-  alias: Light:Family Room Flood:Toggle
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1712146'
-  - entity_id:
-    - automation.christmas_lights
-    - automation.party_lights
-    platform: state
-    attribute: current
-    to: 0
-  mode: single
-  condition: []
-  action:
-  - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
-    service: input_boolean.turn_off
   - entity_id: input_boolean.family_room_pir
     service: >
       {% if is_state('light.light_familyroom_1', 'on') %}
