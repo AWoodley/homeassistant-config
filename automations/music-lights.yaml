@@ -21,6 +21,13 @@
     - input_boolean.party_lights
     - input_boolean.christmas_lights
     service: input_boolean.turn_off
+  - entity_id: input_boolean.music_room_pir
+    service: >
+      {% if is_state('light.music_room_light', 'on') %}
+      input_boolean.turn_on
+      {% else %}
+      input_boolean.turn_off
+      {% endif %}
   - service: light.toggle
     entity_id: light.music_room_light
     data:
@@ -29,14 +36,6 @@
   - service: timer.cancel
     entity_id: timer.light_music_room
     data: {}
-  - delay: 00:00:05
-  - entity_id: input_boolean.music_room_pir
-    service: >
-      {% if is_state('light.music_room_light', 'on') %}
-      input_boolean.turn_off
-      {% else %}
-      input_boolean.turn_on
-      {% endif %}
 - id: '2020121423431'
   alias: Light:Music Room:PIR
   description: 'Trigger light from PIR'

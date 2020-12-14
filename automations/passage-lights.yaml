@@ -7,12 +7,6 @@
     to: '1945234'
   condition: []
   action:
-  - entity_id: light.back_passage_lights
-    service: light.toggle
-    data:
-      brightness: 255
-      color_temp: 370
-  - delay: 00:00:01
   - entity_id: input_boolean.back_passage_pir
     service: >
       {% if is_state('light.back_passage_lights', 'on') %}
@@ -20,6 +14,11 @@
       {% else %}
       input_boolean.turn_on
       {% endif %}
+  - entity_id: light.back_passage_lights
+    service: light.toggle
+    data:
+      brightness: 255
+      color_temp: 370
 - id: '2020121423491'
   alias: Light:Back Passage:PIR
   description: 'Trigger light from PIR'
