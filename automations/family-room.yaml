@@ -74,9 +74,10 @@
   action:
   - entity_id: light.light_christmas_1
     service: light.turn_off
-- id: '1584896652882'
-  alias: Light:Family Room Flood:PIR:On
-  description: ''
+- id: '2020121423211'
+  alias: Light:Family Room FLood:PIR
+  description: 'Trigger light from PIR'
+  mode: restart
   trigger:
   - entity_id: binary_sensor.family_room
     platform: state
@@ -97,24 +98,53 @@
     data:
       brightness: 60
       color_temp: 280
-- id: '1584898261946'
-  alias: Light:Family Room Flood:PIR:Off
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.family_room
-    for: 00:05:00
-    platform: state
-    to: 'off'
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
+  - delay: '00:05:00'
   - condition: state
     entity_id: input_boolean.family_room_pir
     state: 'on'
-  action:
   - service: light.turn_off
     entity_id: light.light_familyroom_1
+# - id: '1584896652882'
+#   alias: Light:Family Room Flood:PIR:On
+#   description: ''
+#   trigger:
+#   - entity_id: binary_sensor.family_room
+#     platform: state
+#     to: 'on'
+#   condition:
+#   - condition: or
+#     conditions:
+#     - before: sunrise
+#       condition: sun
+#     - after: sunset
+#       condition: sun
+#   - condition: state
+#     entity_id: input_boolean.family_room_pir
+#     state: 'on'
+#   action:
+#   - service: light.turn_on
+#     entity_id: light.light_familyroom_1
+#     data:
+#       brightness: 60
+#       color_temp: 280
+# - id: '1584898261946'
+#   alias: Light:Family Room Flood:PIR:Off
+#   description: ''
+#   trigger:
+#   - entity_id: binary_sensor.family_room
+#     for: 00:05:00
+#     platform: state
+#     to: 'off'
+#   condition:
+#   - condition: or
+#     conditions:
+#     - before: sunrise
+#       condition: sun
+#     - after: sunset
+#       condition: sun
+#   - condition: state
+#     entity_id: input_boolean.family_room_pir
+#     state: 'on'
+#   action:
+#   - service: light.turn_off
+#     entity_id: light.light_familyroom_1

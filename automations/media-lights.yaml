@@ -25,7 +25,7 @@
     platform: state
     to: '1944754'
   action:
-    service_template: >
+    service: >
       {% if is_state('light.media_room_lights', 'on') %}
       light.turn_off
       {% else %}
