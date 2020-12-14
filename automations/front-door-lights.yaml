@@ -22,23 +22,10 @@
       brightness: 255
       entity_id: light.welcome_lights
     service: light.turn_on
-- id: '1570990825299'
-  alias: Light:Front Door:Off:Timer
-  description: ''
-  trigger:
-  - entity_id: light.light_frontdoor_1
-    for: '600'
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-    data:
-      entity_id: light.light_frontdoor_1
-    service: light.turn_off
 - id: '1575220469153'
   alias: Light:Front Door:On:Door
   description: ''
+  mode: restart
   trigger:
   - entity_id: binary_sensor.front_door
     from: 'off'
@@ -55,6 +42,10 @@
   - data:
       entity_id: light.light_frontdoor_1
     service: light.turn_on
+  - delay: '00:10:00'
+  - data:
+      entity_id: light.light_frontdoor_1
+    service: light.turn_off
 - id: '1575382143244'
   alias: Light:Front Door:Toggle
   description: ''
