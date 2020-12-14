@@ -20,9 +20,10 @@
       {% else %}
       input_boolean.turn_on
       {% endif %}
-- id: '1584983332319'
-  alias: Light:Back Passage:PIR:On
-  description: ''
+- id: '2020121423491'
+  alias: Light:Back Passage:PIR
+  description: 'Trigger light from PIR'
+  mode: restart
   trigger:
   - entity_id: binary_sensor.back_passage
     platform: state
@@ -41,21 +42,50 @@
   - service: light.turn_on
     entity_id: light.back_passage_lights
     data:
-      brightness: 25
-      color_temp: 370
-- id: '1584983557204'
-  alias: Light:Back Passage:PIR:Off
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.back_passage
-    for: 00:02:00
-    platform: state
-    to: 'off'
-  condition:
+      brightness: 60
+      color_temp: 280
+  - delay: '00:05:00'
   - condition: state
     entity_id: input_boolean.back_passage_pir
     state: 'on'
-  action:
   - service: light.turn_off
     entity_id: light.back_passage_lights
-    data: {}
+# - id: '1584983332319'
+#   alias: Light:Back Passage:PIR:On
+#   description: ''
+#   trigger:
+#   - entity_id: binary_sensor.back_passage
+#     platform: state
+#     to: 'on'
+#   condition:
+#   - condition: or
+#     conditions:
+#     - before: sunrise
+#       condition: sun
+#     - after: sunset
+#       condition: sun
+#   - condition: state
+#     entity_id: input_boolean.back_passage_pir
+#     state: 'on'
+#   action:
+#   - service: light.turn_on
+#     entity_id: light.back_passage_lights
+#     data:
+#       brightness: 25
+#       color_temp: 370
+# - id: '1584983557204'
+#   alias: Light:Back Passage:PIR:Off
+#   description: ''
+#   trigger:
+#   - entity_id: binary_sensor.back_passage
+#     for: 00:02:00
+#     platform: state
+#     to: 'off'
+#   condition:
+#   - condition: state
+#     entity_id: input_boolean.back_passage_pir
+#     state: 'on'
+#   action:
+#   - service: light.turn_off
+#     entity_id: light.back_passage_lights
+#     data: {}

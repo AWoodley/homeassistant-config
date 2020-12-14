@@ -37,9 +37,10 @@
       {% else %}
       input_boolean.turn_on
       {% endif %}
-- id: '1584897466331'
-  alias: Light:Music Room:PIR:On
-  description: ''
+- id: '2020121423431'
+  alias: Light:Music Room:PIR
+  description: 'Trigger light from PIR'
+  mode: restart
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
@@ -60,29 +61,58 @@
     data:
       brightness: 60
       color_temp: 280
-  - service: timer.start
-    entity_id: timer.light_music_room
-    data: {}
-- id: '1584982860133'
-  alias: Light:Music Room:PIR:Off
-  description: ''
-  trigger:
-  - event_data:
-      entity_id: timer.light_music_room
-    event_type: timer.finished
-    platform: event
-  condition:
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
+  - delay: '00:05:00'
   - condition: state
     entity_id: input_boolean.music_room_pir
     state: 'on'
-  action:
-  - device_id: 336224c42a8e49f5b7e4bc18afdf8739
-    domain: light
+  - service: light.turn_off
     entity_id: light.music_room_light
-    type: turn_off
+# - id: '1584897466331'
+#   alias: Light:Music Room:PIR:On
+#   description: ''
+#   trigger:
+#   - entity_id: sensor.rfb_button
+#     platform: state
+#     to: '14330700'
+#   condition:
+#   - condition: or
+#     conditions:
+#     - before: sunrise
+#       condition: sun
+#     - after: sunset
+#       condition: sun
+#   - condition: state
+#     entity_id: input_boolean.music_room_pir
+#     state: 'on'
+#   action:
+#   - service: light.turn_on
+#     entity_id: light.music_room_light
+#     data:
+#       brightness: 60
+#       color_temp: 280
+#   - service: timer.start
+#     entity_id: timer.light_music_room
+#     data: {}
+# - id: '1584982860133'
+#   alias: Light:Music Room:PIR:Off
+#   description: ''
+#   trigger:
+#   - event_data:
+#       entity_id: timer.light_music_room
+#     event_type: timer.finished
+#     platform: event
+#   condition:
+#   - condition: or
+#     conditions:
+#     - before: sunrise
+#       condition: sun
+#     - after: sunset
+#       condition: sun
+#   - condition: state
+#     entity_id: input_boolean.music_room_pir
+#     state: 'on'
+#   action:
+#   - device_id: 336224c42a8e49f5b7e4bc18afdf8739
+#     domain: light
+#     entity_id: light.music_room_light
+#     type: turn_off
