@@ -47,19 +47,18 @@
   action:
   - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
     service: input_boolean.turn_off
+  - entity_id: input_boolean.family_room_pir
+    service: >
+      {% if is_state('light.light_familyroom_1', 'on') %}
+      input_boolean.turn_on
+      {% else %}
+      input_boolean.turn_off
+      {% endif %}
   - entity_id: light.light_familyroom_1
     service: light.toggle
     data:
       brightness: 255
       color_temp: 280
-  - delay: 00:00:05
-  - entity_id: input_boolean.family_room_pir
-    service: >
-      {% if is_state('light.light_familyroom_1', 'on') %}
-      input_boolean.turn_off
-      {% else %}
-      input_boolean.turn_on
-      {% endif %}
 - id: '20201208000301'
   alias: Light:Christmas Tree:Off
   description: ''
