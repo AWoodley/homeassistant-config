@@ -33,9 +33,7 @@
     data:
       brightness: 255
       color_temp: 280
-  - service: timer.cancel
-    entity_id: timer.light_music_room
-    data: {}
+
 - id: '2020121423431'
   alias: Light:Music Room:PIR
   description: 'Trigger light from PIR'

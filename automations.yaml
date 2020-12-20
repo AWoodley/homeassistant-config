@@ -21,57 +21,79 @@
 - id: '1580492573046'
   alias: Switch:Adrian's Phone Charger:Turn On
   description: ''
+  mode: 'single'
+  max_exceeded: silent
   trigger:
-  - at: 06:00:00
-    platform: time
-  - below: 35
+  - platform: time
+    at: 06:00:00
+  - platform: numeric_state
     entity_id: sensor.nokia_5_3_battery_level
-    platform: numeric_state
+    below: 35
+  - platform: state
+    entity_id: switch.adrian_s_phone_charger
+    to: 'on'
   condition: []
   action:
-  - entity_id: switch.adrian_s_phone_charger
-    service: switch.turn_on
-- id: '1580492681958'
-  alias: Switch:Adrian's Phone Charger:Turn Off
-  description: ''
-  trigger:
-  - above: 80
-    entity_id: sensor.nokia_5_3_battery_level
-    platform: numeric_state
-  condition:
-  - condition: state
+  - service: switch.turn_on
     entity_id: switch.adrian_s_phone_charger
-    state: 'on'
-  action:
-  - entity_id: switch.adrian_s_phone_charger
-    service: switch.turn_off
-- id: '1580492785773'
-  alias: Switch:Nancy's Phone Charger:Turn Off
-  description: ''
-  trigger:
-  - above: 85
-    entity_id: sensor.nancy_s_g7_power_battery_sensor
-    platform: numeric_state
-  condition:
-  - condition: state
-    entity_id: switch.nancy_s_phone_charger
-    state: 'on'
-  action:
-  - entity_id: switch.nancy_s_phone_charger
-    service: switch.turn_off
+  - wait_for_trigger:
+      - platform: numeric_state
+        entity_id: sensor.nokia_5_3_battery_level
+        above: 80
+  - service: switch.turn_off
+    entity_id: switch.adrian_s_phone_charger
+# - id: '1580492681958'
+#   alias: Switch:Adrian's Phone Charger:Turn Off
+#   description: ''
+#   trigger:
+#   - above: 80
+#     entity_id: sensor.nokia_5_3_battery_level
+#     platform: numeric_state
+#   condition:
+#   - condition: state
+#     entity_id: switch.adrian_s_phone_charger
+#     state: 'on'
+#   action:
+#   - entity_id: switch.adrian_s_phone_charger
+#     service: switch.turn_off
+# - id: '1580492785773'
+#   alias: Switch:Nancy's Phone Charger:Turn Off
+#   description: ''
+#   trigger:
+#   - above: 85
+#     entity_id: sensor.nancy_s_g7_power_battery_sensor
+#     platform: numeric_state
+#   condition:
+#   - condition: state
+#     entity_id: switch.nancy_s_phone_charger
+#     state: 'on'
+#   action:
+#   - entity_id: switch.nancy_s_phone_charger
+#     service: switch.turn_off
 - id: '1580492902537'
   alias: Switch:Nancy's Phone Charger:Turn On
   description: ''
+  mode: 'single'
+  max_exceeded: silent
   trigger:
-  - at: 03:30:00
-    platform: time
-  - below: 35
+  - platform: time
+    at: 03:30:00
+  - platform: numeric_state
     entity_id: sensor.nancy_s_g7_power_battery_sensor
-    platform: numeric_state
+    below: 35
+  - platform: state
+    entity_id: switch.nancy_s_phone_charger
+    to: 'on'
   condition: []
   action:
   - entity_id: switch.nancy_s_phone_charger
     service: switch.turn_on
+  - wait_for_trigger:
+    - platform: numeric_state
+      entity_id: sensor.nancy_s_g7_power_battery_sensor
+      above: 80
+  - service: switch.turn_off
+    entity_id: switch.nancy_s_phone_charger
 - id: '1581009244170'
   alias: Lights:Night:Time
   description: ''
