@@ -16,16 +16,19 @@
                                 {
                                     "entities": [
                                         {
-                                            "entity": "light.alfresco_light_1"
+                                            "entity": "light.light_alfresco_1"
                                         },
                                         {
                                             "entity": "light.light_alfresco_2"
                                         },
                                         {
-                                            "entity": "light.back_passage_lights"
+                                            "entity": "light.light_alfresco_3"
                                         },
                                         {
-                                            "entity": "light.light_backverandah_1"
+                                            "entity": "light.light_backverandah"
+                                        },
+                                        {
+                                            "entity": "light.back_passage_lights"
                                         },
                                         {
                                             "entity": "light.light_boys_bedroom"
@@ -34,7 +37,8 @@
                                             "entity": "light.play_room_light"
                                         },
                                         {
-                                            "entity": "light.dining_room_lights"
+                                            "entity": "light.dining_room_lights",
+                                            "icon": "mdi:vanity-light"
                                         },
                                         {
                                             "entity": "light.entry_lights"
@@ -44,6 +48,9 @@
                                         },
                                         {
                                             "entity": "light.light_bedside_2"
+                                        },
+                                        {
+                                            "entity": "light.light_christmas_1"
                                         },
                                         {
                                             "entity": "light.light_familyroom_1"
@@ -87,7 +94,7 @@
                                 {
                                     "entities": [
                                         {
-                                            "entity": "switch.switch_arlec_1",
+                                            "entity": "switch.switch_kettle_1",
                                             "icon": "mdi:kettle",
                                             "name": "Kettle",
                                             "tap_action": {
@@ -188,11 +195,39 @@
                                                     "entity_id": "input_boolean.back_passage_pir"
                                                 }
                                             }
+                                        },
+                                        {
+                                            "entity": "input_select.boys_bedroom_scene",
+                                            "name": "Boys Bedroom Light"
+                                        },
+                                        {
+                                            "entity": "input_select.study_scene",
+                                            "name": "Study Lights"
+                                        },
+                                        {
+                                            "entity": "input_boolean.christmas_lights",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "input_boolean.toggle",
+                                                "service_data": {
+                                                    "entity_id": "input_boolean.christmas_lights"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "entity": "input_boolean.party_lights",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "input_boolean.toggle",
+                                                "service_data": {
+                                                    "entity_id": "input_boolean.party_lights"
+                                                }
+                                            }
                                         }
                                     ],
-                                    "show_state": false,
                                     "type": "entities",
-                                    "title": "Switches"
+                                    "title": "Switches",
+                                    "show_header_toggle": false
                                 }
                             ]
                         }

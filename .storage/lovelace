@@ -3,7 +3,7 @@
     "key": "lovelace",
     "data": {
         "config": {
-            "title": "Home Assistant",
+            "title": "",
             "views": [
                 {
                     "panel": true,
@@ -59,10 +59,13 @@
                                                     "entity": "light.light_alfresco_2"
                                                 },
                                                 {
-                                                    "entity": "light.back_passage_lights"
+                                                    "entity": "light.light_alfresco_3"
                                                 },
                                                 {
                                                     "entity": "light.light_backverandah"
+                                                },
+                                                {
+                                                    "entity": "light.back_passage_lights"
                                                 },
                                                 {
                                                     "entity": "light.light_boys_bedroom"
@@ -102,10 +105,7 @@
                                                     "entity": "light.study_lights"
                                                 },
                                                 {
-                                                    "entity": "input_select.boys_bedroom_scene"
-                                                },
-                                                {
-                                                    "entity": "input_select.study_scene"
+                                                    "entity": "light.light_frontdoor_1"
                                                 }
                                             ],
                                             "show_header_toggle": false,
@@ -219,6 +219,37 @@
                                                             "entity_id": "input_boolean.back_passage_pir"
                                                         }
                                                     }
+                                                },
+                                                {
+                                                    "entity": "input_select.boys_bedroom_scene",
+                                                    "name": "Boys Bedroom Light"
+                                                },
+                                                {
+                                                    "entity": "input_select.study_scene",
+                                                    "name": "Study Lights"
+                                                },
+                                                {
+                                                    "entity": "input_boolean.christmas_lights",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_boolean.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "input_boolean.christmas_lights"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "input_boolean.party_lights",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_boolean.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "input_boolean.party_lights"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.active"
                                                 }
                                             ],
                                             "show_state": false,
@@ -279,9 +310,6 @@
                                                 },
                                                 {
                                                     "entity": "sensor.adrian_s_work_phone_battery_level"
-                                                },
-                                                {
-                                                    "entity": "sensor.bom_feels_like_c"
                                                 }
                                             ],
                                             "hours_to_show": 24,
@@ -289,66 +317,28 @@
                                             "title": "Sensors"
                                         },
                                         {
-                                            "entities": [
-                                                {
-                                                    "entity": "person.adrian",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "person.nancy",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "alarm_control_panel.mqtt_alarm",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "binary_sensor.front_door",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "binary_sensor.laundry_garage_door",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "binary_sensor.family_room",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "binary_sensor.media_room",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "binary_sensor.back_passage",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "binary_sensor.study",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "switch.active",
-                                                    "show_state": false
-                                                },
-                                                {
-                                                    "entity": "sensor.rfb_button"
-                                                },
-                                                {
-                                                    "entity": "sensor.ir_button"
-                                                },
-                                                {
-                                                    "entity": "binary_sensor.updater"
-                                                }
-                                            ],
-                                            "type": "glance",
-                                            "state_color": false,
-                                            "show_state": true
+                                            "type": "sensor",
+                                            "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                                            "graph": "line",
+                                            "name": "Study Temperature"
                                         },
                                         {
                                             "type": "sensor",
-                                            "entity": "sensor.openweathermap_temperature",
+                                            "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
+                                            "graph": "line",
+                                            "name": "Boys Bedroom Temperature"
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.gooseberry_hill_temp_feels_like",
                                             "graph": "line",
                                             "name": "Outside Temperature"
+                                        },
+                                        {
+                                            "type": "entity",
+                                            "entity": "sensor.darlington_fire_danger_0",
+                                            "name": "Fire Danger",
+                                            "icon": "mdi:fire"
                                         }
                                     ]
                                 }

@@ -7,27 +7,17 @@
     platform: sun
   condition: []
   action:
-  - service: script.turn_on
-    entity_id: script.1576603594014
-    data: {}
   - entity_id: light.light_entry_2
     service: light.turn_on
   - entity_id: light.light_entry_1,light.light_entry_3
     service: light.turn_off
+  - service: script.turn_on
+    entity_id: script.1576603594014
+    data: {}
   - delay: 00:45:00
   - entity_id: cover.dining_room_rollershutter
     service: cover.close_cover
-- id: '1576515032563'
-  alias: Lights:Night:Timer
-  description: ''
-  trigger:
-  - at: '20:30:00'
-    platform: time
-  condition: []
-  action:
-  - entity_id: script.1576604054568
-    service: script.turn_on
-
+  mode: single
 - id: '1580492573046'
   alias: Switch:Adrian's Phone Charger:Turn On
   description: ''
@@ -86,17 +76,18 @@
   alias: Lights:Night:Time
   description: ''
   trigger:
-  - at: '21:00:00'
+  - at: '20:30:00'
     platform: time
   condition: []
   action:
-  - service: script.turn_on
-    entity_id: script.1576604054568
-    data: {}
   - entity_id: light.light_entry_3
     service: light.turn_on
   - entity_id: light.light_entry_2
     service: light.turn_off
+  - service: script.turn_on
+    entity_id: script.1576604054568
+    data: {}
+  mode: single
 - id: '1581407669990'
   alias: Phantom:Adrian
   description: ''
@@ -242,3 +233,20 @@
   condition: []
   action:
   - scene: scene.scene_boys_bedroom_off
+- id: '1608395976316'
+  alias: 'Switch:Boys-Fan: Temperature'
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.temp_boys_bedroom_ds18b20_temperature
+    below: '22'
+    for: 00:05:00
+  condition:
+  - condition: state
+    entity_id: switch.david_s_fan
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.jonathan_s_fan,switch.david_s_fan
+  mode: single
