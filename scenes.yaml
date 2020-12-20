@@ -620,69 +620,83 @@
   name: Scene:Movie Time
   entities:
     light.lifx_d0_73_d5_37_e4_e0:
+      min_mireds: 111
+      max_mireds: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
       friendly_name: Light-DiningRoom-3
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
       supported_features: 55
+      state: 'off'
     light.lifx_d0_73_d5_37_e5_cd:
+      min_mireds: 111
+      max_mireds: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
       friendly_name: Light-DiningRoom-4
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
       supported_features: 55
+      state: 'off'
     light.lifx_d0_73_d5_38_15_d3:
+      min_mireds: 111
+      max_mireds: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
       friendly_name: Light-DiningRoom-2
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
       supported_features: 55
+      state: 'off'
     light.lifx_d0_73_d5_38_46_87:
+      min_mireds: 111
+      max_mireds: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
       friendly_name: Light-DiningRoom-1
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
       supported_features: 55
+      state: 'off'
     light.light_entry_1:
       friendly_name: Light-Entry-1
-      state: 'off'
       supported_features: 0
+      state: 'off'
     light.light_entry_2:
-      friendly_name: Light Entry 2
-      state: 'off'
+      friendly_name: Light-Entry-2
       supported_features: 0
+      state: 'off'
     light.light_entry_3:
       friendly_name: Light-Entry-3
-      state: 'off'
       supported_features: 0
+      state: 'off'
     light.light_familyroom_1:
+      min_mireds: 111
+      max_mireds: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
       friendly_name: Family Room Flood
-      max_mireds: 500
-      min_mireds: 153
+      icon: mdi:spotlight-beam
+      supported_features: 55
       state: 'off'
-      supported_features: 3
     light.music_room_light:
+      min_mireds: 111
+      max_mireds: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
       friendly_name: Music Room Light
-      max_mireds: 500
-      min_mireds: 153
+      supported_features: 55
       state: 'off'
-      supported_features: 3
+    input_boolean.christmas_lights:
+      editable: true
+      friendly_name: Christmas Lights
+      icon: mdi:vanity-light
+      state: 'off'
 - id: '1589245592715'
   name: Scene:House:Away
   entities:
