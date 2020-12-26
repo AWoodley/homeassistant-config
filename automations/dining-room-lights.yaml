@@ -116,42 +116,42 @@
             entity_id: light.lifx_d0_73_d5_38_46_87
             brightness: 255
             period: '{{ (range(1, 4)|random) }}'
-            change: 35
+            change: 138
             power_on: true
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.lifx_d0_73_d5_38_15_d3
             brightness: 255
             period: '{{ (range(1, 4)|random) }}'
-            change: 35
+            change: 138
             power_on: true
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.lifx_d0_73_d5_37_e4_e0
             brightness: 255
             period: '{{ (range(1, 4)|random) }}'
-            change: 35
+            change: 138
             power_on: true
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.lifx_d0_73_d5_37_e5_cd
             brightness: 255
             period: '{{ (range(1, 4)|random) }}'
-            change: 35
+            change: 138
             power_on: true
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.music_room_light
             brightness: 255
             period: '{{ (range(1, 4)|random) }}'
-            change: 35
+            change: 138
             power_on: true
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.light_familyroom_1
             brightness: 255
             period: '{{ (range(1, 4)|random) }}'
-            change: 35
+            change: 138
             power_on: true
           service: lifx.effect_colorloop
         - data_template:
