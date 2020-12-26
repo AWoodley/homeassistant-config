@@ -118,6 +118,7 @@
             period: '{{ (range(1, 4)|random) }}'
             change: 138
             power_on: true
+            transition: 1
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.lifx_d0_73_d5_38_15_d3
@@ -125,6 +126,7 @@
             period: '{{ (range(1, 4)|random) }}'
             change: 138
             power_on: true
+            transition: 1
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.lifx_d0_73_d5_37_e4_e0
@@ -132,6 +134,7 @@
             period: '{{ (range(1, 4)|random) }}'
             change: 138
             power_on: true
+            transition: 1
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.lifx_d0_73_d5_37_e5_cd
@@ -139,6 +142,7 @@
             period: '{{ (range(1, 4)|random) }}'
             change: 138
             power_on: true
+            transition: 1
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.music_room_light
@@ -146,6 +150,7 @@
             period: '{{ (range(1, 4)|random) }}'
             change: 138
             power_on: true
+            transition: 1
           service: lifx.effect_colorloop
         - data_template:
             entity_id: light.light_familyroom_1
@@ -153,6 +158,7 @@
             period: '{{ (range(1, 4)|random) }}'
             change: 138
             power_on: true
+            transition: 1
           service: lifx.effect_colorloop
         - data_template:
             entity_id: '{{ ["light.lifx_d0_73_d5_38_46_87", "light.lifx_d0_73_d5_38_15_d3", "light.lifx_d0_73_d5_37_e4_e0", "light.lifx_d0_73_d5_37_e5_cd", "light.music_room_light", "light.light_familyroom_1"]|random }}'
@@ -161,6 +167,10 @@
             cycles: 30
             power_on: true
           service: lifx.effect_pulse
+        - service: light.turn_on
+          entity_id: light.lifx_d0_73_d5_38_46_87, light.lifx_d0_73_d5_38_15_d3, light.lifx_d0_73_d5_37_e4_e0, light.lifx_d0_73_d5_37_e5_cd, light.music_room_light, light.light_familyroom_1
+          data:
+            brightness: 255
         - delay: '{{ (range(5, 60)|random) }}'
 - id: '20200120719381'
   alias: Crazy Lights
