@@ -106,14 +106,14 @@
   sequence:
     - service: lifx.effect_pulse
       data_template:
-        entity_id: '{{ entity }}'
+        entity_id: "{{ entity }}"
         brightness: 255
         mode: strobe
         cycles: 30
         power_on: true
     - service: lifx.set_state
       data_template:
-        entity_id: '{{ entity }}'
+        entity_id: "{{ entity }}"
         power: on
         brightness: 255
     
