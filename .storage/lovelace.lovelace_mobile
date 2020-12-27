@@ -371,9 +371,19 @@
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.openweathermap_temperature",
+                                    "entity": "sensor.gooseberry_hill_temp_feels_like",
                                     "graph": "line",
                                     "name": "Outside Temperature"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
+                                    "graph": "line"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                                    "graph": "line"
                                 }
                             ]
                         }

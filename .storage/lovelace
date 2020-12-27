@@ -191,6 +191,36 @@
                                                     }
                                                 },
                                                 {
+                                                    "entity": "switch.david_s_fan",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.david_s_fan"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.jonathan_s_fan",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.jonathan_s_fan"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.radios",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.radios"
+                                                        }
+                                                    }
+                                                },
+                                                {
                                                     "entity": "input_boolean.family_room_pir",
                                                     "tap_action": {
                                                         "action": "call-service",
@@ -229,6 +259,17 @@
                                                     "name": "Study Lights"
                                                 },
                                                 {
+                                                    "entity": "switch.media_centre",
+                                                    "icon": "hass:cast-connected",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.media_centre"
+                                                        }
+                                                    }
+                                                },
+                                                {
                                                     "entity": "input_boolean.christmas_lights",
                                                     "tap_action": {
                                                         "action": "call-service",
@@ -259,13 +300,25 @@
                                         {
                                             "entities": [
                                                 {
-                                                    "entity": "switch.media_centre"
+                                                    "entity": "scene.scene_movie_time",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "scene.turn_on",
+                                                        "service_data": {
+                                                            "entity_id": "scene.scene_movie_time"
+                                                        }
+                                                    },
+                                                    "icon": "mdi:movie"
                                                 },
                                                 {
-                                                    "entity": "scene.scene_movie_time"
-                                                },
-                                                {
-                                                    "entity": "switch.tv"
+                                                    "entity": "switch.tv",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.tv"
+                                                        }
+                                                    }
                                                 },
                                                 {
                                                     "entity": "media_player.glod"
@@ -318,27 +371,67 @@
                                         },
                                         {
                                             "type": "sensor",
-                                            "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                                            "entity": "sensor.average_indoor_temperature",
                                             "graph": "line",
-                                            "name": "Study Temperature"
+                                            "icon": "hass:thermometer",
+                                            "name": "Inside Temperature"
                                         },
                                         {
                                             "type": "sensor",
-                                            "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
-                                            "graph": "line",
-                                            "name": "Boys Bedroom Temperature"
-                                        },
-                                        {
-                                            "type": "sensor",
-                                            "entity": "sensor.gooseberry_hill_temp_feels_like",
+                                            "entity": "sensor.bluetooth_hub_1_atc_b45222_temperature",
                                             "graph": "line",
                                             "name": "Outside Temperature"
                                         },
                                         {
-                                            "type": "entity",
-                                            "entity": "sensor.darlington_fire_danger_0",
-                                            "name": "Fire Danger",
-                                            "icon": "mdi:fire"
+                                            "type": "glance",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                                                    "name": "Study"
+                                                },
+                                                {
+                                                    "entity": "sensor.bluetooth_hub_1_atc_dfcf8d_temperature",
+                                                    "name": "Dining Room"
+                                                },
+                                                {
+                                                    "entity": "sensor.bluetooth_hub_1_atc_87d585_temperature",
+                                                    "name": "Living Room"
+                                                },
+                                                {
+                                                    "entity": "sensor.bluetooth_hub_1_atc_fbfa2a_temperature",
+                                                    "name": "Master Bedroom"
+                                                },
+                                                {
+                                                    "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
+                                                    "name": "Boys Bedroom"
+                                                },
+                                                {
+                                                    "entity": "sensor.bluetooth_hub_1_atc_7f98b8_temperature",
+                                                    "name": "Sewing Room"
+                                                },
+                                                {
+                                                    "entity": "sensor.bluetooth_hub_1_atc_88821f_temperature",
+                                                    "name": "Ceiling"
+                                                },
+                                                {
+                                                    "entity": "sensor.bluetooth_hub_1_atc_b45222_temperature",
+                                                    "name": "Outside"
+                                                },
+                                                {
+                                                    "entity": "sensor.darlington_fire_danger_0",
+                                                    "name": "FDR"
+                                                }
+                                            ],
+                                            "state_color": true,
+                                            "show_icon": false,
+                                            "show_state": true,
+                                            "columns": 5
+                                        },
+                                        {
+                                            "type": "weather-forecast",
+                                            "entity": "weather.darlington",
+                                            "show_forecast": false,
+                                            "secondary_info_attribute": "wind_speed"
                                         }
                                     ]
                                 }
