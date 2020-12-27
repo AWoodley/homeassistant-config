@@ -226,40 +226,19 @@ binary_sensor:
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
-  # - platform: rpi_gpio
-  #   invert_logic: true
-  #   pull_mode: UP
-  #   ports:
-  #     27: Arm Alarm
-  #     22: Doorbell
-  #     23: Bedroom Light
+
 
 sensor:
-  # - platform: bom
-  #   station: IDW60901.94615
-  #   monitored_conditions:
-  #     - air_temp
-  #     - delta_t
-  #     - dewpt
-  #     - apparent_t
-  #     - rel_hum
-  #     - wind_dir
-  #     - gust_kmh
-  #     - wind_spd_kmh
-  - platform: bom_forecast
-    product_id:  IDW12300
-    name: Perth
-    forecast_days: 6
-    rest_of_today: True
-    friendly: True
-    friendly_state_format: '{max}, {summary}'
-    monitored_conditions:
-      - 'max'
-      - 'min'
-      - 'chance_of_rain'
-      - 'possible_rainfall'
-      - 'summary'
-      - 'detailed_summary'
+  - platform: min_max
+    name: 'Average Indoor Temperature'
+    type: mean
+    entity_ids:
+      - entity: sensor.temp_boys_bedroom_ds18b20_temperature
+      - entity: sensor.rollershutter_diningroom_ds18b20_temperature
+      - entity: sensor.bluetooth_hub_1_atc_dfcf8d_temperature
+      - entity: sensor.bluetooth_hub_1_atc_87d585_temperature
+      - entity: sensor.bluetooth_hub_1_atc_fbfa2a_temperature
+      - entity: sensor.bluetooth_hub_1_atc_7f98b8_temperature
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
@@ -328,14 +307,6 @@ cover:
     # position_topic: tasmota/4A78A8/stat/RESULT
     # value_template:  '{ value_json.Shutter1.Position }'
 
-
-input_boolean:
-  christmas_lights_state:
-    name: Running state of the Christmas light pattern
-    initial: off
-# States:
-# 0 - Christmas Lights Disabled
-# 1 - Christmas Lights Running
 
 input_select:
   study_scene:
