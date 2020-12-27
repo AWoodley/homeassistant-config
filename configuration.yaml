@@ -233,12 +233,12 @@ sensor:
     name: 'Average Indoor Temperature'
     type: mean
     entity_ids:
-      - entity: sensor.temp_boys_bedroom_ds18b20_temperature
-      - entity: sensor.rollershutter_diningroom_ds18b20_temperature
-      - entity: sensor.bluetooth_hub_1_atc_dfcf8d_temperature
-      - entity: sensor.bluetooth_hub_1_atc_87d585_temperature
-      - entity: sensor.bluetooth_hub_1_atc_fbfa2a_temperature
-      - entity: sensor.bluetooth_hub_1_atc_7f98b8_temperature
+      - sensor.temp_boys_bedroom_ds18b20_temperature
+      - sensor.rollershutter_diningroom_ds18b20_temperature
+      - sensor.bluetooth_hub_1_atc_dfcf8d_temperature
+      - sensor.bluetooth_hub_1_atc_87d585_temperature
+      - sensor.bluetooth_hub_1_atc_fbfa2a_temperature
+      - sensor.bluetooth_hub_1_atc_7f98b8_temperature
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
