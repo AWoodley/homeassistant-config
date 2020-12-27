@@ -371,19 +371,67 @@
                                 },
                                 {
                                     "type": "sensor",
-                                    "entity": "sensor.gooseberry_hill_temp_feels_like",
+                                    "entity": "sensor.average_indoor_temperature",
+                                    "graph": "line",
+                                    "icon": "hass:thermometer",
+                                    "name": "Inside Temperature"
+                                },
+                                {
+                                    "type": "sensor",
+                                    "entity": "sensor.bluetooth_hub_1_atc_b45222_temperature",
                                     "graph": "line",
                                     "name": "Outside Temperature"
                                 },
                                 {
-                                    "type": "sensor",
-                                    "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
-                                    "graph": "line"
+                                    "type": "glance",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                                            "name": "Study"
+                                        },
+                                        {
+                                            "entity": "sensor.bluetooth_hub_1_atc_dfcf8d_temperature",
+                                            "name": "Dining Room"
+                                        },
+                                        {
+                                            "entity": "sensor.bluetooth_hub_1_atc_87d585_temperature",
+                                            "name": "Living Room"
+                                        },
+                                        {
+                                            "entity": "sensor.bluetooth_hub_1_atc_fbfa2a_temperature",
+                                            "name": "Master Bedroom"
+                                        },
+                                        {
+                                            "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
+                                            "name": "Boys Bedroom"
+                                        },
+                                        {
+                                            "entity": "sensor.bluetooth_hub_1_atc_7f98b8_temperature",
+                                            "name": "Sewing Room"
+                                        },
+                                        {
+                                            "entity": "sensor.bluetooth_hub_1_atc_88821f_temperature",
+                                            "name": "Ceiling"
+                                        },
+                                        {
+                                            "entity": "sensor.bluetooth_hub_1_atc_b45222_temperature",
+                                            "name": "Outside"
+                                        },
+                                        {
+                                            "entity": "sensor.darlington_fire_danger_0",
+                                            "name": "FDR"
+                                        }
+                                    ],
+                                    "state_color": true,
+                                    "show_icon": false,
+                                    "show_state": true,
+                                    "columns": 5
                                 },
                                 {
-                                    "type": "sensor",
-                                    "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
-                                    "graph": "line"
+                                    "type": "weather-forecast",
+                                    "entity": "weather.darlington",
+                                    "show_forecast": false,
+                                    "secondary_info_attribute": "wind_speed"
                                 }
                             ]
                         }
