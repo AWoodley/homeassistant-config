@@ -167,6 +167,7 @@
             cycles: 30
             power_on: true
           service: lifx.effect_pulse
+        - delay: '{{ (range(5, 60)|random) }}' 
 - id: '20200120719381'
   alias: Crazy Lights
   trigger:
