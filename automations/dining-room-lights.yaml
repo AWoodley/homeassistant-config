@@ -164,10 +164,10 @@
             entity_id: '{{ ["light.lifx_d0_73_d5_38_46_87", "light.lifx_d0_73_d5_38_15_d3", "light.lifx_d0_73_d5_37_e4_e0", "light.lifx_d0_73_d5_37_e5_cd", "light.music_room_light", "light.light_familyroom_1"]|random }}'
             brightness: 255
             mode: strobe
-            cycles: 30
+            cycles: 31
             power_on: true
           service: lifx.effect_pulse
-        - delay: '{{ (range(5, 60)|random) }}' 
+        - delay: 5
 - id: '20200120719381'
   alias: Crazy Lights
   trigger:
