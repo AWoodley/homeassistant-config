@@ -164,7 +164,7 @@
             entity_id: '{{ ["light.lifx_d0_73_d5_38_46_87", "light.lifx_d0_73_d5_38_15_d3", "light.lifx_d0_73_d5_37_e4_e0", "light.lifx_d0_73_d5_37_e5_cd", "light.music_room_light", "light.light_familyroom_1"]|random }}'
             brightness: 255
             mode: strobe
-            cycles: 31
+            cycles: 60
             power_on: true
           service: lifx.effect_pulse
         - delay: 5
