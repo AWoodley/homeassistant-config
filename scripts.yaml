@@ -12,8 +12,8 @@
 '20201106233201':
   alias: Christmas Lights
   sequence:
-    - entity_id: input_boolean.christmas_lights
-      service: input_boolean.turn_on
+  - entity_id: input_boolean.christmas_lights
+    service: input_boolean.turn_on
 '1575974067886':
   alias: Enough Christmas
   sequence:
@@ -102,21 +102,25 @@
       transition: 900
     entity_id: light.lifx_d0_73_d5_38_46_87
     service: lifx.set_state
-'lifx_strobe':
+lifx_strobe:
   sequence:
-    - service: lifx.effect_pulse
-      data_template:
-        entity_id: "{{ entity }}"
-        brightness: 255
-        mode: strobe
-        cycles: 30
-        power_on: true
-    - service: lifx.set_state
-      data_template:
-        entity_id: "{{ entity }}"
-        power: on
-        brightness: 255
-    
+  - service: lifx.effect_pulse
+    data:
+      entity_id: '{{ entity }}'
+      brightness: 255
+      mode: strobe
+      cycles: 60
+      power_on: true
+  - delay: '3'
+  - service: lifx.effect_colorloop
+    data:
+      entity_id: '{{ entity }}'
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+  mode: single
 create_every_light_group:
   sequence:
   - service: group.set
