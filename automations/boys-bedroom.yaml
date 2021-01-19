@@ -69,6 +69,8 @@
     entity_id: sensor.temp_boys_bedroom_ds18b20_temperature
     below: 24
     for: 00:05:00
+  - platform: time
+    at: 07:30:00
   condition:
     condition: or
     conditions:
