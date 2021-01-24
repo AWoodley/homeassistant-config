@@ -269,7 +269,7 @@ sensor:
 switch:
   - platform: mqtt
     name: Sammy
-    command_topic: "tasmotas/cmnd/irsend"
+    command_topic: "cmnd/tasmotas/irsend"
     payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
   - platform: mqtt
     state_topic: "home/hass/active"
@@ -281,7 +281,7 @@ switch:
     name: TV
     icon: mdi:television
     optimistic: false
-    command_topic: "tasmotas/cmnd/irsend"
+    command_topic: "cmnd/tasmotas/irsend"
     payload_on: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
     payload_off: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
   - platform: flux
@@ -368,5 +368,5 @@ vacuum: !include vacuum.yaml
 #   turn_on_action:
 #     - service: mqtt.publish
 #       data:
-#         topic: "tasmotas/cmnd/irsend"
+#         topic: "cmnd/tasmotas/irsend"
 #         payload: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
