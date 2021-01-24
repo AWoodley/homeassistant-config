@@ -29,6 +29,8 @@ zone:
 
 logger:
   default: warning
+#  logs:
+#    homeassistant.components.tasmota: debug
 
 config:
 
