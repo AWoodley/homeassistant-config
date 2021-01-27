@@ -162,6 +162,10 @@ google_assistant:
       expose: true
     cover.dining_room_rollershutter:
       expose: true
+    cover.master_bedroom_rollershutter:
+      expose: true
+    cover.boys_bedroom_roller_shutter:
+      expose: true
 
 # calendar:
 #   - platform: caldav
