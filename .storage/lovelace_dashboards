@@ -13,11 +13,36 @@
             },
             {
                 "require_admin": false,
-                "show_in_sidebar": false,
+                "show_in_sidebar": true,
                 "title": "Mobile",
                 "url_path": "lovelace-mobile",
                 "mode": "storage",
-                "id": "lovelace_mobile"
+                "id": "lovelace_mobile",
+                "icon": "hass:cellphone"
+            },
+            {
+                "require_admin": false,
+                "show_in_sidebar": true,
+                "title": "Floorplan",
+                "url_path": "lovelace-floorplan",
+                "mode": "storage",
+                "id": "lovelace_floorplan"
+            },
+            {
+                "require_admin": true,
+                "show_in_sidebar": true,
+                "title": "Admin",
+                "url_path": "lovelace-admin",
+                "mode": "storage",
+                "id": "lovelace_admin"
+            },
+            {
+                "require_admin": true,
+                "show_in_sidebar": true,
+                "title": "Backend",
+                "url_path": "lovelace-backend",
+                "mode": "storage",
+                "id": "lovelace_backend"
             }
         ]
     }

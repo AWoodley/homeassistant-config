@@ -21,14 +21,12 @@
 - id: '1580492573046'
   alias: Switch:Adrian's Phone Charger:Turn On
   description: ''
-  mode: 'single'
-  max_exceeded: silent
   trigger:
   - platform: time
     at: 06:00:00
   - platform: numeric_state
     entity_id: sensor.nokia_5_3_battery_level
-    below: 35
+    below: '35'
   - platform: state
     entity_id: switch.adrian_s_phone_charger
     to: 'on'
@@ -37,15 +35,17 @@
   - service: switch.turn_on
     entity_id: switch.adrian_s_phone_charger
   - wait_for_trigger:
-      - platform: numeric_state
-        entity_id: sensor.nokia_5_3_battery_level
-        above: 80
+    - platform: numeric_state
+      entity_id: sensor.nokia_5_3_battery_level
+      above: '95'
   - service: switch.turn_off
     entity_id: switch.adrian_s_phone_charger
+  mode: restart
+  max_exceeded: silent
 - id: '1580492902537'
   alias: Switch:Nancy's Phone Charger:Turn On
   description: ''
-  mode: 'single'
+  mode: single
   max_exceeded: silent
   trigger:
   - platform: time
@@ -191,4 +191,75 @@
     entity_id: switch.switch_arlec_1
     type: turn_off
   mode: single
-
+- id: '1611676108901'
+  alias: Lights:Master Bedroom:Toggle
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.temp_toggle
+    to: 'on'
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    entity_id: light.master_bedroom_lights
+  mode: single
+- id: '1611678447095'
+  alias: Rollershutter:Boys Bedroom:Open:Time
+  description: Open the Boys Bedroom Roller shutter at 08:00
+  trigger:
+  - platform: time
+    at: 07:30
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.boys_bedroom_roller_shutter
+  mode: single
+- id: '1611763659185'
+  alias: Rollershutter:Master Bedroom:Open:Time
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:30:00
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.master_bedroom_rollershutter
+  mode: single
+- id: '1613410356423'
+  alias: Rollershutters:Close:Sunrise
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: -00:45:00
+  condition: []
+  action:
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.master_bedroom_rollershutter, cover.boys_bedroom_rollershutter
+  mode: single
