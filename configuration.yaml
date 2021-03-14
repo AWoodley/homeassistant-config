@@ -140,6 +140,14 @@ google_assistant:
       expose: true
     light.play_room_light:
       expose: true
+    switch.david_s_fan:
+      expose: true
+    switch.jonathan_s_fan:
+      expose: true
+    switch.switch_kettle:
+      expose: true
+    switch.tv:
+      expose: true
     switch.media_centre:
       expose: true
     switch.boy_s_heater:
@@ -156,16 +164,22 @@ google_assistant:
     scene.1592309890640:
       expose: true
       name: Red Lights
-    switch.tv:
-      expose: true
     vacuum.sammy:
       expose: true
     cover.dining_room_rollershutter:
       expose: true
     cover.master_bedroom_rollershutter:
       expose: true
-    cover.boys_bedroom_roller_shutter:
+    cover.boys_bedroom_rollershutter:
       expose: true
+    sensor.temp_boys_bedroom_ds18b20_temperature:
+      expose: true
+    sensor.bluetooth_hub_1_atc_fbfa2a_temperature:
+      expose: true
+      name: Master Bedroom Temperature
+    sensor.rollershutter_diningroom_ds18b20_temperature:
+      expose: true
+      name: Study Temperature
 
 # calendar:
 #   - platform: caldav
