@@ -34,36 +34,42 @@
       brightness: 255
       color_temp: 280
 
-# - id: '2020121423431'
-#   alias: Light:Music Room:PIR
-#   description: 'Trigger light from PIR'
-#   mode: restart
-#   trigger:
-#   - entity_id: sensor.rfb_button
-#     platform: state
-#     to: '14330700'
-#   condition:
-#   - condition: or
-#     conditions:
-#     - before: sunrise
-#       condition: sun
-#     - after: sunset
-#       condition: sun
-#   - condition: state
-#     entity_id: input_boolean.music_room_pir
-#     state: 'on'
-#   action:
-#   - service: light.turn_on
-#     entity_id: light.music_room_light
-#     data:
-#       brightness: 60
-#       color_temp: 280
-#   - delay: '00:05:00'
-#   - condition: state
-#     entity_id: input_boolean.music_room_pir
-#     state: 'on'
-#   - service: light.turn_off
-#     entity_id: light.music_room_light
+- id: '2020121423431'
+  alias: Light:Music Room:PIR
+  description: 'Trigger light from PIR'
+  mode: restart
+  trigger:
+  - entity_id: binary_sensor.family_room
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.media_room
+    platform: state
+    to: 'on'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '14330700'
+  condition:
+  - condition: or
+    conditions:
+    - before: sunrise
+      condition: sun
+    - after: sunset
+      condition: sun
+  - condition: state
+    entity_id: input_boolean.music_room_pir
+    state: 'on'
+  action:
+  - service: light.turn_on
+    entity_id: light.music_room_light
+    data:
+      brightness: 60
+      color_temp: 280
+  - delay: '00:05:00'
+  - condition: state
+    entity_id: input_boolean.music_room_pir
+    state: 'on'
+  - service: light.turn_off
+    entity_id: light.music_room_light
 # - id: '1584897466331'
 #   alias: Light:Music Room:PIR:On
 #   description: ''

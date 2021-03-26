@@ -71,7 +71,7 @@
     state: 'off'
   action:
   - service: light.turn_on
-    entity_id: light.light_familyroom_1,light.music_room_light
+    entity_id: light.light_familyroom_1
     data:
       brightness: 60
       color_temp: 280
@@ -80,7 +80,7 @@
     entity_id: input_boolean.family_room_pir
     state: 'on'
   - service: light.turn_off
-    entity_id: light.light_familyroom_1,light.music_room_light
+    entity_id: light.light_familyroom_1
 # - id: '1584896652882'
 #   alias: Light:Family Room Flood:PIR:On
 #   description: ''
