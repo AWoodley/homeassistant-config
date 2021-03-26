@@ -129,6 +129,8 @@ google_assistant:
       expose: true
     light.light_familyroom_1:
       expose: true
+    light.light_familyroom_stand:
+      expose: true
     light.light_masterbedroom_1:
       expose: true
     light.light_media_1:

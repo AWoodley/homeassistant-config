@@ -41,7 +41,7 @@
   - service: light.turn_on
     entity_id: light.back_passage_lights
     data:
-      brightness: 60
+      brightness: 30
       color_temp: 280
   - delay: '00:05:00'
   - condition: state

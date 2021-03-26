@@ -37,6 +37,11 @@
     - light.passage1
     - light.passage2
 - platform: group
+  name: Family Room Lights
+  entities:
+    - light.lifx_familyroom_stand
+    - light.light_familyroom_1
+- platform: group
   name: Study Lights
   entities:
     - light.light_study_1
