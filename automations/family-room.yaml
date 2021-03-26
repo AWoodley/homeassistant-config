@@ -50,6 +50,12 @@
   - entity_id: binary_sensor.family_room
     platform: state
     to: 'on'
+  - entity_id: binary_sensor.media_room
+    platform: state
+    to: 'on'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '14330700'
   condition:
   - condition: or
     conditions:
@@ -60,9 +66,12 @@
   - condition: state
     entity_id: input_boolean.family_room_pir
     state: 'on'
+  - condition: state
+    entity_id: light.dining_room_lights
+    state: 'off'
   action:
   - service: light.turn_on
-    entity_id: light.light_familyroom_1
+    entity_id: light.light_familyroom_1,light.music_room_light
     data:
       brightness: 60
       color_temp: 280
@@ -71,7 +80,7 @@
     entity_id: input_boolean.family_room_pir
     state: 'on'
   - service: light.turn_off
-    entity_id: light.light_familyroom_1
+    entity_id: light.light_familyroom_1,light.music_room_light
 # - id: '1584896652882'
 #   alias: Light:Family Room Flood:PIR:On
 #   description: ''
