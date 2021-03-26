@@ -98,6 +98,7 @@ lifx:
     - broadcast: 192.168.29.60 # Play-Room-1
     - broadcast: 192.168.29.61 # Music-Room-1
     - broadcast: 192.168.29.62 # Family-Room-Flood
+    - broadcast: 192.168.29.63 # Family-Room-Stand
 
 google_assistant:
   project_id: hass
@@ -154,16 +155,16 @@ google_assistant:
       expose: true
     input_boolean.party_lights:
       expose: true
-      name: Party Lights
+      name: 'Party Lights'
     input_boolean.christmas_lights:
       expose: true
-      name: Christmas Lights
+      name: 'Christmas Lights'
     script.1575974067886:
       expose: true
-      name: Enough Christmas
+      name: 'Enough Christmas'
     scene.1592309890640:
       expose: true
-      name: Red Lights
+      name: 'Red Lights'
     vacuum.sammy:
       expose: true
     cover.dining_room_rollershutter:
@@ -176,10 +177,10 @@ google_assistant:
       expose: true
     sensor.bluetooth_hub_1_atc_fbfa2a_temperature:
       expose: true
-      name: Master Bedroom Temperature
+      name: 'Master Bedroom Temperature'
     sensor.rollershutter_diningroom_ds18b20_temperature:
       expose: true
-      name: Study Temperature
+      name: 'Study Temperature'
 
 # calendar:
 #   - platform: caldav
