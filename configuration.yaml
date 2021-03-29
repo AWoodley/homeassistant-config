@@ -177,7 +177,7 @@ google_assistant:
       expose: true
     sensor.temp_boys_bedroom_ds18b20_temperature:
       expose: true
-    sensor.bluetooth_hub_1_atc_fbfa2a_temperature:
+    sensor.ble_temperature_a4c138fbfa2a :
       expose: true
       name: 'Master Bedroom Temperature'
     sensor.rollershutter_diningroom_ds18b20_temperature:
@@ -258,12 +258,12 @@ sensor:
     name: 'Average Indoor Temperature'
     type: mean
     entity_ids:
-      - sensor.temp_boys_bedroom_ds18b20_temperature
       - sensor.rollershutter_diningroom_ds18b20_temperature
-      - sensor.bluetooth_hub_1_atc_dfcf8d_temperature
-      - sensor.bluetooth_hub_1_atc_87d585_temperature
-      - sensor.bluetooth_hub_1_atc_fbfa2a_temperature
-      - sensor.bluetooth_hub_1_atc_7f98b8_temperature
+      - sensor.temp_boys_bedroom_ds18b20_temperature
+      - sensor.ble_temperature_a4c138dfcf8d # Dining Room
+      - sensor.ble_temperature_a4c13887d585 # Living Room
+      - sensor.ble_temperature_a4c138fbfa2a # Master Bedroom
+      - sensor.ble_temperature_a4c138fbfa2a # Sewing Room
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
