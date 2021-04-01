@@ -36,7 +36,7 @@
   - data:
       brightness: 255
       color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e5_cd
+      entity_id: light.lifx_diningroom_4
       power: true
       transition: 900
     service: lifx.set_state
@@ -71,10 +71,10 @@
       brightness: 0
       color_name: white
       transition: 900
-    entity_id: light.lifx_d0_73_d5_37_e5_cd
+    entity_id: light.lifx_diningroom_4
     service: lifx.set_state
   - delay: 00:15:00
-  - entity_id: light.lifx_d0_73_d5_37_e5_cd
+  - entity_id: light.lifx_diningroom_4
     service: light.turn_off
   - data:
       brightness: 0

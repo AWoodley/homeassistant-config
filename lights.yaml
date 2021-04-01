@@ -24,7 +24,7 @@
     - light.lifx_d0_73_d5_38_46_87
     - light.lifx_d0_73_d5_38_15_d3
     - light.lifx_d0_73_d5_37_e4_e0
-    - light.lifx_d0_73_d5_37_e5_cd
+    - light.lifx_diningroom_4
 - platform: group
   name: Entry Lights
   entities:

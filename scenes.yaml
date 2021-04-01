@@ -375,7 +375,7 @@
       friendly_name: Light-DiningRoom-3
       supported_features: 55
       state: 'off'
-    light.lifx_d0_73_d5_37_e5_cd:
+    light.lifx_diningroom_4:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -669,7 +669,7 @@
       friendly_name: Light-DiningRoom-3
       supported_features: 55
       state: 'off'
-    light.lifx_d0_73_d5_37_e5_cd:
+    light.lifx_diningroom_4:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -764,7 +764,7 @@
       - light.lifx_d0_73_d5_38_46_87
       - light.lifx_d0_73_d5_38_15_d3
       - light.lifx_d0_73_d5_37_e4_e0
-      - light.lifx_d0_73_d5_37_e5_cd
+      - light.lifx_diningroom_4
       - light.passage1
       - light.passage2
       - light.light_study_1
@@ -844,7 +844,7 @@
       min_mireds: 111
       state: 'on'
       supported_features: 55
-    light.lifx_d0_73_d5_37_e5_cd:
+    light.lifx_diningroom_4:
       brightness: 50
       color_temp: 285
       effect_list:
