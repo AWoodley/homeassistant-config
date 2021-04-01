@@ -221,7 +221,7 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "switch.switch_kettle_1",
+                                                    "entity": "switch.switch_kettle",
                                                     "style": {
                                                         "top": "44%",
                                                         "left": "21%"
@@ -230,7 +230,7 @@
                                                         "action": "call-service",
                                                         "service": "switch.toggle",
                                                         "service_data": {
-                                                            "entity_id": "switch.switch_kettle_1"
+                                                            "entity_id": "switch.switch_kettle"
                                                         }
                                                     }
                                                 },
@@ -295,6 +295,21 @@
                                                         "service": "light.toggle",
                                                         "service_data": {
                                                             "entity_id": "light.light_familyroom_1"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "light.lifx_familyroom_stand",
+                                                    "style": {
+                                                        "top": "52%",
+                                                        "left": "95%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "light.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "light.lifx_familyroom_stand"
                                                         }
                                                     }
                                                 },
@@ -670,7 +685,7 @@
                                         },
                                         {
                                             "type": "sensor",
-                                            "entity": "sensor.bluetooth_hub_1_atc_b45222_temperature",
+                                            "entity": "sensor.ble_temperature_a4c138b45222",
                                             "graph": "line",
                                             "name": "Outside Temperature"
                                         },
@@ -682,15 +697,15 @@
                                                     "name": "Study"
                                                 },
                                                 {
-                                                    "entity": "sensor.bluetooth_hub_1_atc_dfcf8d_temperature",
+                                                    "entity": "sensor.ble_temperature_a4c138dfcf8d",
                                                     "name": "Dining Room"
                                                 },
                                                 {
-                                                    "entity": "sensor.bluetooth_hub_1_atc_87d585_temperature",
+                                                    "entity": "sensor.ble_temperature_a4c13887d585",
                                                     "name": "Living Room"
                                                 },
                                                 {
-                                                    "entity": "sensor.bluetooth_hub_1_atc_fbfa2a_temperature",
+                                                    "entity": "sensor.ble_temperature_a4c138fbfa2a",
                                                     "name": "Master Bedroom"
                                                 },
                                                 {
@@ -698,15 +713,15 @@
                                                     "name": "Boys Bedroom"
                                                 },
                                                 {
-                                                    "entity": "sensor.bluetooth_hub_1_atc_7f98b8_temperature",
+                                                    "entity": "sensor.ble_temperature_a4c1387f98b8",
                                                     "name": "Sewing Room"
                                                 },
                                                 {
-                                                    "entity": "sensor.bluetooth_hub_1_atc_88821f_temperature",
+                                                    "entity": "sensor.ble_temperature_a4c13888821f",
                                                     "name": "Ceiling"
                                                 },
                                                 {
-                                                    "entity": "sensor.bluetooth_hub_1_atc_b45222_temperature",
+                                                    "entity": "sensor.ble_temperature_a4c138b45222",
                                                     "name": "Outside"
                                                 },
                                                 {
