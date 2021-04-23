@@ -75,14 +75,14 @@ mqtt:
   discovery_prefix: homeassistant
   birth_message:
     topic: 'home/hass/active'
-    payload: "{{ states('sensor.local_ip') }}"
+    payload: 'OFFLINE'
     retain: false
     qos: 0
-  # will_message:
-  #   topic: 'home/hass/active'
-  #   payload: !secret partner
-  #   retain: false
-  #   qos: 0
+  will_message:
+    topic: 'home/hass/active'
+    payload: 'OFFLINE'
+    retain: false
+    qos: 0
 
 lifx:
   light:
