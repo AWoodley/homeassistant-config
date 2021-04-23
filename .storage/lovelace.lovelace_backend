@@ -1,0 +1,465 @@
+{
+    "version": 1,
+    "key": "lovelace.lovelace_backend",
+    "data": {
+        "config": {
+            "title": "",
+            "views": [
+                {
+                    "panel": true,
+                    "path": "",
+                    "title": "Backend",
+                    "visible": [
+                        {
+                            "user": "7e46c1b63b524b3b9069bcbf024a3ebb"
+                        },
+                        {
+                            "user": "1880f61fdeaf4c4ba34709e2c6f00f1e"
+                        },
+                        {
+                            "user": "92b3dd5fd4464e0e8352935995c0ee30"
+                        },
+                        {
+                            "user": "c02988cc95274ca9a27768db0a23e498"
+                        },
+                        {
+                            "user": "9618b73dddfc4121b82e207b4cd0ae1e"
+                        }
+                    ],
+                    "badges": [
+                        {
+                            "entity": "binary_sensor.updater"
+                        },
+                        {
+                            "entity": "sensor.rfb_button"
+                        },
+                        {
+                            "entity": "sensor.ir_button"
+                        },
+                        {
+                            "entity": "sensor.partner"
+                        },
+                        {
+                            "entity": "switch.active"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "type": "grid",
+                            "cards": [
+                                {
+                                    "type": "vertical-stack",
+                                    "cards": [
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "light.light_alfresco_1"
+                                                },
+                                                {
+                                                    "entity": "light.light_alfresco_2"
+                                                },
+                                                {
+                                                    "entity": "light.light_alfresco_3"
+                                                },
+                                                {
+                                                    "entity": "light.light_backverandah"
+                                                },
+                                                {
+                                                    "entity": "light.back_passage_lights"
+                                                },
+                                                {
+                                                    "entity": "light.light_boys_bedroom"
+                                                },
+                                                {
+                                                    "entity": "light.play_room_light"
+                                                },
+                                                {
+                                                    "entity": "light.dining_room_lights",
+                                                    "icon": "mdi:vanity-light"
+                                                },
+                                                {
+                                                    "entity": "light.entry_lights"
+                                                },
+                                                {
+                                                    "entity": "light.light_bedside_1"
+                                                },
+                                                {
+                                                    "entity": "light.light_bedside_2"
+                                                },
+                                                {
+                                                    "entity": "light.light_christmas_1"
+                                                },
+                                                {
+                                                    "entity": "light.light_familyroom_1"
+                                                },
+                                                {
+                                                    "entity": "light.light_masterbedroom_1"
+                                                },
+                                                {
+                                                    "entity": "light.music_room_light"
+                                                },
+                                                {
+                                                    "entity": "light.media_room_lights"
+                                                },
+                                                {
+                                                    "entity": "light.study_lights"
+                                                },
+                                                {
+                                                    "entity": "light.light_frontdoor_1"
+                                                }
+                                            ],
+                                            "show_header_toggle": false,
+                                            "title": "Lights",
+                                            "type": "entities"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "vertical-stack",
+                                    "cards": [
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "switch.switch_kettle_1",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.switch_kettle_1"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.switch_study_1",
+                                                    "icon": "mdi:monitor",
+                                                    "name": "Monitors",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.switch_study_1"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.boy_s_heater",
+                                                    "icon": "mdi:radiator",
+                                                    "name": "Boy's Heater",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.boy_s_heater"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.david_s_fan",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.david_s_fan"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.jonathan_s_fan",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.jonathan_s_fan"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "cover.dining_room_rollershutter",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "cover.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "cover.dining_room_rollershutter"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "cover.master_bedroom_rollershutter",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "cover.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "cover.master_bedroom_rollershutter"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "cover.boys_bedroom_rollershutter",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "cover.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "cover.boys_bedroom_rollershutter"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.radios",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.radios"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "vacuum.sammy"
+                                                },
+                                                {
+                                                    "entity": "switch.adrian_s_phone_charger",
+                                                    "icon": "mdi:battery-charging",
+                                                    "name": "Adrian's Phone Charger",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.adrian_s_phone_charger"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.nancy_s_phone_charger",
+                                                    "icon": "mdi:battery-charging",
+                                                    "name": "Nancy's Phone Charger",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.nancy_s_phone_charger"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "input_boolean.family_room_pir",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_boolean.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "input_boolean.family_room_pir"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "input_boolean.music_room_pir",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_boolean.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "input_boolean.music_room_pir"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "input_boolean.back_passage_pir",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_boolean.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "input_boolean.back_passage_pir"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "input_select.boys_bedroom_scene",
+                                                    "name": "Boys Bedroom Light"
+                                                },
+                                                {
+                                                    "entity": "input_select.study_scene",
+                                                    "name": "Study Lights"
+                                                },
+                                                {
+                                                    "entity": "switch.media_centre",
+                                                    "icon": "hass:cast-connected",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.media_centre"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "input_boolean.christmas_lights",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_boolean.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "input_boolean.christmas_lights"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "input_boolean.party_lights",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_boolean.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "input_boolean.party_lights"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.active"
+                                                }
+                                            ],
+                                            "show_state": false,
+                                            "type": "glance",
+                                            "title": "Switches"
+                                        },
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "scene.scene_movie_time",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "scene.turn_on",
+                                                        "service_data": {
+                                                            "entity_id": "scene.scene_movie_time"
+                                                        }
+                                                    },
+                                                    "icon": "mdi:movie"
+                                                },
+                                                {
+                                                    "entity": "switch.tv",
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.tv"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "media_player.glod"
+                                                },
+                                                {
+                                                    "entity": "media_player.lias"
+                                                },
+                                                {
+                                                    "entity": "media_player.kitchen_speaker"
+                                                },
+                                                {
+                                                    "entity": "media_player.googlehome4026"
+                                                },
+                                                {
+                                                    "entity": "media_player.imp"
+                                                }
+                                            ],
+                                            "title": "Media",
+                                            "type": "entities",
+                                            "show_header_toggle": false,
+                                            "state_color": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "vertical-stack",
+                                    "cards": [
+                                        {
+                                            "type": "history-graph",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.nokia_5_3_battery_level"
+                                                },
+                                                {
+                                                    "entity": "sensor.nancy_s_g7_power_battery_sensor"
+                                                },
+                                                {
+                                                    "entity": "sensor.david_s_phone_battery_level"
+                                                },
+                                                {
+                                                    "entity": "sensor.moto_g_5s_battery_level"
+                                                },
+                                                {
+                                                    "entity": "sensor.adrian_s_work_phone_battery_level"
+                                                }
+                                            ],
+                                            "hours_to_show": 24,
+                                            "refresh_interval": 60,
+                                            "title": "Sensors"
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.average_indoor_temperature",
+                                            "graph": "line",
+                                            "icon": "hass:thermometer",
+                                            "name": "Inside Temperature"
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.ble_temperature_a4c138b45222",
+                                            "graph": "line",
+                                            "name": "Outside Temperature"
+                                        },
+                                        {
+                                            "type": "glance",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                                                    "name": "Study"
+                                                },
+                                                {
+                                                    "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                                                    "name": "Dining Room"
+                                                },
+                                                {
+                                                    "entity": "sensor.ble_temperature_a4c13887d585",
+                                                    "name": "Living Room"
+                                                },
+                                                {
+                                                    "entity": "sensor.ble_temperature_a4c138fbfa2a",
+                                                    "name": "Master Bedroom"
+                                                },
+                                                {
+                                                    "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
+                                                    "name": "Boys Bedroom"
+                                                },
+                                                {
+                                                    "entity": "sensor.ble_temperature_a4c1387f98b8",
+                                                    "name": "Sewing Room"
+                                                },
+                                                {
+                                                    "entity": "sensor.ble_temperature_a4c13888821f",
+                                                    "name": "Ceiling"
+                                                },
+                                                {
+                                                    "entity": "sensor.ble_temperature_a4c138b45222",
+                                                    "name": "Outside"
+                                                },
+                                                {
+                                                    "entity": "sensor.darlington_fire_danger_0",
+                                                    "name": "FDR"
+                                                }
+                                            ],
+                                            "state_color": true,
+                                            "show_icon": false,
+                                            "show_state": true,
+                                            "columns": 5
+                                        },
+                                        {
+                                            "type": "weather-forecast",
+                                            "entity": "weather.darlington",
+                                            "show_forecast": false,
+                                            "secondary_info_attribute": "wind_speed"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

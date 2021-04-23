@@ -1,0 +1,13 @@
+{
+    "version": 1,
+    "key": "lovelace_resources",
+    "data": {
+        "items": [
+            {
+                "url": "/hacsfiles/battery-state-card/battery-state-card.js",
+                "type": "module",
+                "id": "b6b4e6493e8345d3a594a63480fe96af"
+            }
+        ]
+    }
+}

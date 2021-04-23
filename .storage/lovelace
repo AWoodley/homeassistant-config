@@ -607,16 +607,16 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "switch.active",
+                                                    "entity": "binary_sensor.active",
                                                     "style": {
                                                         "top": "90%",
                                                         "left": "10%"
                                                     },
                                                     "tap_action": {
                                                         "action": "call-service",
-                                                        "service": "switch.toggle",
+                                                        "service": "automation.trigger",
                                                         "service_data": {
-                                                            "entity_id": "switch.active"
+                                                            "entity_id": "automation.hass_heartbeat_2"
                                                         }
                                                     }
                                                 },

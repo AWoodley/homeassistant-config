@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "key": "lovelace.lovelace_admin",
+    "data": {
+        "config": {
+            "views": [
+                {
+                    "title": "Batteries",
+                    "path": "batteries",
+                    "badges": [],
+                    "cards": []
+                }
+            ],
+            "title": "Admin"
+        }
+    }
+}

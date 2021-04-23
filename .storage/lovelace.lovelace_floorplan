@@ -1,12 +1,12 @@
 {
     "version": 1,
-    "key": "lovelace.lovelace_mobile",
+    "key": "lovelace.lovelace_floorplan",
     "data": {
         "config": {
             "views": [
                 {
-                    "title": "Overview",
-                    "path": "overview",
+                    "panel": false,
+                    "title": "",
                     "badges": [],
                     "cards": [
                         {
@@ -598,166 +598,9 @@
                             "image": "local/lovelace/floorplan/floorplan.png"
                         }
                     ]
-                },
-                {
-                    "title": "Media",
-                    "path": "media",
-                    "panel": true,
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "vertical-stack",
-                            "cards": [
-                                {
-                                    "entities": [
-                                        {
-                                            "entity": "scene.scene_movie_time",
-                                            "tap_action": {
-                                                "action": "call-service",
-                                                "service": "scene.turn_on",
-                                                "service_data": {
-                                                    "entity_id": "scene.scene_movie_time"
-                                                }
-                                            },
-                                            "icon": "mdi:movie"
-                                        },
-                                        {
-                                            "entity": "switch.tv",
-                                            "tap_action": {
-                                                "action": "call-service",
-                                                "service": "switch.toggle",
-                                                "service_data": {
-                                                    "entity_id": "switch.tv"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "entity": "media_player.glod"
-                                        },
-                                        {
-                                            "entity": "media_player.lias"
-                                        },
-                                        {
-                                            "entity": "media_player.kitchen_speaker"
-                                        },
-                                        {
-                                            "entity": "media_player.googlehome4026"
-                                        },
-                                        {
-                                            "entity": "media_player.imp"
-                                        }
-                                    ],
-                                    "title": "Media",
-                                    "type": "entities",
-                                    "show_header_toggle": false,
-                                    "state_color": true
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "panel": true,
-                    "title": "Sensors",
-                    "path": "sensors",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "vertical-stack",
-                            "cards": [
-                                {
-                                    "type": "history-graph",
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.nokia_5_3_battery_level"
-                                        },
-                                        {
-                                            "entity": "sensor.nancy_s_g7_power_battery_sensor"
-                                        },
-                                        {
-                                            "entity": "sensor.david_s_phone_battery_level"
-                                        },
-                                        {
-                                            "entity": "sensor.moto_g_5s_battery_level"
-                                        },
-                                        {
-                                            "entity": "sensor.adrian_s_work_phone_battery_level"
-                                        }
-                                    ],
-                                    "hours_to_show": 24,
-                                    "refresh_interval": 60,
-                                    "title": "Sensors"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.average_indoor_temperature",
-                                    "graph": "line",
-                                    "icon": "hass:thermometer",
-                                    "name": "Inside Temperature"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.ble_temperature_a4c138b45222",
-                                    "graph": "line",
-                                    "name": "Outside Temperature"
-                                },
-                                {
-                                    "type": "glance",
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
-                                            "name": "Study"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c138dfcf8d",
-                                            "name": "Dining Room"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c13887d585",
-                                            "name": "Living Room"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c138fbfa2a",
-                                            "name": "Master Bedroom"
-                                        },
-                                        {
-                                            "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
-                                            "name": "Boys Bedroom"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c1387f98b8",
-                                            "name": "Sewing Room"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c13888821f",
-                                            "name": "Ceiling"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c138b45222",
-                                            "name": "Outside"
-                                        },
-                                        {
-                                            "entity": "sensor.darlington_fire_danger_0",
-                                            "name": "FDR"
-                                        }
-                                    ],
-                                    "state_color": true,
-                                    "show_icon": false,
-                                    "show_state": true,
-                                    "columns": 5
-                                },
-                                {
-                                    "type": "weather-forecast",
-                                    "entity": "weather.darlington",
-                                    "show_forecast": true,
-                                    "secondary_info_attribute": "wind_speed"
-                                }
-                            ]
-                        }
-                    ]
                 }
             ],
-            "title": "Mobile View"
+            "title": "Floorplan"
         }
     }
 }
