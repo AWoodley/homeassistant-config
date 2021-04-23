@@ -2,9 +2,9 @@
   alias: HASS:Standby
   description: ''
   trigger:
-  - entity_id: sensor.partner
+  - entity_id: binary_sensor.active
+    to: off
     platform: state
-    to: !secret partner
   condition: []
   action:
   - data: {}
@@ -20,8 +20,8 @@
   alias: HASS:Active
   description: ''
   trigger:
-  - entity_id: sensor.partner
-    from: !secret partner
+  - entity_id: binary_sensor.active
+    to: on
     platform: state
   condition: []
   action:
@@ -39,6 +39,6 @@
   condition: []
   action:
   - data:
-      payload: !secret hostname
+      payload: "{{ states('sensor.local_ip') }}"
       topic: home/hass/active
     service: mqtt.publish
