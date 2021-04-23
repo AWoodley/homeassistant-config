@@ -73,11 +73,11 @@ mqtt:
   password: !secret mqtt
   discovery: true
   discovery_prefix: homeassistant
-  birth_message:
-    topic: 'home/hass/active'
-    payload: "{{ states(sensor.local_ip) }}"
-    retain: false
-    qos: 0
+  # birth_message:
+  #   topic: 'home/hass/active'
+  #   payload: "{{ states(sensor.local_ip) }}"
+  #   retain: false
+  #   qos: 0
   # will_message:
   #   topic: 'home/hass/active'
   #   payload: !secret partner
