@@ -301,8 +301,9 @@ switch:
     state_topic: "home/hass/active"
     command_topic: "home/hass/active"
     name: Active
-    payload_on: "{{ states('sensor.local_ip') }}"
+    # payload_on: "{{ states('sensor.local_ip') }}"
     payload_off: "OFFLINE"
+    value_template: "{{ states('sensor.local_ip') == value}}"
   - platform: mqtt
     name: TV
     icon: mdi:television
