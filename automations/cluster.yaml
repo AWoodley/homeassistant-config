@@ -3,7 +3,7 @@
   description: ''
   trigger:
   - entity_id: binary_sensor.active
-    to: off
+    to: 'off'
     platform: state
   condition: []
   action:
@@ -21,7 +21,7 @@
   description: ''
   trigger:
   - entity_id: binary_sensor.active
-    to: on
+    to: 'on'
     platform: state
   condition: []
   action:
