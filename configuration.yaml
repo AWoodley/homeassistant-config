@@ -256,7 +256,7 @@ binary_sensor:
     sensors:
       active:
         friendly_name: "Active IP"
-        value_template: "{{ states('sensor.partner') == states('sensor.local_ip') }}"
+        value_template: "{{ states('sensor.partner') == states('sensor.local_ip') or states('sensor.partner') == 'OFFLINE' }}"
 
 sensor:
   - platform: min_max
@@ -301,8 +301,8 @@ switch:
     state_topic: "home/hass/active"
     command_topic: "home/hass/active"
     name: Active
-    payload_on: "{{ states(sensor.local_ip) }}"
-    # payload_off: !secret partner
+    payload_on: "{{ states('sensor.local_ip') }}"
+    payload_off: "OFFLINE"
   - platform: mqtt
     name: TV
     icon: mdi:television
