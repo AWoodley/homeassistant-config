@@ -75,7 +75,7 @@ mqtt:
   discovery_prefix: homeassistant
   birth_message:
     topic: 'home/hass/active'
-    payload: "{{ sensor.local_ip }}"
+    payload: "{{ states(sensor.local_ip) }}"
     retain: false
     qos: 0
   # will_message:
@@ -256,7 +256,7 @@ binary_sensor:
     sensors:
       active:
         friendly_name: "Active IP"
-        value_template: "{{ sensor.local_ip == sensor.partner }}"
+        value_template: "{{ states(sensor.local_ip) == states(sensor.partner) }}"
 
 sensor:
   - platform: min_max
@@ -301,7 +301,7 @@ switch:
     state_topic: "home/hass/active"
     command_topic: "home/hass/active"
     name: Active
-    payload_on: "{{ sensor.local_ip }}"
+    payload_on: "{{ states(sensor.local_ip) }}"
     # payload_off: !secret partner
   - platform: mqtt
     name: TV
