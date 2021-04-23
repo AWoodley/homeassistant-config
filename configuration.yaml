@@ -73,16 +73,16 @@ mqtt:
   password: !secret mqtt
   discovery: true
   discovery_prefix: homeassistant
-  birth_message:
-    topic: 'home/hass/active'
-    payload: !secret hostname
-    retain: false
-    qos: 0
-  will_message:
-    topic: 'home/hass/active'
-    payload: !secret partner
-    retain: false
-    qos: 0
+  # birth_message:
+  #   topic: 'home/hass/active'
+  #   payload: !secret hostname
+  #   retain: false
+  #   qos: 0
+  # will_message:
+  #   topic: 'home/hass/active'
+  #   payload: !secret partner
+  #   retain: false
+  #   qos: 0
 
 lifx:
   light:
@@ -252,7 +252,11 @@ binary_sensor:
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
-
+  - platform: template
+    sensors:
+      active:
+        friendly_name: "Active IP"
+        value_template: "{{ sensor.local_ip == sensor.partner }}"
 
 sensor:
   - platform: min_max
