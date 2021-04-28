@@ -264,7 +264,7 @@ binary_sensor:
     sensors:
       active:
         friendly_name: "Active IP"
-        value_template: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'OFFLINE') or is_states('sensor.partner', 'unavailable') }}"
+        value_template: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'OFFLINE') or is_state('sensor.partner', 'unavailable') }}"
 
 sensor:
   - platform: min_max
