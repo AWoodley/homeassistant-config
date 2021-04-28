@@ -978,6 +978,10 @@
       - effect_pulse
       - effect_stop
       friendly_name: Jonathan's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
     light.light_davids_bedroom:
       brightness: 50
       color_temp: 400
