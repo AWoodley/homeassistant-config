@@ -398,6 +398,7 @@ vacuum: !include vacuum.yaml
 media_player:
   - platform: mpd
     host: 192.168.30.10
+    name: DeathOfRats
 
 # media_player:
 #     - platform: dlna_dmr
