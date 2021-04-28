@@ -356,6 +356,7 @@ cover:
     payload_open: "open"
     payload_close: "close"
     payload_stop: "stop"
+    state_stopped: "stop"
     position_open: 100
     position_closed: 0
     qos: 1
@@ -373,6 +374,7 @@ cover:
     payload_open: "open"
     payload_close: "close"
     payload_stop: "stop"
+    state_stopped: "stop"
     position_open: 100
     position_closed: 0
     qos: 1
