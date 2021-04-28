@@ -34,7 +34,7 @@
                                     "entity": "light.light_backverandah_1"
                                 },
                                 {
-                                    "entity": "light.light_boys_bedroom"
+                                    "entity": "light.light_jonathans_bedroom"
                                 },
                                 {
                                     "entity": "light.dining_room_lights"
@@ -55,12 +55,6 @@
                                     "entity": "light.light_masterbedroom_1"
                                 },
                                 {
-<<<<<<< HEAD
-                                    "entity": "light.light_musicroom_1"
-                                },
-                                {
-=======
->>>>>>> 0dba73f0783bc1a7f10e368de945b2e0307b691f
                                     "entity": "light.media_room_lights"
                                 },
                                 {
@@ -81,27 +75,6 @@
                                 },
                                 {
                                     "entity": "alarm_control_panel.mqtt_alarm"
-<<<<<<< HEAD
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door"
-                                },
-                                {
-                                    "entity": "binary_sensor.laundry_garage_door"
-                                },
-                                {
-                                    "entity": "binary_sensor.family_room"
-                                },
-                                {
-                                    "entity": "binary_sensor.media_room"
-                                },
-                                {
-                                    "entity": "binary_sensor.back_passage"
-                                },
-                                {
-                                    "entity": "binary_sensor.study"
-=======
->>>>>>> 0dba73f0783bc1a7f10e368de945b2e0307b691f
                                 }
                             ],
                             "type": "glance"
@@ -112,12 +85,9 @@
                                     "entity": "switch.media_centre"
                                 },
                                 {
-<<<<<<< HEAD
-=======
                                     "entity": "media_player.cliff"
                                 },
                                 {
->>>>>>> 0dba73f0783bc1a7f10e368de945b2e0307b691f
                                     "entity": "media_player.glod"
                                 },
                                 {
@@ -131,12 +101,6 @@
                                 },
                                 {
                                     "entity": "media_player.volumio_imp_local"
-<<<<<<< HEAD
-                                },
-                                {
-                                    "entity": "media_player.cliff"
-=======
->>>>>>> 0dba73f0783bc1a7f10e368de945b2e0307b691f
                                 }
                             ],
                             "title": "Media",
@@ -192,33 +156,6 @@
                                             "entity_id": "cover.dining_room_rollershutter"
                                         }
                                     }
-<<<<<<< HEAD
-                                },
-                                {
-                                    "entity": "switch.adrian_s_phone_charger",
-                                    "icon": "mdi:battery-charging",
-                                    "name": "Adrian's Phone Charger",
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.adrian_s_phone_charger"
-                                        }
-                                    }
-                                },
-                                {
-                                    "entity": "switch.nancy_s_phone_charger",
-                                    "icon": "mdi:battery-charging",
-                                    "name": "Nancy's Phone Charger",
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.nancy_s_phone_charger"
-                                        }
-                                    }
-=======
->>>>>>> 0dba73f0783bc1a7f10e368de945b2e0307b691f
                                 }
                             ],
                             "show_state": false,
@@ -235,11 +172,7 @@
                                 }
                             ],
                             "hours_to_show": 24,
-<<<<<<< HEAD
-                            "refresh_interval": 60,
-=======
                             "refresh_interval": 0,
->>>>>>> 0dba73f0783bc1a7f10e368de945b2e0307b691f
                             "type": "history-graph"
                         }
                     ],

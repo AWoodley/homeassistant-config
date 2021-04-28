@@ -1,5 +1,5 @@
 - id: '1573474259634'
-  alias: Light:Boy's Bedroom:Dim
+  alias: Light:Jonathan's Bedroom:Dim
   description: 'Adjust brightness of light based on time of day'
   trigger:
   - entity_id: sensor.rfb_button
@@ -9,14 +9,14 @@
   action:
   - data_template:
       entity_id: >
-        {% if not is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_dim') %}
-        scene.scene_boys_bedroom_dim
+        {% if not is_state('input_select.jonathans_bedroom_scene', 'scene.scene_jonathans_bedroom_dim') %}
+        scene.scene_jonathans_bedroom_dim
         {% else %}
-        scene.scene_boys_bedroom_off
+        scene.scene_jonathans_bedroom_off
         {% endif %}
     service: scene.turn_on
 - id: '1573474201726'
-  alias: Light:Boy's Bedroom:Bright
+  alias: Light:Jonathan's Bedroom:Bright
   description: 'Full brightness'
   trigger:
   - entity_id: sensor.rfb_button
@@ -26,14 +26,14 @@
   action:
   - data_template:
       entity_id: >
-        {% if is_state('input_select.boys_bedroom_scene', 'scene.scene_boys_bedroom_bright') %}
-        scene.scene_boys_bedroom_off
+        {% if is_state('input_select.jonathans_bedroom_scene', 'scene.scene_jonathans_bedroom_bright') %}
+        scene.scene_jonathans_bedroom_off
         {% else %}
-        scene.scene_boys_bedroom_bright
+        scene.scene_jonathans_bedroom_bright
         {% endif %}
     service: scene.turn_on
 - id: '1573474201727'
-  alias: Light:Boy's Bedroom:Colours
+  alias: Light:Jonathan's Bedroom:Colours
   description: 'Cycle through disco light colours'
   trigger:
   - entity_id: sensor.rfb_button
@@ -42,7 +42,7 @@
   condition: []
   action:
   - data:
-      entity_id: light.light_boys_bedroom,light.play_room_light
+      entity_id: light.light_jonathans_bedroom
       brightness: 255
       period: 1
       change: 35
@@ -50,62 +50,55 @@
     service:
       lifx.effect_colorloop
 - id: '1592566987204'
-  alias: Light:Boys Bedroom:Off
+  alias: Light:Jonathan's Bedroom:Off
   description: ''
   trigger:
   - device_id: 7b728c50558d4934a19c3f6078dba396
     domain: light
-    entity_id: light.light_boys_bedroom
+    entity_id: light.light_jonathans_bedroom
     platform: device
     type: turned_off
   condition: []
   action:
-  - scene: scene.scene_boys_bedroom_off
+  - scene: scene.scene_jonathans_bedroom_off
 - id: '1608395976316'
-  alias: 'Switch:Boys-Fan:Temperature'
+  alias: 'Switch:Jonathans-Fan:Temperature'
   description: ''
   trigger:
   - platform: numeric_state
-    entity_id: sensor.temp_boys_bedroom_ds18b20_temperature
+    entity_id: sensor.temp_jonathans_bedroom_ds18b20_temperature
     below: 24
     for: 00:05:00
   - platform: time
     at: 07:30:00
-  condition:
-    condition: or
-    conditions:
-    - condition: state
-      entity_id: switch.david_s_fan
-      state: 'on'
-    - condition: state
-      entity_id: switch.jonathans_s_fan
-      state: 'on'
   action:
   - service: switch.turn_off
     data: {}
-    entity_id: switch.jonathan_s_fan,switch.david_s_fan
+    entity_id: switch.jonathans_fan
   mode: single
 - id: '1589216051030'
-  alias: Switch:Boy's Heater:Off
+  alias: Switch:Jonathan's Heater:Off
   description: ''
   trigger:
   - at: 07:30:00
     platform: time
   condition: []
   action:
-  - device_id: ebeeda6f09d4479bb461324e79f6f2a8
-    domain: switch
-    entity_id: switch.boy_s_heater
-    type: turn_off
+  - entity_id: switch.jonathans_heater
+    service: switch.turn_off
 - id: '1589216101517'
-  alias: Switch:Boy's Heater:On
+  alias: Switch:Jonathan's Heater:On
   description: ''
   trigger:
-  - at: '20:00:00'
-    platform: time
-  condition: []
+  - platform: numeric_state
+    entity_id: sensor.temp_jonathans_bedroom_ds18b20_temperature
+    below: 24
+    for: 00:05:00
+  condition:
+    - condition: time
+      alias: "Time 20:00 - 07:00"
+      after: "20:00:00"
+      before: "07:00:00"
   action:
-  - device_id: ebeeda6f09d4479bb461324e79f6f2a8
-    domain: switch
-    entity_id: switch.boy_s_heater
-    type: turn_on
+  - entity_id: switch.jonathans_heater
+    service: switch.turn_on

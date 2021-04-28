@@ -68,10 +68,10 @@
                                                     "entity": "light.back_passage_lights"
                                                 },
                                                 {
-                                                    "entity": "light.light_boys_bedroom"
+                                                    "entity": "light.light_jonathans_bedroom"
                                                 },
                                                 {
-                                                    "entity": "light.play_room_light"
+                                                    "entity": "light.light_davids_bedroom"
                                                 },
                                                 {
                                                     "entity": "light.dining_room_lights",
@@ -194,12 +194,12 @@
                                                     }
                                                 },
                                                 {
-                                                    "entity": "cover.boys_bedroom_rollershutter",
+                                                    "entity": "cover.jonathans_bedroom_rollershutter",
                                                     "tap_action": {
                                                         "action": "call-service",
                                                         "service": "cover.toggle",
                                                         "service_data": {
-                                                            "entity_id": "cover.boys_bedroom_rollershutter"
+                                                            "entity_id": "cover.jonathans_bedroom_rollershutter"
                                                         }
                                                     }
                                                 },
@@ -271,7 +271,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "entity": "input_select.boys_bedroom_scene",
+                                                    "entity": "input_select.jonathans_bedroom_scene",
                                                     "name": "Boys Bedroom Light"
                                                 },
                                                 {
@@ -422,7 +422,7 @@
                                                     "name": "Master Bedroom"
                                                 },
                                                 {
-                                                    "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
+                                                    "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature",
                                                     "name": "Boys Bedroom"
                                                 },
                                                 {

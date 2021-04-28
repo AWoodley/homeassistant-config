@@ -1,0 +1,104 @@
+- id: '2573474259634'
+  alias: Light:David's Bedroom:Dim
+  description: 'Adjust brightness of light based on time of day'
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1699048'
+  condition: []
+  action:
+  - data_template:
+      entity_id: >
+        {% if not is_state('input_select.davids_bedroom_scene', 'scene.scene_davids_bedroom_dim') %}
+        scene.scene_davids_bedroom_dim
+        {% else %}
+        scene.scene_davids_bedroom_off
+        {% endif %}
+    service: scene.turn_on
+- id: '2573474201726'
+  alias: Light:David's Bedroom:Bright
+  description: 'Full brightness'
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1699042'
+  condition: []
+  action:
+  - data_template:
+      entity_id: >
+        {% if is_state('input_select.davids_bedroom_scene', 'scene.scene_davids_bedroom_bright') %}
+        scene.scene_davids_bedroom_off
+        {% else %}
+        scene.scene_davids_bedroom_bright
+        {% endif %}
+    service: scene.turn_on
+- id: '2573474201727'
+  alias: Light:David's Bedroom:Colours
+  description: 'Cycle through disco light colours'
+  trigger:
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '1699044'
+  condition: []
+  action:
+  - data:
+      entity_id: light.light_Davids_bedroom
+      brightness: 255
+      period: 1
+      change: 35
+      power_on: true
+    service:
+      lifx.effect_colorloop
+- id: '2592566987204'
+  alias: Light:David's Bedroom:Off
+  description: ''
+  trigger:
+  - device_id: 7b728c50558d4934a19c3f6078dba396
+    domain: light
+    entity_id: light.light_Davids_bedroom
+    platform: device
+    type: turned_off
+  condition: []
+  action:
+  - scene: scene.scene_davids_bedroom_off
+- id: '2608395976316'
+  alias: 'Switch:Davids-Fan:Temperature'
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.temp_davids_bedroom_ds18b20_temperature
+    below: 24
+    for: 00:05:00
+  - platform: time
+    at: 07:30:00
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.David_s_fan
+  mode: single
+- id: '2589216051030'
+  alias: Switch:David's Heater:Off
+  description: ''
+  trigger:
+  - at: 07:30:00
+    platform: time
+  condition: []
+  action:
+  - entity_id: switch.davids_heater
+    service: switch.turn_off
+- id: '2589216101517'
+  alias: Switch:David's Heater:On
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.temp_davids_bedroom_ds18b20_temperature
+    below: 24
+    for: 00:05:00
+  condition:
+    - condition: time
+      alias: "Time 20:00 - 07:00"
+      after: "20:00:00"
+      before: "07:00:00"
+  action:
+  - entity_id: switch.davids_heater
+    service: switch.turn_on

@@ -56,7 +56,7 @@
                                             "elements": [
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "light.play_room_light",
+                                                    "entity": "light.light_davids_bedroom",
                                                     "style": {
                                                         "top": "7%",
                                                         "left": "31%"
@@ -65,7 +65,7 @@
                                                         "action": "call-service",
                                                         "service": "light.toggle",
                                                         "service_data": {
-                                                            "entity_id": "light.play_room_light"
+                                                            "entity_id": "light.light_davids_bedroom"
                                                         }
                                                     }
                                                 },
@@ -101,7 +101,7 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "light.light_boys_bedroom",
+                                                    "entity": "light.light_jonathans_bedroom",
                                                     "style": {
                                                         "top": "11%",
                                                         "left": "49%"
@@ -110,13 +110,13 @@
                                                         "action": "call-service",
                                                         "service": "light.toggle",
                                                         "service_data": {
-                                                            "entity_id": "light.light_boys_bedroom"
+                                                            "entity_id": "light.light_jonathans_bedroom"
                                                         }
                                                     }
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "cover.boys_bedroom_rollershutter",
+                                                    "entity": "cover.jonathans_bedroom_rollershutter",
                                                     "style": {
                                                         "top": "9.75%",
                                                         "left": "55.75%"
@@ -125,7 +125,7 @@
                                                         "action": "call-service",
                                                         "service": "cover.toggle",
                                                         "service_data": {
-                                                            "entity_id": "cover.boys_bedroom_rollershutter"
+                                                            "entity_id": "cover.jonathans_bedroom_rollershutter"
                                                         }
                                                     }
                                                 },
@@ -709,7 +709,7 @@
                                                     "name": "Master Bedroom"
                                                 },
                                                 {
-                                                    "entity": "sensor.temp_boys_bedroom_ds18b20_temperature",
+                                                    "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature",
                                                     "name": "Boys Bedroom"
                                                 },
                                                 {

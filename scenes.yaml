@@ -164,74 +164,147 @@
       state: 'off'
       supported_features: 3
 - id: '1581648349111'
-  name: Scene:Boys Bedroom:Off
+  name: Scene:Jonathans Bedroom:Off
   entities:
-    input_select.boys_bedroom_scene:
+    input_select.jonathans_bedroom_scene:
       editable: false
-      friendly_name: Currently Active Scene for Boy's Bedroom
+      friendly_name: Currently Active Scene for Jonathan's Bedroom
       options:
       - unknown
-      - scene.scene_boys_bedroom_off
-      - scene.scene_boys_bedroom_dim
-      - scene.scene_boys_bedroom_bright
-      - scene.scene_boys_bedroom_disco
-      state: scene.scene_boys_bedroom_off
-    light.light_boys_bedroom:
+      - scene.scene_jonathans_bedroom_off
+      - scene.scene_jonathans_bedroom_dim
+      - scene.scene_jonathans_bedroom_bright
+      - scene.scene_jonathans_bedroom_disco
+      state: scene.scene_jonathans_bedroom_off
+    light.light_jonathans_bedroom:
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Boy's Bedroom
+      friendly_name: Jonathan's Bedroom
       max_mireds: 400
       min_mireds: 111
       state: 'off'
       supported_features: 55
 - id: '1581648416152'
-  name: Scene:Boys Bedroom:Bright
+  name: Scene:Jonathans Bedroom:Bright
   entities:
-    input_select.boys_bedroom_scene:
+    input_select.jonathans_bedroom_scene:
       editable: false
-      friendly_name: Currently Active Scene for Boy's Bedroom
+      friendly_name: Currently Active Scene for Jonathan's Bedroom
       options:
       - unknown
-      - scene.scene_boys_bedroom_off
-      - scene.scene_boys_bedroom_dim
-      - scene.scene_boys_bedroom_bright
-      - scene.scene_boys_bedroom_disco
-      state: scene.scene_boys_bedroom_bright
-    light.light_boys_bedroom:
+      - scene.scene_jonathans_bedroom_off
+      - scene.scene_jonathans_bedroom_dim
+      - scene.scene_jonathans_bedroom_bright
+      - scene.scene_jonathans_bedroom_disco
+      state: scene.scene_jonathans_bedroom_bright
+    light.light_jonathans_bedroom:
       brightness: 255
       color_temp: 242
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Boy's Bedroom
+      friendly_name: Jonathan's Bedroom
       max_mireds: 400
       min_mireds: 111
       state: 'on'
       supported_features: 55
 - id: '1581648464177'
-  name: Scene:Boys Bedroom:Dim
+  name: Scene:Jonathans Bedroom:Dim
   entities:
-    input_select.boys_bedroom_scene:
+    input_select.jonathans_bedroom_scene:
       editable: false
-      friendly_name: Currently Active Scene for Boy's Bedroom
+      friendly_name: Currently Active Scene for Jonathan's Bedroom
       options:
       - unknown
-      - scene.scene_boys_bedroom_off
-      - scene.scene_boys_bedroom_dim
-      - scene.scene_boys_bedroom_bright
-      - scene.scene_boys_bedroom_disco
-      state: scene.scene_boys_bedroom_dim
-    light.light_boys_bedroom:
+      - scene.scene_jonathans_bedroom_off
+      - scene.scene_jonathans_bedroom_dim
+      - scene.scene_jonathans_bedroom_bright
+      - scene.scene_jonathans_bedroom_disco
+      state: scene.scene_jonathans_bedroom_dim
+    light.light_jonathans_bedroom:
       brightness: 2
       color_temp: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Boy's Bedroom
+      friendly_name: Jonathan's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+- id: '2581648349111'
+  name: Scene:Davids Bedroom:Off
+  entities:
+    input_select.davids_bedroom_scene:
+      editable: false
+      friendly_name: Currently Active Scene for David's Bedroom
+      options:
+      - unknown
+      - scene.scene_davids_bedroom_off
+      - scene.scene_davids_bedroom_dim
+      - scene.scene_davids_bedroom_bright
+      - scene.scene_davids_bedroom_disco
+      state: scene.scene_davids_bedroom_off
+    light.light_davids_bedroom:
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: David's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'off'
+      supported_features: 55
+- id: '2581648416152'
+  name: Scene:Davids Bedroom:Bright
+  entities:
+    input_select.davids_bedroom_scene:
+      editable: false
+      friendly_name: Currently Active Scene for David's Bedroom
+      options:
+      - unknown
+      - scene.scene_davids_bedroom_off
+      - scene.scene_davids_bedroom_dim
+      - scene.scene_davids_bedroom_bright
+      - scene.scene_davids_bedroom_disco
+      state: scene.scene_davids_bedroom_bright
+    light.light_davids_bedroom:
+      brightness: 255
+      color_temp: 242
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: David's Bedroom
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+- id: '2581648464177'
+  name: Scene:Davids Bedroom:Dim
+  entities:
+    input_select.davids_bedroom_scene:
+      editable: false
+      friendly_name: Currently Active Scene for David's Bedroom
+      options:
+      - unknown
+      - scene.scene_davids_bedroom_off
+      - scene.scene_davids_bedroom_dim
+      - scene.scene_davids_bedroom_bright
+      - scene.scene_davids_bedroom_disco
+      state: scene.scene_davids_bedroom_dim
+    light.light_davids_bedroom:
+      brightness: 2
+      color_temp: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: David's Bedroom
       max_mireds: 400
       min_mireds: 111
       state: 'on'
@@ -424,14 +497,14 @@
       icon: mdi:floor-lamp
       supported_features: 35
       state: 'off'
-    light.light_boys_bedroom:
+    light.light_jonathans_bedroom:
       min_mireds: 111
       max_mireds: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Boy's Bedroom
+      friendly_name: Jonathan's Bedroom
       supported_features: 55
       state: 'off'
     light.light_entry_1:
@@ -541,14 +614,14 @@
       friendly_name: Switch-Study-1
       icon: mdi:desktop-classic
       state: 'off'
-    light.play_room_light:
+    light.light_davids_bedroom:
       min_mireds: 111
       max_mireds: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Play Room Light
+      friendly_name: David's Bedroom Light
       supported_features: 55
       state: 'off'
     cover.master_bedroom_rollershutter:
@@ -556,9 +629,14 @@
       friendly_name: Master Bedroom Rollershutter
       supported_features: 15
       state: closed
-    cover.boys_bedroom_rollershutter:
+    cover.jonathans_bedroom_rollershutter:
       current_position: 0
-      friendly_name: Boys Bedroom Rollershutter
+      friendly_name: Jonathans Bedroom Rollershutter
+      supported_features: 15
+      state: closed
+    cover.davids_bedroom_rollershutter:
+      current_position: 0
+      friendly_name: Davids Bedroom Rollershutter
       supported_features: 15
       state: closed
     cover.rollershutter_diningroom_cover_1:
@@ -774,12 +852,11 @@
       - light.light_alfresco_2
       - light.light_alfresco_3
       - light.light_backverandah
-      - light.light_boys_bedroom
       - light.music_room_light
-      - light.play_room_light
+      - light.light_jonathans_bedroom
+      - light.light_david_bedroom
       - light.light_familyroom_1
       - light.light_frontdoor_1
-      - light.play_room_light
       friendly_name: All Lights
       icon: mdi:lightbulb-group
       supported_features: 55
@@ -808,22 +885,35 @@
       friendly_name: Radios
       icon: hass:radio
       state: 'off'
-    switch.david_s_fan:
+    switch.davids_fan:
       friendly_name: David's Fan
       icon: hass:fan
       state: 'off'
-    switch.jonathan_s_fan:
+    switch.jonathans_fan:
       friendly_name: Jonathan's Fan
       icon: hass:fan
+      state: 'off'
+    switch.davids_heater:
+      friendly_name: David's Heater
+      icon: hass:radiator
+      state: 'off'
+    switch.jonathans_heater:
+      friendly_name: Jonathan's Heater
+      icon: hass:radiator
       state: 'off'
     switch.plug_2:
       friendly_name: Plug 2
       state: 'off'
-    cover.boys_bedroom_rollershutter:
+    cover.jonathans_bedroom_rollershutter:
       current_position: 0
-      friendly_name: Boys Bedroom Roller Shutter
+      friendly_name: Jonathans Bedroom Roller Shutter
       supported_features: 15
       state: closed
+    cover.davids_bedroom_rollershutter:
+      current_position: 0
+      friendly_name: Davids Bedroom Roller Shutter
+      supported_features: 15
+      state: closed      
     cover.master_bedroom_rollershutter:
       current_position: 0
       friendly_name: Master Bedroom Rollershutter
@@ -880,14 +970,22 @@
       min_mireds: 111
       state: 'on'
       supported_features: 55
-    light.light_boys_bedroom:
+    light.light_jonathans_bedroom:
       brightness: 50
       color_temp: 400
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Boy's Bedroom
+      friendly_name: Jonathan's Bedroom
+    light.light_davids_bedroom:
+      brightness: 50
+      color_temp: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: David's Bedroom
       max_mireds: 400
       min_mireds: 111
       state: 'on'

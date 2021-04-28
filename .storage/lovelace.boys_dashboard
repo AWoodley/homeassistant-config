@@ -14,7 +14,14 @@
                             "tap_action": {
                                 "action": "toggle"
                             },
-                            "entity": "light.light_boys_bedroom"
+                            "entity": "light.light_jonathans_bedroom"
+                        },
+                        {
+                            "type": "button",
+                            "tap_action": {
+                                "action": "toggle"
+                            },
+                            "entity": "light.light_davids_bedroom"
                         },
                         {
                             "type": "button",

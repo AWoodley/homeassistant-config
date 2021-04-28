@@ -16,7 +16,7 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "light.light_boys_bedroom",
+                                    "entity": "light.light_jonathans_bedroom",
                                     "show_state": false
                                 },
                                 {
@@ -24,7 +24,7 @@
                                     "tap_action": {
                                         "action": "toggle"
                                     },
-                                    "entity": "light.play_room_light"
+                                    "entity": "light.light_davdis_bedroom"
                                 },
                                 {
                                     "type": "button",
