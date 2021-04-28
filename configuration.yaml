@@ -338,14 +338,15 @@ switch:
 
 
 cover:
-  - platform: mqtt
-    name: "Dining Room Rollershutter"
-    command_topic: cmnd/tasmotas/4A78A8/BACKLOG
-    payload_open: "ShutterOpen1 1"
-    payload_close: "ShutterClose1 1"
-    payload_stop: "Power3 1"
+  # - platform: mqtt
+  #   name: "Dining Room Rollershutter"
+  #   command_topic: cmnd/tasmotas/4A78A8/BACKLOG
+  #   payload_open: "ShutterOpen1 1"
+  #   payload_close: "ShutterClose1 1"
+  #   payload_stop: "Power3 1"
   - platform: mqtt
     name: "Master Bedroom Rollershutter"
+    unique_id: "D8BFC01A3A5F"
     state_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0"
     command_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command"
     position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/pos"
@@ -361,7 +362,8 @@ cover:
     retain: false
     optimistic: false
   - platform: mqtt
-    name: "Boys Bedroom Rollershutter"
+    unique_id: "40F5200467D0"
+    name: "Jonathans Bedroom Rollershutter"
     state_topic: "shellies/shellyswitch25-40F5200467D0/roller/0"
     command_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command"
     position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/pos"
