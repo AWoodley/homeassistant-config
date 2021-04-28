@@ -124,7 +124,9 @@ google_assistant:
       expose: true
     light.light_bedside_2:
       expose: true
-    light.light_boys_bedroom:
+    light.light_jonathans_bedroom:
+      expose: true
+    light.light_davids_bedroom:
       expose: true
     light.light_christmas_1:
       expose: true
@@ -142,11 +144,13 @@ google_assistant:
       expose: true
     light.music_room_light:
       expose: true
-    light.play_room_light:
+    switch.davids_fan:
       expose: true
-    switch.david_s_fan:
+    switch.jonathans_fan:
       expose: true
-    switch.jonathan_s_fan:
+    switch.davids_heater:
+      expose: true
+    switch.jonathans_heater:
       expose: true
     switch.switch_kettle:
       expose: true
@@ -174,9 +178,13 @@ google_assistant:
       expose: true
     cover.master_bedroom_rollershutter:
       expose: true
-    cover.boys_bedroom_rollershutter:
+    cover.jonathans_bedroom_rollershutter:
       expose: true
-    sensor.temp_boys_bedroom_ds18b20_temperature:
+    sensor.temp_jonathans_bedroom_ds18b20_temperature:
+      expose: true
+    cover.davids_bedroom_rollershutter:
+      expose: true
+    sensor.temp_davids_bedroom_ds18b20_temperature:
       expose: true
     sensor.ble_temperature_a4c138fbfa2a :
       expose: true
@@ -264,7 +272,8 @@ sensor:
     type: mean
     entity_ids:
       - sensor.rollershutter_diningroom_ds18b20_temperature
-      - sensor.temp_boys_bedroom_ds18b20_temperature
+      - sensor.temp_jonathans_bedroom_ds18b20_temperature
+      - sensor.temp_davids_bedroom_ds18b20_temperature
       - sensor.ble_temperature_a4c138dfcf8d # Dining Room
       - sensor.ble_temperature_a4c13887d585 # Living Room
       - sensor.ble_temperature_a4c138fbfa2a # Master Bedroom
@@ -376,15 +385,6 @@ input_select:
       - scene.scene_study_off
       - scene.scene_study_normal
       - scene.scene_study_bright
-    initial: unknown
-  boys_bedroom_scene:
-    name: Currently Active Scene for Boy's Bedroom
-    options:
-      - unknown
-      - scene.scene_boys_bedroom_off
-      - scene.scene_boys_bedroom_dim
-      - scene.scene_boys_bedroom_bright
-      - scene.scene_boys_bedroom_disco
     initial: unknown
 
 light: !include lights.yaml
