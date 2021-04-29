@@ -154,6 +154,8 @@ google_assistant:
       expose: true
     switch.switch_kettle:
       expose: true
+    switch.fireplace_fan:
+      expose: true
     switch.tv:
       expose: true
     switch.media_centre:
