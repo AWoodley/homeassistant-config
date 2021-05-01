@@ -223,9 +223,11 @@
     - fri
     - sat
   action:
-  - service: cover.open_cover
-    data: {}
-    entity_id: cover.boys_bedroom_roller_shutter
+  - service: cover.set_cover_position
+    data:
+      position: 100
+    target:
+      entity_id: cover.boys_bedroom_rollershutter
   mode: single
 - id: '1611763659185'
   alias: Rollershutter:Master Bedroom:Open:Time
