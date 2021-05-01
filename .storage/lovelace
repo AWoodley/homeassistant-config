@@ -56,6 +56,36 @@
                                             "elements": [
                                                 {
                                                     "type": "state-icon",
+                                                    "entity": "switch.davids_fan",
+                                                    "style": {
+                                                        "top": "6%",
+                                                        "left": "37%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.davids_fan"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "switch.davids_heater",
+                                                    "style": {
+                                                        "top": "6%",
+                                                        "left": "25%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.davids_heater"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-icon",
                                                     "entity": "light.light_davids_bedroom",
                                                     "style": {
                                                         "top": "7%",
@@ -71,7 +101,7 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "switch.jonathan_s_fan",
+                                                    "entity": "switch.jonathans_fan",
                                                     "style": {
                                                         "top": "6%",
                                                         "left": "52%"
@@ -80,13 +110,13 @@
                                                         "action": "call-service",
                                                         "service": "switch.toggle",
                                                         "service_data": {
-                                                            "entity_id": "switch.jonathan_s_fan"
+                                                            "entity_id": "switch.jonathans_fan"
                                                         }
                                                     }
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "switch.david_s_fan",
+                                                    "entity": "switch.jonathans_heater",
                                                     "style": {
                                                         "top": "16%",
                                                         "left": "52%"
@@ -95,7 +125,7 @@
                                                         "action": "call-service",
                                                         "service": "switch.toggle",
                                                         "service_data": {
-                                                            "entity_id": "switch.david_s_fan"
+                                                            "entity_id": "switch.jonathans_heater"
                                                         }
                                                     }
                                                 },
@@ -236,6 +266,21 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
+                                                    "entity": "switch.fireplace_fan",
+                                                    "style": {
+                                                        "top": "44%",
+                                                        "left": "45%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.fireplace_fan"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-icon",
                                                     "entity": "media_player.kitchen_speaker",
                                                     "style": {
                                                         "top": "56%",
@@ -261,7 +306,7 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "cover.rollershutter_diningroom_cover_1",
+                                                    "entity": "cover.rollershutter_diningroom_cover",
                                                     "style": {
                                                         "top": "50%",
                                                         "left": "62%"
@@ -354,7 +399,7 @@
                                                         "action": "call-service",
                                                         "service": "switch.toggle",
                                                         "service_data": {
-                                                            "entity_id": "switch.media_centre"
+                                                            "entity_id": "switch.tv"
                                                         }
                                                     }
                                                 },
