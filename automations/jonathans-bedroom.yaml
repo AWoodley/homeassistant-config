@@ -9,10 +9,10 @@
   action:
   - data_template:
       entity_id: >
-        {% if not is_state('input_select.jonathans_bedroom_scene', 'scene.scene_jonathans_bedroom_dim') %}
-        scene.scene_jonathans_bedroom_dim
-        {% else %}
+        {% if is_state('input_select.jonathans_bedroom_scene', 'scene.scene_jonathans_bedroom_dim') %}
         scene.scene_jonathans_bedroom_off
+        {% else %}
+        scene.scene_jonathans_bedroom_dim
         {% endif %}
     service: scene.turn_on
 - id: '1573474201726'

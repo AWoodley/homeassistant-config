@@ -100,6 +100,11 @@
   trigger:
   - event: sunrise
     platform: sun
+    offset: '00:45:00'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.ble_temperature_a4c138b45222
+      above: 22
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
@@ -114,36 +119,28 @@
     platform: time
   action:
   - entity_id: cover.dining_room_rollershutter
-    service: cover.close_cover
+    service: >
+      {% if states('sensor.ble_temperature_a4c138b45222') | float > 22 %}
+        cover.close_cover
+      {% else %}
+        cover.open_cover
+      {% endif %}
 - id: '1582646302706'
   alias: Rollershutter:Dining:Dusk
   description: ''
   trigger:
-  - at: '15:00:00'
-    platform: time
-  - entity_id: group.family
-    platform: state
-    to: home
-  condition:
-  - condition: state
-    entity_id: group.family
-    state: home
-  - after: '14:59:00'
-    condition: time
-  - condition: state
-    entity_id: cover.dining_room_rollershutter
-    state: close
-  - before: sunset
-    condition: sun
+  - platform: sun
+    event: sunset
+    offset: '-00:45:00'
   action:
   - entity_id: cover.dining_room_rollershutter
-    service: cover.open_cover
+    service: cover.close_cover
 - id: '1584459956003'
   alias: Switch:Kettle:Started
   description: ''
   trigger:
   - entity_id: switch.switch_arlec_1
-    for: 00:00:15
+    for: '00:00:15'
     platform: state
     to: 'on'
   condition:
@@ -205,11 +202,11 @@
     entity_id: light.master_bedroom_lights
   mode: single
 - id: '1611678447095'
-  alias: Rollershutter:Boys Bedroom:Open:Time
-  description: Open the Boys Bedroom Roller shutter at 08:00
+  alias: Rollershutter:Jonathans Bedroom:Open:Time
+  description: Open the Jonathans Bedroom Roller shutter at 07:30
   trigger:
   - platform: time
-    at: 07:30
+    at: 07:30:00
   condition:
   - condition: state
     entity_id: group.family
@@ -234,7 +231,7 @@
   description: ''
   trigger:
   - platform: time
-    at: 07:30:00
+    at: '07:30:00'
   condition:
   - condition: state
     entity_id: group.family
