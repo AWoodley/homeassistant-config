@@ -253,13 +253,13 @@ climate:
     name: Jonathan's Bedroom Heater
     heater: switch.jonathans_heater
     target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
-    target_temperature: 22
+    target_temp: 22
   - platform: generic_thermostat
     unique_id: climate.jonathans_fan
     name: Jonathan's Bedroom Fan
     heater: switch.jonathans_fan
     target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
-    target_temperature: 22
+    target_temp: 22
     ac_mode: true
 
 
