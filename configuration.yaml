@@ -250,13 +250,13 @@ alarm_control_panel:
 climate:
   - platform: generic_thermostat
     unique_id: climate.jonathans_heater
-    name: Jonathan's Bedroom Heater
+    name: Jonathans Heater
     heater: switch.jonathans_heater
     target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
     target_temp: 22
   - platform: generic_thermostat
     unique_id: climate.jonathans_fan
-    name: Jonathan's Bedroom Fan
+    name: Jonathans Fan
     heater: switch.jonathans_fan
     target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
     target_temp: 22
