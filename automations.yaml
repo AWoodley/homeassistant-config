@@ -266,18 +266,23 @@
     entity_id: cover.master_bedroom_rollershutter, cover.boys_bedroom_rollershutter
   mode: single
 - id: '1620144351328'
-  alias: Switch:Nancys Electric Blanket:Person
+  alias: Switch:Nancys Electric Blanket
   description: ''
   trigger:
   - platform: state
     entity_id: person.nancy
     to: Home
+  - platform: time
+    at: '21:01:00'
   condition:
   - condition: time
     after: 00:21:00
   - condition: numeric_state
     entity_id: sensor.ble_temperature_a4c138fbfa2a
     below: '20'
+  - condition: state
+    entity_id: person.nancy
+    state: Home
   action:
   - service: switch.turn_on
     target:
