@@ -100,7 +100,7 @@
   trigger:
   - event: sunrise
     platform: sun
-    offset: '00:45:00'
+    offset: 00:45:00
   condition:
     - condition: numeric_state
       entity_id: sensor.ble_temperature_a4c138b45222
@@ -134,7 +134,7 @@
   trigger:
   - platform: sun
     event: sunset
-    offset: '-00:45:00'
+    offset: -00:45:00
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.close_cover
@@ -143,7 +143,7 @@
   description: ''
   trigger:
   - entity_id: switch.switch_arlec_1
-    for: '00:00:15'
+    for: 00:00:15
     platform: state
     to: 'on'
   condition:
@@ -234,7 +234,7 @@
   description: ''
   trigger:
   - platform: time
-    at: '07:30:00'
+    at: 07:30:00
   condition:
   - condition: state
     entity_id: group.family
@@ -264,4 +264,30 @@
   - service: cover.close_cover
     data: {}
     entity_id: cover.master_bedroom_rollershutter, cover.boys_bedroom_rollershutter
+  mode: single
+- id: '1620144351328'
+  alias: Switch:Nancys Electric Blanket:Person
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.nancy
+    to: Home
+  condition:
+  - condition: time
+    after: 00:21:00
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138fbfa2a
+    below: '20'
+  action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.nancys_electric_blanket
+  - delay:
+      hours: 1
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - service: switch.turn_off
+    target:
+      entity_id: switch.nancys_electric_blanket
   mode: single
