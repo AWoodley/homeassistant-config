@@ -254,14 +254,34 @@ climate:
     heater: switch.jonathans_heater
     target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
     target_temp: 22
+    min_cycle_duration: '00:05:00'
+    initial_hvac_mode: 'off'
   - platform: generic_thermostat
     unique_id: climate.jonathans_fan
     name: Jonathans Fan
     heater: switch.jonathans_fan
     target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
     target_temp: 22
+    min_cycle_duration: '00:05:00'
+    initial_hvac_mode: 'off'
     ac_mode: true
-
+  - platform: generic_thermostat
+    unique_id: climate.davids_heater
+    name: Davids Heater
+    heater: switch.davids_heater
+    target_sensor: sensor.temp_davids_bedroom_ds18b20_temperature
+    target_temp: 22
+    min_cycle_duration: '00:05:00'
+    initial_hvac_mode: 'off'
+  - platform: generic_thermostat
+    unique_id: climate.davids_fan
+    name: Davids Fan
+    heater: switch.davids_fan
+    target_sensor: sensor.temp_davids_bedroom_ds18b20_temperature
+    target_temp: 22
+    min_cycle_duration: '00:05:00'
+    initial_hvac_mode: 'off'
+    ac_mode: true
 
 binary_sensor:
   - platform: mqtt
