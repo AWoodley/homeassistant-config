@@ -203,6 +203,10 @@ google_assistant:
       expose: true
     climate.jonathans_fan:
       expose: true
+    climate.davids_heater:
+      expose: true
+    climate.davids_fan:
+      expose: true
 
 # calendar:
 #   - platform: caldav
