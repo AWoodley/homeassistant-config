@@ -146,12 +146,12 @@ google_assistant:
       expose: true
     switch.davids_fan:
       expose: true
-    switch.jonathans_fan:
-      expose: true
+    # switch.jonathans_fan:
+    #   expose: true
     switch.davids_heater:
       expose: true
-    switch.jonathans_heater:
-      expose: true
+    # switch.jonathans_heater:
+    #   expose: true
     switch.switch_kettle:
       expose: true
     switch.fireplace_fan:
@@ -184,8 +184,8 @@ google_assistant:
       expose: true
     cover.jonathans_bedroom_rollershutter:
       expose: true
-    sensor.temp_jonathans_bedroom_ds18b20_temperature:
-      expose: true
+    # sensor.temp_jonathans_bedroom_ds18b20_temperature:
+    #   expose: true
     cover.davids_bedroom_rollershutter:
       expose: true
     sensor.temp_davids_bedroom_ds18b20_temperature:
@@ -199,6 +199,10 @@ google_assistant:
     sensor.rollershutter_diningroom_ds18b20_temperature:
       expose: true
       name: 'Study Temperature'
+    climate.jonathans_heater:
+      expose: true
+    climate.jonathans_fan:
+      expose: true
 
 # calendar:
 #   - platform: caldav
@@ -241,6 +245,21 @@ alarm_control_panel:
     command_topic: "home/alarm/set"
     code_arm_required: false
     code_disarm_required: false
+
+
+climate:
+  - platform: generic_thermostat
+    unique_id: climate.jonathans_heater
+    name: Jonathan's Bedroom Heater
+    heater: switch.jonathans_heater
+    target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
+  - platform: generic_thermostat
+    unique_id: climate.jonathans_fan
+    name: Jonathan's Bedroom Fan
+    heater: switch.jonathans_fan
+    target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
+    ac_mode: true
+
 
 binary_sensor:
   - platform: mqtt
