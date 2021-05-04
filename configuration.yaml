@@ -162,6 +162,8 @@ google_assistant:
       expose: true
     switch.boy_s_heater:
       expose: true
+    switch.nancys_electric_blanket:
+      expose: true
     input_boolean.party_lights:
       expose: true
       name: 'Party Lights'
