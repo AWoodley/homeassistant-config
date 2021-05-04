@@ -105,6 +105,9 @@
     - condition: numeric_state
       entity_id: sensor.ble_temperature_a4c138b45222
       above: 22
+    - condition: numeric_state
+      entity_id: sensor.darlington_rain_chance_0
+      below: 50
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
@@ -120,7 +123,7 @@
   action:
   - entity_id: cover.dining_room_rollershutter
     service: >
-      {% if states('sensor.ble_temperature_a4c138b45222') | float > 22 %}
+      {% if states('sensor.ble_temperature_a4c138b45222') | float > 22 || states('sensor.darlington_rain_chance_0') > 50 %}
         cover.close_cover
       {% else %}
         cover.open_cover
