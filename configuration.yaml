@@ -272,7 +272,7 @@ climate:
   #   ac_mode: true
   - platform: dualmode_generic
     unique_id: climate.davids_thermostat
-    name: Davids Heater
+    name: Davids Termostat
     heater: switch.davids_heater
     cooler: switch.davids_fan
     target_sensor: sensor.temp_davids_bedroom_ds18b20_temperature
