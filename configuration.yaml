@@ -271,7 +271,7 @@ climate:
   #   initial_hvac_mode: 'off'
   #   ac_mode: true
   - platform: dualmode_generic
-    unique_id: climate.davids_heater
+    unique_id: climate.davids_thermostat
     name: Davids Heater
     heater: switch.davids_heater
     cooler: switch.davids_fan
