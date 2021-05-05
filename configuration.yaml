@@ -199,14 +199,14 @@ google_assistant:
     sensor.rollershutter_diningroom_ds18b20_temperature:
       expose: true
       name: 'Study Temperature'
-    climate.jonathans_heater:
+    climate.jonathans_thermostat:
       expose: true
-    climate.jonathans_fan:
+    # climate.jonathans_fan:
+    #   expose: true
+    climate.davids_thermostat:
       expose: true
-    climate.davids_heater:
-      expose: true
-    climate.davids_fan:
-      expose: true
+    # climate.davids_fan:
+    #   expose: true
 
 # calendar:
 #   - platform: caldav
@@ -252,40 +252,42 @@ alarm_control_panel:
 
 
 climate:
-  - platform: generic_thermostat
-    unique_id: climate.jonathans_heater
-    name: Jonathans Heater
+  - platform: dualmode_generic
+    unique_id: climate.jonathans_thermostat
+    name: Jonathans Thermostat
     heater: switch.jonathans_heater
+    cooler: switch.jonathans_fan
     target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
     target_temp: 22
     min_cycle_duration: '00:05:00'
     initial_hvac_mode: 'off'
-  - platform: generic_thermostat
-    unique_id: climate.jonathans_fan
-    name: Jonathans Fan
-    heater: switch.jonathans_fan
-    target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
-    target_temp: 22
-    min_cycle_duration: '00:05:00'
-    initial_hvac_mode: 'off'
-    ac_mode: true
-  - platform: generic_thermostat
+  # - platform: generic_thermostat
+  #   unique_id: climate.jonathans_fan
+  #   name: Jonathans Fan
+  #   heater: switch.jonathans_fan
+  #   target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
+  #   target_temp: 22
+  #   min_cycle_duration: '00:05:00'
+  #   initial_hvac_mode: 'off'
+  #   ac_mode: true
+  - platform: dualmode_generic
     unique_id: climate.davids_heater
     name: Davids Heater
     heater: switch.davids_heater
+    cooler: switch.davids_fan
     target_sensor: sensor.temp_davids_bedroom_ds18b20_temperature
     target_temp: 22
     min_cycle_duration: '00:05:00'
     initial_hvac_mode: 'off'
-  - platform: generic_thermostat
-    unique_id: climate.davids_fan
-    name: Davids Fan
-    heater: switch.davids_fan
-    target_sensor: sensor.temp_davids_bedroom_ds18b20_temperature
-    target_temp: 22
-    min_cycle_duration: '00:05:00'
-    initial_hvac_mode: 'off'
-    ac_mode: true
+  # - platform: generic_thermostat
+  #   unique_id: climate.davids_fan
+  #   name: Davids Fan
+  #   heater: switch.davids_fan
+  #   target_sensor: sensor.temp_davids_bedroom_ds18b20_temperature
+  #   target_temp: 22
+  #   min_cycle_duration: '00:05:00'
+  #   initial_hvac_mode: 'off'
+  #   ac_mode: true
 
 binary_sensor:
   - platform: mqtt
