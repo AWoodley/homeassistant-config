@@ -120,12 +120,12 @@
                                         {
                                             "entities": [
                                                 {
-                                                    "entity": "switch.switch_kettle_1",
+                                                    "entity": "switch.switch_kettle",
                                                     "tap_action": {
                                                         "action": "call-service",
                                                         "service": "switch.toggle",
                                                         "service_data": {
-                                                            "entity_id": "switch.switch_kettle_1"
+                                                            "entity_id": "switch.switch_kettle"
                                                         }
                                                     }
                                                 },
@@ -142,36 +142,10 @@
                                                     }
                                                 },
                                                 {
-                                                    "entity": "switch.boy_s_heater",
-                                                    "icon": "mdi:radiator",
-                                                    "name": "Boy's Heater",
-                                                    "tap_action": {
-                                                        "action": "call-service",
-                                                        "service": "switch.toggle",
-                                                        "service_data": {
-                                                            "entity_id": "switch.boy_s_heater"
-                                                        }
-                                                    }
+                                                    "entity": "climate.jonathans_thermostat"
                                                 },
                                                 {
-                                                    "entity": "switch.david_s_fan",
-                                                    "tap_action": {
-                                                        "action": "call-service",
-                                                        "service": "switch.toggle",
-                                                        "service_data": {
-                                                            "entity_id": "switch.david_s_fan"
-                                                        }
-                                                    }
-                                                },
-                                                {
-                                                    "entity": "switch.jonathan_s_fan",
-                                                    "tap_action": {
-                                                        "action": "call-service",
-                                                        "service": "switch.toggle",
-                                                        "service_data": {
-                                                            "entity_id": "switch.jonathan_s_fan"
-                                                        }
-                                                    }
+                                                    "entity": "climate.davids_thermostat"
                                                 },
                                                 {
                                                     "entity": "cover.dining_room_rollershutter",

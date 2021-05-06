@@ -14,39 +14,103 @@
                             "elements": [
                                 {
                                     "type": "state-icon",
-                                    "entity": "switch.davids_fan",
+                                    "entity": "cover.davids_bedroom_rollershutter",
                                     "style": {
-                                        "top": "6%",
+                                        "top": "1.5%",
                                         "left": "37%"
                                     },
                                     "tap_action": {
                                         "action": "call-service",
-                                        "service": "switch.toggle",
+                                        "service": "cover.toggle",
                                         "service_data": {
-                                            "entity_id": "switch.davids_fan"
+                                            "entity_id": "cover.davids_bedroom_rollershutter"
                                         }
                                     }
                                 },
                                 {
-                                    "type": "state-icon",
-                                    "entity": "switch.davids_heater",
+                                    "type": "state-label",
+                                    "entity": "sensor.temp_davids_bedroom_ds18b20_temperature",
                                     "style": {
                                         "top": "6%",
-                                        "left": "25%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.davids_heater"
-                                        }
+                                        "left": "26.5%"
                                     }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "climate.davids_thermostat",
+                                            "state": "heat"
+                                        }
+                                    ],
+                                    "elements": [
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.davids_heater",
+                                            "style": {
+                                                "top": "6%",
+                                                "left": "37%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "climate.turn_off",
+                                                "service_data": {
+                                                    "entity_id": "climate.davids_thermostat"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "climate.davids_thermostat",
+                                            "state": "cool"
+                                        }
+                                    ],
+                                    "elements": [
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.davids_fan",
+                                            "style": {
+                                                "top": "6%",
+                                                "left": "37%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "climate.turn_off",
+                                                "service_data": {
+                                                    "entity_id": "climate.davids_thermostat"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "climate.davids_thermostat",
+                                            "state": "off"
+                                        }
+                                    ],
+                                    "elements": [
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "climate.davids_thermostat",
+                                            "style": {
+                                                "top": "6%",
+                                                "left": "37%"
+                                            }
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "state-icon",
                                     "entity": "light.light_davids_bedroom",
                                     "style": {
-                                        "top": "7%",
+                                        "top": "9%",
                                         "left": "31%"
                                     },
                                     "tap_action": {
@@ -58,34 +122,83 @@
                                     }
                                 },
                                 {
-                                    "type": "state-icon",
-                                    "entity": "switch.jonathans_fan",
+                                    "type": "state-label",
+                                    "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature",
                                     "style": {
                                         "top": "6%",
-                                        "left": "52%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.jonathans_fan"
-                                        }
+                                        "left": "49%"
                                     }
                                 },
                                 {
-                                    "type": "state-icon",
-                                    "entity": "switch.jonathans_heater",
-                                    "style": {
-                                        "top": "16%",
-                                        "left": "52%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.jonathans_heater"
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "climate.jonathans_thermostat",
+                                            "state": "heat"
                                         }
-                                    }
+                                    ],
+                                    "elements": [
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.jonathans_heater",
+                                            "style": {
+                                                "top": "16%",
+                                                "left": "52%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "climate.turn_off",
+                                                "service_data": {
+                                                    "entity_id": "climate.jonathans_thermostat"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "climate.jonathans_thermostat",
+                                            "state": "cool"
+                                        }
+                                    ],
+                                    "elements": [
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.jonathans_fan",
+                                            "style": {
+                                                "top": "16%",
+                                                "left": "52%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "climate.turn_off",
+                                                "service_data": {
+                                                    "entity_id": "climate.jonathans_thermostat"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "climate.jonathans_thermostat",
+                                            "state": "off"
+                                        }
+                                    ],
+                                    "elements": [
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "climate.jonathans_thermostat",
+                                            "style": {
+                                                "top": "16%",
+                                                "left": "52%"
+                                            }
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "state-icon",
@@ -263,8 +376,16 @@
                                     }
                                 },
                                 {
+                                    "type": "state-label",
+                                    "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                                    "style": {
+                                        "top": "49%",
+                                        "left": "42%"
+                                    }
+                                },
+                                {
                                     "type": "state-icon",
-                                    "entity": "cover.rollershutter_diningroom_cover",
+                                    "entity": "cover.dining_room_rollershutter",
                                     "style": {
                                         "top": "50%",
                                         "left": "62%"
@@ -273,7 +394,7 @@
                                         "action": "call-service",
                                         "service": "cover.toggle",
                                         "service_data": {
-                                            "entity_id": "cover.rollershutter_diningroom_cover_1"
+                                            "entity_id": "cover.dining_room_rollershutter"
                                         }
                                     }
                                 },
@@ -527,6 +648,14 @@
                                     }
                                 },
                                 {
+                                    "type": "state-label",
+                                    "entity": "sensor.ble_temperature_a4c138fbfa2a",
+                                    "style": {
+                                        "top": "81%",
+                                        "left": "81%"
+                                    }
+                                },
+                                {
                                     "type": "state-icon",
                                     "entity": "light.light_masterbedroom_1",
                                     "style": {
@@ -558,10 +687,25 @@
                                 },
                                 {
                                     "type": "state-icon",
+                                    "entity": "switch.nancys_electric_blanket",
+                                    "style": {
+                                        "top": "87.5%",
+                                        "left": "86%"
+                                    },
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.nancys_electric_blanket"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
                                     "entity": "light.light_bedside_2",
                                     "style": {
                                         "top": "87.5%",
-                                        "left": "82%"
+                                        "left": "81%"
                                     },
                                     "tap_action": {
                                         "action": "call-service",
@@ -717,7 +861,7 @@
                                             "entity": "sensor.nokia_5_3_battery_level"
                                         },
                                         {
-                                            "entity": "sensor.nancy_s_g7_power_battery_sensor"
+                                            "entity": "sensor.nancys_phone_battery_level"
                                         },
                                         {
                                             "entity": "sensor.david_s_phone_battery_level"
@@ -727,6 +871,9 @@
                                         },
                                         {
                                             "entity": "sensor.adrian_s_work_phone_battery_level"
+                                        },
+                                        {
+                                            "entity": "sensor.nancy_s_ipad_battery_level"
                                         }
                                     ],
                                     "hours_to_show": 24,
@@ -767,7 +914,11 @@
                                         },
                                         {
                                             "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature",
-                                            "name": "Boys Bedroom"
+                                            "name": "Jonathan's Bedroom"
+                                        },
+                                        {
+                                            "entity": "sensor.temp_davids_bedroom_ds18b20_temperature",
+                                            "name": "David's Bedroom"
                                         },
                                         {
                                             "entity": "sensor.ble_temperature_a4c1387f98b8",
