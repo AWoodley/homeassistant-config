@@ -144,14 +144,6 @@ google_assistant:
       expose: true
     light.music_room_light:
       expose: true
-    switch.davids_fan:
-      expose: true
-    # switch.jonathans_fan:
-    #   expose: true
-    switch.davids_heater:
-      expose: true
-    # switch.jonathans_heater:
-    #   expose: true
     switch.switch_kettle:
       expose: true
     switch.fireplace_fan:
@@ -188,8 +180,6 @@ google_assistant:
     #   expose: true
     cover.davids_bedroom_rollershutter:
       expose: true
-    sensor.temp_davids_bedroom_ds18b20_temperature:
-      expose: true
     sensor.ble_temperature_a4c138fbfa2a :
       expose: true
       name: 'Master Bedroom Temperature'
@@ -201,12 +191,9 @@ google_assistant:
       name: 'Study Temperature'
     climate.jonathans_thermostat:
       expose: true
-    # climate.jonathans_fan:
-    #   expose: true
     climate.davids_thermostat:
       expose: true
-    # climate.davids_fan:
-    #   expose: true
+
 
 # calendar:
 #   - platform: caldav
@@ -272,7 +259,7 @@ climate:
   #   ac_mode: true
   - platform: dualmode_generic
     unique_id: climate.davids_thermostat
-    name: Davids Termostat
+    name: Davids Thermostat
     heater: switch.davids_heater
     cooler: switch.davids_fan
     target_sensor: sensor.temp_davids_bedroom_ds18b20_temperature
