@@ -831,7 +831,7 @@
       - effect_pulse
       entity_id:
       - light.light_media_1
-      - light.light_media_2
+      # - light.light_media_2
       - light.light_media_3
       - light.light_masterbedroom_1
       - light.light_bedside_1

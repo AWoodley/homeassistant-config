@@ -122,9 +122,12 @@
     platform: time
   action:
   - entity_id: cover.dining_room_rollershutter
-    service: "{% if states('sensor.ble_temperature_a4c138b45222') | float > 22 or\
-      \ states('sensor.darlington_rain_chance_0') > 50 %}\n  cover.close_cover\n{%\
-      \ else %}\n  cover.open_cover\n{% endif %}\n"
+    service: >
+      {% if states('sensor.ble_temperature_a4c138b45222') | float > 22 or states('sensor.darlington_rain_chance_0') > 50 %}
+        cover.close_cover
+      {% else %}
+       cover.open_cover
+      {% endif %}
 - id: '1582646302706'
   alias: Rollershutter:Dining:Dusk
   description: ''
@@ -158,13 +161,13 @@
   description: ''
   trigger:
   - below: 200
-    entity_id: sensor.switch_arlec_1_energy_voltage
+    entity_id: sensor.switch_kettle_1_energy_voltage
     platform: numeric_state
   condition:
   - condition: device
     device_id: 24270fe8bcce46d7a35d5929c4f467f0
     domain: switch
-    entity_id: switch.switch_arlec_1
+    entity_id: switch.switch_kettle_1
     for:
       hours: 0
       minutes: 0
@@ -177,7 +180,7 @@
       title: Kettle
   - delay: 00:01:00
   - condition: state
-    entity_id: binary_sensor.switch_arlec_1_button1
+    entity_id: binary_sensor.switch_kettle_1_button1
     state: 'on'
   - service: notify.mobile_app_adrian_s_phone
     data:
@@ -185,7 +188,7 @@
       title: Kettle
   - device_id: 24270fe8bcce46d7a35d5929c4f467f0
     domain: switch
-    entity_id: switch.switch_arlec_1
+    entity_id: switch.switch_kettle_1
     type: turn_off
   mode: single
 - id: '1611676108901'

@@ -138,8 +138,8 @@ google_assistant:
       expose: true
     light.light_media_1:
       expose: true
-    light.light_media_2:
-      expose: true
+    # light.light_media_2:
+    #   expose: true
     light.light_media_3:
       expose: true
     light.music_room_light:
@@ -328,13 +328,13 @@ sensor:
   - platform: mqtt
     state_topic: "tele/tasmota/IR/+/RESULT"
     name: 'IR Button'
-    value_template: '{{value_json.IrReceived.Data}}'
+    value_template: "{{value_json.IrReceived.Data}}"
     qos: 1
     expire_after: 1
   - platform: mqtt
     state_topic: "tele/tasmota/IR/+/RESULT"
-    name: 'IR Last'
-    value_template: '{{value_json.IrReceived.Data}}'
+    name: "IR Last"
+    value_template: "{{value_json.IrReceived.Data}}"
     qos: 1
   - platform: mqtt
     state_topic: "home/hass/active"

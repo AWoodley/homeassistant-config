@@ -42,7 +42,7 @@
   action:
     service: scene.turn_on
     data_template:
-      entity_id: '{{ states(''input_select.study_scene'') }}'
+      entity_id: "{{ states('input_select.study_scene') }}"
 - id: '20200429123001'
   alias: Media:Imp:Play-Pause
   description: ''
