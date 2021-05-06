@@ -480,6 +480,14 @@
                                                     }
                                                 },
                                                 {
+                                                    "type": "state-label",
+                                                    "entity": "sensor.ble_temperature_a4c13887d585",
+                                                    "style": {
+                                                        "top": "47%",
+                                                        "left": "82%"
+                                                    }
+                                                },
+                                                {
                                                     "type": "state-icon",
                                                     "entity": "light.music_room_light",
                                                     "style": {
@@ -672,6 +680,14 @@
                                                         "service_data": {
                                                             "entity_id": "switch.radios"
                                                         }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-label",
+                                                    "entity": "sensor.ble_temperature_a4c138b45222",
+                                                    "style": {
+                                                        "top": "92%",
+                                                        "left": "45%"
                                                     }
                                                 },
                                                 {
