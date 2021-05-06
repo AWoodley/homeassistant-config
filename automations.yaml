@@ -45,14 +45,12 @@
 - id: '1580492902537'
   alias: Switch:Nancy's Phone Charger:Turn On
   description: ''
-  mode: single
-  max_exceeded: silent
   trigger:
   - platform: time
     at: 03:30:00
   - platform: numeric_state
-    entity_id: sensor.nancy_s_g7_power_battery_sensor
-    below: 35
+    entity_id: sensor.nancys_phone_battery_level
+    below: '35'
   - platform: state
     entity_id: switch.nancy_s_phone_charger
     to: 'on'
@@ -62,10 +60,12 @@
     service: switch.turn_on
   - wait_for_trigger:
     - platform: numeric_state
-      entity_id: sensor.nancy_s_g7_power_battery_sensor
-      above: 80
+      entity_id: sensor.nancys_phone_battery_level
+      above: '85'
   - service: switch.turn_off
     entity_id: switch.nancy_s_phone_charger
+  mode: single
+  max_exceeded: silent
 - id: '1581009244170'
   alias: Lights:Night:Time
   description: ''
@@ -282,10 +282,10 @@
     at: '21:01:00'
   condition:
   - condition: time
-    after: 00:21:00
+    after: '21:01:00'
   - condition: numeric_state
     entity_id: sensor.ble_temperature_a4c138fbfa2a
-    below: '20'
+    below: '21'
   - condition: state
     entity_id: person.nancy
     state: Home
