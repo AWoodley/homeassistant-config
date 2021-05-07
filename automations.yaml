@@ -95,7 +95,7 @@
       payload_template: '{{ states(''person.adrian'')}}'
       topic: homeassistant/person/adrian
 - id: '1582300595341'
-  alias: Rollershutter:Dining:Day
+  alias: Rollershutter:Dining:Morning:Open
   description: ''
   trigger:
   - event: sunrise
@@ -111,33 +111,27 @@
   action:
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
-  - service: light.turn_off
-    entity_id: light.dining_room_lights, light.light_familyroom_1, light.music_room_light
-    data: {}
+  mode: single
 - id: '1582300676427'
-  alias: Rollershutter:Dining:Afternoon
+  alias: Rollershutter:Dining:Afternoon:Open
   description: ''
   trigger:
   - at: '13:00:00'
     platform: time
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138b45222
+    above: '22'
+  - condition: numeric_state
+    entity_id: sensor.darlington_rain_chance_0
+    below: '50'
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138dfcf8d
+    below: '24'
   action:
   - entity_id: cover.dining_room_rollershutter
-    service: >
-      {% if states('sensor.ble_temperature_a4c138b45222') | float < 22 or states('sensor.darlington_rain_chance_0') > 50 %}
-        cover.close_cover
-      {% else %}
-        cover.open_cover
-      {% endif %}
-- id: '1582646302706'
-  alias: Rollershutter:Dining:Dusk
-  description: ''
-  trigger:
-  - platform: sun
-    event: sunset
-    offset: -00:45:00
-  action:
-  - entity_id: cover.dining_room_rollershutter
-    service: cover.close_cover
+    service: cover.open_cover
+  mode: single
 - id: '1584459956003'
   alias: Switch:Kettle:Started
   description: ''
@@ -339,4 +333,69 @@
       entity_id:
       - climate.davids_thermostat
       - climate.jonathans_thermostat
+  mode: single
+- id: '1620375343556'
+  alias: Rollershutter:Dining:Afternoon:Close
+  description: ''
+  trigger:
+  - platform: time
+    at: '13:00:00'
+  - platform: sun
+    event: sunset
+    offset: -00:45:00
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138b45222
+    below: '22'
+  - condition: or
+    conditions:
+    - condition: numeric_state
+      entity_id: sensor.darlington_rain_chance_0
+      above: '50'
+    - condition: numeric_state
+      entity_id: sensor.ble_temperature_a4c138dfcf8d
+      above: '24'
+    - condition: sun
+      before: sunset
+      before_offset: 00:45:00
+  action:
+  - service: cover.close_cover
+    target:
+      entity_id: cover.dining_room_rollershutter
+  mode: single
+- id: '1620376925668'
+  alias: Light:DiningRoom:Off:Rollershutters:Open
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.dining_room_rollershutter
+    to: open
+  condition: []
+  action:
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.dining_room_lights
+      - light.family_room_lights
+      - light.music_room_light
+    data:
+      transition: 30
+  mode: single
+- id: '1620377026335'
+  alias: Light:DiningRoom:On:Rollershutters:Close
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.dining_room_rollershutter
+    to: closed
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+  action:
+  - service: light.turn_on
+    data:
+      transition: 30
+      color_temp: 280
+      brightness: 100
   mode: single
