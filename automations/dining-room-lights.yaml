@@ -21,23 +21,23 @@
     data:
       brightness: 255
       color_temp: 280
-- id: '1576515841194'
-  alias: Dining Room Lights Off
-  description: ''
-  trigger:
-  - event: sunrise
-    platform: sun
-  condition: []
-  action:
-  - entity_id: input_boolean.christmas_lights
-    service: input_boolean.turn_off
-  - delay: 00:00:10
-  - service: script.turn_on
-    data:
-      entity_id: script.1576604653358
-  - service: light.turn_off
-    data:
-      entity_id: light.dining_room_lights,light.light_familyroom_1,light.music_room_light
+# - id: '1576515841194'
+#   alias: Dining Room Lights Off
+#   description: ''
+#   trigger:
+#   - event: sunrise
+#     platform: sun
+#   condition: []
+#   action:
+#   - entity_id: input_boolean.christmas_lights
+#     service: input_boolean.turn_off
+#   - delay: 00:00:10
+#   - service: script.turn_on
+#     data:
+#       entity_id: script.1576604653358
+#   - service: light.turn_off
+#     data:
+#       entity_id: light.dining_room_lights,light.light_familyroom_1,light.music_room_light
 - id: '1575907804253'
   alias: Christmas Lights
   trigger:
@@ -204,24 +204,24 @@
 #       color_temp: 280
 #       entity_id: light.dining_room_lights,light.music_room_light,light.light_familyroom_1
 #     service: light.turn_on
-- id: '1582675757394'
-  alias: Light:Dining Room:Rollershutters
-  description: ''
-  trigger:
-  - entity_id: cover.dining_room_rollershutter
-    platform: state
-    to: open
-  condition:
-  - condition: and
-    conditions:
-    - before: sunset
-      condition: sun
-    - after: sunrise
-      condition: sun
-  action:
-  - service: light.turn_off
-    entity_id: light.dining_room_lights,light.music_room_light
-    data: {}
+# - id: '1582675757394'
+#   alias: Light:Dining Room:Rollershutters
+#   description: ''
+#   trigger:
+#   - entity_id: cover.dining_room_rollershutter
+#     platform: state
+#     to: open
+#   condition:
+#   - condition: and
+#     conditions:
+#     - before: sunset
+#       condition: sun
+#     - after: sunrise
+#       condition: sun
+#   action:
+#   - service: light.turn_off
+#     entity_id: light.dining_room_lights,light.music_room_light
+#     data: {}
   # '1575967544396':
   #   alias: Christmas Lights Loop
   #   sequence:
