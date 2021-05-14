@@ -84,6 +84,15 @@ mqtt:
     retain: false
     qos: 0
 
+
+device_tracker:
+  - platform: mqtt
+    devices:
+      adrian_keys: 'blecker/efa03eac2b0f'
+      adrian_vivosmart_4: 'blecker/d7be10bbfaf5'
+      nancy_charge: 'blecker/e3eb8b55b045'
+
+
 lifx:
   light:
     - broadcast: 192.168.29.51 # Dining-1
