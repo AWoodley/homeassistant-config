@@ -90,6 +90,7 @@ device_tracker:
     devices:
       adrian_keys: 'blecker/efa03eac2b0f'
       adrian_vivosmart_4: 'blecker/d7be10bbfaf5'
+      adrian_instinct: 'blecker/dab46862ceea'
       nancy_charge: 'blecker/e3eb8b55b045'
     payload_home: 'present'
     payload_not_home: 'not_present'
