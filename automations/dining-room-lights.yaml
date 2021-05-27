@@ -231,3 +231,39 @@
   #     state: 'on'
   #   - entity_id: script.1575907804253
   #     service: script.turn_on
+- id: '2021052712481'
+  alias: Light:Dining Room:PIR
+  description: 'Trigger light from PIR'
+  mode: restart
+  trigger:
+  - entity_id: binary_sensor.family_room
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.media_room
+    platform: state
+    to: 'on'
+  - entity_id: sensor.rfb_button
+    platform: state
+    to: '14330700'
+  condition:
+  - condition: and
+    conditions:
+    - condition: time
+      after: "07:00:00"
+    - condition: sun
+      before: sunset
+    - condition: state
+      entity_id: group.family
+      state: home
+    - condition: state
+      entity_id: cover.dining_room_rollershutter
+      state: closed
+  action:
+  - entity_id: light.dining_room_lights
+    service: light.turn_on
+    data:
+      brightness: 255
+      color_temp: 280
+  - delay: '00:15:00'
+  - service: light.turn_off
+    entity_id: light.dining_room_lights

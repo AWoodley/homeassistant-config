@@ -26,19 +26,25 @@
     platform: state
     to: 'on'
   condition:
-    - condition: time
-      alias: "Time 22:00 - 07:00"
-      after: "22:00:00"
-      before: "07:00:00"
+    - condition: state
+      entity_id: group.family
+      state: home
     - condition: state
       entity_id: input_boolean.back_passage_pir
       state: 'on'
   action:
   - service: light.turn_on
-    entity_id: light.back_passage_lights
     data:
-      brightness: 30
-      color_temp: 280
+      entity_id: light.back_passage_lights
+      color_temp: 370
+      brightness: >
+        {% if now().hour > 20 %}
+        25
+        {% elif now().hour < 7 %}
+        25
+        {% else %}
+        255
+        {% endif %}
   - delay: '00:05:00'
   - condition: state
     entity_id: input_boolean.back_passage_pir
