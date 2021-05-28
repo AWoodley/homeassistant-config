@@ -176,6 +176,9 @@ google_assistant:
     input_boolean.christmas_lights:
       expose: true
       name: 'Christmas Lights'
+    input_boolean.guest:
+      expose: true
+      name: 'Guest'
     script.1575974067886:
       expose: true
       name: 'Enough Christmas'
