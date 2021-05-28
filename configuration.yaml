@@ -321,6 +321,11 @@ binary_sensor:
         value_template: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'OFFLINE') or is_state('sensor.partner', 'unavailable') }}"
 
 sensor:
+  - platform: time_date
+    display_options:
+    - 'time'
+    - 'date'
+    - 'time_date'
   - platform: min_max
     name: 'Average Indoor Temperature'
     type: mean
