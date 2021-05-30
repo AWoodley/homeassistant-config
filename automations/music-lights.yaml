@@ -60,7 +60,7 @@
   - service: light.turn_on
     data:
       entity_id: light.music_room_light
-      color_temp: 370
+      color_temp: 280
       brightness: >
         {% if now().hour > 21 %}
         25
