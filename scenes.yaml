@@ -856,6 +856,7 @@
       - light.light_jonathans_bedroom
       - light.light_david_bedroom
       - light.light_familyroom_1
+      - light.lifx_familyroom_stand
       - light.light_frontdoor_1
       friendly_name: All Lights
       icon: mdi:lightbulb-group

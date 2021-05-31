@@ -146,7 +146,7 @@ google_assistant:
       expose: true
     light.light_familyroom_1:
       expose: true
-    light.light_familyroom_stand:
+    light.lifx_familyroom_stand:
       expose: true
     light.light_masterbedroom_1:
       expose: true
@@ -209,6 +209,8 @@ google_assistant:
     climate.jonathans_thermostat:
       expose: true
     climate.davids_thermostat:
+      expose: true
+    alarm_control_panel.mqtt_alarm:
       expose: true
 
 
