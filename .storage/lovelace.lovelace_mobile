@@ -7,800 +7,932 @@
                 {
                     "title": "Overview",
                     "path": "overview",
+                    "panel": true,
                     "badges": [],
                     "cards": [
                         {
-                            "type": "picture-elements",
-                            "elements": [
+                            "type": "vertical-stack",
+                            "cards": [
                                 {
-                                    "type": "state-icon",
-                                    "entity": "cover.davids_bedroom_rollershutter",
-                                    "style": {
-                                        "top": "1.5%",
-                                        "left": "37%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "cover.toggle",
-                                        "service_data": {
-                                            "entity_id": "cover.davids_bedroom_rollershutter"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-label",
-                                    "entity": "sensor.temp_davids_bedroom_ds18b20_temperature",
-                                    "style": {
-                                        "top": "6%",
-                                        "left": "26.5%"
-                                    }
-                                },
-                                {
-                                    "type": "conditional",
-                                    "conditions": [
+                                    "type": "horizontal-stack",
+                                    "cards": [
                                         {
-                                            "entity": "climate.davids_thermostat",
-                                            "state": "heat"
+                                            "type": "entity",
+                                            "entity": "sensor.time"
+                                        },
+                                        {
+                                            "type": "entity",
+                                            "entity": "sensor.date"
                                         }
-                                    ],
+                                    ]
+                                },
+                                {
+                                    "type": "picture-elements",
                                     "elements": [
                                         {
                                             "type": "state-icon",
-                                            "entity": "switch.davids_heater",
+                                            "entity": "cover.davids_bedroom_rollershutter",
                                             "style": {
-                                                "top": "6%",
+                                                "top": "1.5%",
                                                 "left": "37%"
                                             },
                                             "tap_action": {
                                                 "action": "call-service",
-                                                "service": "climate.turn_off",
+                                                "service": "cover.toggle",
                                                 "service_data": {
-                                                    "entity_id": "climate.davids_thermostat"
+                                                    "entity_id": "cover.davids_bedroom_rollershutter"
                                                 }
                                             }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "conditional",
-                                    "conditions": [
+                                        },
                                         {
-                                            "entity": "climate.davids_thermostat",
-                                            "state": "cool"
-                                        }
-                                    ],
-                                    "elements": [
-                                        {
-                                            "type": "state-icon",
-                                            "entity": "switch.davids_fan",
+                                            "type": "state-label",
+                                            "entity": "sensor.temp_davids_bedroom_ds18b20_temperature",
                                             "style": {
                                                 "top": "6%",
-                                                "left": "37%"
+                                                "left": "26.5%"
+                                            }
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "climate.davids_thermostat",
+                                                    "state": "heat"
+                                                }
+                                            ],
+                                            "elements": [
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "switch.davids_heater",
+                                                    "style": {
+                                                        "top": "6%",
+                                                        "left": "37%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "climate.turn_off",
+                                                        "service_data": {
+                                                            "entity_id": "climate.davids_thermostat"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "climate.davids_thermostat",
+                                                    "state": "cool"
+                                                }
+                                            ],
+                                            "elements": [
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "switch.davids_fan",
+                                                    "style": {
+                                                        "top": "6%",
+                                                        "left": "37%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "climate.turn_off",
+                                                        "service_data": {
+                                                            "entity_id": "climate.davids_thermostat"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "climate.davids_thermostat",
+                                                    "state": "off"
+                                                }
+                                            ],
+                                            "elements": [
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "climate.davids_thermostat",
+                                                    "style": {
+                                                        "top": "6%",
+                                                        "left": "37%"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_davids_bedroom",
+                                            "style": {
+                                                "top": "9%",
+                                                "left": "31%"
                                             },
                                             "tap_action": {
                                                 "action": "call-service",
-                                                "service": "climate.turn_off",
+                                                "service": "light.toggle",
                                                 "service_data": {
-                                                    "entity_id": "climate.davids_thermostat"
+                                                    "entity_id": "light.light_davids_bedroom"
                                                 }
                                             }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "conditional",
-                                    "conditions": [
+                                        },
                                         {
-                                            "entity": "climate.davids_thermostat",
-                                            "state": "off"
-                                        }
-                                    ],
-                                    "elements": [
-                                        {
-                                            "type": "state-icon",
-                                            "entity": "climate.davids_thermostat",
+                                            "type": "state-label",
+                                            "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature",
                                             "style": {
                                                 "top": "6%",
-                                                "left": "37%"
+                                                "left": "49%"
                                             }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_davids_bedroom",
-                                    "style": {
-                                        "top": "9%",
-                                        "left": "31%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_davids_bedroom"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-label",
-                                    "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature",
-                                    "style": {
-                                        "top": "6%",
-                                        "left": "49%"
-                                    }
-                                },
-                                {
-                                    "type": "conditional",
-                                    "conditions": [
+                                        },
                                         {
-                                            "entity": "climate.jonathans_thermostat",
-                                            "state": "heat"
-                                        }
-                                    ],
-                                    "elements": [
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "climate.jonathans_thermostat",
+                                                    "state": "heat"
+                                                }
+                                            ],
+                                            "elements": [
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "switch.jonathans_heater",
+                                                    "style": {
+                                                        "top": "16%",
+                                                        "left": "52%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "climate.turn_off",
+                                                        "service_data": {
+                                                            "entity_id": "climate.jonathans_thermostat"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "climate.jonathans_thermostat",
+                                                    "state": "cool"
+                                                }
+                                            ],
+                                            "elements": [
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "switch.jonathans_fan",
+                                                    "style": {
+                                                        "top": "16%",
+                                                        "left": "52%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "climate.turn_off",
+                                                        "service_data": {
+                                                            "entity_id": "climate.jonathans_thermostat"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "conditional",
+                                            "conditions": [
+                                                {
+                                                    "entity": "climate.jonathans_thermostat",
+                                                    "state": "off"
+                                                }
+                                            ],
+                                            "elements": [
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "climate.jonathans_thermostat",
+                                                    "style": {
+                                                        "top": "16%",
+                                                        "left": "52%"
+                                                    }
+                                                }
+                                            ]
+                                        },
                                         {
                                             "type": "state-icon",
-                                            "entity": "switch.jonathans_heater",
+                                            "entity": "light.light_jonathans_bedroom",
                                             "style": {
-                                                "top": "16%",
+                                                "top": "11%",
+                                                "left": "49%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_jonathans_bedroom"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "cover.jonathans_bedroom_rollershutter",
+                                            "style": {
+                                                "top": "9.75%",
+                                                "left": "55.75%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "cover.toggle",
+                                                "service_data": {
+                                                    "entity_id": "cover.jonathans_bedroom_rollershutter"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.passage1",
+                                            "style": {
+                                                "top": "17%",
+                                                "left": "38.25%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.back_passage_lights"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.passage2",
+                                            "style": {
+                                                "top": "34%",
+                                                "left": "38.25%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.back_passage_lights"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_alfresco_1",
+                                            "style": {
+                                                "top": "4%",
+                                                "left": "61%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_alfresco_1"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_alfresco_3",
+                                            "style": {
+                                                "top": "9%",
+                                                "left": "61%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_alfresco_3"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_alfresco_2",
+                                            "style": {
+                                                "top": "18%",
+                                                "left": "77%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_alfresco_2"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_backverandah",
+                                            "style": {
+                                                "top": "33%",
+                                                "left": "95%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_backverandah"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.switch_kettle",
+                                            "style": {
+                                                "top": "44%",
+                                                "left": "21%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "switch.toggle",
+                                                "service_data": {
+                                                    "entity_id": "switch.switch_kettle"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.fireplace_fan",
+                                            "style": {
+                                                "top": "44%",
+                                                "left": "45%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "switch.toggle",
+                                                "service_data": {
+                                                    "entity_id": "switch.fireplace_fan"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "media_player.kitchen_speaker",
+                                            "style": {
+                                                "top": "56%",
+                                                "left": "20%",
+                                                "scale": "66%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.dining_room_lights",
+                                            "icon": "mdi:vanity-light",
+                                            "style": {
+                                                "top": "46%",
+                                                "left": "53%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.dining_room_lights"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-label",
+                                            "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                                            "style": {
+                                                "top": "49%",
+                                                "left": "42%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "cover.dining_room_rollershutter",
+                                            "style": {
+                                                "top": "50%",
+                                                "left": "62%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "cover.toggle",
+                                                "service_data": {
+                                                    "entity_id": "cover.dining_room_rollershutter"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "media_player.dining_room_display",
+                                            "style": {
+                                                "top": "42%",
+                                                "left": "58%",
+                                                "scale": "66%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_familyroom_1",
+                                            "style": {
+                                                "top": "39.5%",
+                                                "left": "69%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_familyroom_1"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.lifx_familyroom_stand",
+                                            "style": {
+                                                "top": "52%",
+                                                "left": "95%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.lifx_familyroom_stand"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-label",
+                                            "entity": "sensor.ble_temperature_a4c13887d585",
+                                            "style": {
+                                                "top": "47%",
+                                                "left": "82%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.music_room_light",
+                                            "style": {
+                                                "top": "64%",
+                                                "left": "47.25%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.music_room_light"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.media_centre",
+                                            "style": {
+                                                "top": "58%",
+                                                "left": "77%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "switch.toggle",
+                                                "service_data": {
+                                                    "entity_id": "switch.media_centre"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.tv",
+                                            "style": {
+                                                "top": "58%",
+                                                "left": "83%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "switch.toggle",
+                                                "service_data": {
+                                                    "entity_id": "switch.tv"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_media_3",
+                                            "style": {
+                                                "top": "64%",
+                                                "left": "80%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_media_3"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_media_1",
+                                            "style": {
+                                                "top": "69%",
+                                                "left": "72%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_media_1"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_entry_1",
+                                            "style": {
+                                                "top": "78%",
+                                                "left": "48%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.entry_lights"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_entry_2",
+                                            "style": {
+                                                "top": "74.5%",
+                                                "left": "60%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.entry_lights"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_entry_3",
+                                            "style": {
+                                                "top": "74.5%",
+                                                "left": "70%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.entry_lights"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_study_1",
+                                            "style": {
+                                                "top": "82.5%",
+                                                "left": "64%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_study_1"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_study_2",
+                                            "style": {
+                                                "top": "87.5%",
+                                                "left": "64.5%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_study_2"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_study_3",
+                                            "style": {
+                                                "top": "81%",
+                                                "left": "70%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_study_3"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.switch_study_1",
+                                            "style": {
+                                                "top": "87.5%",
+                                                "left": "70%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "switch.toggle",
+                                                "service_data": {
+                                                    "entity_id": "switch.switch_study_1"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.radios",
+                                            "style": {
+                                                "top": "87.5%",
+                                                "left": "58.5%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "switch.toggle",
+                                                "service_data": {
+                                                    "entity_id": "switch.radios"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-label",
+                                            "entity": "sensor.ble_temperature_a4c138b45222",
+                                            "style": {
+                                                "top": "92%",
+                                                "left": "45%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_frontdoor_1",
+                                            "style": {
+                                                "top": "86%",
                                                 "left": "52%"
                                             },
                                             "tap_action": {
                                                 "action": "call-service",
-                                                "service": "climate.turn_off",
+                                                "service": "light.toggle",
                                                 "service_data": {
-                                                    "entity_id": "climate.jonathans_thermostat"
+                                                    "entity_id": "light.light_frontdoor_1"
                                                 }
                                             }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "conditional",
-                                    "conditions": [
+                                        },
                                         {
-                                            "entity": "climate.jonathans_thermostat",
-                                            "state": "cool"
-                                        }
-                                    ],
-                                    "elements": [
+                                            "type": "state-label",
+                                            "entity": "sensor.ble_temperature_a4c138fbfa2a",
+                                            "style": {
+                                                "top": "81%",
+                                                "left": "81%"
+                                            }
+                                        },
                                         {
                                             "type": "state-icon",
-                                            "entity": "switch.jonathans_fan",
+                                            "entity": "light.light_masterbedroom_1",
                                             "style": {
-                                                "top": "16%",
-                                                "left": "52%"
+                                                "top": "83%",
+                                                "left": "89%"
                                             },
                                             "tap_action": {
                                                 "action": "call-service",
-                                                "service": "climate.turn_off",
+                                                "service": "light.toggle",
                                                 "service_data": {
-                                                    "entity_id": "climate.jonathans_thermostat"
+                                                    "entity_id": "light.light_masterbedroom_1"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_bedside_1",
+                                            "style": {
+                                                "top": "87.5%",
+                                                "left": "96%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_bedside_1"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.nancys_electric_blanket",
+                                            "style": {
+                                                "top": "87.5%",
+                                                "left": "86%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "switch.toggle",
+                                                "service_data": {
+                                                    "entity_id": "switch.nancys_electric_blanket"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_bedside_2",
+                                            "style": {
+                                                "top": "87.5%",
+                                                "left": "81%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.toggle",
+                                                "service_data": {
+                                                    "entity_id": "light.light_bedside_2"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "cover.master_bedroom_rollershutter",
+                                            "style": {
+                                                "top": "82.5%",
+                                                "left": "98%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "cover.toggle",
+                                                "service_data": {
+                                                    "entity_id": "cover.master_bedroom_rollershutter"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "alarm_control_panel.mqtt_alarm",
+                                            "style": {
+                                                "top": "90%",
+                                                "left": "5%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "alarm_control_panel.alarm_disarm",
+                                                "service_data": {
+                                                    "entity_id": "alarm_control_panel.mqtt_alarm"
+                                                }
+                                            },
+                                            "double_tap_action": {
+                                                "action": "call-service",
+                                                "service": "alarm_control_panel.alarm_arm_away",
+                                                "service_data": {
+                                                    "entity_id": "alarm_control_panel.mqtt_alarm"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "binary_sensor.active",
+                                            "style": {
+                                                "top": "90%",
+                                                "left": "10%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "automation.trigger",
+                                                "service_data": {
+                                                    "entity_id": "automation.hass_heartbeat_2"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-badge",
+                                            "entity": "person.adrian",
+                                            "style": {
+                                                "top": "8%",
+                                                "left": "7%",
+                                                "scale": "50%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-badge",
+                                            "entity": "person.nancy",
+                                            "style": {
+                                                "top": "22%",
+                                                "left": "7%",
+                                                "scale": "50%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-badge",
+                                            "entity": "person.jonathan",
+                                            "style": {
+                                                "top": "36%",
+                                                "left": "7%",
+                                                "scale": "50%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-badge",
+                                            "entity": "person.david",
+                                            "style": {
+                                                "top": "50%",
+                                                "left": "7%",
+                                                "scale": "50%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "person.guest",
+                                            "state_color": true,
+                                            "title": "Guest",
+                                            "style": {
+                                                "top": "90%",
+                                                "left": "15%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "input_boolean.toggle",
+                                                "service_data": {
+                                                    "entity_id": "input_boolean.guest"
                                                 }
                                             }
                                         }
-                                    ]
-                                },
-                                {
-                                    "type": "conditional",
-                                    "conditions": [
-                                        {
-                                            "entity": "climate.jonathans_thermostat",
-                                            "state": "off"
-                                        }
                                     ],
-                                    "elements": [
+                                    "image": "local/lovelace/floorplan/floorplan.png"
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
                                         {
-                                            "type": "state-icon",
-                                            "entity": "climate.jonathans_thermostat",
-                                            "style": {
-                                                "top": "16%",
-                                                "left": "52%"
-                                            }
+                                            "entity": "light.light_davids_bedroom"
+                                        },
+                                        {
+                                            "entity": "cover.davids_bedroom_rollershutter"
+                                        },
+                                        {
+                                            "entity": "light.light_jonathans_bedroom"
+                                        },
+                                        {
+                                            "entity": "cover.jonathans_bedroom_rollershutter"
+                                        },
+                                        {
+                                            "entity": "light.back_passage_lights"
+                                        },
+                                        {
+                                            "entity": "light.dining_room_lights"
+                                        },
+                                        {
+                                            "entity": "cover.dining_room_rollershutter"
+                                        },
+                                        {
+                                            "entity": "light.family_room_lights"
+                                        },
+                                        {
+                                            "entity": "light.music_room_light"
+                                        },
+                                        {
+                                            "entity": "light.light_alfresco_1"
+                                        },
+                                        {
+                                            "entity": "light.light_alfresco_2"
+                                        },
+                                        {
+                                            "entity": "light.light_alfresco_3"
+                                        },
+                                        {
+                                            "entity": "light.light_backverandah"
+                                        },
+                                        {
+                                            "entity": "light.media_room_lights"
+                                        },
+                                        {
+                                            "entity": "light.entry_lights"
+                                        },
+                                        {
+                                            "entity": "light.light_masterbedroom_1"
+                                        },
+                                        {
+                                            "entity": "light.light_bedside_2"
+                                        },
+                                        {
+                                            "entity": "light.light_bedside_1"
+                                        },
+                                        {
+                                            "entity": "cover.master_bedroom_rollershutter"
+                                        },
+                                        {
+                                            "entity": "input_select.study_scene",
+                                            "name": "Study Lights"
                                         }
                                     ]
                                 },
                                 {
-                                    "type": "state-icon",
-                                    "entity": "light.light_jonathans_bedroom",
-                                    "style": {
-                                        "top": "11%",
-                                        "left": "49%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_jonathans_bedroom"
-                                        }
-                                    }
+                                    "type": "thermostat",
+                                    "entity": "climate.davids_thermostat",
+                                    "name": "David's Room"
                                 },
                                 {
-                                    "type": "state-icon",
-                                    "entity": "cover.jonathans_bedroom_rollershutter",
-                                    "style": {
-                                        "top": "9.75%",
-                                        "left": "55.75%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "cover.toggle",
-                                        "service_data": {
-                                            "entity_id": "cover.jonathans_bedroom_rollershutter"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.passage1",
-                                    "style": {
-                                        "top": "17%",
-                                        "left": "38.25%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.back_passage_lights"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.passage2",
-                                    "style": {
-                                        "top": "34%",
-                                        "left": "38.25%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.back_passage_lights"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_alfresco_1",
-                                    "style": {
-                                        "top": "4%",
-                                        "left": "61%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_alfresco_1"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_alfresco_3",
-                                    "style": {
-                                        "top": "9%",
-                                        "left": "61%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_alfresco_3"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_alfresco_2",
-                                    "style": {
-                                        "top": "18%",
-                                        "left": "77%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_alfresco_2"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_backverandah",
-                                    "style": {
-                                        "top": "33%",
-                                        "left": "95%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_backverandah"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "switch.switch_kettle",
-                                    "style": {
-                                        "top": "44%",
-                                        "left": "21%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.switch_kettle"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "switch.fireplace_fan",
-                                    "style": {
-                                        "top": "44%",
-                                        "left": "45%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.fireplace_fan"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "media_player.kitchen_speaker",
-                                    "style": {
-                                        "top": "56%",
-                                        "left": "20%",
-                                        "scale": "66%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.dining_room_lights",
-                                    "icon": "mdi:vanity-light",
-                                    "style": {
-                                        "top": "46%",
-                                        "left": "53%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.dining_room_lights"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-label",
-                                    "entity": "sensor.ble_temperature_a4c138dfcf8d",
-                                    "style": {
-                                        "top": "49%",
-                                        "left": "42%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "cover.dining_room_rollershutter",
-                                    "style": {
-                                        "top": "50%",
-                                        "left": "62%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "cover.toggle",
-                                        "service_data": {
-                                            "entity_id": "cover.dining_room_rollershutter"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "media_player.dining_room_display",
-                                    "style": {
-                                        "top": "42%",
-                                        "left": "58%",
-                                        "scale": "66%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_familyroom_1",
-                                    "style": {
-                                        "top": "39.5%",
-                                        "left": "69%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_familyroom_1"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.lifx_familyroom_stand",
-                                    "style": {
-                                        "top": "52%",
-                                        "left": "95%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.lifx_familyroom_stand"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-label",
-                                    "entity": "sensor.ble_temperature_a4c13887d585",
-                                    "style": {
-                                        "top": "47%",
-                                        "left": "82%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.music_room_light",
-                                    "style": {
-                                        "top": "64%",
-                                        "left": "47.25%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.music_room_light"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "switch.media_centre",
-                                    "style": {
-                                        "top": "58%",
-                                        "left": "77%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.media_centre"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "switch.tv",
-                                    "style": {
-                                        "top": "58%",
-                                        "left": "83%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.tv"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_media_3",
-                                    "style": {
-                                        "top": "64%",
-                                        "left": "80%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_media_3"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_media_1",
-                                    "style": {
-                                        "top": "69%",
-                                        "left": "72%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_media_1"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_entry_1",
-                                    "style": {
-                                        "top": "78%",
-                                        "left": "48%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.entry_lights"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_entry_2",
-                                    "style": {
-                                        "top": "74.5%",
-                                        "left": "60%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.entry_lights"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_entry_3",
-                                    "style": {
-                                        "top": "74.5%",
-                                        "left": "70%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.entry_lights"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_study_1",
-                                    "style": {
-                                        "top": "82.5%",
-                                        "left": "64%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_study_1"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_study_2",
-                                    "style": {
-                                        "top": "87.5%",
-                                        "left": "64.5%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_study_2"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_study_3",
-                                    "style": {
-                                        "top": "81%",
-                                        "left": "70%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_study_3"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "switch.switch_study_1",
-                                    "style": {
-                                        "top": "87.5%",
-                                        "left": "70%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.switch_study_1"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "switch.radios",
-                                    "style": {
-                                        "top": "87.5%",
-                                        "left": "58.5%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.radios"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-label",
-                                    "entity": "sensor.ble_temperature_a4c138b45222",
-                                    "style": {
-                                        "top": "92%",
-                                        "left": "45%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_frontdoor_1",
-                                    "style": {
-                                        "top": "86%",
-                                        "left": "52%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_frontdoor_1"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-label",
-                                    "entity": "sensor.ble_temperature_a4c138fbfa2a",
-                                    "style": {
-                                        "top": "81%",
-                                        "left": "81%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_masterbedroom_1",
-                                    "style": {
-                                        "top": "83%",
-                                        "left": "89%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_masterbedroom_1"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_bedside_1",
-                                    "style": {
-                                        "top": "87.5%",
-                                        "left": "96%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_bedside_1"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "switch.nancys_electric_blanket",
-                                    "style": {
-                                        "top": "87.5%",
-                                        "left": "86%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "switch.toggle",
-                                        "service_data": {
-                                            "entity_id": "switch.nancys_electric_blanket"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "light.light_bedside_2",
-                                    "style": {
-                                        "top": "87.5%",
-                                        "left": "81%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "light.toggle",
-                                        "service_data": {
-                                            "entity_id": "light.light_bedside_2"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "cover.master_bedroom_rollershutter",
-                                    "style": {
-                                        "top": "82.5%",
-                                        "left": "98%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "cover.toggle",
-                                        "service_data": {
-                                            "entity_id": "cover.master_bedroom_rollershutter"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "alarm_control_panel.mqtt_alarm",
-                                    "style": {
-                                        "top": "90%",
-                                        "left": "5%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "alarm_control_panel.alarm_disarm",
-                                        "service_data": {
-                                            "entity_id": "alarm_control_panel.mqtt_alarm"
-                                        }
-                                    },
-                                    "double_tap_action": {
-                                        "action": "call-service",
-                                        "service": "alarm_control_panel.alarm_arm_away",
-                                        "service_data": {
-                                            "entity_id": "alarm_control_panel.mqtt_alarm"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "binary_sensor.active",
-                                    "style": {
-                                        "top": "90%",
-                                        "left": "10%"
-                                    },
-                                    "tap_action": {
-                                        "action": "call-service",
-                                        "service": "automation.trigger",
-                                        "service_data": {
-                                            "entity_id": "automation.hass_heartbeat_2"
-                                        }
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "person.adrian",
-                                    "style": {
-                                        "top": "9%",
-                                        "left": "8%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "person.nancy",
-                                    "style": {
-                                        "top": "26%",
-                                        "left": "8%"
-                                    }
+                                    "type": "thermostat",
+                                    "entity": "climate.jonathans_thermostat",
+                                    "name": "Jonathans's Room"
                                 }
-                            ],
-                            "image": "local/lovelace/floorplan/floorplan.png"
+                            ]
                         }
                     ]
                 },
@@ -814,48 +946,42 @@
                             "type": "vertical-stack",
                             "cards": [
                                 {
-                                    "entities": [
-                                        {
-                                            "entity": "scene.scene_movie_time",
-                                            "tap_action": {
-                                                "action": "call-service",
-                                                "service": "scene.turn_on",
-                                                "service_data": {
-                                                    "entity_id": "scene.scene_movie_time"
-                                                }
-                                            },
-                                            "icon": "mdi:movie"
-                                        },
-                                        {
-                                            "entity": "switch.tv",
-                                            "tap_action": {
-                                                "action": "call-service",
-                                                "service": "switch.toggle",
-                                                "service_data": {
-                                                    "entity_id": "switch.tv"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "entity": "media_player.glod"
-                                        },
-                                        {
-                                            "entity": "media_player.lias"
-                                        },
-                                        {
-                                            "entity": "media_player.kitchen_speaker"
-                                        },
-                                        {
-                                            "entity": "media_player.googlehome4026"
-                                        },
-                                        {
-                                            "entity": "media_player.imp"
-                                        }
-                                    ],
-                                    "title": "Media",
-                                    "type": "entities",
-                                    "show_header_toggle": false,
-                                    "state_color": true
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.media_centre"
+                                },
+                                {
+                                    "type": "button",
+                                    "tap_action": {
+                                        "action": "toggle"
+                                    },
+                                    "entity": "switch.tv"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.dining_room_display"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.glod"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.kitchen_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.googlehome4026"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.imp"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.lias"
                                 }
                             ]
                         }
@@ -963,6 +1089,26 @@
                                     "entity": "weather.darlington",
                                     "show_forecast": true,
                                     "secondary_info_attribute": "wind_speed"
+                                },
+                                {
+                                    "type": "history-graph",
+                                    "entities": [
+                                        {
+                                            "entity": "climate.davids_thermostat"
+                                        }
+                                    ],
+                                    "hours_to_show": 24,
+                                    "refresh_interval": 0
+                                },
+                                {
+                                    "type": "history-graph",
+                                    "entities": [
+                                        {
+                                            "entity": "climate.jonathans_thermostat"
+                                        }
+                                    ],
+                                    "hours_to_show": 24,
+                                    "refresh_interval": 0
                                 }
                             ]
                         }

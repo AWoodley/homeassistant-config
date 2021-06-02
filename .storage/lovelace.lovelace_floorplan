@@ -787,16 +787,52 @@
                                     "type": "state-badge",
                                     "entity": "person.adrian",
                                     "style": {
-                                        "top": "9%",
-                                        "left": "8%"
+                                        "top": "7%",
+                                        "left": "7%",
+                                        "scale": "75%"
                                     }
                                 },
                                 {
                                     "type": "state-badge",
                                     "entity": "person.nancy",
                                     "style": {
-                                        "top": "26%",
-                                        "left": "8%"
+                                        "top": "18%",
+                                        "left": "7%",
+                                        "scale": "75%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "person.jonathan",
+                                    "style": {
+                                        "top": "29%",
+                                        "left": "7%",
+                                        "scale": "75%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "person.david",
+                                    "style": {
+                                        "top": "40%",
+                                        "left": "7%",
+                                        "scale": "75%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "person.guest",
+                                    "style": {
+                                        "top": "51%",
+                                        "left": "7%",
+                                        "scale": "75%"
+                                    },
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "input_boolean.toggle",
+                                        "service_data": {
+                                            "entity_id": "input_boolean.guest"
+                                        }
                                     }
                                 }
                             ],

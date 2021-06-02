@@ -26,23 +26,7 @@
                             "user": "9618b73dddfc4121b82e207b4cd0ae1e"
                         }
                     ],
-                    "badges": [
-                        {
-                            "entity": "binary_sensor.updater"
-                        },
-                        {
-                            "entity": "sensor.rfb_button"
-                        },
-                        {
-                            "entity": "sensor.ir_button"
-                        },
-                        {
-                            "entity": "sensor.partner"
-                        },
-                        {
-                            "entity": "switch.active"
-                        }
-                    ],
+                    "badges": [],
                     "cards": [
                         {
                             "type": "grid",
@@ -829,16 +813,52 @@
                                                     "type": "state-badge",
                                                     "entity": "person.adrian",
                                                     "style": {
-                                                        "top": "9%",
-                                                        "left": "8%"
+                                                        "top": "7%",
+                                                        "left": "7%",
+                                                        "scale": "75%"
                                                     }
                                                 },
                                                 {
                                                     "type": "state-badge",
                                                     "entity": "person.nancy",
                                                     "style": {
-                                                        "top": "26%",
-                                                        "left": "8%"
+                                                        "top": "18%",
+                                                        "left": "7%",
+                                                        "scale": "75%"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-badge",
+                                                    "entity": "person.jonathan",
+                                                    "style": {
+                                                        "top": "29%",
+                                                        "left": "7%",
+                                                        "scale": "75%"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-badge",
+                                                    "entity": "person.david",
+                                                    "style": {
+                                                        "top": "40%",
+                                                        "left": "7%",
+                                                        "scale": "75%"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-badge",
+                                                    "entity": "person.guest",
+                                                    "style": {
+                                                        "top": "51%",
+                                                        "left": "7%",
+                                                        "scale": "75%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_boolean.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "input_boolean.guest"
+                                                        }
                                                     }
                                                 }
                                             ],
@@ -868,7 +888,7 @@
                                                     "entity": "sensor.david_s_phone_battery_level"
                                                 },
                                                 {
-                                                    "entity": "sensor.moto_g_5s_battery_level"
+                                                    "entity": "sensor.jonathan_s_phone_battery_level"
                                                 },
                                                 {
                                                     "entity": "sensor.adrian_s_work_phone_battery_level"
