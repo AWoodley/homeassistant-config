@@ -56,6 +56,9 @@
     - condition: state
       entity_id: input_boolean.music_room_pir
       state: 'on'
+    - condition: state
+      entity_id: cover.dining_room_rollershutter
+      state: closed
   action:
   - service: light.turn_on
     data:
