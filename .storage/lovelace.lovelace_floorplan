@@ -567,7 +567,7 @@
                                 },
                                 {
                                     "type": "state-icon",
-                                    "entity": "light.light_study_1",
+                                    "entity": "light.lifx_d0_73_d5_37_e5_cd",
                                     "style": {
                                         "top": "82.5%",
                                         "left": "64%"
@@ -576,7 +576,7 @@
                                         "action": "call-service",
                                         "service": "light.toggle",
                                         "service_data": {
-                                            "entity_id": "light.light_study_1"
+                                            "entity_id": "light.lifx_d0_73_d5_37_e5_cd"
                                         }
                                     }
                                 },
