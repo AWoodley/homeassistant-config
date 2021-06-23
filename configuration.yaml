@@ -480,13 +480,13 @@ light: !include lights.yaml
 
 vacuum: !include vacuum.yaml
 
-media_player:
-  - platform: mpd
-    host: 192.168.30.10
-    name: DeathOfRats
-  - platform: dlna_dmr
-    name: Cliff
-    url: http://192.168.30.35/dd.xml
+# media_player:
+#   - platform: mpd
+#     host: 192.168.30.10
+#     name: DeathOfRats
+  # - platform: dlna_dmr
+  #   name: Cliff
+  #   url: http://192.168.30.35/dd.xml
     # - platform: yamaha # takes too long to restart if yamaha off
     #   name: Yamaha Receiver
     #   host: 192.168.30.32
