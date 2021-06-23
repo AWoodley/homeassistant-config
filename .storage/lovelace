@@ -593,7 +593,7 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "lightlight.light_study_1",
+                                                    "entity": "light.light_study_1",
                                                     "style": {
                                                         "top": "82.5%",
                                                         "left": "64%"

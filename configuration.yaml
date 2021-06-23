@@ -390,7 +390,7 @@ switch:
     lights:
       - light.light_familyroom_1
       - light.light_musicroom_1
-      - lightlight.light_study_1
+      - light.light_study_1
       - light.back_passage_lights
       - light.dining_room_lights
     name: Fluxer

@@ -321,7 +321,7 @@
       - scene.scene_study_normal
       - scene.scene_study_bright
       state: scene.scene_study_normal
-    lightlight.light_study_1:
+    light.light_study_1:
       brightness: 255
       color_temp: 250
       effect_list:
@@ -359,7 +359,7 @@
       editable: false
       friendly_name: Currently Active Scene for Study
       state: scene.scene_study_bright
-    lightlight.light_study_1:
+    light.light_study_1:
       min_mireds: 250
       max_mireds: 666
       effect_list:
@@ -399,7 +399,7 @@
       editable: false
       friendly_name: Currently Active Scene for Study
       state: scene.scene_study_off
-    lightlight.light_study_1:
+    light.light_study_1:
       min_mireds: 250
       max_mireds: 666
       effect_list:
@@ -559,7 +559,7 @@
       friendly_name: Music Room Light
       supported_features: 55
       state: 'off'
-    lightlight.light_study_1:
+    light.light_study_1:
       min_mireds: 250
       max_mireds: 666
       effect_list:
@@ -671,7 +671,7 @@
       - scene.scene_study_normal
       - scene.scene_study_bright
       state: scene.scene_study_bright
-    lightlight.light_study_1:
+    light.light_study_1:
       brightness: 255
       color_temp: 552
       effect_list:
@@ -704,7 +704,7 @@
 - id: '1588665537146'
   name: Scene:Study:Cool
   entities:
-    lightlight.light_study_1:
+    light.light_study_1:
       brightness: 255
       color_temp: 250
       effect_list:
@@ -845,7 +845,7 @@
       - light.lifx_diningroom_4
       - light.passage1
       - light.passage2
-      - lightlight.light_study_1
+      - light.light_study_1
       - light.light_study_2
       - light.light_study_3
       - light.light_alfresco_1
