@@ -296,6 +296,7 @@ climate:
   #   ac_mode: true
   - platform: tasmota_irhvac
     name: "Master Bedroom Airconditioner"
+    unique_id: climate.master_bedroom_airconditioner
     command_topic: "cmnd/tasmota/IR/6E6F5D/irhvac"
     # Pick one of the following:
     # State is updated when the tasmota device receives an IR signal (includes own transmission and original remote)
