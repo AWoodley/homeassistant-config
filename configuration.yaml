@@ -347,8 +347,7 @@ climate:
     default_quiet_mode: "Off" #optional - default "Off" string value
     default_turbo_mode: "Off" #optional - default "Off" string value
     default_econo_mode: "Off" #optional - default "Off" string value
-    hvac_model: "Auto" #optional - default "1" string value
-    celsius_mode: "On" #optional - default "On" string value
+    hvac_model: 1 #optional - default "On" string value
     default_light_mode: "Off" #optional - default "Off" string value
     default_filter_mode: "Off" #optional - default "Off" string value
     default_clean_mode: "Off" #optional - default "Off" string value
