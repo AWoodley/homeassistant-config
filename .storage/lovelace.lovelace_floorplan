@@ -664,10 +664,18 @@
                                     }
                                 },
                                 {
+                                    "type": "state-icon",
+                                    "entity": "climate.master_bedroom_airconditioner",
+                                    "style": {
+                                        "top": "78%",
+                                        "left": "81%"
+                                    }
+                                },
+                                {
                                     "type": "state-label",
                                     "entity": "sensor.ble_temperature_a4c138fbfa2a",
                                     "style": {
-                                        "top": "81%",
+                                        "top": "82%",
                                         "left": "81%"
                                     }
                                 },
@@ -829,9 +837,9 @@
                                     },
                                     "tap_action": {
                                         "action": "call-service",
-                                        "service": "input_boolean.toggle",
+                                        "service": "input_select.select_next",
                                         "service_data": {
-                                            "entity_id": "input_boolean.guest"
+                                            "entity_id": "input_select.guest"
                                         }
                                     }
                                 }

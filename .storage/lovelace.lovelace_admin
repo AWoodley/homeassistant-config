@@ -8,7 +8,215 @@
                     "title": "Batteries",
                     "path": "batteries",
                     "badges": [],
-                    "cards": []
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.ble_battery_a4c1387f98b8"
+                                },
+                                {
+                                    "entity": "sensor.ble_battery_a4c13887d585"
+                                },
+                                {
+                                    "entity": "sensor.ble_battery_a4c13888821f"
+                                },
+                                {
+                                    "entity": "sensor.ble_battery_a4c138b45222"
+                                },
+                                {
+                                    "entity": "sensor.ble_battery_a4c138dfcf8d"
+                                },
+                                {
+                                    "entity": "sensor.ble_battery_a4c138fbfa2a"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "WiFi Heatmap",
+                    "path": "wifi-heatmap",
+                    "panel": false,
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "picture-elements",
+                            "elements": [
+                                {
+                                    "type": "icon",
+                                    "icon": "mdi:wifi",
+                                    "style": {
+                                        "top": "19%",
+                                        "left": "44%",
+                                        "scale": "75%"
+                                    }
+                                },
+                                {
+                                    "type": "icon",
+                                    "icon": "mdi:wifi",
+                                    "style": {
+                                        "top": "88%",
+                                        "left": "57.5%",
+                                        "scale": "75%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.sensor_davids_bedroom_rssi",
+                                    "style": {
+                                        "top": "6%",
+                                        "left": "26.5%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.temp_jonathans_bedroom_rssi",
+                                    "style": {
+                                        "top": "6%",
+                                        "left": "49%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_alfresco_1_rssi",
+                                    "style": {
+                                        "top": "4%",
+                                        "left": "61%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_alfresco_3_rssi",
+                                    "style": {
+                                        "top": "9%",
+                                        "left": "61%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.alfresco_lights_rssi",
+                                    "style": {
+                                        "top": "14%",
+                                        "left": "61%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.back_verandah_rssi",
+                                    "style": {
+                                        "top": "33%",
+                                        "left": "95%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.switch_kettle_1_rssi",
+                                    "style": {
+                                        "top": "44%",
+                                        "left": "21%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_media_3_rssi",
+                                    "style": {
+                                        "top": "64%",
+                                        "left": "80%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_media_1_rssi",
+                                    "style": {
+                                        "top": "69%",
+                                        "left": "72%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_entry_1_rssi",
+                                    "style": {
+                                        "top": "78%",
+                                        "left": "48%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_entry_2_rssi",
+                                    "style": {
+                                        "top": "74.5%",
+                                        "left": "60%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_entry_3_rssi",
+                                    "style": {
+                                        "top": "74.5%",
+                                        "left": "70%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_study_2_rssi",
+                                    "style": {
+                                        "top": "87.5%",
+                                        "left": "65%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_study_3_rssi",
+                                    "style": {
+                                        "top": "81%",
+                                        "left": "70%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.switch_study_1_rssi",
+                                    "style": {
+                                        "top": "84.5%",
+                                        "left": "70%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_masterbedroom_1_rssi",
+                                    "style": {
+                                        "top": "83%",
+                                        "left": "89%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_bedside_1_rssi",
+                                    "style": {
+                                        "top": "87.5%",
+                                        "left": "96%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.nancys_electric_blanket_rssi",
+                                    "style": {
+                                        "top": "87.5%",
+                                        "left": "88%"
+                                    }
+                                },
+                                {
+                                    "type": "state-label",
+                                    "entity": "sensor.light_bedside_2_rssi",
+                                    "style": {
+                                        "top": "87.5%",
+                                        "left": "81%"
+                                    }
+                                }
+                            ],
+                            "image": "local/lovelace/floorplan/floorplan.png"
+                        }
+                    ]
                 }
             ],
             "title": "Admin"

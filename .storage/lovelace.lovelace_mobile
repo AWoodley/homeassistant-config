@@ -681,10 +681,18 @@
                                             }
                                         },
                                         {
+                                            "type": "state-icon",
+                                            "entity": "climate.master_bedroom_airconditioner",
+                                            "style": {
+                                                "top": "78%",
+                                                "left": "81%"
+                                            }
+                                        },
+                                        {
                                             "type": "state-label",
                                             "entity": "sensor.ble_temperature_a4c138fbfa2a",
                                             "style": {
-                                                "top": "81%",
+                                                "top": "82%",
                                                 "left": "81%"
                                             }
                                         },
@@ -839,7 +847,6 @@
                                         {
                                             "type": "state-icon",
                                             "entity": "person.guest",
-                                            "state_color": true,
                                             "title": "Guest",
                                             "style": {
                                                 "top": "90%",
@@ -847,9 +854,9 @@
                                             },
                                             "tap_action": {
                                                 "action": "call-service",
-                                                "service": "input_boolean.toggle",
+                                                "service": "input_select.select_next",
                                                 "service_data": {
-                                                    "entity_id": "input_boolean.guest"
+                                                    "entity_id": "input_select.guest"
                                                 }
                                             }
                                         }
@@ -931,6 +938,10 @@
                                     "type": "thermostat",
                                     "entity": "climate.jonathans_thermostat",
                                     "name": "Jonathans's Room"
+                                },
+                                {
+                                    "type": "thermostat",
+                                    "entity": "climate.master_bedroom_airconditioner"
                                 }
                             ]
                         }
@@ -1105,6 +1116,16 @@
                                     "entities": [
                                         {
                                             "entity": "climate.jonathans_thermostat"
+                                        }
+                                    ],
+                                    "hours_to_show": 24,
+                                    "refresh_interval": 0
+                                },
+                                {
+                                    "type": "history-graph",
+                                    "entities": [
+                                        {
+                                            "entity": "climate.master_bedroom_airconditioner"
                                         }
                                     ],
                                     "hours_to_show": 24,
