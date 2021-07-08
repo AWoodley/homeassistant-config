@@ -42,7 +42,10 @@
   trigger:
   - platform: time_pattern
     seconds: '0'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       payload: "{{ states('sensor.local_ip') }}"
