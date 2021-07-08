@@ -57,7 +57,10 @@
   - platform: state
     entity_id: switch.nancy_s_phone_charger
     to: 'on'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - entity_id: switch.nancy_s_phone_charger
     service: switch.turn_on
@@ -75,7 +78,10 @@
   trigger:
   - at: '20:30:00'
     platform: time
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - entity_id: light.light_entry_3
     service: light.turn_on
@@ -91,7 +97,10 @@
   trigger:
   - entity_id: person.adrian
     platform: state
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: mqtt.publish
     data:
@@ -122,6 +131,9 @@
   - at: '13:00:00'
     platform: time
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: numeric_state
     entity_id: sensor.ble_temperature_a4c138b45222
     above: '22'
@@ -145,6 +157,9 @@
     to: 'on'
   condition:
   - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
     entity_id: sensor.switch_arlec_1_energy_current
     state: '0.0'
   action:
@@ -161,6 +176,9 @@
     entity_id: sensor.switch_kettle_1_energy_voltage
     platform: numeric_state
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: device
     device_id: 24270fe8bcce46d7a35d5929c4f467f0
     domain: switch
@@ -195,7 +213,10 @@
   - platform: state
     entity_id: input_boolean.temp_toggle
     to: 'on'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: light.toggle
     data: {}
@@ -208,6 +229,9 @@
   - platform: time
     at: 07:30:00
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: state
     entity_id: group.family
     state: home
@@ -237,6 +261,9 @@
     at: 07:30:00
   condition:
   - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
     entity_id: group.family
     state: home
   - condition: time
@@ -262,7 +289,10 @@
   - platform: sun
     event: sunrise
     offset: -00:45:00
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: cover.close_cover
     data: {}
@@ -278,6 +308,9 @@
   - platform: time
     at: '21:01:00'
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: time
     after: '21:01:00'
   - condition: numeric_state
@@ -307,6 +340,9 @@
     at: '20:00:00'
   condition:
   - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
     entity_id: group.family
     state: home
   - condition: numeric_state
@@ -327,7 +363,10 @@
   trigger:
   - platform: time
     at: 08:00:00
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: climate.set_hvac_mode
     data:
@@ -373,7 +412,10 @@
   - platform: state
     entity_id: cover.dining_room_rollershutter
     to: open
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: light.turn_off
     target:
@@ -392,6 +434,9 @@
     entity_id: cover.dining_room_rollershutter
     to: closed
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: state
     entity_id: group.family
     state: home
