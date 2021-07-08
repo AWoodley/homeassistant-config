@@ -98,10 +98,10 @@
   trigger:
   - at: 07:30:00
     platform: time
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
+  condition: []
+  # - condition: state
+  #   entity_id: binary_sensor.active
+  #   state: 'on'
   action:
   - entity_id: switch.davids_heater
     service: switch.turn_off
@@ -121,6 +121,9 @@
     alias: "Time 20:00 - 07:00"
     after: "20:00:00"
     before: "07:00:00"
+  - condition: state
+    entity_id: person.david
+    state: 'home'
   action:
   - entity_id: switch.davids_heater
     service: switch.turn_on
