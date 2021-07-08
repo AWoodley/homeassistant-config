@@ -30,7 +30,10 @@
   - platform: state
     entity_id: switch.adrian_s_phone_charger
     to: 'on'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: switch.turn_on
     entity_id: switch.adrian_s_phone_charger
