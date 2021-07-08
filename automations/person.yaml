@@ -12,9 +12,6 @@
     id: Person
   condition:
   - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  - condition: state
     entity_id: group.family
     state: home
   action:
@@ -52,9 +49,6 @@
     id: Person
   condition:
   - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  - condition: state
     entity_id: group.family
     state: home
   action:
@@ -91,9 +85,6 @@
     entity_id: person.jonathan
     id: Person
   condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
   - condition: state
     entity_id: group.family
     state: home
