@@ -15,7 +15,10 @@
     attribute: current
     to: 0
   mode: single
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - entity_id: 
     - input_boolean.party_lights
@@ -50,15 +53,18 @@
     platform: state
     to: '14330700'
   condition:
-    - condition: state
-      entity_id: group.family
-      state: home
-    - condition: state
-      entity_id: input_boolean.music_room_pir
-      state: 'on'
-    - condition: state
-      entity_id: cover.dining_room_rollershutter
-      state: closed
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: state
+    entity_id: input_boolean.music_room_pir
+    state: 'on'
+  - condition: state
+    entity_id: cover.dining_room_rollershutter
+    state: closed
   action:
   - service: light.turn_on
     data:

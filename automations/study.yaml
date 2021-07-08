@@ -5,7 +5,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1153924'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data_template:
       entity_id: >
@@ -22,7 +25,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1153922'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data_template:
       entity_id: >
@@ -38,7 +44,10 @@
   trigger:
   - entity_id: input_select.study_scene
     platform: state
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
     service: scene.turn_on
     data_template:
@@ -50,7 +59,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '9763496'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: media_player.media_play_pause
     entity_id: media_player.imp
@@ -65,7 +77,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '9763473'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data_template:
       volume_level: "{% set mapper =\n  { '9763474': state_attr('media_player.imp',\

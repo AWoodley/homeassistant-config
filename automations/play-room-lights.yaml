@@ -5,7 +5,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1905218'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       entity_id: light.play_room_light

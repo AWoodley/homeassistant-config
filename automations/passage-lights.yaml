@@ -5,7 +5,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1945234'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - entity_id: input_boolean.back_passage_pir
     service: input_boolean.turn_off
@@ -26,12 +29,15 @@
     platform: state
     to: 'on'
   condition:
-    - condition: state
-      entity_id: group.family
-      state: home
-    - condition: state
-      entity_id: input_boolean.back_passage_pir
-      state: 'on'
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: state
+    entity_id: input_boolean.back_passage_pir
+    state: 'on'
   action:
   - service: light.turn_on
     data:

@@ -1,35 +1,41 @@
-- id: '1582909860207'
-  alias: HASS:Standby
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.active
-    to: 'off'
-    platform: state
-  condition: []
-  action:
-  - data: {}
-    service: script.create_every_automation_group
-  - data:
-      stop_actions: no
-    entity_id: group.every_automation
-    service: automation.turn_off
-  - data: {}
-    entity_id: automation.hass_active
-    service: automation.turn_on
-- id: '1582910169504'
-  alias: HASS:Active
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.active
-    to: 'on'
-    platform: state
-  condition: []
-  action:
-  - data: {}
-    service: script.create_every_automation_group
-  - data: {}
-    entity_id: group.every_automation
-    service: automation.turn_on
+# - id: '1582909860207'
+#   alias: HASS:Standby
+#   description: ''
+#   trigger:
+#   - entity_id: binary_sensor.active
+#     to: 'off'
+#     platform: state
+#   condition:
+#   - condition: state
+#     entity_id: binary_sensor.active
+#     state: 'on'
+#   action:
+#   - data: {}
+#     service: script.create_every_automation_group
+#   - data:
+#       stop_actions: no
+#     entity_id: group.every_automation
+#     service: automation.turn_off
+#   - data: {}
+#     entity_id: automation.hass_active
+#     service: automation.turn_on
+# - id: '1582910169504'
+#   alias: HASS:Active
+#   description: ''
+#   trigger:
+#   - entity_id: binary_sensor.active
+#     to: 'on'
+#     platform: state
+#   condition:
+#   - condition: state
+#     entity_id: binary_sensor.active
+#     state: 'on'
+#   action:
+#   - data: {}
+#     service: script.create_every_automation_group
+#   - data: {}
+#     entity_id: group.every_automation
+#     service: automation.turn_on
 - id: '1583253390883'
   alias: HASS:Heartbeat
   description: ''

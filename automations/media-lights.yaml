@@ -7,6 +7,9 @@
       from: 'on'
       to: 'off'
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: or
     conditions:
     - before: sunrise
@@ -24,6 +27,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1944754'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
     service: >
       {% if is_state('light.media_room_lights', 'on') %}
@@ -57,6 +64,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '11532968'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       entity_id: light.light_media_1
@@ -80,6 +91,9 @@
     platform: state
     to: paused
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: or
     conditions:
     - before: sunrise
@@ -97,7 +111,10 @@
   - entity_id: media_player.glod
     platform: state
     to: playing
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       entity_id: light.media_room_lights
@@ -118,7 +135,10 @@
   - entity_id: sensor.ir_button
     platform: state
     to: '0x140A' # Cambridge Bluray Remote Aux Power
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - entity_id: switch.media_centre
     service: switch.toggle
@@ -136,9 +156,12 @@
     platform: state
     to: '0x926D20DF' # Cambridge Bluray Power Main Power
   condition:
-    - condition: state
-      entity_id: switch.media_centre
-      state: 'off'
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: switch.media_centre
+    state: 'off'
   action:
   - entity_id: switch.media_centre
     service: switch.turn_on

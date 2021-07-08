@@ -8,7 +8,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1764164' # Back door button Right
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
     service: light.toggle
     # service: >
@@ -28,7 +31,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1764162' # Back door button Middle
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: light.toggle
     entity_id: light.light_alfresco_2
@@ -39,7 +45,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1764168' # Back door button Left
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: light.toggle
     entity_id: light.light_backverandah
@@ -50,7 +59,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1172993'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: light.toggle
     entity_id: light.light_alfresco_1
@@ -61,7 +73,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1172996' # Outside button
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: light.toggle
     entity_id: light.light_alfresco_3

@@ -12,7 +12,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '10295124' #New wall Button, right
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data_template:
       entity_id: >
@@ -46,7 +49,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '10295122' # New Wall Button, middle
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data_template:
       entity_id: >
@@ -87,6 +93,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '2475688'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       brightness: 255
@@ -100,6 +110,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '8190632'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       brightness: 255
@@ -116,7 +130,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '2475681'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       entity_id: scene.scene_master_bedroom_romantic

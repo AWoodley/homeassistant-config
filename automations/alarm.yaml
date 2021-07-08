@@ -6,6 +6,9 @@
     to: '3692696'
   condition:
   - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
     entity_id: alarm_control_panel.mqtt_alarm
     state: disarmed
   action:
@@ -29,6 +32,9 @@
     platform: state
     to: 'on'
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: and
     conditions:
     - condition: or
@@ -58,7 +64,10 @@
     from: armed_away
     platform: state
     to: disarmed
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       brightness: 255
@@ -75,6 +84,9 @@
     platform: state
     to: '3692696'
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: state
     entity_id: alarm_control_panel.mqtt_alarm
     state: pending

@@ -12,7 +12,10 @@
     attribute: current
     to: 0
   mode: single
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
     service: input_boolean.turn_off
@@ -39,7 +42,10 @@
     attribute: current
     to: 0
   mode: single
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - entity_id: light.light_christmas_1
     service: light.turn_off
@@ -58,6 +64,9 @@
     platform: state
     to: '14330700'
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: or
     conditions:
     - before: sunrise

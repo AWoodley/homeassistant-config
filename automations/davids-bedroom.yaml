@@ -5,7 +5,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1699048'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data_template:
       entity_id: >
@@ -22,7 +25,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1699042'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data_template:
       entity_id: >
@@ -39,7 +45,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '1699044'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       entity_id: light.light_Davids_bedroom
@@ -58,7 +67,10 @@
     entity_id: light.light_Davids_bedroom
     platform: device
     type: turned_off
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - scene: scene.scene_davids_bedroom_off
 - id: '2608395976316'
@@ -71,6 +83,10 @@
     for: 00:05:00
   - platform: time
     at: 07:30:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - service: switch.turn_off
     data: {}
@@ -82,7 +98,10 @@
   trigger:
   - at: 07:30:00
     platform: time
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - entity_id: switch.davids_heater
     service: switch.turn_off
@@ -95,10 +114,13 @@
     below: 24
     for: 00:05:00
   condition:
-    - condition: time
-      alias: "Time 20:00 - 07:00"
-      after: "20:00:00"
-      before: "07:00:00"
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: time
+    alias: "Time 20:00 - 07:00"
+    after: "20:00:00"
+    before: "07:00:00"
   action:
   - entity_id: switch.davids_heater
     service: switch.turn_on

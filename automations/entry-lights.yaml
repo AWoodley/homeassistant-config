@@ -5,7 +5,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '3692690'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       entity_id: light.entry_lights
@@ -22,7 +25,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '10295128' # BedroomWall Button, left
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       entity_id: light.entry_lights, light.music_room_light, light.dining_room_lights, light.light_familyroom_1

@@ -12,7 +12,10 @@
     attribute: current
     to: 0
   mode: single
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
     service: input_boolean.turn_off
@@ -44,6 +47,10 @@
   - entity_id: input_boolean.christmas_lights
     platform: state
     to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
     - entity_id: input_boolean.family_room_pir,input_boolean.music_room_pir
       service: input_boolean.turn_off
@@ -102,7 +109,11 @@
   trigger:
     - entity_id: input_boolean.party_lights
       platform: state
-      to: 'on'   
+      to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
     - entity_id: input_boolean.family_room_pir,input_boolean.music_room_pir
       service: input_boolean.turn_off
@@ -181,7 +192,11 @@
   trigger:
     - entity_id: input_boolean.crazy_lights
       platform: state
-      to: 'on'   
+      to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_diningroom_4,light.music_room_light,light.light_familyroom_1
@@ -246,6 +261,9 @@
     platform: state
     to: '14330700'
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: and
     conditions:
     - condition: time

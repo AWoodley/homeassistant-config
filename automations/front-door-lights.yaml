@@ -11,6 +11,9 @@
     platform: state
     to: home
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: or
     conditions:
     - before: sunrise
@@ -32,6 +35,9 @@
     platform: state
     to: 'on'
   condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   - condition: or
     conditions:
     - before: sunrise
@@ -53,7 +59,10 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '3692692'
-  condition: []
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
   action:
   - data:
       entity_id: light.light_frontdoor_1
