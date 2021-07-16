@@ -249,7 +249,7 @@
                                         },
                                         {
                                             "type": "state-icon",
-                                            "entity": "light.passage1",
+                                            "entity": "light.light_passage_1",
                                             "style": {
                                                 "top": "17%",
                                                 "left": "38.25%"
@@ -264,7 +264,7 @@
                                         },
                                         {
                                             "type": "state-icon",
-                                            "entity": "light.passage2",
+                                            "entity": "light.light_passage_2",
                                             "style": {
                                                 "top": "34%",
                                                 "left": "38.25%"

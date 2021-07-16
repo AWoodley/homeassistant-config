@@ -575,7 +575,7 @@
       icon: mdi:track-light
       supported_features: 35
       state: 'off'
-    light.passage1:
+    light.light_passage_1:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -588,7 +588,7 @@
       state: unavailable
       supported_features: 55
       state: 'off'
-    light.passage2:
+    light.light_passage_2:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -843,8 +843,8 @@
       - light.lifx_d0_73_d5_38_15_d3
       - light.lifx_d0_73_d5_37_e4_e0
       - light.lifx_diningroom_4
-      - light.passage1
-      - light.passage2
+      - light.light_passage_1
+      - light.light_passage_2
       - light.light_study_1
       - light.light_study_2
       - light.light_study_3
@@ -1023,7 +1023,7 @@
       min_mireds: 153
       state: 'on'
       supported_features: 3
-    light.passage1:
+    light.light_passage_1:
       brightness: 25
       color_temp: 400
       effect_list:
@@ -1035,7 +1035,7 @@
       min_mireds: 111
       state: 'on'
       supported_features: 55
-    light.passage2:
+    light.light_passage_2:
       brightness: 25
       color_temp: 400
       effect_list:

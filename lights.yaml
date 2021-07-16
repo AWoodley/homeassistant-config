@@ -34,8 +34,8 @@
 - platform: group
   name: Back Passage Lights
   entities:
-    - light.passage1
-    - light.passage2
+    - light.light_passage_1
+    - light.light_passage_2
 - platform: group
   name: Family Room Lights
   entities:
