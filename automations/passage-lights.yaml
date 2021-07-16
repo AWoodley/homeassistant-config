@@ -42,7 +42,7 @@
   - service: light.turn_on
     data:
       entity_id: light.back_passage_lights
-      color_temp: 370
+      color_temp: 500
       brightness: >
         {% if now().hour > 20 %}
         25
