@@ -842,6 +842,13 @@
                                                         "top": "29%",
                                                         "left": "7%",
                                                         "scale": "75%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_select.select_next",
+                                                        "service_data": {
+                                                            "entity_id": "input_select.jonathan"
+                                                        }
                                                     }
                                                 },
                                                 {
@@ -851,6 +858,13 @@
                                                         "top": "40%",
                                                         "left": "7%",
                                                         "scale": "75%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "input_select.select_next",
+                                                        "service_data": {
+                                                            "entity_id": "input_select.david"
+                                                        }
                                                     }
                                                 },
                                                 {
@@ -906,21 +920,20 @@
                                                 }
                                             ],
                                             "hours_to_show": 24,
-                                            "refresh_interval": 60,
-                                            "title": "Sensors"
+                                            "refresh_interval": 60
                                         },
                                         {
-                                            "type": "sensor",
-                                            "entity": "sensor.average_indoor_temperature",
-                                            "graph": "line",
-                                            "icon": "hass:thermometer",
-                                            "name": "Inside Temperature"
-                                        },
-                                        {
-                                            "type": "sensor",
-                                            "entity": "sensor.ble_temperature_a4c138b45222",
-                                            "graph": "line",
-                                            "name": "Outside Temperature"
+                                            "type": "history-graph",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.ble_temperature_a4c138b45222"
+                                                },
+                                                {
+                                                    "entity": "sensor.average_indoor_temperature"
+                                                }
+                                            ],
+                                            "hours_to_show": 24,
+                                            "refresh_interval": 0
                                         },
                                         {
                                             "type": "glance",

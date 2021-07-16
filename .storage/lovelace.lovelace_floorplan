@@ -816,6 +816,13 @@
                                         "top": "29%",
                                         "left": "7%",
                                         "scale": "75%"
+                                    },
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "input_select.select_next",
+                                        "service_data": {
+                                            "entity_id": "input_select.jonathan"
+                                        }
                                     }
                                 },
                                 {
@@ -825,6 +832,13 @@
                                         "top": "40%",
                                         "left": "7%",
                                         "scale": "75%"
+                                    },
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "input_select.select_next",
+                                        "service_data": {
+                                            "entity_id": "input_select.david"
+                                        }
                                     }
                                 },
                                 {
