@@ -196,3 +196,96 @@
         color_temp: 370
         brightness: 255
   mode: restart
+- id: '20210721001301'
+  alias: Light:Back Passage:PIR
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_passage
+    id: PIR
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: light.back_passage_lights
+      state: 'off'
+    - condition: numeric_state
+      entity_id: light.back_passage_lights
+      attribute: brightness
+      below: '100'
+  action:
+  - choose:
+    - conditions:
+      - condition: time
+        after: '20:30:00'
+        before: 07:30:00
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id: light.light_familyroom_1
+        data:
+          color_temp: 500
+          brightness: 25
+      - delay: '00:05:00'
+    default:
+    - service: light.turn_on
+      target:
+        entity_id: light.light_familyroom_1
+      data:
+        color_temp: 370
+        brightness: 252
+    - delay: '01:00:00'
+  - condition: state
+    entity_id: light.back_passage_lights
+    state: 'on'
+  - condition: numeric_state
+    entity_id: light.back_passage_lights
+    attribute: brightness
+    below: '100'
+  - service: light.turn_off
+    target:
+      entity_id: light.back_passage_lights
+  mode: restart
+- id: '20210721001201'
+  alias: Light:Back Passage:Button
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.rfb_button
+    to: '1945234'
+    id: Button
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.back_passage_lights
+        state: 'on'
+      - condition: numeric_state
+        entity_id: light.back_passage_lights
+        attribute: brightness
+        above: '99'
+      sequence:
+      - service: light.turn_off
+        target:
+          entity_id: light.back_passage_lights
+    default:
+    - service: light.turn_on
+      data:
+        color_temp: 370
+        brightness: 255
+      target:
+        entity_id: light.back_passage_lights
