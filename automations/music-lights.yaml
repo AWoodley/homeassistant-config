@@ -169,8 +169,61 @@
 #     domain: light
 #     entity_id: light.music_room_light
 #     type: turn_off
-- id: '20210720230101'
+- id: '20210721000401'
   alias: Light:Music Room Flood:PIR
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.family_room,binary_sensor.media_room
+    id: PIR
+    to: 'on'
+  - entity_id: sensor.rfb_button
+    id: PIR
+    platform: state
+    to: '14330700'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: state
+    entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+    state: 'off'
+  - condition: time
+    after: '20:30:00'
+    before: 07:30:00
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: light.music_room_light
+      state: 'off'
+    - condition: numeric_state
+      entity_id: light.music_room_light
+      attribute: brightness
+      below: '100'
+  action:
+  - service: light.turn_on
+    target:
+      entity_id: light.music_room_light
+    data:
+      color_temp: 370
+      brightness: 25
+  - delay: '00:05:00'
+  - condition: state
+    entity_id: light.music_room_light
+    state: 'on'
+  - condition: numeric_state
+    entity_id: light.music_room_light
+    attribute: brightness
+    below: '100'
+  - service: light.turn_off
+    target:
+      entity_id: light.music_room_light
+  mode: restart
+- id: '20210721000601'
+  alias: Light:Music Room Flood:Button
   description: ''
   trigger:
   - platform: state
@@ -181,19 +234,6 @@
     entity_id: sensor.rfb_button
     to: '2364680'
     id: Button
-  - platform: state
-    entity_id: binary_sensor.family_room,binary_sensor.media_room
-    id: PIR
-    to: 'on'
-  - entity_id: sensor.rfb_button
-    id: PIR
-    platform: state
-    to: '14330700'
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.music_room_pir
-    id: Timer
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -204,94 +244,17 @@
   action:
   - choose:
     - conditions:
-      - condition: trigger
-        id: Timer
       - condition: state
         entity_id: input_boolean.christmas_lights,input_boolean.party_lights
-        state: 'off'
-      - condition: state
-        entity_id: light.music_room_light
         state: 'on'
+      sequence:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
       - condition: numeric_state
         entity_id: light.music_room_light
         attribute: brightness
-        below: '100'
-      sequence:
-      - service: light.turn_off
-        data:
-          transition: 15
-        target:
-          entity_id: light.music_room_light
+        above: '99'
     - conditions:
-      - condition: trigger
-        id: PIR
-      sequence:
-      - condition: state
-        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
-        state: 'off'
-      - choose:
-        - conditions:
-          - condition: state
-            entity_id: light.music_room_light
-            state: 'off'
-          - condition: time
-            after: '20:30:00'
-            before: 07:30:00
-          sequence:
-          - service: light.turn_on
-            target:
-              entity_id: light.music_room_light
-            data:
-              color_temp: 370
-              brightness: 25
-          - service: timer.start
-            target:
-              entity_id: timer.music_room_pir
-            data:
-              duration: 00:05:00
-        - conditions:
-          - condition: state
-            entity_id: timer.music_room_pir
-            state: active
-          sequence:
-          - service: timer.start
-            data:
-              duration: '0'
-            target:
-              entity_id: timer.music_room_pir
-        - conditions:
-          - condition: state
-            entity_id: light.music_room_light
-            state: 'off'
-          - condition: time
-            after: '07:30:00'
-            before: '20:30:00'
-          sequence:
-          - service: light.turn_on
-            target:
-              entity_id: light.music_room_light
-            data:
-              color_temp: 280
-              brightness: 255
-          - service: timer.start
-            target:
-              entity_id: timer.music_room_pir
-            data:
-              duration: 01:00:00
-        - conditions:
-          - condition: state
-            entity_id: timer.music_room_pir
-            state: active
-          sequence:
-          - service: timer.start
-            data:
-              duration: '0'
-            target:
-              entity_id: timer.music_room_pir
-        default: []
-    - conditions:
-      - condition: trigger
-        id: Button
       - condition: state
         entity_id: light.music_room_light
         state: 'on'
@@ -310,4 +273,3 @@
         brightness: 255
       target:
         entity_id: light.music_room_light
-  mode: restart
