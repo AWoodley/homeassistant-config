@@ -127,10 +127,6 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: sensor.rfb_button
-    to: '1712152'
-    id: Button
-  - platform: state
     entity_id: binary_sensor.family_room,binary_sensor.media_room
     id: PIR
     to: 'on'
@@ -177,8 +173,8 @@
       - choose:
         - conditions:
           - condition: state
-            entity_id: light.dining_room_lights,light.family_room_lights
-            state: 'off'
+            entity_id: timer.dining_room_pir
+            state: 'idle'
           - condition: time
             after: 07:30:00
             before: '20:30:00'
@@ -200,7 +196,7 @@
         - conditions:
           - condition: state
             entity_id: timer.dining_room_pir
-            state: active
+            state: 'active'
           sequence:
           - service: timer.start
             data:
@@ -208,9 +204,33 @@
             target:
               entity_id: timer.dining_room_pir
         default: []
+    default: []
+  mode: restart
+- id: '20210720232501'
+  alias: Light:Dining Room:Button
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.rfb_button
+    to: '1712152'
+    id: Button
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  action:
+  - choose:
     - conditions:
-      - condition: trigger
-        id: Button
+      - condition: state
+        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+        state: 'on'
+      sequence:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+    - conditions:
       - condition: state
         entity_id: light.dining_room_lights
         state: 'on'
@@ -229,4 +249,3 @@
         brightness: 255
       target:
         entity_id: light.dining_room_lights
-  mode: restart

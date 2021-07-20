@@ -140,18 +140,49 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: sensor.rfb_button
-    to: '1712146'
-    id: Button
-  - platform: state
     entity_id: binary_sensor.family_room,binary_sensor.media_room
     id: PIR
     to: 'on'
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.passage_pir
-    id: Timer
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: state
+    entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+    state: 'off'
+  - condition: time
+    after: '20:30:00'
+    before: 07:30:00
+  action:
+  - service: light.turn_on
+    target:
+      entity_id: light.light_familyroom_1
+    data:
+      color_temp: 370
+      brightness: 25
+  - delay: '00:05:00'
+  - condition: state
+    entity_id: light.light_familyroom_1
+    state: 'on'
+  - condition: numeric_state
+    entity_id: light.light_familyroom_1
+    attribute: brightness
+    below: '100'
+  - service: light.turn_off
+    target:
+      entity_id: light.light_familyroom_1
+  mode: restart
+- id: '20210720233501'
+  alias: Light:Family Room Flood:Button
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.rfb_button
+    to: '1712146'
+    id: Button
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -162,65 +193,17 @@
   action:
   - choose:
     - conditions:
-      - condition: trigger
-        id: Timer
       - condition: state
         entity_id: input_boolean.christmas_lights,input_boolean.party_lights
-        state: 'off'
-      - condition: state
-        entity_id: light.light_familyroom_1
         state: 'on'
-      - condition: numeric_state
-        entity_id: light.light_familyroom_1
-        attribute: brightness
-        below: '100'
       sequence:
-      - service: light.turn_off
-        data:
-          transition: 15
-        target:
-          entity_id: light.light_familyroom_1
-    - conditions:
-      - condition: trigger
-        id: PIR
-      sequence:
-      - condition: state
+      - service: input_boolean.turn_off
         entity_id: input_boolean.christmas_lights,input_boolean.party_lights
-        state: 'off'
-      - choose:
-        - conditions:
-          - condition: state
-            entity_id: light.dining_room_lights,light.family_room_lights
-            state: 'off'
-          - condition: time
-            after: '20:30:00'
-            before: 07:30:00
-          sequence:
-          - service: light.turn_on
-            target:
-              entity_id: light.light_familyroom_1
-            data:
-              color_temp: 370
-              brightness: 25
-          - service: timer.start
-            target:
-              entity_id: timer.family_room_pir
-            data:
-              duration: 00:05:00
-        - conditions:
-          - condition: state
-            entity_id: timer.family_room_pir
-            state: active
-          sequence:
-          - service: timer.start
-            data:
-              duration: '0'
-            target:
-              entity_id: timer.family_room_pir
-        default: []
+      - condition: numeric_state
+        entity_id: light.family_room_lights
+        attribute: brightness
+        above: '99'
     - conditions:
-      - condition: trigger
-        id: Button
       - condition: state
         entity_id: light.family_room_lights
         state: 'on'
@@ -239,4 +222,3 @@
         brightness: 255
       target:
         entity_id: light.family_room_lights
-  mode: restart
