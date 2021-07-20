@@ -170,10 +170,10 @@
     - conditions:
       - condition: trigger
         id: PIR
+      sequence:
       - condition: state
         entity_id: input_boolean.christmas_lights,input_boolean.party_lights
         state: 'off'
-      sequence:
       - choose:
         - conditions:
           - condition: state
