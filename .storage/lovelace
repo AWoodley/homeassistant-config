@@ -450,6 +450,14 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
+                                                    "entity": "climate.daikin_ac",
+                                                    "style": {
+                                                        "top": "39.5%",
+                                                        "left": "82.5%"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-icon",
                                                     "entity": "light.lifx_familyroom_stand",
                                                     "style": {
                                                         "top": "52%",
