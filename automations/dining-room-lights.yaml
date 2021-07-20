@@ -130,11 +130,6 @@
     entity_id: binary_sensor.family_room,binary_sensor.media_room
     id: PIR
     to: 'on'
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.dining_room_pir
-    id: Timer
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -142,69 +137,39 @@
   - condition: state
     entity_id: group.family
     state: home
+  - condition: state
+    entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+    state: 'off'
+  - condition: time
+    after: 07:30:00
+    before: '20:30:00'
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: light.dining_room_lights
+      state: 'off'
+    - condition: numeric_state
+      entity_id: light.dining_room_lights
+      attribute: brightness
+      below: '100'
   action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: Timer
-      - condition: state
-        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
-        state: 'off'
-      - condition: state
-        entity_id: light.dining_room_lights
-        state: 'on'
-      - condition: numeric_state
-        entity_id: light.dining_room_lights
-        attribute: brightness
-        below: '100'
-      sequence:
-      - service: light.turn_off
-        data:
-          transition: 30
-        target:
-          entity_id: light.dining_room_lights
-    - conditions:
-      - condition: trigger
-        id: PIR
-      sequence:
-      - condition: state
-        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
-        state: 'off'
-      - choose:
-        - conditions:
-          - condition: state
-            entity_id: timer.dining_room_pir
-            state: 'idle'
-          - condition: time
-            after: 07:30:00
-            before: '20:30:00'
-          - condition: state
-            entity_id: cover.dining_room_rollershutter
-            state: closed
-          sequence:
-          - service: light.turn_on
-            data:
-              color_temp: 280
-              brightness_pct: 99
-            target:
-              entity_id: light.dining_room_lights
-          - service: timer.start
-            data:
-              duration: '0'
-            target:
-              entity_id: timer.dining_room_pir
-        - conditions:
-          - condition: state
-            entity_id: timer.dining_room_pir
-            state: 'active'
-          sequence:
-          - service: timer.start
-            data:
-              duration: '0'
-            target:
-              entity_id: timer.dining_room_pir
-        default: []
-    default: []
+  - service: light.turn_on
+    target:
+      entity_id: light.dining_room_lights
+    data:
+      color_temp: 280
+      brightness: 252
+  - delay: '00:30:00'
+  - condition: state
+    entity_id: light.dining_room_lights
+    state: 'on'
+  - condition: numeric_state
+    entity_id: light.dining_room_lights
+    attribute: brightness
+    below: '100'
+  - service: light.turn_off
+    target:
+      entity_id: light.dining_room_lights
   mode: restart
 - id: '20210720232501'
   alias: Light:Dining Room:Button

@@ -156,6 +156,15 @@
   - condition: time
     after: '20:30:00'
     before: 07:30:00
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: light.light_familyroom_1
+      state: 'off'
+    - condition: numeric_state
+      entity_id: light.light_familyroom_1
+      attribute: brightness
+      below: '100'
   action:
   - service: light.turn_on
     target:
