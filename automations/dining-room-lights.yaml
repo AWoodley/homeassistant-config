@@ -1,29 +1,29 @@
-- id: '1575990406554'
-  alias: Light:Dining Room:Toggle
-  description: ''
-  trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1712152'
-  - entity_id:
-    - automation.christmas_lights
-    - automation.party_lights
-    platform: state
-    attribute: current
-    to: 0
-  mode: single
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-  - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
-    service: input_boolean.turn_off
-  - entity_id: light.dining_room_lights
-    service: light.toggle
-    data:
-      brightness: 255
-      color_temp: 280
+# - id: '1575990406554'
+#   alias: Light:Dining Room:Toggle
+#   description: ''
+#   trigger:
+#   - entity_id: sensor.rfb_button
+#     platform: state
+#     to: '1712152'
+#   - entity_id:
+#     - automation.christmas_lights
+#     - automation.party_lights
+#     platform: state
+#     attribute: current
+#     to: 0
+#   mode: single
+#   condition:
+#   - condition: state
+#     entity_id: binary_sensor.active
+#     state: 'on'
+#   action:
+#   - entity_id: input_boolean.party_lights,input_boolean.christmas_lights
+#     service: input_boolean.turn_off
+#   - entity_id: light.dining_room_lights
+#     service: light.toggle
+#     data:
+#       brightness: 255
+#       color_temp: 280
 # - id: '1576515841194'
 #   alias: Dining Room Lights Off
 #   description: ''
@@ -41,170 +41,7 @@
 #   - service: light.turn_off
 #     data:
 #       entity_id: light.dining_room_lights,light.light_familyroom_1,light.music_room_light
-- id: '1575907804253'
-  alias: Christmas Lights
-  trigger:
-  - entity_id: input_boolean.christmas_lights
-    platform: state
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-    - entity_id: input_boolean.family_room_pir,input_boolean.music_room_pir
-      service: input_boolean.turn_off
-    - entity_id: light.light_christmas_1
-      service: light.turn_on
-    - repeat:
-        while:
-          - condition: state
-            entity_id: input_boolean.christmas_lights
-            state: 'on'
-        sequence:
-        - data_template:
-            color_name: '{{ ["white", "red", "green", "white"]|random }}'
-            entity_id: light.lifx_d0_73_d5_38_46_87
-            power: true
-            transition: 2
-            brightness: 255
-          service: lifx.set_state
-        - data_template:
-            color_name: '{{ ["white", "red", "green", "white"]|random }}'
-            entity_id: light.lifx_d0_73_d5_38_15_d3
-            power: true
-            transition: 2
-            brightness: 255
-          service: lifx.set_state
-        - data_template:
-            color_name: '{{ ["white", "red", "green", "white"]|random }}'
-            entity_id: light.lifx_d0_73_d5_37_e4_e0
-            power: true
-            transition: 2
-            brightness: 255
-          service: lifx.set_state
-        - data_template:
-            color_name: '{{ ["white", "red", "green", "white"]|random }}'
-            entity_id: light.lifx_diningroom_4
-            power: true
-            transition: 2
-            brightness: 255
-          service: lifx.set_state
-        - data_template:
-            color_name: '{{ ["white", "red", "green", "white"]|random }}'
-            entity_id: light.music_room_light
-            power: true
-            transition: 2
-            brightness: 255
-          service: lifx.set_state
-        - data_template:
-            color_name: '{{ ["white", "red", "green", "white"]|random }}'
-            entity_id: light.light_familyroom_1
-            power: true
-            transition: 2
-            brightness: 255
-          service: lifx.set_state
-- id: '20200625150601'
-  alias: Party Lights
-  trigger:
-    - entity_id: input_boolean.party_lights
-      platform: state
-      to: 'on'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-    - entity_id: input_boolean.family_room_pir,input_boolean.music_room_pir
-      service: input_boolean.turn_off
-    - data_template:
-        entity_id: light.lifx_d0_73_d5_38_46_87
-        brightness: 255
-        period: '{{ (range(1, 4)|random) }}'
-        change: 138
-        power_on: true
-        transition: 1
-      service: lifx.effect_colorloop
-    - data_template:
-        entity_id: light.lifx_d0_73_d5_38_15_d3
-        brightness: 255
-        period: '{{ (range(1, 4)|random) }}'
-        change: 138
-        power_on: true
-        transition: 1
-      service: lifx.effect_colorloop
-    - data_template:
-        entity_id: light.lifx_d0_73_d5_37_e4_e0
-        brightness: 255
-        period: '{{ (range(1, 4)|random) }}'
-        change: 138
-        power_on: true
-        transition: 1
-      service: lifx.effect_colorloop
-    - data_template:
-        entity_id: light.lifx_diningroom_4
-        brightness: 255
-        period: '{{ (range(1, 4)|random) }}'
-        change: 138
-        power_on: true
-        transition: 1
-      service: lifx.effect_colorloop
-    - data_template:
-        entity_id: light.music_room_light
-        brightness: 255
-        period: '{{ (range(1, 4)|random) }}'
-        change: 138
-        power_on: true
-        transition: 1
-      service: lifx.effect_colorloop
-    - data_template:
-        entity_id: light.light_familyroom_1
-        brightness: 255
-        period: '{{ (range(1, 4)|random) }}'
-        change: 138
-        power_on: true
-        transition: 1
-      service: lifx.effect_colorloop
-    # - data_template:
-    #     entity_id: '{{ ["light.lifx_d0_73_d5_38_46_87", "light.lifx_d0_73_d5_38_15_d3", "light.lifx_d0_73_d5_37_e4_e0", "light.lifx_diningroom_4", "light.music_room_light", "light.light_familyroom_1"]|random }}'
-    #     brightness: 255
-    #     mode: strobe
-    #     cycles: 60
-    #     power_on: true
-    #   service: lifx.effect_pulse
-    - repeat:
-        while:
-        - condition: state
-          entity_id: input_boolean.party_lights
-          state: 'on'
-        sequence:
-        - service: script.lifx_strobe
-          data_template:
-            entity: '{{ ["light.lifx_d0_73_d5_38_46_87", "light.lifx_d0_73_d5_38_15_d3", "light.lifx_d0_73_d5_37_e4_e0", "light.lifx_diningroom_4", "light.music_room_light", "light.light_familyroom_1"]|random }}'
-        - delay: '{{ (range(5, 60)|random) }}'
-    - service: light.turn_on
-      entity_id: light.dining_room_lights, light.music_room_light, light.light_familyroom_1
-      data:
-        brightness: 255
-        color_temp: 280
-- id: '20200120719381'
-  alias: Crazy Lights
-  trigger:
-    - entity_id: input_boolean.crazy_lights
-      platform: state
-      to: 'on'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-  - data:
-      entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_38_15_d3,light.lifx_d0_73_d5_37_e4_e0,light.lifx_diningroom_4,light.music_room_light,light.light_familyroom_1
-      brightness: 255
-      mode: strobe
-      cycles: 100
-      power_on: true
-    service: lifx.effect_pulse
+
 # - id: '20201106230801'
 #   alias: Light FX Off
 #   trigger:
@@ -246,42 +83,150 @@
   #     state: 'on'
   #   - entity_id: script.1575907804253
   #     service: script.turn_on
-- id: '2021052712481'
+# - id: '2021052712481'
+  # alias: Light:Dining Room:PIR
+  # description: 'Trigger light from PIR'
+  # mode: restart
+  # trigger:
+  # - entity_id: binary_sensor.family_room
+  #   platform: state
+  #   to: 'on'
+  # - entity_id: binary_sensor.media_room
+  #   platform: state
+  #   to: 'on'
+  # - entity_id: sensor.rfb_button
+  #   platform: state
+  #   to: '14330700'
+  # condition:
+  # - condition: state
+  #   entity_id: binary_sensor.active
+  #   state: 'on'
+  # - condition: and
+  #   conditions:
+  #   - condition: time
+  #     after: "07:00:00"
+  #   - condition: sun
+  #     before: sunset
+  #   - condition: state
+  #     entity_id: group.family
+  #     state: home
+  #   - condition: state
+  #     entity_id: cover.dining_room_rollershutter
+  #     state: closed
+  # action:
+  # - entity_id: light.dining_room_lights
+  #   service: light.turn_on
+  #   data:
+  #     brightness: 255
+  #     color_temp: 280
+  # - delay: '00:15:00'
+  # - service: light.turn_off
+  #   entity_id: light.dining_room_lights
+- id: '1626717744919'
   alias: Light:Dining Room:PIR
-  description: 'Trigger light from PIR'
-  mode: restart
+  description: ''
   trigger:
-  - entity_id: binary_sensor.family_room
-    platform: state
+  - platform: state
+    entity_id: sensor.rfb_button
+    to: '1712152'
+    id: Button
+  - platform: state
+    entity_id: binary_sensor.family_room,binary_sensor.media_room
+    id: PIR
     to: 'on'
-  - entity_id: binary_sensor.media_room
-    platform: state
-    to: 'on'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '14330700'
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.dining_room_pir
+    id: Timer
   condition:
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
-  - condition: and
-    conditions:
-    - condition: time
-      after: "07:00:00"
-    - condition: sun
-      before: sunset
-    - condition: state
-      entity_id: group.family
-      state: home
-    - condition: state
-      entity_id: cover.dining_room_rollershutter
-      state: closed
+  - condition: state
+    entity_id: group.family
+    state: home
   action:
-  - entity_id: light.dining_room_lights
-    service: light.turn_on
-    data:
-      brightness: 255
-      color_temp: 280
-  - delay: '00:15:00'
-  - service: light.turn_off
-    entity_id: light.dining_room_lights
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: Timer
+      - condition: state
+        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+        state: 'off'
+      - condition: state
+        entity_id: light.dining_room_lights
+        state: 'on'
+      - condition: numeric_state
+        entity_id: light.dining_room_lights
+        attribute: brightness
+        below: '100'
+      sequence:
+      - service: light.turn_off
+        data:
+          transition: 30
+        target:
+          entity_id: light.dining_room_lights
+    - conditions:
+      - condition: trigger
+        id: PIR
+      - condition: state
+        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+        state: 'off'
+      sequence:
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: light.dining_room_lights,light.family_room_lights
+            state: 'off'
+          - condition: time
+            after: 07:30:00
+            before: '20:30:00'
+          - condition: state
+            entity_id: cover.dining_room_rollershutter
+            state: closed
+          sequence:
+          - service: light.turn_on
+            data:
+              color_temp: 280
+              brightness_pct: 99
+            target:
+              entity_id: light.dining_room_lights
+          - service: timer.start
+            data:
+              duration: '0'
+            target:
+              entity_id: timer.dining_room_pir
+        - conditions:
+          - condition: state
+            entity_id: timer.dining_room_pir
+            state: active
+          sequence:
+          - service: timer.start
+            data:
+              duration: '0'
+            target:
+              entity_id: timer.dining_room_pir
+        default: []
+    - conditions:
+      - condition: trigger
+        id: Button
+      - condition: state
+        entity_id: light.dining_room_lights
+        state: 'on'
+      - condition: numeric_state
+        entity_id: light.dining_room_lights
+        attribute: brightness
+        above: '99'
+      sequence:
+      - service: light.turn_off
+        target:
+          entity_id: light.dining_room_lights
+    default:
+    - service: light.turn_on
+      data:
+        color_temp: 280
+        brightness: 255
+      target:
+        entity_id: light.dining_room_lights
+  mode: restart

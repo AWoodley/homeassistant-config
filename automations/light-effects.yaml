@@ -1,0 +1,209 @@
+- id: '1575907804253'
+  alias: Christmas Lights
+  trigger:
+  - entity_id: input_boolean.christmas_lights
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+    - entity_id: timer.dining_room_pir,timer.family_room_pir
+      service: timer.cancel
+    - service: scene.create
+      data:
+        scene_id: pre_effect
+        snapshot_entities:
+        - light.lifx_d0_73_d5_38_46_87 # Light-DiningRoom-1
+        - light.lifx_d0_73_d5_38_15_d3 # Light-DiningRoom-2
+        - light.lifx_d0_73_d5_37_e4_e0 # Light-DiningRoom-3
+        - light.lifx_diningroom_4 # Dining Room Light 4
+        - light.light_familyroom_1 # Family Room Flood
+        - light.lifx_familyroom_stand # Family Room Stand
+        - light.music_room_light # Music Room
+        - light.light_media_3 # Media Room
+        - light.light_media_1 # Media Room Lightstand
+    - service: light.turn_off
+      entity_id: light.light_media_3
+    - entity_id: light.light_christmas_1
+      service: light.turn_on
+    - repeat:
+        while:
+          - condition: state
+            entity_id: input_boolean.christmas_lights
+            state: 'on'
+        sequence:
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.lifx_d0_73_d5_38_46_87 # Light-DiningRoom-1
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.lifx_d0_73_d5_38_15_d3 # Light-DiningRoom-2
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.lifx_d0_73_d5_37_e4_e0 # Light-DiningRoom-3
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.lifx_diningroom_4 # Dining Room Light 4
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.light_familyroom_1 # Family Room Flood
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.lifx_familyroom_stand # Family Room Stand
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.music_room_light # Music Room
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+        - data_template:
+            color_name: '{{ ["white", "red", "green", "white"]|random }}'
+            entity_id: light.light_media_1 # Media Room Lightstand
+            power: true
+            transition: 2
+            brightness: 255
+          service: lifx.set_state
+    - service: scene.turn_on
+      target:
+        entity_id: scene.pre_effect  
+- id: '20200625150601'
+  alias: Party Lights
+  trigger:
+    - entity_id: input_boolean.party_lights
+      platform: state
+      to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+    - entity_id: timer.dining_room_pir,timer.family_room_pir
+      service: timer.cancel
+    - service: scene.create
+      data:
+        scene_id: pre_effect
+        snapshot_entities:
+        - light.lifx_d0_73_d5_38_46_87 # Light-DiningRoom-1
+        - light.lifx_d0_73_d5_38_15_d3 # Light-DiningRoom-2
+        - light.lifx_d0_73_d5_37_e4_e0 # Light-DiningRoom-3
+        - light.lifx_diningroom_4 # Dining Room Light 4
+        - light.light_familyroom_1 # Family Room Flood
+        - light.lifx_familyroom_stand # Family Room Stand
+        - light.music_room_light # Music Room
+        - light.light_media_3 # Media Room
+        - light.light_media_1 # Media Room Lightstand
+    - service: light.turn_off
+      entity_id: light.light_media_3
+    - data_template:
+        entity_id: light.lifx_d0_73_d5_38_46_87 # Light-DiningRoom-1
+        brightness: 255
+        period: '{{ (range(1, 4)|random) }}'
+        change: 138
+        power_on: true
+        transition: 1
+      service: lifx.effect_colorloop
+    - data_template:
+        entity_id: light.lifx_d0_73_d5_38_15_d3 # Light-DiningRoom-2
+        brightness: 255
+        period: '{{ (range(1, 4)|random) }}'
+        change: 138
+        power_on: true
+        transition: 1
+      service: lifx.effect_colorloop
+    - data_template:
+        entity_id: light.lifx_d0_73_d5_37_e4_e0 # Light-DiningRoom-3
+        brightness: 255
+        period: '{{ (range(1, 4)|random) }}'
+        change: 138
+        power_on: true
+        transition: 1
+      service: lifx.effect_colorloop
+    - data_template:
+        entity_id: light.lifx_diningroom_4 # Dining Room Light 4
+        brightness: 255
+        period: '{{ (range(1, 4)|random) }}'
+        change: 138
+        power_on: true
+        transition: 1
+      service: lifx.effect_colorloop
+    - data_template:
+        entity_id: light.light_familyroom_1 # Family Room Flood
+        brightness: 255
+        period: '{{ (range(1, 4)|random) }}'
+        change: 138
+        power_on: true
+        transition: 1
+      service: lifx.effect_colorloop
+    - data_template:
+        entity_id: light.lifx_familyroom_stand # Family Room Stand
+        brightness: 255
+        period: '{{ (range(1, 4)|random) }}'
+        change: 138
+        power_on: true
+        transition: 1
+      service: lifx.effect_colorloop
+    - data_template:
+        entity_id: light.music_room_light # Music Room
+        brightness: 255
+        period: '{{ (range(1, 4)|random) }}'
+        change: 138
+        power_on: true
+        transition: 1
+      service: lifx.effect_colorloop
+    - data_template:
+        entity_id: light.light_media_1 # Media Room Lightstand
+        brightness: 255
+        period: '{{ (range(1, 4)|random) }}'
+        change: 138
+        power_on: true
+        transition: 1
+      service: lifx.effect_colorloop
+    - wait_for_trigger:
+        - platform: state
+          entity_id: input_boolean.party_lights
+          to: 'off'
+    - service: scene.turn_on
+      target:
+        entity_id: scene.pre_effect  
+    # - repeat:
+    #     while:
+    #     - condition: state
+    #       entity_id: input_boolean.party_lights
+    #       state: 'on'
+    #     sequence:
+    #     - service: script.lifx_strobe
+    #       data_template:
+    #         entity: '{{ ["light.lifx_d0_73_d5_38_46_87", "light.lifx_d0_73_d5_38_15_d3", "light.lifx_d0_73_d5_37_e4_e0", "light.lifx_diningroom_4", "light.music_room_light", "light.light_familyroom_1"]|random }}'
+    #     - delay: '{{ (range(5, 60)|random) }}'
+    # - service: light.turn_on
+    #   entity_id: light.dining_room_lights, light.music_room_light, light.light_familyroom_1
+    #   data:
+    #     brightness: 255
+    #     color_temp: 280
