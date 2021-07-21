@@ -286,7 +286,7 @@
             brightness: 255
             mode: blink
             color_name: "blue"
-        - delay: "00:00:2"
+        - delay: "00:00:1"
     - delay: "00:00:02"
     - service: scene.turn_on
       target:
