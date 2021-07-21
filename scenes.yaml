@@ -356,8 +356,8 @@
       - scene.scene_study_off
       - scene.scene_study_normal
       - scene.scene_study_bright
-      editable: false
-      friendly_name: Currently Active Scene for Study
+      editable: true
+      friendly_name: Study Scene
       state: scene.scene_study_bright
     light.light_study_1:
       min_mireds: 250
@@ -365,27 +365,38 @@
       effect_list:
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
       friendly_name: Study Light 1
       supported_features: 39
       state: 'off'
     light.light_study_2:
-      min_mireds: 153
-      max_mireds: 500
+      min_mireds: 175.4385986328125
+      max_mireds: 333.3333435058594
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
       brightness: 255
-      color_temp: 336
-      friendly_name: Light-Study-2 Light-Study-2
-      supported_features: 3
+      color_temp: 250
+      friendly_name: Light Study 2
+      icon: mdi:track-light
+      supported_features: 43
       state: 'on'
     light.light_study_3:
-      min_mireds: 153
-      max_mireds: 500
+      min_mireds: 175.4385986328125
+      max_mireds: 333.3333435058594
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
       brightness: 255
-      color_temp: 323
-      friendly_name: Light-Study-3 Light-Study-3
-      supported_features: 3
+      color_temp: 250
+      friendly_name: Light Study 3
+      icon: mdi:track-light
+      supported_features: 43
       state: 'on'
     switch.switch_study_1:
-      friendly_name: Switch-Study-1 Switch-Study-1
+      friendly_name: Switch Study 1
+      icon: mdi:monitor
       state: 'on'
 - id: '1585068650709'
   name: Scene:Study:Off
@@ -831,7 +842,6 @@
       - effect_pulse
       entity_id:
       - light.light_media_1
-      # - light.light_media_2
       - light.light_media_3
       - light.light_masterbedroom_1
       - light.light_bedside_1
@@ -914,7 +924,7 @@
       current_position: 0
       friendly_name: Davids Bedroom Roller Shutter
       supported_features: 15
-      state: closed      
+      state: closed
     cover.master_bedroom_rollershutter:
       current_position: 0
       friendly_name: Master Bedroom Rollershutter
