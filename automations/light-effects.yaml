@@ -247,12 +247,20 @@
         color_name: "blue"
     - service: lifx.effect_pulse
       target:
-        entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_37_e4_e0,light.light_familyroom_1,light.music_room_light,light.lifx_d0_73_d5_38_15_d3,light.lifx_diningroom_4,light.lifx_familyroom_stand,light.light_media_1
+        entity_id:
+          - light.lifx_d0_73_d5_38_46_87
+          - light.lifx_d0_73_d5_37_e4_e0
+          - light.light_familyroom_1
+          - light.music_room_light
+          - light.lifx_d0_73_d5_38_15_d3
+          - light.lifx_diningroom_4
+          - light.lifx_familyroom_stand
+          - light.light_media_1
       data:
-        period: 0.5
-        cycles: 100
+        period: 2
+        cycles: 10
         brightness: 255
-        mode: ping
+        mode: strobe
     - service: scene.turn_on
       target:
         entity_id: scene.pre_effect
