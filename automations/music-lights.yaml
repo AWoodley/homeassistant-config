@@ -189,7 +189,7 @@
     entity_id: group.family
     state: home
   - condition: state
-    entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+    entity_id: input_boolean.light_effect_running
     state: 'off'
   - condition: time
     after: '20:30:00'
@@ -223,7 +223,7 @@
       entity_id: light.music_room_light
   mode: restart
 - id: '20210721000601'
-  alias: Light:Music Room Flood:Button
+  alias: Light:Music Room Light:Button
   description: ''
   trigger:
   - platform: state
@@ -245,11 +245,11 @@
   - choose:
     - conditions:
       - condition: state
-        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+        entity_id: input_boolean.light_effect_running
         state: 'on'
       sequence:
       - service: input_boolean.turn_off
-        entity_id: input_boolean.christmas_lights,input_boolean.party_lights
+        entity_id: input_boolean.light_effect_running
     - conditions:
       - condition: state
         entity_id: light.music_room_light
