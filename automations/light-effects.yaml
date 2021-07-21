@@ -239,26 +239,20 @@
         color_name: "red"
         entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_37_e4_e0,light.light_familyroom_1,light.music_room_light
         power: true
-        transition: 0
+        cycles: 100
         brightness: 255
-      service: lifx.set_state
+        mode: ping
+      service: lifx.effect_pulse
     - data:
         color_name: "blue"
         entity_id: light.lifx_d0_73_d5_38_15_d3,light.lifx_diningroom_4,light.lifx_familyroom_stand,light.light_media_1
         power: true
-        transition: 0
+        cycles: 100
         brightness: 255
-      service: lifx.set_state
+        mode: ping
+      service: lifx.effect_pulse
     - service: light.turn_off
       entity_id: light.lifx_d0_73_d5_38_15_d3,light.lifx_diningroom_4,light.lifx_familyroom_stand,light.light_media_1
-    - repeat:
-        while:
-          - condition: state
-            entity_id: input_boolean.the_fuz
-            state: 'on'
-        sequence:
-          - service: light.toggle
-            entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_37_e4_e0,light.light_familyroom_1,light.music_room_light,light.lifx_d0_73_d5_38_15_d3,light.lifx_diningroom_4,light.lifx_familyroom_stand,light.light_media_1
     - service: scene.turn_on
       target:
         entity_id: scene.pre_effect
