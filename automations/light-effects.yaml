@@ -251,6 +251,7 @@
         - light.light_media_1
       data:
         color_name: "red"
+    - delay: "00:00:01"
     - repeat:
         while:
           - condition: state
@@ -267,7 +268,7 @@
           data:
             power_on: true
             period: 1
-            cycles: 10
+            cycles: 2
             brightness: 255
             mode: blink
             color_name: "red"
@@ -281,11 +282,11 @@
           data:
             power_on: true
             period: 1
-            cycles: 10
+            cycles: 2
             brightness: 255
             mode: blink
             color_name: "blue"
-        - delay: "00:00:10"
+        - delay: "00:00:2"
     - delay: "00:00:02"
     - service: scene.turn_on
       target:
