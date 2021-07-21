@@ -210,7 +210,7 @@
 - id: '20210721184801'
   alias: The Fuz
   trigger:
-  - entity_id: input_boolean.thefuz
+  - entity_id: input_boolean.the_fuz
     platform: state
     to: 'on'
   condition:
@@ -240,7 +240,7 @@
     - repeat:
         while:
           - condition: state
-            entity_id: input_boolean.christmas_lights
+            entity_id: input_boolean.the_fuz
             state: 'on'
         sequence:
         - data_template:
