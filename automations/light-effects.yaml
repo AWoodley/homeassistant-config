@@ -244,7 +244,7 @@
           - light.music_room_light
       data:
         power_on: true
-        period: 3
+        period: 1
         cycles: 10
         brightness: 255
         mode: strobe
@@ -258,7 +258,7 @@
           - light.light_media_1
       data:
         power_on: true
-        period: 2
+        period: 1
         cycles: 10
         brightness: 255
         mode: strobe
