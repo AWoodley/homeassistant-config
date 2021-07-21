@@ -12,8 +12,94 @@
 '20201106233201':
   alias: Christmas Lights
   sequence:
-  - entity_id: input_boolean.christmas_lights
-    service: input_boolean.turn_on
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.light_effect_running
+  - service: scene.create
+    data:
+      scene_id: pre_effect
+      snapshot_entities:
+      - light.lifx_d0_73_d5_38_46_87
+      - light.lifx_d0_73_d5_38_15_d3
+      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_diningroom_4
+      - light.light_familyroom_1
+      - light.lifx_familyroom_stand
+      - light.music_room_light
+      - light.light_media_3
+      - light.light_media_1
+  - service: light.turn_off
+    target:
+      entity_id: light.light_media_3
+  - service: light.turn_on
+    target:
+      entity_id: light.light_christmas_1
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.light_effect_running
+        state: 'on'
+      sequence:
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.lifx_d0_73_d5_38_46_87
+          power: true
+          transition: 2
+          brightness: 255
+        service: lifx.set_state
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.lifx_d0_73_d5_38_15_d3
+          power: true
+          transition: 2
+          brightness: 255
+        service: lifx.set_state
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.lifx_d0_73_d5_37_e4_e0
+          power: true
+          transition: 2
+          brightness: 255
+        service: lifx.set_state
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.lifx_diningroom_4
+          power: true
+          transition: 2
+          brightness: 255
+        service: lifx.set_state
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.light_familyroom_1
+          power: true
+          transition: 2
+          brightness: 255
+        service: lifx.set_state
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.lifx_familyroom_stand
+          power: true
+          transition: 2
+          brightness: 255
+        service: lifx.set_state
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.music_room_light
+          power: true
+          transition: 2
+          brightness: 255
+        service: lifx.set_state
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.light_media_1
+          power: true
+          transition: 2
+          brightness: 255
+        service: lifx.set_state
+  - service: scene.turn_on
+    target:
+      entity_id: scene.pre_effect
+  mode: single
 '1575974067886':
   alias: Enough Christmas
   sequence:
@@ -138,3 +224,248 @@ create_every_automation_group:
         }}
 
         '
+'1626880666396':
+  alias: Party Lights
+  sequence:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.light_effect_running
+  - service: scene.create
+    data:
+      scene_id: pre_effect
+      snapshot_entities:
+      - light.lifx_d0_73_d5_38_46_87
+      - light.lifx_d0_73_d5_38_15_d3
+      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_diningroom_4
+      - light.light_familyroom_1
+      - light.lifx_familyroom_stand
+      - light.music_room_light
+      - light.light_media_3
+      - light.light_media_1
+  - service: light.turn_off
+    target:
+      entity_id: light.light_media_3
+  - data_template:
+      entity_id: light.lifx_d0_73_d5_38_46_87
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.lifx_d0_73_d5_38_15_d3
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.lifx_d0_73_d5_37_e4_e0
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.lifx_diningroom_4
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.light_familyroom_1
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.lifx_familyroom_stand
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.music_room_light
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+  - data_template:
+      entity_id: light.light_media_1
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+  - wait_for_trigger:
+    - platform: state
+      entity_id: input_boolean.light_effect_running
+      to: 'off'
+  - service: scene.turn_on
+    target:
+      entity_id: scene.pre_effect
+  mode: single
+'1626880812487':
+  alias: The Fuzz
+  sequence:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.light_effect_running
+  - service: scene.create
+    data:
+      scene_id: pre_effect
+      snapshot_entities:
+      - light.lifx_d0_73_d5_38_46_87
+      - light.lifx_d0_73_d5_38_15_d3
+      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_diningroom_4
+      - light.light_familyroom_1
+      - light.lifx_familyroom_stand
+      - light.music_room_light
+      - light.light_media_3
+      - light.light_media_1
+  - service: light.turn_off
+    target:
+      entity_id: light.light_media_3
+  - service: light.turn_on
+    entity_id:
+    - light.lifx_d0_73_d5_38_46_87
+    - light.lifx_d0_73_d5_37_e4_e0
+    - light.light_familyroom_1
+    - light.music_room_light
+    data:
+      color_name: blue
+  - service: light.turn_on
+    entity_id:
+    - light.lifx_d0_73_d5_38_15_d3
+    - light.lifx_diningroom_4
+    - light.lifx_familyroom_stand
+    - light.light_media_1
+    data:
+      color_name: red
+  - delay: 00:00:01
+  - repeat:
+      while:
+      - condition: state
+        entity_id: input_boolean.the_fuz
+        state: 'on'
+      sequence:
+      - service: lifx.effect_pulse
+        target:
+          entity_id:
+          - light.lifx_d0_73_d5_38_46_87
+          - light.lifx_d0_73_d5_37_e4_e0
+          - light.light_familyroom_1
+          - light.music_room_light
+        data:
+          power_on: true
+          period: 1
+          cycles: 2
+          brightness: 255
+          mode: blink
+          color_name: red
+      - service: lifx.effect_pulse
+        target:
+          entity_id:
+          - light.lifx_d0_73_d5_38_15_d3
+          - light.lifx_diningroom_4
+          - light.lifx_familyroom_stand
+          - light.light_media_1
+        data:
+          power_on: true
+          period: 1
+          cycles: 2
+          brightness: 255
+          mode: blink
+          color_name: blue
+      - delay: 00:00:1
+  - delay: 00:00:02
+  - service: scene.turn_on
+    target:
+      entity_id: scene.pre_effect
+  mode: single
+'1626882379646':
+  alias: DEFCON4
+  sequence:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.light_effect_running
+  - service: scene.create
+    data:
+      scene_id: pre_effect
+      snapshot_entities:
+      - light.lifx_d0_73_d5_38_46_87
+      - light.lifx_d0_73_d5_38_15_d3
+      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_diningroom_4
+      - light.light_familyroom_1
+      - light.lifx_familyroom_stand
+      - light.music_room_light
+      - light.light_media_3
+      - light.light_media_1
+      - light.light_entry_1
+      - light.light_entry_2
+      - light.light_entry_3
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.light_media_3
+      - light.light_entry_1
+      - light.light_entry_2
+      - light.light_entry_3
+  - service: light.turn_on
+    entity_id:
+    - light.lifx_d0_73_d5_38_46_87
+    - light.lifx_d0_73_d5_37_e4_e0
+    - light.music_room_light
+    - light.lifx_d0_73_d5_38_15_d3
+    - light.lifx_diningroom_4
+    - light.lifx_familyroom_stand
+    - light.light_media_1
+    data:
+      color_name: red
+  - repeat:
+      count: '3'
+      sequence:
+      - service: lifx.effect_pulse
+        target:
+          entity_id: light.light_familyroom_1
+        data:
+          period: '{{ 2 / (repeat.index * repeat.index) }}'
+          cycles: 7
+          brightness: 255
+          mode: breathe
+          power_on: true
+      - delay: '{{14 // (repeat.index * repeat.index)}}'
+  - service: light.turn_off
+    entity_id:
+    - light.lifx_d0_73_d5_38_46_87
+    - light.lifx_d0_73_d5_37_e4_e0
+    - light.music_room_light
+    - light.lifx_d0_73_d5_38_15_d3
+    - light.lifx_diningroom_4
+    - light.lifx_familyroom_stand
+    - light.light_media_1
+    data:
+      transition: 0
+  - delay: 00:00:30
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.light_effect_running
+  - service: scene.turn_on
+    target:
+      entity_id: scene.pre_effect
+  mode: single
