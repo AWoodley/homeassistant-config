@@ -181,6 +181,9 @@ google_assistant:
     input_boolean.christmas_lights:
       expose: true
       name: 'Christmas Lights'
+    input_boolean.the_fuz:
+      expose: true
+      name: 'The Fuz'
     input_boolean.guest:
       expose: true
       name: 'Guest'
