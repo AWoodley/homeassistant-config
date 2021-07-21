@@ -140,6 +140,9 @@
   - condition: state
     entity_id: input_boolean.christmas_lights,input_boolean.party_lights
     state: 'off'
+  - condition: state
+    entity_id: cover.dining_room_rollershutter
+    state: 'closed'
   - condition: time
     after: 07:30:00
     before: '20:30:00'

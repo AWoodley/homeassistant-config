@@ -208,10 +208,6 @@
       sequence:
       - service: input_boolean.turn_off
         entity_id: input_boolean.christmas_lights,input_boolean.party_lights
-      - condition: numeric_state
-        entity_id: light.family_room_lights
-        attribute: brightness
-        above: '99'
     - conditions:
       - condition: state
         entity_id: light.family_room_lights
