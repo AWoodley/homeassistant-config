@@ -236,23 +236,22 @@
     - service: light.turn_off
       entity_id: light.light_media_3
     - service: light.turn_on
-      entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_37_e4_e0,light.light_familyroom_1,light.music_room_light,light.lifx_d0_73_d5_38_15_d3,light.lifx_diningroom_4,light.lifx_familyroom_stand,light.light_media_1
-    - data:
-        color_name: "red"
+      target:
         entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_37_e4_e0,light.light_familyroom_1,light.music_room_light
-        power: true
-        cycles: 100
-        brightness: 255
-        mode: ping
-      service: lifx.effect_pulse
-    - data:
-        color_name: "blue"
+      data:
+        color_name: "red"
+    - service: light.turn_on
+      target:
         entity_id: light.lifx_d0_73_d5_38_15_d3,light.lifx_diningroom_4,light.lifx_familyroom_stand,light.light_media_1
+      data:
+        color_name: "blue"
+    - service: lifx.effect_pulse
+      data:
+        entity_id: light.lifx_d0_73_d5_38_46_87,light.lifx_d0_73_d5_37_e4_e0,light.light_familyroom_1,light.music_room_light,light.lifx_d0_73_d5_38_15_d3,light.lifx_diningroom_4,light.lifx_familyroom_stand,light.light_media_1
         power: true
         cycles: 100
         brightness: 255
         mode: ping
-      service: lifx.effect_pulse
     - service: scene.turn_on
       target:
         entity_id: scene.pre_effect
