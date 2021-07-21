@@ -254,7 +254,7 @@
     - repeat:
         while:
           - condition: state
-            entity_id: input_boolean.christmas_lights
+            entity_id: input_boolean.the_fuz
             state: 'on'
         sequence:
         - service: lifx.effect_pulse
