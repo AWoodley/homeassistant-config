@@ -251,34 +251,42 @@
         - light.light_media_1
       data:
         color_name: "red"
-    - service: lifx.effect_pulse
-      target:
-        entity_id:
-          - light.lifx_d0_73_d5_38_46_87
-          - light.lifx_d0_73_d5_37_e4_e0
-          - light.light_familyroom_1
-          - light.music_room_light
-      data:
-        power_on: true
-        period: 1
-        cycles: 10
-        brightness: 255
-        mode: blink
-        color_name: "red"
-    - service: lifx.effect_pulse
-      target:
-        entity_id:
-          - light.lifx_d0_73_d5_38_15_d3
-          - light.lifx_diningroom_4
-          - light.lifx_familyroom_stand
-          - light.light_media_1
-      data:
-        power_on: true
-        period: 1
-        cycles: 10
-        brightness: 255
-        mode: blink
-        color_name: "blue"
+    - repeat:
+        while:
+          - condition: state
+            entity_id: input_boolean.christmas_lights
+            state: 'on'
+        sequence:
+        - service: lifx.effect_pulse
+          target:
+            entity_id:
+              - light.lifx_d0_73_d5_38_46_87
+              - light.lifx_d0_73_d5_37_e4_e0
+              - light.light_familyroom_1
+              - light.music_room_light
+          data:
+            power_on: true
+            period: 1
+            cycles: 10
+            brightness: 255
+            mode: blink
+            color_name: "red"
+        - service: lifx.effect_pulse
+          target:
+            entity_id:
+              - light.lifx_d0_73_d5_38_15_d3
+              - light.lifx_diningroom_4
+              - light.lifx_familyroom_stand
+              - light.light_media_1
+          data:
+            power_on: true
+            period: 1
+            cycles: 10
+            brightness: 255
+            mode: blink
+            color_name: "blue"
+        - delay: "00:00:10"
+    - delay: "00:00:02"
     - service: scene.turn_on
       target:
         entity_id: scene.pre_effect
