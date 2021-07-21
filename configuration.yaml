@@ -214,6 +214,8 @@ google_assistant:
       expose: true
     climate.master_bedroom_airconditioner:
       expose: true
+    climate.daikin_ac:
+      expose: true
     alarm_control_panel.mqtt_alarm:
       expose: true
 
