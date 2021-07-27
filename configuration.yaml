@@ -43,6 +43,7 @@ recorder:
       - device_tracker
       - automation
       - updater
+      - media_player
     entities:
       - sun.sun
       - binary_sensor.back_passage
