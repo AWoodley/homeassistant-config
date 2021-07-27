@@ -46,6 +46,8 @@ recorder:
       - binary_sensor.light_media_3
       - binary_sensor.media_room
       - binary_sensor.study
+      - sensor.time
+      - sensor.time_date
 
 #zeroconf:
 #  default_interface: true
