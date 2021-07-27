@@ -41,7 +41,10 @@ recorder:
   exclude:
     domains:
       - device_tracker
+      - automation
+      - updater
     entities:
+      - sun.sun
       - binary_sensor.back_passage
       - binary_sensor.family_room
       - binary_sensor.laundry_garage_door
