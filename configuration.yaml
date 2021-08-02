@@ -370,19 +370,19 @@ binary_sensor:
   - platform: mqtt
     state_topic: "home/alarm/zones/1"
     name: "Media Room"
-    device_class: motion
+    device_class: moving
   - platform: mqtt
     state_topic: "home/alarm/zones/2"
     name: "Family Room"
-    device_class: motion
+    device_class: moving
   - platform: mqtt
     state_topic: "home/alarm/zones/3"
     name: "Back Passage"
-    device_class: motion
+    device_class: moving
   - platform: mqtt
     state_topic: "home/alarm/zones/4"
     name: "Study"
-    device_class: motion
+    device_class: moving
   - platform: mqtt
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
