@@ -456,6 +456,9 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
       friendly_name: Light-DiningRoom-3
       supported_features: 55
       state: 'off'
@@ -466,7 +469,10 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
-      friendly_name: Light-DiningRoom-4
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Dining Room Light 4
       supported_features: 55
       state: 'off'
     light.lifx_d0_73_d5_38_15_d3:
@@ -476,6 +482,9 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
       friendly_name: Light-DiningRoom-2
       supported_features: 55
       state: 'off'
@@ -486,27 +495,36 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
       friendly_name: Light-DiningRoom-1
       supported_features: 55
       state: 'off'
     light.light_alfresco_2:
-      friendly_name: Alfresco Fairy Lights
+      supported_color_modes:
+      - onoff
+      friendly_name: Light Alfresco 2
       icon: mdi:string-lights
-      supported_features: 0
+      supported_features: 8
       state: 'off'
     light.light_bedside_1:
-      min_mireds: 153
-      max_mireds: 500
-      friendly_name: Adrian's Bedside Light
+      min_mireds: 175
+      max_mireds: 333
+      supported_color_modes:
+      - color_temp
+      friendly_name: Light Bedside 1
       icon: mdi:floor-lamp
-      supported_features: 35
+      supported_features: 43
       state: 'off'
     light.light_bedside_2:
-      min_mireds: 153
-      max_mireds: 500
-      friendly_name: Nancy's Bedside Light
+      min_mireds: 175
+      max_mireds: 333
+      supported_color_modes:
+      - color_temp
+      friendly_name: Light Bedside 2
       icon: mdi:floor-lamp
-      supported_features: 35
+      supported_features: 43
       state: 'off'
     light.light_jonathans_bedroom:
       min_mireds: 111
@@ -515,20 +533,32 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
       friendly_name: Jonathan's Bedroom
       supported_features: 55
       state: 'off'
     light.light_entry_1:
-      friendly_name: Light-Entry-1
-      supported_features: 0
+      supported_color_modes:
+      - onoff
+      friendly_name: Light Entry 1
+      icon: mdi:wall-sconce-flat
+      supported_features: 8
       state: 'off'
     light.light_entry_2:
-      friendly_name: Light-Entry-2
-      supported_features: 0
+      supported_color_modes:
+      - onoff
+      friendly_name: Light Entry 2
+      icon: mdi:wall-sconce-flat
+      supported_features: 8
       state: 'off'
     light.light_entry_3:
-      friendly_name: Light-Entry-3
-      supported_features: 0
+      supported_color_modes:
+      - onoff
+      friendly_name: Light Entry 3
+      icon: mdi:wall-sconce-flat
+      supported_features: 8
       state: 'off'
     light.light_familyroom_1:
       min_mireds: 111
@@ -537,28 +567,47 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
       friendly_name: Family Room Flood
       icon: mdi:spotlight-beam
       supported_features: 55
       state: 'off'
     light.light_masterbedroom_1:
-      min_mireds: 153
-      max_mireds: 500
-      friendly_name: Master Bedroom Light
+      min_mireds: 111
+      max_mireds: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Light MasterBedroom 1
       icon: mdi:ceiling-light
-      supported_features: 35
+      supported_features: 55
       state: 'off'
     light.light_media_1:
-      min_mireds: 153
-      max_mireds: 500
-      friendly_name: Media Room Light Stand
+      min_mireds: 111
+      max_mireds: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Media Room Lightstand
       icon: mdi:floor-lamp-dual
-      supported_features: 35
+      supported_features: 55
       state: 'off'
     light.light_media_3:
-      friendly_name: Media Room Lights
+      supported_color_modes:
+      - onoff
+      friendly_name: Light Media 3
       icon: mdi:vanity-light
-      supported_features: 0
+      supported_features: 8
       state: 'off'
     light.music_room_light:
       min_mireds: 111
@@ -567,6 +616,9 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
       friendly_name: Music Room Light
       supported_features: 55
       state: 'off'
@@ -576,19 +628,23 @@
       effect_list:
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
       friendly_name: Study Light 1
       supported_features: 39
       state: 'off'
     light.light_study_2:
-      min_mireds: 153
-      max_mireds: 500
-      friendly_name: Study Flood Light 2
+      min_mireds: 175.4385986328125
+      max_mireds: 333.3333435058594
+      supported_color_modes:
+      - color_temp
+      friendly_name: Light Study 2
       icon: mdi:track-light
-      supported_features: 35
+      supported_features: 43
       state: 'off'
     light.light_passage_1:
-      min_mireds: 111
-      max_mireds: 400
+      min_mireds: 175
+      max_mireds: 333
       effect_list:
       - effect_colorloop
       - effect_pulse
@@ -600,14 +656,18 @@
       supported_features: 55
       state: 'off'
     light.light_passage_2:
-      min_mireds: 111
-      max_mireds: 400
+      min_mireds: 175
+      max_mireds: 333
       effect_list:
-      - effect_colorloop
-      - effect_pulse
-      - effect_stop
-      friendly_name: Passage Light 2
-      supported_features: 55
+      - None
+      - Random
+      supported_color_modes:
+      - color_temp
+      - hs
+      - rgbw
+      friendly_name: Light Passage 2
+      icon: mdi:wall-sconce-flat
+      supported_features: 191
       state: 'off'
     media_player.googlehome4026:
       friendly_name: Master Bedroom speaker
@@ -622,8 +682,8 @@
       icon: mdi:disc-player
       state: 'off'
     switch.switch_study_1:
-      friendly_name: Switch-Study-1
-      icon: mdi:desktop-classic
+      friendly_name: Switch Study 1
+      icon: mdi:monitor
       state: 'off'
     light.light_davids_bedroom:
       min_mireds: 111
@@ -632,6 +692,9 @@
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
       friendly_name: David's Bedroom Light
       supported_features: 55
       state: 'off'
@@ -650,11 +713,79 @@
       friendly_name: Davids Bedroom Rollershutter
       supported_features: 15
       state: closed
-    cover.rollershutter_diningroom_cover_1:
-      current_position: 0
-      friendly_name: Dining Room Roller Shutters
-      supported_features: 15
-      state: closed
+    climate.daikin_ac:
+      hvac_modes:
+      - fan_only
+      - dry
+      - cool
+      - heat
+      - heat_cool
+      - 'off'
+      min_temp: 7
+      max_temp: 35
+      target_temp_step: 1
+      fan_modes:
+      - Low
+      - High
+      current_temperature:
+      temperature: 21
+      fan_mode: Low
+      hvac_action: 'off'
+      friendly_name: Family Room Airconditioner
+      icon: mdi:gauge
+      supported_features: 9
+      state: 'off'
+    climate.davids_thermostat:
+      hvac_modes:
+      - cool
+      - heat
+      - 'off'
+      min_temp: 7
+      max_temp: 35
+      current_temperature: 17.5
+      temperature: 22
+      hvac_action: 'off'
+      friendly_name: Davids Thermostat
+      icon: hass:gauge
+      supported_features: 1
+      state: 'off'
+    climate.jonathans_thermostat:
+      hvac_modes:
+      - cool
+      - heat
+      - 'off'
+      min_temp: 7
+      max_temp: 35
+      current_temperature: 16.8
+      temperature: 20
+      hvac_action: 'off'
+      friendly_name: Jonathans Thermostat
+      icon: hass:gauge
+      supported_features: 1
+      state: 'off'
+    light.lifx_familyroom_stand:
+      min_mireds: 111
+      max_mireds: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Family Room Stand
+      icon: mdi:floor-lamp
+      supported_features: 55
+      state: 'off'
+    input_select.study_scene:
+      options:
+      - unknown
+      - scene.scene_study_off
+      - scene.scene_study_normal
+      - scene.scene_study_bright
+      editable: true
+      friendly_name: Study Scene
+      state: scene.scene_study_off
 - id: '1585885759447'
   name: Scene:Entry:Night
   entities:
