@@ -734,6 +734,7 @@
       friendly_name: Family Room Airconditioner
       icon: mdi:gauge
       supported_features: 9
+      state: 'off'
     climate.davids_thermostat:
       hvac_modes:
       - cool
