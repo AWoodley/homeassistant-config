@@ -677,13 +677,13 @@
       friendly_name: Kitchen speaker
       supported_features: 152461
       state: 'off'
+    media_player.david_s_bedroom_speaker:
+      state: 'off'
+    media_player.jonathan_s_bedroom_2:
+      state: 'off'
     switch.media_centre:
       friendly_name: Media Centre
       icon: mdi:disc-player
-      state: 'off'
-    switch.switch_study_1:
-      friendly_name: Switch Study 1
-      icon: mdi:monitor
       state: 'off'
     light.light_davids_bedroom:
       min_mireds: 111
@@ -715,26 +715,25 @@
       state: closed
     climate.daikin_ac:
       hvac_modes:
-      - fan_only
-      - dry
-      - cool
-      - heat
-      - heat_cool
-      - 'off'
+        - fan_only
+        - dry
+        - cool
+        - heat
+        - heat_cool
+        - 'off'
       min_temp: 7
       max_temp: 35
       target_temp_step: 1
       fan_modes:
-      - Low
-      - High
-      current_temperature:
+        - Low
+        - High
+      current_temperature: null
       temperature: 21
       fan_mode: Low
       hvac_action: 'off'
       friendly_name: Family Room Airconditioner
       icon: mdi:gauge
       supported_features: 9
-      state: 'off'
     climate.davids_thermostat:
       hvac_modes:
       - cool
