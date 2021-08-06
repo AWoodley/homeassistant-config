@@ -113,6 +113,8 @@ device_tracker:
 
 lifx:
   light:
+    - broadcast: 192.168.29.28 # Passage-1 (ESPHome)
+    - broadcast: 192.168.29.29 # Passage-2 (ESPHome)
     - broadcast: 192.168.29.51 # Dining-1
     - broadcast: 192.168.29.52 # Dining-2
     - broadcast: 192.168.29.53 # Dining-3
