@@ -127,6 +127,7 @@ lifx:
     - broadcast: 192.168.29.62 # Family-Room-Flood
     - broadcast: 192.168.29.63 # Family-Room-Stand
     - broadcast: 192.168.29.64 # Study-4
+    - boardcast: 192.168.29.173 # Kitchen, ESPHome
 
 google_assistant:
   project_id: hass
@@ -409,7 +410,7 @@ sensor:
       - sensor.ble_temperature_a4c138dfcf8d # Dining Room
       - sensor.ble_temperature_a4c13887d585 # Living Room
       - sensor.ble_temperature_a4c138fbfa2a # Master Bedroom
-      - sensor.ble_temperature_a4c138fbfa2a # Sewing Room
+      - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
