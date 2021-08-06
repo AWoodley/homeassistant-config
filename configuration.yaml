@@ -127,7 +127,7 @@ lifx:
     - broadcast: 192.168.29.62 # Family-Room-Flood
     - broadcast: 192.168.29.63 # Family-Room-Stand
     - broadcast: 192.168.29.64 # Study-4
-    - boardcast: 192.168.29.173 # Kitchen, ESPHome
+    - broadcast: 192.168.29.173 # Kitchen, ESPHome
 
 google_assistant:
   project_id: hass
