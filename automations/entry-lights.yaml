@@ -44,5 +44,5 @@
       target:
         entity_id: light.night_lights
       data:
-        color_temp: 500
+        color_temp: 370
         brightness: 25
