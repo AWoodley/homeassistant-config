@@ -1,0 +1,26 @@
+- id: '20210721000601'
+  alias: Light:Kitchen Lights:Button
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.rfb_button
+    to: '1905218'
+    id: Button
+  - platform: state
+    entity_id: sensor.rfb_button
+    to: '1807426'
+    id: Button
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  action:
+  - service: light.toggle
+    data:
+      color_temp: 280
+      brightness: 255
+    target:
+      entity_id: light.kitchen_lights
