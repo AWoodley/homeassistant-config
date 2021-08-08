@@ -41,7 +41,6 @@ recorder:
   exclude:
     domains:
       - device_tracker
-      - automation
       - updater
       - media_player
     entities:
@@ -52,8 +51,10 @@ recorder:
       - binary_sensor.light_media_3
       - binary_sensor.media_room
       - binary_sensor.study
+      - binary_sensor.kitchen_display_face_detected
       - sensor.time
       - sensor.time_date
+      - automation.hass_heartbeat
 
 #zeroconf:
 #  default_interface: true
