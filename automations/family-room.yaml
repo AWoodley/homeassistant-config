@@ -30,7 +30,7 @@
     - condition: numeric_state
       entity_id: light.light_familyroom_1
       attribute: brightness
-      below: '100'
+      below: 255
   action:
   - service: light.turn_on
     target:
@@ -45,7 +45,7 @@
   - condition: numeric_state
     entity_id: light.light_familyroom_1
     attribute: brightness
-    below: '100'
+    below: 255
   - service: light.turn_off
     target:
       entity_id: light.light_familyroom_1
@@ -81,7 +81,7 @@
       - condition: numeric_state
         entity_id: light.family_room_lights
         attribute: brightness
-        above: '99'
+        above: 252
       sequence:
       - service: light.turn_off
         target:

@@ -170,6 +170,12 @@ google_assistant:
       expose: true
     light.light_media_1:
       expose: true
+    light.light_kitchen_1:
+      expose: true
+    light.light_kitchen_2:
+      expose: true
+    light.light_kitchen_3:
+      expose: true
     # light.light_media_2:
     #   expose: true
     light.light_media_3:

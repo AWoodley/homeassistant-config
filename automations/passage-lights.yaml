@@ -43,7 +43,7 @@
       data:
         color_temp: 370
         brightness: 252
-    - delay: '01:00:00'
+    - delay: '00:15:00'
   - condition: state
     entity_id: light.back_passage_lights
     state: 'on'
