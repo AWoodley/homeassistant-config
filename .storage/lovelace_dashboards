@@ -35,14 +35,6 @@
                 "url_path": "lovelace-admin",
                 "mode": "storage",
                 "id": "lovelace_admin"
-            },
-            {
-                "require_admin": true,
-                "show_in_sidebar": true,
-                "title": "Backend",
-                "url_path": "lovelace-backend",
-                "mode": "storage",
-                "id": "lovelace_backend"
             }
         ]
     }

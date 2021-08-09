@@ -63,7 +63,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.sensor_davids_bedroom_rssi",
+                                    "entity": "sensor.sensor_davids_bedroom_signal",
                                     "style": {
                                         "top": "6%",
                                         "left": "26.5%"
@@ -71,7 +71,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.temp_jonathans_bedroom_rssi",
+                                    "entity": "sensor.temp_jonathans_bedroom_signal",
                                     "style": {
                                         "top": "6%",
                                         "left": "49%"
@@ -79,7 +79,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_alfresco_1_rssi",
+                                    "entity": "sensor.light_alfresco_1_signal_strength",
                                     "style": {
                                         "top": "4%",
                                         "left": "61%"
@@ -87,7 +87,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_alfresco_3_rssi",
+                                    "entity": "sensor.light_alfresco_3_signal_strength",
                                     "style": {
                                         "top": "9%",
                                         "left": "61%"
@@ -95,7 +95,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.alfresco_lights_rssi",
+                                    "entity": "sensor.light_alfresco_2_signal_strength",
                                     "style": {
                                         "top": "14%",
                                         "left": "61%"
@@ -103,7 +103,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.back_verandah_rssi",
+                                    "entity": "sensor.light_backverandah_signal_strength",
                                     "style": {
                                         "top": "33%",
                                         "left": "95%"
@@ -111,15 +111,15 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.switch_kettle_1_rssi",
+                                    "entity": "sensor.garage_1_signal_strength",
                                     "style": {
-                                        "top": "44%",
-                                        "left": "21%"
+                                        "top": "63%",
+                                        "left": "23%"
                                     }
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_media_3_rssi",
+                                    "entity": "sensor.light_media_3_signal_strength",
                                     "style": {
                                         "top": "64%",
                                         "left": "80%"
@@ -127,15 +127,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_media_1_rssi",
-                                    "style": {
-                                        "top": "69%",
-                                        "left": "72%"
-                                    }
-                                },
-                                {
-                                    "type": "state-label",
-                                    "entity": "sensor.light_entry_1_rssi",
+                                    "entity": "sensor.light_entry_1_signal_strength",
                                     "style": {
                                         "top": "78%",
                                         "left": "48%"
@@ -143,7 +135,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_entry_2_rssi",
+                                    "entity": "sensor.light_entry_2_signal_strength",
                                     "style": {
                                         "top": "74.5%",
                                         "left": "60%"
@@ -151,7 +143,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_entry_3_rssi",
+                                    "entity": "sensor.light_entry_3_signal_strength",
                                     "style": {
                                         "top": "74.5%",
                                         "left": "70%"
@@ -159,7 +151,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_study_2_rssi",
+                                    "entity": "sensor.light_study_2_signal_strength",
                                     "style": {
                                         "top": "87.5%",
                                         "left": "65%"
@@ -167,7 +159,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_study_3_rssi",
+                                    "entity": "sensor.light_study_3_signal_strength",
                                     "style": {
                                         "top": "81%",
                                         "left": "70%"
@@ -175,7 +167,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.switch_study_1_rssi",
+                                    "entity": "sensor.switch_study_1_signal_strength",
                                     "style": {
                                         "top": "84.5%",
                                         "left": "70%"
@@ -183,15 +175,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_masterbedroom_1_rssi",
-                                    "style": {
-                                        "top": "83%",
-                                        "left": "89%"
-                                    }
-                                },
-                                {
-                                    "type": "state-label",
-                                    "entity": "sensor.light_bedside_1_rssi",
+                                    "entity": "sensor.light_bedside_1_signal_strength",
                                     "style": {
                                         "top": "87.5%",
                                         "left": "96%"
@@ -199,7 +183,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.nancys_electric_blanket_rssi",
+                                    "entity": "sensor.nancys_electric_blanket_signal_strength",
                                     "style": {
                                         "top": "87.5%",
                                         "left": "88%"
@@ -207,7 +191,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_bedside_2_rssi",
+                                    "entity": "sensor.light_bedside_2_signal_strength",
                                     "style": {
                                         "top": "87.5%",
                                         "left": "81%"
