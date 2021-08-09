@@ -217,6 +217,27 @@
                             "image": "local/lovelace/floorplan/floorplan.png"
                         }
                     ]
+                },
+                {
+                    "type": "sidebar",
+                    "title": "Test",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "statistics-graph",
+                            "entities": [
+                                "sensor.rollershutter_diningroom_ds18b20_temperature"
+                            ],
+                            "days_to_show": 30,
+                            "title": "Study Temperature",
+                            "chart_type": "line",
+                            "stat_types": [
+                                "mean",
+                                "min",
+                                "max"
+                            ]
+                        }
+                    ]
                 }
             ],
             "title": "Admin"
