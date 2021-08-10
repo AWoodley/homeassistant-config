@@ -257,7 +257,7 @@
       - condition: numeric_state
         entity_id: light.music_room_light
         attribute: brightness
-        above: '99'
+        above: 252
       sequence:
       - service: light.turn_off
         target:
