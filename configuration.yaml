@@ -190,7 +190,7 @@ google_assistant:
       expose: true
     switch.media_centre:
       expose: true
-    switch.boy_s_heater:
+    switch.jonathans_reading_light:
       expose: true
     switch.nancys_electric_blanket:
       expose: true

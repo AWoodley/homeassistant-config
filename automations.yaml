@@ -147,81 +147,65 @@
   - entity_id: cover.dining_room_rollershutter
     service: cover.open_cover
   mode: single
-- id: '1584459956003'
-  alias: Switch:Kettle:Started
-  description: ''
-  trigger:
-  - entity_id: switch.switch_arlec_1
-    for: 00:00:15
-    platform: state
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  - condition: state
-    entity_id: sensor.switch_arlec_1_energy_current
-    state: '0.0'
-  action:
-  - service: notify.mobile_app_adrian_s_phone
-    data:
-      message: The kettle has not started.
-      title: Kettle
-  mode: single
-- id: '1584460382480'
-  alias: Switch:Kettle:Finished
-  description: ''
-  trigger:
-  - below: 200
-    entity_id: sensor.switch_kettle_1_energy_voltage
-    platform: numeric_state
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  - condition: device
-    device_id: 24270fe8bcce46d7a35d5929c4f467f0
-    domain: switch
-    entity_id: switch.switch_kettle_1
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
-    type: is_on
-  action:
-  - service: notify.mobile_app_adrian_s_phone
-    data:
-      message: The kettle has boiled.
-      title: Kettle
-  - delay: 00:01:00
-  - condition: state
-    entity_id: binary_sensor.switch_kettle_1_button1
-    state: 'on'
-  - service: notify.mobile_app_adrian_s_phone
-    data:
-      message: The kettle has not been reset
-      title: Kettle
-  - device_id: 24270fe8bcce46d7a35d5929c4f467f0
-    domain: switch
-    entity_id: switch.switch_kettle_1
-    type: turn_off
-  mode: single
-- id: '1611676108901'
-  alias: Lights:Master Bedroom:Toggle
-  description: ''
-  trigger:
-  - platform: state
-    entity_id: input_boolean.temp_toggle
-    to: 'on'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-  - service: light.toggle
-    data: {}
-    entity_id: light.master_bedroom_lights
-  mode: single
+# - id: '1584459956003'
+#   alias: Switch:Kettle:Started
+#   description: ''
+#   trigger:
+#   - entity_id: switch.switch_arlec_1
+#     for: 00:00:15
+#     platform: state
+#     to: 'on'
+#   condition:
+#   - condition: state
+#     entity_id: binary_sensor.active
+#     state: 'on'
+#   - condition: state
+#     entity_id: sensor.switch_arlec_1_energy_current
+#     state: '0.0'
+#   action:
+#   - service: notify.mobile_app_adrian_s_phone
+#     data:
+#       message: The kettle has not started.
+#       title: Kettle
+#   mode: single
+# - id: '1584460382480'
+#   alias: Switch:Kettle:Finished
+#   description: ''
+#   trigger:
+#   - below: 200
+#     entity_id: sensor.switch_kettle_1_energy_voltage
+#     platform: numeric_state
+#   condition:
+#   - condition: state
+#     entity_id: binary_sensor.active
+#     state: 'on'
+#   - condition: device
+#     device_id: 24270fe8bcce46d7a35d5929c4f467f0
+#     domain: switch
+#     entity_id: switch.switch_kettle_1
+#     for:
+#       hours: 0
+#       minutes: 0
+#       seconds: 10
+#     type: is_on
+#   action:
+#   - service: notify.mobile_app_adrian_s_phone
+#     data:
+#       message: The kettle has boiled.
+#       title: Kettle
+#   - delay: 00:01:00
+#   - condition: state
+#     entity_id: binary_sensor.switch_kettle_1_button1
+#     state: 'on'
+#   - service: notify.mobile_app_adrian_s_phone
+#     data:
+#       message: The kettle has not been reset
+#       title: Kettle
+#   - device_id: 24270fe8bcce46d7a35d5929c4f467f0
+#     domain: switch
+#     entity_id: switch.switch_kettle_1
+#     type: turn_off
+#   mode: single
 - id: '1611678447095'
   alias: Rollershutter:Jonathans Bedroom:Open:Time
   description: Open the Jonathans Bedroom Roller shutter at 07:30
