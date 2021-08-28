@@ -88,19 +88,6 @@
     data: {}
     entity_id: switch.jonathans_fan
   mode: single
-- id: '1589216051030'
-  alias: Switch:Jonathan's Heater:Off
-  description: ''
-  trigger:
-  - at: 07:30:00
-    platform: time
-  condition: []
-  # - condition: state
-  #   entity_id: binary_sensor.active
-  #   state: 'on'
-  action:
-  - entity_id: switch.jonathans_heater
-    service: switch.turn_off
 - id: '1589216101517'
   alias: Switch:Jonathan's Heater:On
   description: ''
@@ -121,5 +108,38 @@
     entity_id: person.jonathan
     state: 'home'
   action:
-  - entity_id: switch.jonathans_heater
-    service: switch.turn_on
+  - service: climate.set_temperature
+    data:
+      hvac_mode: heat
+      temperature: 19
+    target:
+      entity_id: climate.jonathans_thermostat
+- id: '1611678447095'
+  alias: Rollershutter:Jonathans Bedroom:Open:Time
+  description: Open the Jonathans Bedroom Roller shutter at 07:30
+  trigger:
+  - platform: time
+    at: 07:30:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138b45222
+    above: '20'
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.jonathans_bedroom_roller_shutter
+  mode: single

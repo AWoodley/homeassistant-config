@@ -103,8 +103,8 @@
   #   entity_id: binary_sensor.active
   #   state: 'on'
   action:
-  - entity_id: switch.davids_heater
-    service: switch.turn_off
+  - entity_id: climate.davids_thermostat
+    service: climate.turn_off
 - id: '2589216101517'
   alias: Switch:David's Heater:On
   description: ''
@@ -125,5 +125,9 @@
     entity_id: person.david
     state: 'home'
   action:
-  - entity_id: switch.davids_heater
-    service: switch.turn_on
+  - service: climate.set_temperature
+    data:
+      hvac_mode: heat
+      temperature: 19
+    target:
+      entity_id: climate.davids_thermostat
