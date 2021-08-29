@@ -678,9 +678,13 @@
       supported_features: 152461
       state: 'off'
     media_player.david_s_bedroom_speaker:
+      friendly_name: David's Bedroom speaker
+      supported_features: 152461
       state: 'off'
     media_player.jonathan_s_bedroom_2:
-      state: 'off'
+      friendly_name: Jonathan's Speaker
+      supported_features: 152461
+      state: unavailable
     switch.media_centre:
       friendly_name: Media Centre
       icon: mdi:disc-player
@@ -713,28 +717,6 @@
       friendly_name: Davids Bedroom Rollershutter
       supported_features: 15
       state: closed
-    climate.daikin_ac:
-      hvac_modes:
-        - fan_only
-        - dry
-        - cool
-        - heat
-        - heat_cool
-        - 'off'
-      min_temp: 7
-      max_temp: 35
-      target_temp_step: 1
-      fan_modes:
-        - Low
-        - High
-      current_temperature: null
-      temperature: 21
-      fan_mode: Low
-      hvac_action: 'off'
-      friendly_name: Family Room Airconditioner
-      icon: mdi:gauge
-      supported_features: 9
-      state: 'off'
     climate.davids_thermostat:
       hvac_modes:
       - cool
@@ -953,106 +935,6 @@
       friendly_name: Media Centre
       state: 'on'
   icon: mdi:movie
-- id: '1589245592715'
-  name: Scene:House:Away
-  entities:
-    light.all_lights:
-      min_mireds: 111
-      max_mireds: 666
-      effect_list:
-      - effect_colorloop
-      - effect_stop
-      - effect_pulse
-      entity_id:
-      - light.light_media_1
-      - light.light_media_3
-      - light.light_masterbedroom_1
-      - light.light_bedside_1
-      - light.light_bedside_2
-      - light.light_entry_1
-      - light.light_entry_2
-      - light.light_entry_3
-      - light.lifx_d0_73_d5_38_46_87
-      - light.lifx_d0_73_d5_38_15_d3
-      - light.lifx_d0_73_d5_37_e4_e0
-      - light.lifx_diningroom_4
-      - light.light_passage_1
-      - light.light_passage_2
-      - light.light_study_1
-      - light.light_study_2
-      - light.light_study_3
-      - light.light_alfresco_1
-      - light.light_alfresco_2
-      - light.light_alfresco_3
-      - light.light_backverandah
-      - light.music_room_light
-      - light.light_jonathans_bedroom
-      - light.light_david_bedroom
-      - light.light_familyroom_1
-      - light.lifx_familyroom_stand
-      - light.light_frontdoor_1
-      friendly_name: All Lights
-      icon: mdi:lightbulb-group
-      supported_features: 55
-      state: 'off'
-    switch.boy_s_heater:
-      friendly_name: Boy's Heater
-      state: 'off'
-    switch.media_centre:
-      friendly_name: Media Centre
-      icon: mdi:disc-player
-      state: 'off'
-    switch.switch_study_1:
-      friendly_name: Switch-Study-1
-      icon: mdi:desktop-classic
-      state: 'off'
-    switch.switch_kettle_1:
-      friendly_name: Kettle
-      icon: hass:kettle
-      state: 'off'
-    switch.radios:
-      current_power_w: '0.00'
-      total_energy_kwh: '0.140'
-      voltage: '234.9'
-      current_a: '0.01'
-      today_energy_kwh: '0.140'
-      friendly_name: Radios
-      icon: hass:radio
-      state: 'off'
-    switch.davids_fan:
-      friendly_name: David's Fan
-      icon: hass:fan
-      state: 'off'
-    switch.jonathans_fan:
-      friendly_name: Jonathan's Fan
-      icon: hass:fan
-      state: 'off'
-    switch.davids_heater:
-      friendly_name: David's Heater
-      icon: hass:radiator
-      state: 'off'
-    switch.jonathans_heater:
-      friendly_name: Jonathan's Heater
-      icon: hass:radiator
-      state: 'off'
-    switch.plug_2:
-      friendly_name: Plug 2
-      state: 'off'
-    cover.jonathans_bedroom_rollershutter:
-      current_position: 0
-      friendly_name: Jonathans Bedroom Roller Shutter
-      supported_features: 15
-      state: closed
-    cover.davids_bedroom_rollershutter:
-      current_position: 0
-      friendly_name: Davids Bedroom Roller Shutter
-      supported_features: 15
-      state: closed
-    cover.master_bedroom_rollershutter:
-      current_position: 0
-      friendly_name: Master Bedroom Rollershutter
-      supported_features: 15
-      state: closed
 - id: '1591098339633'
   name: Scene:Whole-House:Dim
   entities:
