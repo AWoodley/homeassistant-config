@@ -167,35 +167,6 @@
     data: {}
     entity_id: cover.master_bedroom_rollershutter
   mode: single
-- id: '1611763659185'
-  alias: Rollershutter:Master Bedroom:Open:Time
-  description: ''
-  trigger:
-  - platform: time
-    at: 07:30:00
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  - condition: state
-    entity_id: group.family
-    state: home
-  - condition: time
-    weekday:
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
-    - sat
-  - condition: numeric_state
-    entity_id: sensor.ble_temperature_a4c138fbfa2a
-    above: '22'
-  action:
-  - service: cover.open_cover
-    data: {}
-    entity_id: cover.master_bedroom_rollershutter
-  mode: single
 - id: '1613410356423'
   alias: Rollershutters:Close:Sunrise
   description: ''
