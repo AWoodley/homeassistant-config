@@ -304,15 +304,6 @@ climate:
     target_temp: 22
     min_cycle_duration: '00:05:00'
     initial_hvac_mode: 'off'
-  - platform: generic_thermostat
-    unique_id: climate.davids_fan
-    name: Davids Fan
-    heater: switch.davids_fan
-    target_sensor: sensor.temp_davids_bedroom_ds18b20_temperature
-    target_temp: 22
-    min_cycle_duration: '00:05:00'
-    initial_hvac_mode: 'off'
-    ac_mode: true
   - platform: tasmota_irhvac
     name: "Master Bedroom Airconditioner"
     unique_id: climate.master_bedroom_airconditioner

@@ -740,10 +740,6 @@
       - cool
       - heat
       - 'off'
-      min_temp: 7
-      max_temp: 35
-      current_temperature: 17.5
-      temperature: 22
       hvac_action: 'off'
       friendly_name: Davids Thermostat
       icon: hass:gauge
@@ -754,10 +750,6 @@
       - cool
       - heat
       - 'off'
-      min_temp: 7
-      max_temp: 35
-      current_temperature: 16.8
-      temperature: 20
       hvac_action: 'off'
       friendly_name: Jonathans Thermostat
       icon: hass:gauge
