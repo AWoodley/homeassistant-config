@@ -138,3 +138,113 @@
   - data:
       entity_id: scene.scene_master_bedroom_romantic
     service: scene.turn_on
+- id: '1611763659185'
+  alias: Rollershutter:Master Bedroom:Open:Time
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:30:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138fbfa2a
+    above: '22'
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.master_bedroom_rollershutter
+  mode: single
+- id: '1611763659185'
+  alias: Rollershutter:Master Bedroom:Open:Time
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:30:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138fbfa2a
+    above: '22'
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.master_bedroom_rollershutter
+  mode: single
+- id: '1613410356423'
+  alias: Rollershutters:Close:Sunrise
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: -00:45:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.master_bedroom_rollershutter, cover.boys_bedroom_rollershutter
+  mode: single
+- id: '1620144351328'
+  alias: Switch:Nancys Electric Blanket
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.nancy
+    to: home
+    id: home
+  - platform: time
+    at: '21:01:00'
+    id: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138fbfa2a
+    below: '21'
+  - condition: state
+    entity_id: person.nancy
+    state: home
+  - condition: time
+    after: '21:00:00'
+  action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.nancys_electric_blanket
+  - delay:
+      hours: 1
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - service: switch.turn_off
+    target:
+      entity_id: switch.nancys_electric_blanket
+  mode: restart
