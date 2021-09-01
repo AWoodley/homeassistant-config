@@ -53,7 +53,7 @@
     at: 03:30:00
   - platform: numeric_state
     entity_id: sensor.nancys_phone_battery_level
-    below: '36'
+    below: '35'
   - platform: state
     entity_id: switch.nancy_s_phone_charger
     to: 'on'
@@ -67,7 +67,7 @@
   - wait_for_trigger:
     - platform: numeric_state
       entity_id: sensor.nancys_phone_battery_level
-      above: '90'
+      above: '85'
   - service: switch.turn_off
     entity_id: switch.nancy_s_phone_charger
   mode: single
