@@ -92,21 +92,18 @@
   alias: Switch:Jonathan's Heater:On
   description: ''
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.temp_jonathans_bedroom_ds18b20_temperature
-    below: 24
-    for: 00:05:00
+  - at: '20:00:00'
+    platform: time
   condition:
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
-  - condition: time
-    alias: "Time 20:00 - 07:00"
-    after: "20:00:00"
-    before: "07:00:00"
   - condition: state
     entity_id: person.jonathan
     state: 'home'
+  - platform: numeric_state
+    entity_id: sensor.temp_jonathans_bedroom_ds18b20_temperature
+    below: 24
   action:
   - service: climate.set_temperature
     data:
