@@ -73,21 +73,6 @@
     state: 'on'
   action:
   - scene: scene.scene_jonathans_bedroom_off
-- id: '1608395976316'
-  alias: 'Switch:Jonathans-Fan:Temperature'
-  description: ''
-  trigger:
-  - platform: numeric_state
-    entity_id: sensor.temp_jonathans_bedroom_ds18b20_temperature
-    below: 24
-    for: 00:05:00
-  - platform: time
-    at: 07:30:00
-  action:
-  - service: switch.turn_off
-    data: {}
-    entity_id: switch.jonathans_fan
-  mode: single
 - id: '1589216101517'
   alias: Switch:Jonathan's Heater:On
   description: ''
@@ -101,7 +86,7 @@
   - condition: state
     entity_id: person.jonathan
     state: 'home'
-  - platform: numeric_state
+  - condition: numeric_state
     entity_id: sensor.temp_jonathans_bedroom_ds18b20_temperature
     below: 24
   action:

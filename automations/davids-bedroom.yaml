@@ -118,7 +118,7 @@
   - condition: state
     entity_id: person.david
     state: 'home'
-  - platform: numeric_state
+  - condition: numeric_state
     entity_id: sensor.temp_davids_bedroom_ds18b20_temperature
     below: 24
   action:
