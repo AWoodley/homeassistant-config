@@ -432,3 +432,18 @@
       color_temp: 280
       brightness: 100
   mode: single
+- id: '1630777198910'
+  alias: Switch:Jonathans Heater:Off
+  description: Turn off Jonathan's Heater in the morning
+  trigger:
+  - platform: time
+    at: 08:30
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: ''
+  action:
+  - service: climate.turn_off
+    target:
+      entity_id: climate.jonathans_thermostat
+  mode: single
