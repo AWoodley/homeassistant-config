@@ -28,7 +28,7 @@
       conditions:
       - condition: state
         entity_id: binary_sensor.jonathans_bedroom_door
-        state: 'closed'
+        state: 'off'
       - condition: state
         entity_id: cover.jonathans_bedroom_rollershutter
         state: 'closed'
@@ -36,10 +36,10 @@
       conditions:
       - condition: state
         entity_id: binary_sensor.davids_bedroom_door
-        state: 'closed'
+        state: 'off'
       - condition: state
         entity_id: cover.davids_bedroom_rollershutter
-        state: 'closed'                
+        state: 'closed'         
   action:
   - choose:
     - conditions:
