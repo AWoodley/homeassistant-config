@@ -22,6 +22,24 @@
       entity_id: light.back_passage_lights
       attribute: brightness
       below: '100'
+  - condition: and
+    conditions:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.jonathans_bedroom_door
+        state: 'closed'
+      - condition: state
+        entity_id: cover.jonathans_bedroom_rollershutter
+        state: 'closed'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.davids_bedroom_door
+        state: 'closed'
+      - condition: state
+        entity_id: cover.davids_bedroom_rollershutter
+        state: 'closed'                
   action:
   - choose:
     - conditions:
