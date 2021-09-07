@@ -441,9 +441,31 @@
   condition:
   - condition: state
     entity_id: binary_sensor.active
-    state: ''
+    state: 'on'
   action:
   - service: climate.turn_off
     target:
       entity_id: climate.jonathans_thermostat
+  mode: single
+- id: '1630909236404'
+  alias: Lights:Toggle Study Lights:Button
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.rfb_button
+    to: '9763476'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.study_scene
+        state: scene.scene_study_bright
+      sequence:
+      - scene: scene.scene_study_normal
+    default:
+    - scene: scene.scene_study_bright
   mode: single
