@@ -1,0 +1,65 @@
+blueprint:
+  name: Light Brightness Step
+  description: 'Step the brightness at night time'
+  domain: automation
+  input:
+    button_id:
+      name: Button ID
+      description: ID of the RF button to use as a trigger
+      selector:
+        number:
+          min: 0
+          max: 99999999
+          mode: box
+    light_id:
+      name: Target Light
+      description: Light to toggle
+      selector:
+        entity:
+          domain: light
+
+trigger:
+- entity_id: sensor.rfb_button
+  platform: state
+  to: !button_id
+
+condition:
+- condition: state
+  entity_id: binary_sensor.active
+  state: 'on'
+
+action:
+  - choose:
+      - conditions:
+          - condition: time
+            after: '21:00'
+            before: '07:00'
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: !light_id
+                    state: 'on'
+                    for:
+                      hours: 0
+                      minutes: 0
+                      seconds: 5
+                      milliseconds: 0
+                sequence:
+                  - service: light.turn_off
+                    target:
+                      entity_id: !light_id
+            default:
+              - service: light.turn_on
+                data:
+                  color_temp: 370
+                  brightness: 255
+                target:
+                  entity_id: !light_id
+    default:
+      - service: light.toggle
+        data:
+          color_temp: 370
+          brightness: 255
+        target:
+          entity_id: !light_id
