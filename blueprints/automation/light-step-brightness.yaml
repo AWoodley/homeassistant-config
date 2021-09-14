@@ -21,7 +21,7 @@ blueprint:
 trigger:
 - entity_id: sensor.rfb_button
   platform: state
-  to: !button_id
+  to: !input button_id
 
 condition:
 - condition: state
@@ -38,7 +38,7 @@ action:
           - choose:
               - conditions:
                   - condition: state
-                    entity_id: !light_id
+                    entity_id: !input light_id
                     state: 'on'
                     for:
                       hours: 0
@@ -48,18 +48,18 @@ action:
                 sequence:
                   - service: light.turn_off
                     target:
-                      entity_id: !light_id
+                      entity_id: !input light_id
             default:
               - service: light.turn_on
                 data:
                   color_temp: 370
                   brightness: 255
                 target:
-                  entity_id: !light_id
+                  entity_id: !input light_id
     default:
       - service: light.toggle
         data:
           color_temp: 370
           brightness: 255
         target:
-          entity_id: !light_id
+          entity_id: !input light_id
