@@ -46,6 +46,17 @@ action:
                   - service: light.turn_off
                     target:
                       entity_id: !input light_id
+              - conditions:
+                  - condition: state
+                    entity_id: !input light_id
+                    state: 'on'
+                sequence:
+                  - service: light.turn_on
+                    data:
+                      color_temp: 370
+                      brightness: 255
+                    target:
+                      entity_id: !input light_id          
             default:
               - service: light.turn_on
                 data:
