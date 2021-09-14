@@ -9,9 +9,9 @@
   - entity_id: sensor.rfb_button
     platform: state
     to: '2475684'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '10295124' #New wall Button, right
+  # - entity_id: sensor.rfb_button
+  #   platform: state
+  #   to: '10295124' #New wall Button, right
   condition:
   - condition: state
     entity_id: binary_sensor.active
