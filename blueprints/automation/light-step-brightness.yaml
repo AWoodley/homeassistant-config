@@ -7,10 +7,7 @@ blueprint:
       name: Button ID
       description: ID of the RF button to use as a trigger
       selector:
-        number:
-          min: 0
-          max: 99999999
-          mode: box
+        text:
     light_id:
       name: Target Light
       description: Light to toggle
