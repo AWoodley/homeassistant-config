@@ -1,6 +1,6 @@
 - id: '1573474259634'
-  alias: Light:Jonathan's Bedroom:Dim
-  description: 'Adjust brightness of light based on time of day'
+  alias: Light:Jonathan's Bedroom:Reading
+  description: 'Toggle reading light in Jonathans bedroom'
   trigger:
   - entity_id: sensor.rfb_button
     platform: state
@@ -10,14 +10,9 @@
     entity_id: binary_sensor.active
     state: 'on'
   action:
-  - data_template:
-      entity_id: >
-        {% if is_state('input_select.jonathans_bedroom_scene', 'scene.scene_jonathans_bedroom_dim') %}
-        scene.scene_jonathans_bedroom_off
-        {% else %}
-        scene.scene_jonathans_bedroom_dim
-        {% endif %}
-    service: scene.turn_on
+  - service: switch.toggle
+    target:
+      entity_id: switch.jonathans_reading_light
 - id: '1573474201726'
   alias: Light:Jonathan's Bedroom:Bright
   description: 'Full brightness'
@@ -30,14 +25,12 @@
     entity_id: binary_sensor.active
     state: 'on'
   action:
-  - data_template:
-      entity_id: >
-        {% if is_state('input_select.jonathans_bedroom_scene', 'scene.scene_jonathans_bedroom_bright') %}
-        scene.scene_jonathans_bedroom_off
-        {% else %}
-        scene.scene_jonathans_bedroom_bright
-        {% endif %}
-    service: scene.turn_on
+  - service: light.toggle
+    data:
+      color_temp: 370
+      brightness: 255
+    target:
+      entity_id: light.light_jonathans_bedroom
 - id: '1573474201727'
   alias: Light:Jonathan's Bedroom:Colours
   description: 'Cycle through disco light colours'
@@ -58,21 +51,6 @@
       power_on: true
     service:
       lifx.effect_colorloop
-- id: '1592566987204'
-  alias: Light:Jonathan's Bedroom:Off
-  description: ''
-  trigger:
-  - device_id: 7b728c50558d4934a19c3f6078dba396
-    domain: light
-    entity_id: light.light_jonathans_bedroom
-    platform: device
-    type: turned_off
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-  - scene: scene.scene_jonathans_bedroom_off
 - id: '1589216101517'
   alias: Switch:Jonathan's Heater:On
   description: ''
