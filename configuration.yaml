@@ -114,24 +114,19 @@ device_tracker:
 
 lifx:
   light:
-    - broadcast: 192.168.29.28 # Passage-1 (ESPHome)
-    - broadcast: 192.168.29.29 # Passage-2 (ESPHome)
     - broadcast: 192.168.29.51 # Dining-1
     - broadcast: 192.168.29.52 # Dining-2
     - broadcast: 192.168.29.53 # Dining-3
     - broadcast: 192.168.29.54 # Dining-4
     - broadcast: 192.168.29.55 # Boys-Bedroom-1
     - broadcast: 192.168.29.56 # Study-1
-    - broadcast: 192.168.29.57 # Passage-1
-    - broadcast: 192.168.29.58 # Passage-2
+    - broadcast: 192.168.29.57 # Media Room Light Stand
+    - broadcast: 192.168.29.58 # Master Bedroom
     - broadcast: 192.168.29.59 # Entrance-1
     - broadcast: 192.168.29.60 # Play-Room-1
     - broadcast: 192.168.29.61 # Music-Room-1
     - broadcast: 192.168.29.62 # Family-Room-Flood
     - broadcast: 192.168.29.63 # Family-Room-Stand
-    - broadcast: 192.168.29.64 # Study-4
-    - broadcast: 192.168.29.122 # Kitchen 2, ESPHome
-    - broadcast: 192.168.29.123 # Kitchen 3, ESPHome
 
 google_assistant:
   project_id: hass
