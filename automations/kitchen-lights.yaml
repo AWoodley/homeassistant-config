@@ -24,3 +24,68 @@
       brightness: 255
     target:
       entity_id: light.kitchen_lights
+- id: '20211113232501'
+  alias: Light:Kitchen Lights:Stepped
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.rfb_button
+    to: '1905218'
+    id: Button
+  - platform: state
+    entity_id: sensor.rfb_button
+    to: '1807426'
+    id: Button
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  action:
+    - choose:
+        - conditions:
+            - condition: time
+              after: '22:00'
+              before: '07:00'
+          sequence:
+            - choose:
+                - conditions:
+                    - condition: state
+                      entity_id: light.kitchen_lights
+                      state: 'on'
+                      for:
+                        hours: 0
+                        minutes: 0
+                        seconds: 5
+                        milliseconds: 0
+                  sequence:
+                    - service: light.turn_off
+                      target:
+                        entity_id: light.kitchen_lights
+                - conditions:
+                    - condition: state
+                      entity_id: light.kitchen_lights
+                      state: 'on'
+                  sequence:
+                    - service: light.turn_on
+                      data:
+                        color_temp: 370
+                        brightness: 255
+                      target:
+                        entity_id: light.kitchen_lights          
+              default:
+                - service: light.turn_on
+                  data:
+                    color_temp: 370
+                    brightness: 8
+                  target:
+                    entity_id: light.light_kitchen_3
+      default:
+        - service: light.toggle
+          data:
+            color_temp: 370
+            brightness: 255
+          target:
+            entity_id: light.kitchen_lights
