@@ -79,9 +79,9 @@
                 - service: light.turn_on
                   data:
                     color_temp: 370
-                    brightness: 8
+                    brightness: 20
                   target:
-                    entity_id: light.light_kitchen_3
+                    entity_id: light.light_kitchen_2, light.light_kitchen_3
       default:
         - service: light.toggle
           data:
