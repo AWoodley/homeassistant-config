@@ -2,9 +2,10 @@
   alias: Light:Study:Normal
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1153924'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1153924'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -22,9 +23,10 @@
   alias: Light:Study:Bright
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1153922'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1153922'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -56,9 +58,10 @@
   alias: Media:Imp:Play-Pause
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763496'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '9763496'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -71,12 +74,14 @@
   alias: Media:Imp:Volume
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763474'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '9763473'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '9763474'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '9763473'
   condition:
   - condition: state
     entity_id: binary_sensor.active
