@@ -6,10 +6,10 @@
     event_type: esphome.rf_code_received
     event_data:
       code: '1712148' # Dining Room button  - platform: event
+  - platform: event
     event_type: esphome.rf_code_received
     event_data:
-      code: form: state
-    to: '1764164' # Back door button Right
+      code: '1764164' # Back door button Right
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -31,10 +31,10 @@
     event_type: esphome.rf_code_received
     event_data:
       code: '1172994' # Outside button  - platform: event
+  - platform: event
     event_type: esphome.rf_code_received
     event_data:
-      code: form: state
-    to: '1764162' # Back door button Middle
+      code: '1764162' # Back door button Middle
   condition:
   - condition: state
     entity_id: binary_sensor.active
