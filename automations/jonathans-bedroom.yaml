@@ -2,9 +2,10 @@
   alias: Light:Jonathan's Bedroom:Reading
   description: 'Toggle reading light in Jonathans bedroom'
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1058804'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1058804'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -17,9 +18,10 @@
   alias: Light:Jonathan's Bedroom:Bright
   description: 'Full brightness'
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1058802'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1058802'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -63,9 +65,10 @@
   alias: Light:Jonathan's Bedroom:Colours
   description: 'Cycle through disco light colours'
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1058801'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1058801'
   condition:
   - condition: state
     entity_id: binary_sensor.active

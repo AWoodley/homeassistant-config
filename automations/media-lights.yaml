@@ -24,9 +24,10 @@
   alias: Light:Media Room Lights:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1944754'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1944754'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -66,9 +67,10 @@
   alias: Light:Media Light Stand:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '11532968'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '11532968'
   condition:
   - condition: state
     entity_id: binary_sensor.active

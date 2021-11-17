@@ -2,11 +2,13 @@
   alias: Lights:All Alfresco:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1712148' # Dining Room button
-  - entity_id: sensor.rfb_button
-    platform: state
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1712148' # Dining Room button  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: form: state
     to: '1764164' # Back door button Right
   condition:
   - condition: state
@@ -25,11 +27,13 @@
   alias: Lights:Alfresco Party Lights:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1172994' # Outside button
-  - entity_id: sensor.rfb_button
-    platform: state
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1172994' # Outside button  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: form: state
     to: '1764162' # Back door button Middle
   condition:
   - condition: state
@@ -42,9 +46,10 @@
   alias: Lights:Back Verandah:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1764168' # Back door button Left
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1764168' # Back door button Left
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -56,9 +61,10 @@
   alias: Lights:BBQ Flood Light:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1172993'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1172993'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -70,9 +76,10 @@
   alias: Lights:Alfresco Flood Light:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1172996' # Outside button
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1172996' # Outside button
   condition:
   - condition: state
     entity_id: binary_sensor.active

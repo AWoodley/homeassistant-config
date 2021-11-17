@@ -177,10 +177,11 @@
     entity_id: binary_sensor.family_room,binary_sensor.media_room
     id: PIR
     to: 'on'
-  - entity_id: sensor.rfb_button
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '14330700'
     id: PIR
-    platform: state
-    to: '14330700'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -226,13 +227,15 @@
   alias: Light:Music Room Light:Button
   description: ''
   trigger:
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '13767432'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '13767432'
     id: Button
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '2364680'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '2364680'
     id: Button
   condition:
   - condition: state

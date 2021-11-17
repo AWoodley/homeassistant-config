@@ -2,13 +2,15 @@
   alias: Light:Kitchen Lights:Button
   description: ''
   trigger:
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '1905218'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1905218'
     id: Button
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '1807426'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1807426'
     id: Button
   condition:
   - condition: state
@@ -28,13 +30,15 @@
   alias: Light:Kitchen Lights:Stepped
   description: ''
   trigger:
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '1905218'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1905218'
     id: Button
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '1807426'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1807426'
     id: Button
   condition:
   - condition: state

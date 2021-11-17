@@ -1,14 +1,15 @@
----
 - id: '1572019277815'
   alias: Light:Master Bedroom:On:Adjust
   description: 'Adjust brightness of Master Bedroom lights based on time of day'
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '8190612'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '2475684'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '8190612'  
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '2475684'
   # - entity_id: sensor.rfb_button
   #   platform: state
   #   to: '10295124' #New wall Button, right
@@ -37,18 +38,18 @@
   alias: Light:Master Bedroom:On:Bright
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '8190612'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '2475682'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '8190610'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '10295122' # New Wall Button, middle
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '8190612'  
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '8190610'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '10295122' # New Wall Button, middle
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -90,9 +91,10 @@
   alias: Light:Nancy's Bedside Table:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '2475688'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '2475688'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -107,9 +109,10 @@
   alias: Light:Adrian's Bedside Table:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '8190632'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '8190632'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -124,12 +127,14 @@
   alias: Light:Master Bedroom:On:Romantic
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '8190609'
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '2475681'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '8190609'  
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '2475681'
   condition:
   - condition: state
     entity_id: binary_sensor.active

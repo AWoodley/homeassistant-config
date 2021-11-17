@@ -56,9 +56,10 @@
   alias: Light:Front Door:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '3692692'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '3692692'
   condition:
   - condition: state
     entity_id: binary_sensor.active

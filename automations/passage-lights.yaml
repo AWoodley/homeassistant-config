@@ -77,9 +77,10 @@
   alias: Light:Back Passage:Button
   description: ''
   trigger:
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '1945234'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1945234'
     id: Button
   condition:
   - condition: state

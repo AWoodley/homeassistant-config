@@ -451,9 +451,10 @@
   alias: Lights:Toggle Study Lights:Button
   description: ''
   trigger:
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '9763476'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '9763476'
   condition:
   - condition: state
     entity_id: binary_sensor.active

@@ -2,9 +2,10 @@
   alias: Light:Play Room Light:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1905218'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1905218'
   condition:
   - condition: state
     entity_id: binary_sensor.active

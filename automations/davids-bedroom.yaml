@@ -2,9 +2,10 @@
   alias: Light:David's Bedroom:Dim
   description: 'Adjust brightness of light based on time of day'
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1699048'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1699048'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -22,9 +23,10 @@
   alias: Light:David's Bedroom:Bright
   description: 'Full brightness'
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1699042'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1699042'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -42,9 +44,10 @@
   alias: Light:David's Bedroom:Colours
   description: 'Cycle through disco light colours'
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '1699044'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1699044'
   condition:
   - condition: state
     entity_id: binary_sensor.active

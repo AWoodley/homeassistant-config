@@ -54,9 +54,10 @@
   alias: Light:Family Room Flood:Button
   description: ''
   trigger:
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '1712146'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1712146'
     id: Button
   condition:
   - condition: state

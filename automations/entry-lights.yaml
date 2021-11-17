@@ -2,9 +2,10 @@
   alias: Light:Entry:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '3692690'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '3692690'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -22,9 +23,10 @@
   alias: Light:Night:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.rfb_button
-    platform: state
-    to: '10295128' # BedroomWall Button, left
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '10295128' # BedroomWall Button, left
   condition:
   - condition: state
     entity_id: binary_sensor.active

@@ -54,9 +54,10 @@
   alias: Light:Dining Room:Button
   description: ''
   trigger:
-  - platform: state
-    entity_id: sensor.rfb_button
-    to: '1712152'
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1712152'
     id: Button
   condition:
   - condition: state
