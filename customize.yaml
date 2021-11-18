@@ -1,0 +1,6 @@
+binary_sensor.back_passage:
+  icon: mdi:eye-circle
+binary_sensor.family_room:
+  icon: mdi:eye-circle
+binary_sensor.media_room:
+  icon: mdi:eye-circle

@@ -215,7 +215,7 @@ google_assistant:
       expose: true
     cover.jonathans_bedroom_rollershutter:
       expose: true
-    # sensor.temp_jonathans_bedroom_ds18b20_temperature:
+    # sensor.jonathans_bedroom_temperature:
     #   expose: true
     cover.davids_bedroom_rollershutter:
       expose: true
@@ -286,7 +286,7 @@ climate:
     name: Jonathans Thermostat
     heater: switch.jonathans_heater
     cooler: switch.jonathans_fan
-    target_sensor: sensor.temp_jonathans_bedroom_ds18b20_temperature
+    target_sensor: sensor.jonathans_bedroom_temperature
     target_temp: 22
     min_cycle_duration: '00:05:00'
     initial_hvac_mode: 'off'
@@ -295,7 +295,7 @@ climate:
     name: Davids Thermostat
     heater: switch.davids_heater
     cooler: switch.davids_fan
-    target_sensor: sensor.temp_davids_bedroom_ds18b20_temperature
+    target_sensor: sensor.davids_bedroom_temperature
     target_temp: 22
     min_cycle_duration: '00:05:00'
     initial_hvac_mode: 'off'
@@ -401,7 +401,7 @@ sensor:
     type: mean
     entity_ids:
       - sensor.rollershutter_diningroom_ds18b20_temperature
-      - sensor.temp_jonathans_bedroom_ds18b20_temperature
+      - sensor.jonathans_bedroom_temperature
       - sensor.temp_davids_bedroom_ds18b20_temperature
       - sensor.ble_temperature_a4c138dfcf8d # Dining Room
       - sensor.ble_temperature_a4c13887d585 # Living Room

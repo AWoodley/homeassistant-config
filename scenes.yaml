@@ -167,25 +167,40 @@
   name: Scene:Jonathans Bedroom:Off
   entities:
     input_select.jonathans_bedroom_scene:
-      editable: false
-      friendly_name: Currently Active Scene for Jonathan's Bedroom
       options:
       - unknown
       - scene.scene_jonathans_bedroom_off
       - scene.scene_jonathans_bedroom_dim
       - scene.scene_jonathans_bedroom_bright
       - scene.scene_jonathans_bedroom_disco
+      editable: true
+      friendly_name: Jonathan's Bedroom Scene
       state: scene.scene_jonathans_bedroom_off
     light.light_jonathans_bedroom:
+      min_mireds: 111
+      max_mireds: 666
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
       friendly_name: Jonathan's Bedroom
-      max_mireds: 400
-      min_mireds: 111
-      state: 'off'
       supported_features: 55
+      state: 'off'
+    switch.jonathans_heater:
+      friendly_name: Jonathan's Heater
+      icon: hass:radiator
+      state: 'off'
+    switch.jonathans_reading_light:
+      friendly_name: Jonathan's Reading Light
+      icon: hass:lamp
+      state: 'off'
+    switch.jonathans_fan:
+      friendly_name: Jonathan's Fan
+      icon: hass:fan
+      state: 'off'
 - id: '1581648416152'
   name: Scene:Jonathans Bedroom:Bright
   entities:
@@ -215,27 +230,40 @@
   name: Scene:Jonathans Bedroom:Dim
   entities:
     input_select.jonathans_bedroom_scene:
-      editable: false
-      friendly_name: Currently Active Scene for Jonathan's Bedroom
       options:
       - unknown
       - scene.scene_jonathans_bedroom_off
       - scene.scene_jonathans_bedroom_dim
       - scene.scene_jonathans_bedroom_bright
       - scene.scene_jonathans_bedroom_disco
-      state: scene.scene_jonathans_bedroom_dim
+      editable: true
+      friendly_name: Jonathan's Bedroom Scene
+      state: scene.scene_jonathans_bedroom_off
+    switch.jonathans_heater:
+      friendly_name: Jonathan's Heater
+      icon: hass:radiator
+      state: 'off'
+    switch.jonathans_reading_light:
+      friendly_name: Jonathan's Reading Light
+      icon: hass:lamp
+      state: 'on'
+    switch.jonathans_fan:
+      friendly_name: Jonathan's Fan
+      icon: hass:fan
+      state: 'off'
     light.light_jonathans_bedroom:
-      brightness: 2
-      color_temp: 400
+      min_mireds: 111
+      max_mireds: 666
       effect_list:
       - effect_colorloop
       - effect_pulse
       - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
       friendly_name: Jonathan's Bedroom
-      max_mireds: 400
-      min_mireds: 111
-      state: 'on'
       supported_features: 55
+      state: 'off'
 - id: '2581648349111'
   name: Scene:Davids Bedroom:Off
   entities:
