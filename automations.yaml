@@ -469,3 +469,17 @@
     default:
     - scene: scene.scene_study_bright
   mode: single
+- id: '1636125125123'
+  alias: Media:Boys-Speakers:Time
+  description: Turn off the boy's speakers at midnight
+  trigger:
+  - platform: time
+    at: 00:00
+  condition: []
+  action:
+  - service: media_player.media_stop
+    target:
+      device_id:
+      - fc5fc2c32960cd0c6d56f4ff0122a050
+      - 5d1c01a08144d81793bda01ab075cae6
+  mode: single
