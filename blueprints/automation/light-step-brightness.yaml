@@ -16,9 +16,10 @@ blueprint:
           domain: light
 
 trigger:
-- entity_id: sensor.rfb_button
-  platform: state
-  to: !input button_id
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: !input button_id
 
 condition:
 - condition: state
