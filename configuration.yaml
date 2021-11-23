@@ -118,15 +118,19 @@ lifx:
     - broadcast: 192.168.29.52 # Dining-2
     - broadcast: 192.168.29.53 # Dining-3
     - broadcast: 192.168.29.54 # Dining-4
-    - broadcast: 192.168.29.55 # Boys-Bedroom-1
+    - broadcast: 192.168.29.55 # Jonathans-1
     - broadcast: 192.168.29.56 # Study-1
     - broadcast: 192.168.29.57 # Media Room Light Stand
     - broadcast: 192.168.29.58 # Master Bedroom
     - broadcast: 192.168.29.59 # Entrance-1
-    - broadcast: 192.168.29.60 # Play-Room-1
+    - broadcast: 192.168.29.60 # Davids-1
     - broadcast: 192.168.29.61 # Music-Room-1
     - broadcast: 192.168.29.62 # Family-Room-Flood
     - broadcast: 192.168.29.63 # Family-Room-Stand
+    - broadcast: 192.168.29.66 # Kitchen-1
+    - broadcast: 192.168.29.67 # Kitchen-2
+    - broadcast: 192.168.29.68 # Passage-1
+    - broadcast: 192.168.29.69 # Passage-2
 
 google_assistant:
   project_id: hass
@@ -135,7 +139,7 @@ google_assistant:
   secure_devices_pin: !secret pin
   expose_by_default: false
   entity_config:
-    light.back_passage_lights:
+    light.passage_lights:
       expose: true
     light.dining_room_lights:
       expose: true
@@ -165,15 +169,11 @@ google_assistant:
       expose: true
     light.light_media_1:
       expose: true
-    light.light_kitchen_1:
-      expose: true
-    light.light_kitchen_2:
-      expose: true
-    light.light_kitchen_3:
-      expose: true
-    # light.light_media_2:
-    #   expose: true
     light.light_media_3:
+      expose: true
+    light.kitchen_lights:
+      expose: true
+    light.passage_lights:
       expose: true
     light.music_room_light:
       expose: true

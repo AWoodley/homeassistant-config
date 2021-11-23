@@ -32,10 +32,12 @@
     - light.light_entry_2
     - light.light_entry_3
 - platform: group
-  name: Back Passage Lights
+  name: Passage Lights
   entities:
     - light.light_passage_1
     - light.light_passage_2
+    - light.lifx_passage_1
+    - light.lifx_passage_2
 - platform: group
   name: Family Room Lights
   entities:
