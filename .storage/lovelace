@@ -55,7 +55,7 @@
                                                 },
                                                 {
                                                     "type": "state-label",
-                                                    "entity": "sensor.temp_davids_bedroom_ds18b20_temperature",
+                                                    "entity": "sensor.davids_bedroom_temperature",
                                                     "style": {
                                                         "top": "6%",
                                                         "left": "26.5%"
@@ -148,8 +148,16 @@
                                                     }
                                                 },
                                                 {
+                                                    "type": "state-icon",
+                                                    "entity": "binary_sensor.davids_bedroom_door",
+                                                    "style": {
+                                                        "top": "12%",
+                                                        "left": "38.25%"
+                                                    }
+                                                },
+                                                {
                                                     "type": "state-label",
-                                                    "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature",
+                                                    "entity": "sensor.jonathans_bedroom_temperature",
                                                     "style": {
                                                         "top": "6%",
                                                         "left": "49%"
@@ -239,6 +247,29 @@
                                                         "service_data": {
                                                             "entity_id": "light.light_jonathans_bedroom"
                                                         }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "switch.jonathans_reading_light",
+                                                    "style": {
+                                                        "top": "15.5%",
+                                                        "left": "46%"
+                                                    },
+                                                    "tap_action": {
+                                                        "action": "call-service",
+                                                        "service": "switch.toggle",
+                                                        "service_data": {
+                                                            "entity_id": "switch.jonathans_reading_light"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "binary_sensor.jonathans_bedroom_door",
+                                                    "style": {
+                                                        "top": "15.5%",
+                                                        "left": "42%"
                                                     }
                                                 },
                                                 {
@@ -361,6 +392,65 @@
                                                         "top": "36%",
                                                         "left": "17%"
                                                     }
+                                                },
+                                                {
+                                                    "type": "conditional",
+                                                    "conditions": [
+                                                        {
+                                                            "entity": "sensor.washing_machine",
+                                                            "state": "Off"
+                                                        }
+                                                    ],
+                                                    "elements": [
+                                                        {
+                                                            "type": "state-icon",
+                                                            "entity": "sensor.washing_machine",
+                                                            "style": {
+                                                                "top": "39%",
+                                                                "left": "25%"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "conditional",
+                                                    "conditions": [
+                                                        {
+                                                            "entity": "sensor.washing_machine",
+                                                            "state": "Running"
+                                                        }
+                                                    ],
+                                                    "elements": [
+                                                        {
+                                                            "type": "state-icon",
+                                                            "entity": "sensor.washing_machine",
+                                                            "style": {
+                                                                "top": "39%",
+                                                                "left": "25%",
+                                                                "--paper-item-icon-color": "green"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "conditional",
+                                                    "conditions": [
+                                                        {
+                                                            "entity": "sensor.washing_machine",
+                                                            "state": "Standby"
+                                                        }
+                                                    ],
+                                                    "elements": [
+                                                        {
+                                                            "type": "state-icon",
+                                                            "entity": "sensor.washing_machine",
+                                                            "style": {
+                                                                "top": "39%",
+                                                                "left": "25%",
+                                                                "--paper-item-icon-color": "red"
+                                                            }
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     "type": "state-icon",
@@ -554,6 +644,14 @@
                                                     "style": {
                                                         "top": "47%",
                                                         "left": "82%"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "state-icon",
+                                                    "entity": "binary_sensor.familyroom_door",
+                                                    "style": {
+                                                        "top": "44%",
+                                                        "left": "98%"
                                                     }
                                                 },
                                                 {
@@ -1051,10 +1149,10 @@
                                                     "entity": "sensor.ble_temperature_a4c138fbfa2a"
                                                 },
                                                 {
-                                                    "entity": "sensor.temp_davids_bedroom_ds18b20_temperature"
+                                                    "entity": "sensor.davids_bedroom_temperature"
                                                 },
                                                 {
-                                                    "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature"
+                                                    "entity": "sensor.jonathans_bedroom_temperature"
                                                 }
                                             ],
                                             "hours_to_show": 24,
@@ -1080,11 +1178,11 @@
                                                     "name": "Master Bedroom"
                                                 },
                                                 {
-                                                    "entity": "sensor.temp_davids_bedroom_ds18b20_temperature",
+                                                    "entity": "sensor.davids_bedroom_temperature",
                                                     "name": "David's Bedroom"
                                                 },
                                                 {
-                                                    "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature",
+                                                    "entity": "sensor.jonathans_bedroom_temperature",
                                                     "name": "Jonathan's Bedroom"
                                                 },
                                                 {

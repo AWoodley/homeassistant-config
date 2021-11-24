@@ -122,8 +122,16 @@
                                     }
                                 },
                                 {
+                                    "type": "state-icon",
+                                    "entity": "binary_sensor.davids_bedroom_door",
+                                    "style": {
+                                        "top": "12%",
+                                        "left": "38.25%"
+                                    }
+                                },
+                                {
                                     "type": "state-label",
-                                    "entity": "sensor.temp_jonathans_bedroom_ds18b20_temperature",
+                                    "entity": "sensor.jonathans_bedroom_temperature",
                                     "style": {
                                         "top": "6%",
                                         "left": "49%"
@@ -212,6 +220,29 @@
                                         "service": "light.toggle",
                                         "service_data": {
                                             "entity_id": "light.light_jonathans_bedroom"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "binary_sensor.jonathans_bedroom_door",
+                                    "style": {
+                                        "top": "15.5%",
+                                        "left": "42%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "switch.jonathans_reading_light",
+                                    "style": {
+                                        "top": "15.5%",
+                                        "left": "46%"
+                                    },
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "switch.toggle",
+                                        "service_data": {
+                                            "entity_id": "switch.jonathans_reading_light"
                                         }
                                     }
                                 },
@@ -335,6 +366,65 @@
                                         "top": "36%",
                                         "left": "17%"
                                     }
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "sensor.washing_machine",
+                                            "state": "Off"
+                                        }
+                                    ],
+                                    "elements": [
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "sensor.washing_machine",
+                                            "style": {
+                                                "top": "39%",
+                                                "left": "25%"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "sensor.washing_machine",
+                                            "state": "Running"
+                                        }
+                                    ],
+                                    "elements": [
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "sensor.washing_machine",
+                                            "style": {
+                                                "top": "39%",
+                                                "left": "25%",
+                                                "--paper-item-icon-color": "green"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "conditional",
+                                    "conditions": [
+                                        {
+                                            "entity": "sensor.washing_machine",
+                                            "state": "Standby"
+                                        }
+                                    ],
+                                    "elements": [
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "sensor.washing_machine",
+                                            "style": {
+                                                "top": "39%",
+                                                "left": "25%",
+                                                "--paper-item-icon-color": "red"
+                                            }
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "state-icon",
@@ -528,6 +618,14 @@
                                     "style": {
                                         "top": "47%",
                                         "left": "82%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "binary_sensor.familyroom_door",
+                                    "style": {
+                                        "top": "44%",
+                                        "left": "98%"
                                     }
                                 },
                                 {
