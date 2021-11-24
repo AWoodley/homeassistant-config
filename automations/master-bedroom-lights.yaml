@@ -166,7 +166,7 @@
     - sat
   - condition: numeric_state
     entity_id: sensor.ble_temperature_a4c138fbfa2a
-    above: '22'
+    above: '20'
   action:
   - service: cover.open_cover
     data: {}

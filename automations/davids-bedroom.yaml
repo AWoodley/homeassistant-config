@@ -54,7 +54,7 @@
     state: 'on'
   action:
   - data:
-      entity_id: light.light_Davids_bedroom
+      entity_id: light.lifx_davids_room
       brightness: 255
       period: 1
       change: 35
@@ -67,7 +67,7 @@
   trigger:
   - device_id: 7b728c50558d4934a19c3f6078dba396
     domain: light
-    entity_id: light.light_Davids_bedroom
+    entity_id: light.lifx_davids_room
     platform: device
     type: turned_off
   condition:
@@ -134,3 +134,35 @@
   - service: climate.turn_on
     target:
       entity_id: climate.davids_thermostat
+- id: '1611678447095'
+  alias: Rollershutter:Davids Bedroom:Open:Time
+  description: Open the Davids Bedroom Roller shutter at 07:30
+  trigger:
+  - platform: time
+    at: 07:30:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: state
+    entity_id: climate.davids_thermostat
+    state: 'off'
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  - condition: numeric_state
+    entity_id: sensor.davids_bedroom_temperature
+    above: '20'
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.jonathans_bedroom_roller_shutter
+  mode: single

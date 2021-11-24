@@ -36,7 +36,7 @@
             - choose:
                 - conditions:
                     - condition: state
-                      entity_id: light.light_jonathans_bedroom
+                      entity_id: light.lifx_jonathans_bedroom
                       state: 'on'
                       for:
                         hours: 0
@@ -46,21 +46,21 @@
                   sequence:
                     - service: light.turn_off
                       target:
-                        entity_id: light.light_jonathans_bedroom
+                        entity_id: light.lifx_jonathans_bedroom
               default:
                 - service: light.turn_on
                   data:
                     color_temp: 370
                     brightness: 255
                   target:
-                    entity_id: light.light_jonathans_bedroom
+                    entity_id: light.lifx_jonathans_bedroom
       default:
         - service: light.toggle
           data:
             color_temp: 370
             brightness: 255
           target:
-            entity_id: light.light_jonathans_bedroom
+            entity_id: light.lifx_jonathans_bedroom
 - id: '1573474201727'
   alias: Light:Jonathan's Bedroom:Colours
   description: 'Cycle through disco light colours'
@@ -75,7 +75,7 @@
     state: 'on'
   action:
   - data:
-      entity_id: light.light_jonathans_bedroom
+      entity_id: light.lifx_jonathans_bedroom
       brightness: 255
       period: 1
       change: 35
@@ -121,6 +121,9 @@
   - condition: state
     entity_id: group.family
     state: home
+  - condition: state
+    entity_id: climate.jonathans_thermostat
+    state: 'off'
   - condition: time
     weekday:
     - mon
@@ -130,7 +133,7 @@
     - fri
     - sat
   - condition: numeric_state
-    entity_id: sensor.ble_temperature_a4c138b45222
+    entity_id: sensor.jonathans_bedroom_temperature
     above: '20'
   action:
   - service: cover.open_cover
