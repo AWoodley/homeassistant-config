@@ -21,7 +21,7 @@
     service: scene.turn_on
   - data:
       cycles: 3
-      entity_id: light.light_frontdoor_1
+      entity_id: light.lifx_front_door
       mode: strobe
       period: 1
     service: lifx.effect_pulse
@@ -73,7 +73,7 @@
   - data:
       brightness: 255
       cycles: 3
-      entity_id: light.light_frontdoor_1
+      entity_id: light.lifx_front_door
       mode: strobe
       period: 1
     service: lifx.effect_pulse

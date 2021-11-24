@@ -14,7 +14,7 @@
 - platform: group
   name: Welcome Lights
   entities: 
-    - light.light_frontdoor_1
+    - light.lifx_front_door
     - light.light_entry_1
     - light.light_entry_2
     - light.light_entry_3
@@ -46,6 +46,6 @@
 - platform: group
   name: Study Lights
   entities:
-    - light.light_study_1
+    - light.lifx_study_1
     - light.light_study_2
     - light.light_study_3

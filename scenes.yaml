@@ -349,7 +349,7 @@
       - scene.scene_study_normal
       - scene.scene_study_bright
       state: scene.scene_study_normal
-    light.light_study_1:
+    light.lifx_study_1:
       brightness: 255
       color_temp: 250
       effect_list:
@@ -387,7 +387,7 @@
       editable: true
       friendly_name: Study Scene
       state: scene.scene_study_bright
-    light.light_study_1:
+    light.lifx_study_1:
       min_mireds: 250
       max_mireds: 666
       effect_list:
@@ -438,7 +438,7 @@
       editable: false
       friendly_name: Currently Active Scene for Study
       state: scene.scene_study_off
-    light.light_study_1:
+    light.lifx_study_1:
       min_mireds: 250
       max_mireds: 666
       effect_list:
@@ -650,7 +650,7 @@
       friendly_name: Music Room Light
       supported_features: 55
       state: 'off'
-    light.light_study_1:
+    light.lifx_study_1:
       min_mireds: 250
       max_mireds: 666
       effect_list:
@@ -815,7 +815,7 @@
       - scene.scene_study_normal
       - scene.scene_study_bright
       state: scene.scene_study_bright
-    light.light_study_1:
+    light.lifx_study_1:
       brightness: 255
       color_temp: 552
       effect_list:
@@ -848,7 +848,7 @@
 - id: '1588665537146'
   name: Scene:Study:Cool
   entities:
-    light.light_study_1:
+    light.lifx_study_1:
       brightness: 255
       color_temp: 250
       effect_list:

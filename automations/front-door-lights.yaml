@@ -46,11 +46,11 @@
       condition: sun
   action:
   - data:
-      entity_id: light.light_frontdoor_1
+      entity_id: light.lifx_front_door
     service: light.turn_on
   - delay: '00:10:00'
   - data:
-      entity_id: light.light_frontdoor_1
+      entity_id: light.lifx_front_door
     service: light.turn_off
 - id: '1575382143244'
   alias: Light:Front Door:Toggle
@@ -66,5 +66,5 @@
     state: 'on'
   action:
   - data:
-      entity_id: light.light_frontdoor_1
+      entity_id: light.lifx_front_door
     service: light.toggle

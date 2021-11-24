@@ -784,7 +784,7 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "light.light_study_1",
+                                                    "entity": "light.lifx_study_1",
                                                     "style": {
                                                         "top": "82.5%",
                                                         "left": "64%"
@@ -875,7 +875,7 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "light.light_frontdoor_1",
+                                                    "entity": "light.lifx_front_door",
                                                     "style": {
                                                         "top": "86%",
                                                         "left": "52%"
@@ -884,7 +884,7 @@
                                                         "action": "call-service",
                                                         "service": "light.toggle",
                                                         "service_data": {
-                                                            "entity_id": "light.light_frontdoor_1"
+                                                            "entity_id": "light.lifx_front_door"
                                                         }
                                                     }
                                                 },
