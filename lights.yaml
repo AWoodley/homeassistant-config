@@ -21,10 +21,10 @@
 - platform: group
   name: Dining Room Lights
   entities:
-    - light.lifx_d0_73_d5_38_46_87
-    - light.lifx_d0_73_d5_38_15_d3
-    - light.lifx_d0_73_d5_37_e4_e0
-    - light.lifx_diningroom_4
+    - light.lifx_dining_room_1
+    - light.lifx_dining_room_2
+    - light.lifx_dining_room_3
+    - light.lifx_dining_room_4
 - platform: group
   name: Entry Lights
   entities:
