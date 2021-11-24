@@ -36,8 +36,6 @@
   entities:
     - light.lifx_passage_1
     - light.lifx_passage_2
-    - light.lifx_passage_1
-    - light.lifx_passage_2
 - platform: group
   name: Family Room Lights
   entities:
