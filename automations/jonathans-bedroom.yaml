@@ -14,53 +14,61 @@
   - service: switch.toggle
     target:
       entity_id: switch.jonathans_reading_light
-- id: '1573474201726'
-  alias: Light:Jonathan's Bedroom:Bright
-  description: 'Full brightness'
-  trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '1058802'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-    - choose:
-        - conditions:
-            - condition: time
-              after: '21:00'
-              before: '07:00'
-          sequence:
-            - choose:
-                - conditions:
-                    - condition: state
-                      entity_id: light.lifx_jonathans_bedroom
-                      state: 'on'
-                      for:
-                        hours: 0
-                        minutes: 0
-                        seconds: 5
-                        milliseconds: 0
-                  sequence:
-                    - service: light.turn_off
-                      target:
-                        entity_id: light.lifx_jonathans_bedroom
-              default:
-                - service: light.turn_on
-                  data:
-                    color_temp: 370
-                    brightness: 255
-                  target:
-                    entity_id: light.lifx_jonathans_bedroom
-      default:
-        - service: light.toggle
-          data:
-            color_temp: 370
-            brightness: 255
-          target:
-            entity_id: light.lifx_jonathans_bedroom
+# - id: '1573474201726'
+#   alias: Light:Jonathan's Bedroom:Bright
+#   description: 'Full brightness'
+#   trigger:
+#   - platform: event
+#     event_type: esphome.rf_code_received
+#     event_data:
+#       code: '1058802'
+#   condition:
+#   - condition: state
+#     entity_id: binary_sensor.active
+#     state: 'on'
+#   action:
+#     - choose:
+#         - conditions:
+#             - condition: time
+#               after: '21:00'
+#               before: '07:00'
+#           sequence:
+#             - choose:
+#                 - conditions:
+#                     - condition: state
+#                       entity_id: light.lifx_jonathans_bedroom
+#                       state: 'on'
+#                       for:
+#                         hours: 0
+#                         minutes: 0
+#                         seconds: 5
+#                         milliseconds: 0
+#                   sequence:
+#                     - service: light.turn_off
+#                       target:
+#                         entity_id: light.lifx_jonathans_bedroom
+#               default:
+#                 - service: light.turn_on
+#                   data:
+#                     color_temp: 370
+#                     brightness: 255
+#                   target:
+#                     entity_id: light.lifx_jonathans_bedroom
+#       default:
+#         - service: light.toggle
+#           data:
+#             color_temp: 370
+#             brightness: 255
+#           target:
+#             entity_id: light.lifx_jonathans_bedroom
+- id: '2021112511151'
+  alias: Light:Davids-Bedroom-Light:Step
+  description: ''
+  use_blueprint:
+    path: light-step-brightness.yaml
+    input:
+      button_id: '1058802'
+      light_id: light.lifx_jonathans_bedroom
 - id: '1573474201727'
   alias: Light:Jonathan's Bedroom:Colours
   description: 'Cycle through disco light colours'

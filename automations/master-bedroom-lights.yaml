@@ -87,24 +87,40 @@
 #     data:
 #       entity_id: light.master_bedroom_lights
 #     service: light.turn_off
-- id: '1575387552803'
-  alias: Light:Nancy's Bedside Table:Toggle
+# - id: '1575387552803'
+#   alias: Light:Nancy's Bedside Table:Toggle
+#   description: ''
+#   trigger:
+#   - platform: event
+#     event_type: esphome.rf_code_received
+#     event_data:
+#       code: '2475688'
+#   condition:
+#   - condition: state
+#     entity_id: binary_sensor.active
+#     state: 'on'
+#   action:
+#   - data:
+#       brightness: 255
+#       color_temp: 330
+#       entity_id: light.light_bedside_2
+#     service: light.toggle
+- id: '1637429824509'
+  alias: Light:Adrians-Bedside-Lamp:Step
   description: ''
-  trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '2475688'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-  - data:
-      brightness: 255
-      color_temp: 330
-      entity_id: light.light_bedside_2
-    service: light.toggle
+  use_blueprint:
+    path: light-step-brightness.yaml
+    input:
+      button_id: '8190632'
+      light_id: light.light_bedside_1
+- id: '2021112511131'
+  alias: Light:Nancys-Bedside-Lamp:Step
+  description: ''
+  use_blueprint:
+    path: light-step-brightness.yaml
+    input:
+      button_id: '2475688'
+      light_id: light.light_bedside_2
 - id: '1575387990661'
   alias: Light:Adrian's Bedside Table:Toggle
   description: ''

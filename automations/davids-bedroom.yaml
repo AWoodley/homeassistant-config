@@ -19,27 +19,35 @@
         scene.scene_davids_bedroom_off
         {% endif %}
     service: scene.turn_on
-- id: '2573474201726'
-  alias: Light:David's Bedroom:Bright
-  description: 'Full brightness'
-  trigger:
-  - platform: event
-    event_type: esphome.rf_code_received
-    event_data:
-      code: '1699042'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-  - data_template:
-      entity_id: >
-        {% if is_state('input_select.davids_bedroom_scene', 'scene.scene_davids_bedroom_bright') %}
-        scene.scene_davids_bedroom_off
-        {% else %}
-        scene.scene_davids_bedroom_bright
-        {% endif %}
-    service: scene.turn_on
+# - id: '2573474201726'
+#   alias: Light:David's Bedroom:Bright
+#   description: 'Full brightness'
+#   trigger:
+#   - platform: event
+#     event_type: esphome.rf_code_received
+#     event_data:
+#       code: '1699042'
+#   condition:
+#   - condition: state
+#     entity_id: binary_sensor.active
+#     state: 'on'
+#   action:
+#   - data_template:
+#       entity_id: >
+#         {% if is_state('input_select.davids_bedroom_scene', 'scene.scene_davids_bedroom_bright') %}
+#         scene.scene_davids_bedroom_off
+#         {% else %}
+#         scene.scene_davids_bedroom_bright
+#         {% endif %}
+#     service: scene.turn_on
+- id: '2021112511141'
+  alias: Light:Davids-Bedroom-Light:Step
+  description: ''
+  use_blueprint:
+    path: light-step-brightness.yaml
+    input:
+      button_id: '1699042'
+      light_id: light.lifx_davids_room
 - id: '2573474201727'
   alias: Light:David's Bedroom:Colours
   description: 'Cycle through disco light colours'
