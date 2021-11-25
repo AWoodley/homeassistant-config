@@ -54,7 +54,7 @@ action:
                 sequence:
                   - service: light.turn_on
                     data:
-                      color_temp: 370
+                      color_temp: 250
                       brightness: 255
                     target:
                       entity_id: !input light_id          
@@ -68,7 +68,7 @@ action:
     default:
       - service: light.toggle
         data:
-          color_temp: 370
+          color_temp: 250
           brightness: 255
         target:
           entity_id: !input light_id
