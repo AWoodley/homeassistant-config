@@ -138,5 +138,5 @@
   action:
   - service: cover.open_cover
     data: {}
-    entity_id: cover.jonathans_bedroom_roller_shutter
+    entity_id: cover.jonathans_bedroom_rollershutter
   mode: single
