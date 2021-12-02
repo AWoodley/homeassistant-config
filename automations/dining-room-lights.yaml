@@ -16,7 +16,7 @@
   - condition: state
     entity_id: input_boolean.light_effect_running
     state: 'off'
-  - condtion: or
+  - condition: or
     conditions:
     - condition: state
       entity_id: cover.dining_room_rollershutter
