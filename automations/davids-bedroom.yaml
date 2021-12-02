@@ -89,7 +89,7 @@
   description: ''
   trigger:
   - platform: numeric_state
-    entity_id: sensor.temp_davids_bedroom_ds18b20_temperature
+    entity_id: sensor.davids_bedroom_temperature
     below: 24
     for: 00:05:00
   - platform: time
@@ -130,7 +130,7 @@
     entity_id: person.david
     state: 'home'
   - condition: numeric_state
-    entity_id: sensor.temp_davids_bedroom_ds18b20_temperature
+    entity_id: sensor.davids_bedroom_temperature
     below: 24
   action:
   - service: climate.set_temperature

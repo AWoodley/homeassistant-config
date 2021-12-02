@@ -400,7 +400,7 @@ sensor:
     entity_ids:
       - sensor.rollershutter_diningroom_ds18b20_temperature
       - sensor.jonathans_bedroom_temperature
-      - sensor.temp_davids_bedroom_ds18b20_temperature
+      - sensor.davids_bedroom_temperature
       - sensor.ble_temperature_a4c138dfcf8d # Dining Room
       - sensor.ble_temperature_a4c13887d585 # Living Room
       - sensor.ble_temperature_a4c138fbfa2a # Master Bedroom

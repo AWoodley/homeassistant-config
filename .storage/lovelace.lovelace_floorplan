@@ -29,7 +29,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.temp_davids_bedroom_ds18b20_temperature",
+                                    "entity": "sensor.davids_bedroom_temperature",
                                     "style": {
                                         "top": "6%",
                                         "left": "26.5%"
