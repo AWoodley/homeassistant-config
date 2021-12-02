@@ -36,19 +36,17 @@
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
-  - condition: and
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: or
     conditions:
-    - condition: or
-      conditions:
-      - condition: state
-        entity_id: alarm_control_panel.mqtt_alarm
-        state: armed_away
-      - condition: state
-        entity_id: alarm_control_panel.mqtt_alarm
-        state: pending
     - condition: state
-      entity_id: group.family
-      state: home
+      entity_id: alarm_control_panel.mqtt_alarm
+      state: armed_away
+    - condition: state
+      entity_id: alarm_control_panel.mqtt_alarm
+      state: pending
   action:
   - data:
       entity_id: alarm_control_panel.mqtt_alarm
