@@ -19,9 +19,9 @@
     data:
       scene_id: pre_effect
       snapshot_entities:
-      - light.lifx_d0_73_d5_38_46_87
-      - light.lifx_d0_73_d5_38_15_d3
-      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_dining_room_1
+      - light.lifx_dining_room_2
+      - light.lifx_dining_room_3
       - light.lifx_diningroom_4
       - light.light_familyroom_1
       - light.lifx_familyroom_stand
@@ -42,21 +42,21 @@
       sequence:
       - data_template:
           color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.lifx_d0_73_d5_38_46_87
+          entity_id: light.lifx_dining_room_1
           power: true
           transition: 2
           brightness: 255
         service: lifx.set_state
       - data_template:
           color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.lifx_d0_73_d5_38_15_d3
+          entity_id: light.lifx_dining_room_2
           power: true
           transition: 2
           brightness: 255
         service: lifx.set_state
       - data_template:
           color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.lifx_d0_73_d5_37_e4_e0
+          entity_id: light.lifx_dining_room_3
           power: true
           transition: 2
           brightness: 255
@@ -130,7 +130,7 @@
   - data:
       brightness: 255
       color_name: white
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
+      entity_id: light.lifx_dining_room_3
       power: true
       transition: 900
     service: lifx.set_state
@@ -138,7 +138,7 @@
   - data:
       brightness: 255
       color_name: white
-      entity_id: light.lifx_d0_73_d5_38_15_d3
+      entity_id: light.lifx_dining_room_2
       power: true
       transition: 900
     service: lifx.set_state
@@ -146,7 +146,7 @@
   - data:
       brightness: 255
       color_name: white
-      entity_id: light.lifx_d0_73_d5_38_46_87
+      entity_id: light.lifx_dining_room_1
       power: true
       transition: 900
     service: lifx.set_state
@@ -166,27 +166,27 @@
       brightness: 0
       color_name: white
       transition: 900
-    entity_id: light.lifx_d0_73_d5_37_e4_e0
+    entity_id: light.lifx_dining_room_3
     service: lifx.set_state
   - delay: 00:15:00
   - data: {}
-    entity_id: light.lifx_d0_73_d5_37_e4_e0
+    entity_id: light.lifx_dining_room_3
     service: light.turn_off
   - data:
       brightness: 0
       color_name: white
       transition: 900
-    entity_id: light.lifx_d0_73_d5_38_15_d3
+    entity_id: light.lifx_dining_room_2
     service: lifx.set_state
   - delay: 00:15:00
   - data: {}
-    entity_id: light.lifx_d0_73_d5_38_15_d3
+    entity_id: light.lifx_dining_room_2
     service: light.turn_off
   - data:
       brightness: 20
       color_name: white
       transition: 900
-    entity_id: light.lifx_d0_73_d5_38_46_87
+    entity_id: light.lifx_dining_room_1
     service: lifx.set_state
 lifx_strobe:
   sequence:
@@ -234,9 +234,9 @@ create_every_automation_group:
     data:
       scene_id: pre_effect
       snapshot_entities:
-      - light.lifx_d0_73_d5_38_46_87
-      - light.lifx_d0_73_d5_38_15_d3
-      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_dining_room_1
+      - light.lifx_dining_room_2
+      - light.lifx_dining_room_3
       - light.lifx_diningroom_4
       - light.light_familyroom_1
       - light.lifx_familyroom_stand
@@ -263,7 +263,7 @@ create_every_automation_group:
       - light.lifx_passage_1
       - light.lifx_passage_2
   - data_template:
-      entity_id: light.lifx_d0_73_d5_38_46_87
+      entity_id: light.lifx_dining_room_1
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
       change: 138
@@ -271,7 +271,7 @@ create_every_automation_group:
       transition: 1
     service: lifx.effect_colorloop
   - data_template:
-      entity_id: light.lifx_d0_73_d5_38_15_d3
+      entity_id: light.lifx_dining_room_2
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
       change: 138
@@ -279,7 +279,7 @@ create_every_automation_group:
       transition: 1
     service: lifx.effect_colorloop
   - data_template:
-      entity_id: light.lifx_d0_73_d5_37_e4_e0
+      entity_id: light.lifx_dining_room_3
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
       change: 138
@@ -344,9 +344,9 @@ create_every_automation_group:
     data:
       scene_id: pre_effect
       snapshot_entities:
-      - light.lifx_d0_73_d5_38_46_87
-      - light.lifx_d0_73_d5_38_15_d3
-      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_dining_room_1
+      - light.lifx_dining_room_2
+      - light.lifx_dining_room_3
       - light.lifx_diningroom_4
       - light.light_familyroom_1
       - light.lifx_familyroom_stand
@@ -372,8 +372,8 @@ create_every_automation_group:
   - service: light.turn_on
     target:
       entity_id:
-      - light.lifx_d0_73_d5_38_46_87
-      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_dining_room_1
+      - light.lifx_dining_room_3
       - light.light_familyroom_1
       - light.music_room_light
       - light.light_kitchen_2
@@ -383,7 +383,7 @@ create_every_automation_group:
   - service: light.turn_on
     target:
       entity_id:
-      - light.lifx_d0_73_d5_38_15_d3
+      - light.lifx_dining_room_2
       - light.lifx_diningroom_4
       - light.lifx_familyroom_stand
       - light.light_media_1
@@ -410,8 +410,8 @@ create_every_automation_group:
       - service: lifx.effect_pulse
         target:
           entity_id:
-          - light.lifx_d0_73_d5_38_46_87
-          - light.lifx_d0_73_d5_37_e4_e0
+          - light.lifx_dining_room_1
+          - light.lifx_dining_room_3
           - light.light_familyroom_1
           - light.music_room_light
         data:
@@ -424,7 +424,7 @@ create_every_automation_group:
       - service: lifx.effect_pulse
         target:
           entity_id:
-          - light.lifx_d0_73_d5_38_15_d3
+          - light.lifx_dining_room_2
           - light.lifx_diningroom_4
           - light.lifx_familyroom_stand
           - light.light_media_1
@@ -455,9 +455,9 @@ create_every_automation_group:
     data:
       scene_id: pre_effect
       snapshot_entities:
-      - light.lifx_d0_73_d5_38_46_87
-      - light.lifx_d0_73_d5_38_15_d3
-      - light.lifx_d0_73_d5_37_e4_e0
+      - light.lifx_dining_room_1
+      - light.lifx_dining_room_2
+      - light.lifx_dining_room_3
       - light.lifx_diningroom_4
       - light.light_familyroom_1
       - light.lifx_familyroom_stand
@@ -482,10 +482,10 @@ create_every_automation_group:
       - light.light_kitchen_1
   - service: light.turn_on
     entity_id:
-    - light.lifx_d0_73_d5_38_46_87
-    - light.lifx_d0_73_d5_37_e4_e0
+    - light.lifx_dining_room_1
+    - light.lifx_dining_room_3
     - light.music_room_light
-    - light.lifx_d0_73_d5_38_15_d3
+    - light.lifx_dining_room_2
     - light.lifx_diningroom_4
     - light.light_familyroom_1
     - light.light_media_1
@@ -518,10 +518,10 @@ create_every_automation_group:
       - delay: '{{14 // (repeat.index * repeat.index)}}'
   - service: light.turn_off
     entity_id:
-    - light.lifx_d0_73_d5_38_46_87
-    - light.lifx_d0_73_d5_37_e4_e0
+    - light.lifx_dining_room_1
+    - light.lifx_dining_room_3
     - light.music_room_light
-    - light.lifx_d0_73_d5_38_15_d3
+    - light.lifx_dining_room_2
     - light.lifx_diningroom_4
     - light.lifx_familyroom_stand
     - light.light_media_1

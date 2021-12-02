@@ -477,7 +477,7 @@
 - id: '1585417143484'
   name: Scene:Away
   entities:
-    light.lifx_d0_73_d5_37_e4_e0:
+    light.lifx_dining_room_3:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -503,7 +503,7 @@
       friendly_name: Dining Room Light 4
       supported_features: 55
       state: 'off'
-    light.lifx_d0_73_d5_38_15_d3:
+    light.lifx_dining_room_2:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -516,7 +516,7 @@
       friendly_name: Light-DiningRoom-2
       supported_features: 55
       state: 'off'
-    light.lifx_d0_73_d5_38_46_87:
+    light.lifx_dining_room_1:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -881,7 +881,7 @@
 - id: '1588940932480'
   name: Scene:Movie Time
   entities:
-    light.lifx_d0_73_d5_37_e4_e0:
+    light.lifx_dining_room_3:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -901,7 +901,7 @@
       friendly_name: Light-DiningRoom-4
       supported_features: 55
       state: 'off'
-    light.lifx_d0_73_d5_38_15_d3:
+    light.lifx_dining_room_2:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -911,7 +911,7 @@
       friendly_name: Light-DiningRoom-2
       supported_features: 55
       state: 'off'
-    light.lifx_d0_73_d5_38_46_87:
+    light.lifx_dining_room_1:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -966,7 +966,7 @@
 - id: '1591098339633'
   name: Scene:Whole-House:Dim
   entities:
-    light.lifx_d0_73_d5_37_e4_e0:
+    light.lifx_dining_room_3:
       brightness: 50
       color_temp: 285
       effect_list:
@@ -990,7 +990,7 @@
       min_mireds: 111
       state: 'on'
       supported_features: 55
-    light.lifx_d0_73_d5_38_15_d3:
+    light.lifx_dining_room_2:
       brightness: 50
       color_temp: 285
       effect_list:
@@ -1002,7 +1002,7 @@
       min_mireds: 111
       state: 'on'
       supported_features: 55
-    light.lifx_d0_73_d5_38_46_87:
+    light.lifx_dining_room_1:
       brightness: 50
       color_temp: 400
       effect_list:
