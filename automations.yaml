@@ -476,7 +476,6 @@
   trigger:
   - platform: time
     at: 00:00
-  condition: []
   action:
   - service: media_player.media_stop
     target:
