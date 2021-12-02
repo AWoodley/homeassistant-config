@@ -14,12 +14,9 @@
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
-  - condition: or
-    conditions:
-    - before: sunrise
-      condition: sun
-    - after: sunset
-      condition: sun
+  - condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
   action:
     data:
       brightness: 255
