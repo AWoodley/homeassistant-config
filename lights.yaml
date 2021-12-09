@@ -1,4 +1,9 @@
 ---
+- platform: template
+  lights:
+    light_bathroom_1:
+      friendly_name: "Bathroom Light"
+      value_template: "{{states('sensor.bathroom_shelly_luminosity') > '150' and state('sun.sun') == 'below_horizon'}}"
 - platform: group
   name: Media Room Lights
   entities:
