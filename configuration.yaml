@@ -385,13 +385,13 @@ binary_sensor:
   - platform: template
     sensors:
       active:
-      friendly_name: "Active IP"
-      value_template: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'OFFLINE') or is_state('sensor.partner', 'unavailable') }}"
+        friendly_name: "Active IP"
+        value_template: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'OFFLINE') or is_state('sensor.partner', 'unavailable') }}"
   - platform: template
     sensors:
       light_bathroom_1:
-      friendly_name: "Bathroom Light"
-      value_template: "{{states('sensor.bathroom_shelly_luminosity') > '150' and state('sun.sun') == 'below_horizon'}}"
+        friendly_name: "Bathroom Light"
+        value_template: "{{states('sensor.bathroom_shelly_luminosity') > '150' and state('sun.sun') == 'below_horizon'}}"
 
 sensor:
   - platform: time_date
