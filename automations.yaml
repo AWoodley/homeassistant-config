@@ -87,9 +87,6 @@
     service: light.turn_on
   - entity_id: light.light_entry_2
     service: light.turn_off
-  - service: script.turn_on
-    entity_id: script.1576604054568
-    data: {}
   mode: single
 - id: '1581407669990'
   alias: Phantom:Adrian

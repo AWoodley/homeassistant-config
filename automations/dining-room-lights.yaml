@@ -99,3 +99,134 @@
         brightness: 255
       target:
         entity_id: light.dining_room_lights
+- id: '1582300595341'
+  alias: Rollershutter:Dining:Morning:Open
+  description: ''
+  trigger:
+  - event: sunrise
+    platform: sun
+    offset: 00:45:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138b45222
+    above: '20'
+  - condition: numeric_state
+    entity_id: sensor.darlington_rain_chance_0
+    below: '50'
+  action:
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.open_cover
+  mode: single
+- id: '1582300676427'
+  alias: Rollershutter:Dining:Afternoon:Open
+  description: ''
+  trigger:
+  - at: '13:00:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138b45222
+    above: '20'
+  - condition: numeric_state
+    entity_id: sensor.darlington_rain_chance_0
+    below: '50'
+  - condition: numeric_state
+    entity_id: sensor.ble_temperature_a4c138dfcf8d
+    below: '24'
+  action:
+  - entity_id: cover.dining_room_rollershutter
+    service: cover.open_cover
+  mode: single
+- id: '1620375343556'
+  alias: Rollershutter:Dining:Afternoon:Close
+  description: ''
+  trigger:
+  - platform: time
+    at: '13:00:00'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: or
+    conditions:
+    - condition: numeric_state
+      entity_id: sensor.darlington_rain_chance_0
+      above: '50'
+    - condition: numeric_state
+      entity_id: sensor.ble_temperature_a4c138dfcf8d
+      above: '24'
+  action:
+  - service: cover.set_cover_position
+    data:
+      position: 30
+    target:
+      device_id: 1c60da664cab4c512573a9be26c28737
+  mode: single
+- id: '1620376925668'
+  alias: Light:DiningRoom:Off:Rollershutters:Open
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.dining_room_rollershutter
+    to: open
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.dining_room_lights
+      - light.family_room_lights
+      - light.music_room_light
+    data:
+      transition: 10
+  mode: single
+- id: '1620377026335'
+  alias: Light:DiningRoom:On:Rollershutters:Close
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.dining_room_rollershutter
+    to: closed
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  action:
+  - service: light.turn_on
+    data:
+      transition: 10
+      color_temp: 280
+      brightness: 255
+    target:
+      entity_id:
+      - light.dining_room_lights
+      - light.music_room_light
+  mode: single
+- id: '1620805754578'
+  alias: Rollershutter:Dining:Sunset:Close
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -00:45:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: cover.close_cover
+    target:
+      entity_id: cover.dining_room_rollershutter
+  mode: single

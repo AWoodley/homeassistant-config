@@ -173,3 +173,35 @@
     data: {}
     entity_id: cover.davids_bedroom_rollershutter
   mode: single
+# - id: '1625843604157'
+#   alias: Light:Davids:Night-light
+#   description: ''
+#   trigger:
+#   - platform: time
+#     at: 00:30:00
+#   condition:
+#   - condition: state
+#     entity_id: binary_sensor.active
+#     state: 'on'
+#   - condition: state
+#     entity_id: person.david
+#     state: home
+#   action:
+#   - service: light.turn_on
+#     target:
+#       entity_id: light.lifx_davids_room
+#     data:
+#       color_temp: 360
+#       brightness_pct: 20
+#       transition: 5
+#   - delay:
+#       hours: 0
+#       minutes: 30
+#       seconds: 0
+#       milliseconds: 0
+#   - service: light.turn_off
+#     target:
+#       device_id: ea7b19a756d56cd28bfbe8b0293a73fc
+#     data:
+#       transition: 30
+#   mode: single

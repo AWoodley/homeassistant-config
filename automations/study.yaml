@@ -93,3 +93,26 @@
         \ 'volume_level') | float - 0.1 } %}\n{{ mapper[trigger.to_state.state] }}\n"
     entity_id: media_player.imp
     service: media_player.volume_set
+- id: '1630909236404'
+  alias: Lights:Toggle Study Lights:Button
+  description: ''
+  trigger:
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '9763476'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_select.study_scene
+        state: scene.scene_study_bright
+      sequence:
+      - scene: scene.scene_study_normal
+    default:
+    - scene: scene.scene_study_bright
+  mode: single

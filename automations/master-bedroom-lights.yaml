@@ -240,3 +240,76 @@
     target:
       entity_id: switch.nancys_electric_blanket
   mode: restart
+- id: '1631637735336'
+  alias: Light:Master Bedroom:Step
+  description: ''
+  use_blueprint:
+    path: light-step-brightness.yaml
+    input:
+      button_id: '10295124'
+      light_id: light.light_masterbedroom_1
+- id: '1580492573046'
+  alias: Switch:Adrian's Phone Charger:Turn On
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:00:00
+  - platform: numeric_state
+    entity_id: sensor.nokia_5_3_battery_level
+    below: '35'
+  - platform: state
+    entity_id: switch.adrian_s_phone_charger
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.adrian_s_phone_charger
+  - wait_for_trigger:
+    - platform: numeric_state
+      entity_id: sensor.nokia_5_3_battery_level
+      above: '95'
+  - service: switch.turn_off
+    entity_id: switch.adrian_s_phone_charger
+  - choose:
+    - conditions:
+      - condition: time
+        after: 02:00:00
+      sequence:
+      - delay:
+          hours: 6
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
+    default: []
+  mode: single
+  max_exceeded: silent
+- id: '1580492902537'
+  alias: Switch:Nancy's Phone Charger:Turn On
+  description: ''
+  trigger:
+  - platform: time
+    at: 03:30:00
+  - platform: numeric_state
+    entity_id: sensor.nancys_phone_battery_level
+    below: '35'
+  - platform: state
+    entity_id: switch.nancy_s_phone_charger
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - entity_id: switch.nancy_s_phone_charger
+    service: switch.turn_on
+  - wait_for_trigger:
+    - platform: numeric_state
+      entity_id: sensor.nancys_phone_battery_level
+      above: '85'
+  - service: switch.turn_off
+    entity_id: switch.nancy_s_phone_charger
+  mode: single
+  max_exceeded: silent

@@ -258,16 +258,16 @@ notify:
       - service: mobile_app_nancy_s_phone
 
 
-tplink:
-  discovery: true
-  switch:
-    - host: 192.168.29.71
-    - host: 192.168.29.72
-    - host: 192.168.29.73
-    - host: 192.168.29.74
-    - host: 192.168.29.76 # Radios
-  strip:
-    - host: 192.168.29.75
+# tplink:
+#   discovery: true
+#   switch:
+#     - host: 192.168.29.71
+#     - host: 192.168.29.72
+#     - host: 192.168.29.73
+#     - host: 192.168.29.74
+#     - host: 192.168.29.76 # Radios
+#   strip:
+#     - host: 192.168.29.75
 
 
 alarm_control_panel:
