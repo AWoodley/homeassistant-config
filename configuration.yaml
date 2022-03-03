@@ -76,23 +76,23 @@ discovery:
   ignore:
     - netgear_router
 
-mqtt:
-  broker: localhost
-  port: 1883
-  username: hass
-  password: !secret mqtt
-  discovery: true
-  discovery_prefix: homeassistant
-  birth_message:
-    topic: 'home/hass/active'
-    payload: 'OFFLINE'
-    retain: false
-    qos: 0
-  will_message:
-    topic: 'home/hass/active'
-    payload: 'OFFLINE'
-    retain: false
-    qos: 0
+#mqtt:
+#  broker: localhost
+#  port: 1883
+#  username: hass
+#  password: !secret mqtt
+#  discovery: true
+#  discovery_prefix: homeassistant
+#  birth_message:
+#    topic: 'home/hass/active'
+#    payload: 'OFFLINE'
+#    retain: false
+#    qos: 0
+#  will_message:
+#    topic: 'home/hass/active'
+#    payload: 'OFFLINE'
+#    retain: false
+#    qos: 0
 
 
 device_tracker:
@@ -428,7 +428,7 @@ sensor:
     value_template: "{{value_json.IrReceived.Data}}"
     qos: 1
   - platform: mqtt
-    state_topic: "home/hass/active"
+    state_topic: "homeassistant/status"
     name: partner
     expire_after: 65
 
@@ -439,11 +439,11 @@ switch:
     command_topic: "cmnd/tasmotas/irsend"
     payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
   - platform: mqtt
-    state_topic: "home/hass/active"
-    command_topic: "home/hass/active"
+    state_topic: "homeassistant/status"
+    command_topic: "homeassistant/status"
     name: Active
     # payload_on: "{{ states('sensor.local_ip') }}"
-    payload_off: "OFFLINE"
+    payload_off: "offline"
     value_template: "{{ states('sensor.local_ip') == value}}"
   - platform: mqtt
     name: TV
