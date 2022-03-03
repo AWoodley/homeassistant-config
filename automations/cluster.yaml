@@ -49,5 +49,5 @@
   action:
   - data:
       payload: "{{ states('sensor.local_ip') }}"
-      topic: home/hass/active
+      topic: homeassistant/status
     service: mqtt.publish
