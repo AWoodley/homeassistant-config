@@ -116,6 +116,10 @@
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
+  - condition: state
+    entity_id: media_player.glod
+    attribute: app_name
+    state: HASfit
   action:
   - data:
       entity_id: light.media_room_lights
