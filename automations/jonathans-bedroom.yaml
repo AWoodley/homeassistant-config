@@ -15,7 +15,7 @@
     target:
       entity_id: switch.jonathans_reading_light
 - id: '2021112511151'
-  alias: Light:Davids-Bedroom-Light:Step
+  alias: Light:Jonathans-Bedroom-Light:Step
   description: ''
   use_blueprint:
     path: light-step-brightness.yaml
