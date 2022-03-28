@@ -546,41 +546,29 @@ light: !include lights.yaml
 
 vacuum: !include vacuum.yaml
 
-# media_player:
-#   - platform: mpd
-#     host: 192.168.30.10
-#     name: DeathOfRats
-  # - platform: dlna_dmr
-  #   name: Cliff
-  #   url: http://192.168.30.35/dd.xml
-    # - platform: yamaha # takes too long to restart if yamaha off
-    #   name: Yamaha Receiver
-    #   host: 192.168.30.32
-    #   source_ignore:
-    #     - "AUX"
-    #     - "Radio"
-    #     - "HDMI3"
-    #     - "HDMI4"
-    #     - "AV1"
-    #     - "AV2"
-    #     - "AV3"
-    #     - "AV4"
-    #     - "AV5"
-    #     - "AV6"
-    #     - "TUNER"
-    #     - "NET RADIO"
-    #     - "USB"
-    #     - "V-AUX"
-    #     - "iPod (USB)"
-    #   source_names:
-    #     HDMI1: "Blu-Ray"
-    #     HDMI2: "ChromeCast"
+media_player:
+  - platform: yamaha # takes too long to restart if yamaha off
+    name: Yamaha Receiver
+    host: 192.168.30.32
+    zone_names:
+      Main_Zone: "Media Room"
+    source_ignore:
+      - "AUX"
+      - "Radio"
+      - "HDMI4"
+      - "AV1"
+      - "AV2"
+      - "AV3"
+      - "AV4"
+      - "AV5"
+      - "AV6"
+      - "TUNER"
+      - "NET RADIO"
+      - "USB"
+      - "V-AUX"
+      - "iPod (USB)"
+    source_names:
+      HDMI1: "Blu-Ray"
+      HDMI2: "ChromeCast"
+      HDMI3: "Volumio"
 
-# panasonic_viera: # didn't work with this model TV
-#   host: 192.168.30.31
-#   name: Panasonic TV
-#   turn_on_action:
-#     - service: mqtt.publish
-#       data:
-#         topic: "cmnd/tasmotas/irsend"
-#         payload: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
