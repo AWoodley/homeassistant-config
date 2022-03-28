@@ -488,6 +488,7 @@ cover:
     payload_open: "open"
     payload_close: "close"
     payload_stop: "stop"
+    state_closed: "close"
     state_stopped: "stop"
     position_open: 100
     position_closed: 0
@@ -506,6 +507,7 @@ cover:
     payload_open: "open"
     payload_close: "close"
     payload_stop: "stop"
+    state_closed: "close"
     state_stopped: "stop"
     position_open: 100
     position_closed: 0
@@ -524,6 +526,7 @@ cover:
     payload_open: "open"
     payload_close: "close"
     payload_stop: "stop"
+    state_closed: "close"
     state_stopped: "stop"
     position_open: 100
     position_closed: 0
