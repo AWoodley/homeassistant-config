@@ -1,0 +1,15 @@
+---
+- platform: group
+  name: All Switches
+  entities:
+    - switch.fireplace_fan
+    - switch.davids_fan
+    - switch.davids_heater
+    - switch.jonathans_fan
+    - switch.jonathans_heater
+    - switch.jonathans_reading_light
+    - switch.media_centre
+    - switch.nancys_electric_blanket
+    - switch.radios
+    - switch.switch_study_1
+    - switch.garage_1
