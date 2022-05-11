@@ -227,7 +227,7 @@ google_assistant:
       expose: true
     climate.davids_thermostat:
       expose: true
-    climate.master_bedroom_airconditioner:
+    climate.master_bedroom_ac:
       expose: true
     climate.daikin_ac:
       expose: true
