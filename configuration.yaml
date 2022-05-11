@@ -494,7 +494,7 @@ vacuum: !include vacuum.yaml
 media_player:
   - platform: yamaha # takes too long to restart if yamaha off
     name: Yamaha Receiver
-    host: 192.168.30.32
+    host: yamaha-proxy
     zone_names:
       Main_Zone: "Media Room"
     source_ignore:
