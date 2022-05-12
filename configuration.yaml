@@ -348,9 +348,10 @@ sensor:
       - sensor.rollershutter_diningroom_ds18b20_temperature
       - sensor.jonathans_bedroom_temperature
       - sensor.davids_bedroom_temperature
+      - sensor.temperature_fe01191a0ae4e128 # Family Room
+      - sensor.temperature_843c01d60760f228 # Media Room
       - sensor.ble_temperature_a4c138dfcf8d # Dining Room
-      - sensor.ble_temperature_a4c13887d585 # Living Room
-      - sensor.ble_temperature_a4c138fbfa2a # Master Bedroom
+      - sensor.ble_temperature_a4c13887d585 # Music Room
       - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
