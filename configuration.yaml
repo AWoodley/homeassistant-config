@@ -7,6 +7,7 @@ homeassistant:
   longitude: 116.082237
   elevation: 149
   unit_system: metric
+  currency: AUD
   time_zone: Australia/Perth
   name: !secret name
   external_url: https://hass.na.id.au
