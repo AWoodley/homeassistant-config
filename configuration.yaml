@@ -354,6 +354,16 @@ sensor:
       - sensor.ble_temperature_a4c138dfcf8d # Dining Room
       - sensor.ble_temperature_a4c13887d585 # Music Room
       - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
+  - platform: template
+    sensors:
+      electricity_total:
+        friendly_name: 'Total Power'
+        value_template: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|float)}}"
+        unit_of_measurement: w
+  - platform: integration
+    sensors:
+      source: sensor.fridge_power
+      name: fridge_energy_consumed
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
