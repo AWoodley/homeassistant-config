@@ -360,9 +360,22 @@ sensor:
         friendly_name: 'Total Power'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|float)}}"
         unit_of_measurement: w
+      electricity_cost_total:
+        friendly_name: 'Total Cost'
+        value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy_cost')|float + states('sensor.shelly_em3_1_channel_b_energy_cost')|float + states('sensor.shelly_em3_1_channel_c_energy_cost')|float)}}"
+        unit_of_measurement: AUD
   - platform: integration
     source: sensor.fridge_power
     name: 'Fridge Energy'
+  - platform: integration
+    source: sensor.washing_machine_power
+    name: 'Washing Machine Energy'
+  - platform: integration
+    source: sensor.pc_power
+    name: 'PC Energy'
+  - platform: integration
+    source: sensor.dish_washer_power
+    name: 'Dish Washer Energy'      
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
