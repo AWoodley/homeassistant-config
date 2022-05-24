@@ -363,6 +363,7 @@ sensor:
   - platform: integration
     source: sensor.fridge_power
     name: fridge_energy_consumed
+    unit_prefix: k
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
