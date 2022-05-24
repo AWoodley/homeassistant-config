@@ -366,16 +366,16 @@ sensor:
         unit_of_measurement: AUD
   - platform: integration
     source: sensor.fridge_power
-    name: 'Fridge Energy'
+    name: 'Fridge'
   - platform: integration
     source: sensor.washing_machine_power
-    name: 'Washing Machine Energy'
+    name: 'Washing Machine'
   - platform: integration
     source: sensor.pc_power
-    name: 'PC Energy'
+    name: 'PC'
   - platform: integration
     source: sensor.dish_washer_power
-    name: 'Dish Washer Energy'      
+    name: 'Dish Washer'      
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
@@ -397,6 +397,12 @@ sensor:
     state_topic: "homeassistant/status"
     name: partner
     expire_after: 65
+
+
+utility_meter:
+  energy:
+    source: sensor.electricity_cost_total
+    cycle: daily
 
 
 switch:
