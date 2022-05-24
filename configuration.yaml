@@ -401,7 +401,7 @@ sensor:
 
 utility_meter:
   energy:
-    source: sensor.electricity_cost_total
+    source: sensor.electricity_total
     cycle: daily
 
 
