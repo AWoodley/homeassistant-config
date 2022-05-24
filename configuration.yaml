@@ -362,7 +362,7 @@ sensor:
         unit_of_measurement: w
   - platform: integration
     source: sensor.fridge_power
-    name: fridge_energy
+    name: 'Fridge Energy'
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
