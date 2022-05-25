@@ -356,16 +356,16 @@ sensor:
       - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
   - platform: template
     sensors:
-      power_sum:
-        friendly_name: 'Power Sum'
+      power_total:
+        friendly_name: 'Power Total'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float)}}"
         unit_of_measurement: w
-      electricity_cost_sum:
-        friendly_name: 'Cost Sum'
+      electricity_cost_total:
+        friendly_name: 'Cost Total'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy_cost')|float + states('sensor.shelly_em3_1_channel_b_energy_cost')|float + states('sensor.shelly_em3_1_channel_c_energy_cost')|float)|round(2)}}"
         unit_of_measurement: AUD
-      energy_sum:
-        friendly_name: 'Energy Sum'
+      energy_total:
+        friendly_name: 'Energy Total'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy')|float + states('sensor.shelly_em3_1_channel_b_energy')|float + states('sensor.shelly_em3_1_channel_c_energy')|float)|round(2)}}"
         unit_of_measurement: wH
   - platform: integration
@@ -406,11 +406,11 @@ sensor:
 utility_meter:
   energy:
     unique_id: sensor.energy
-    source: sensor.energy_sum
+    source: sensor.energy_total
     cycle: daily
   energy_cost:
     unique_id: sensor.energy_cost
-    source: sensor.electricity_cost_sum
+    source: sensor.electricity_cost_total
     cycle: daily
 
 
