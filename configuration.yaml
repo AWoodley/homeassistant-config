@@ -356,18 +356,17 @@ sensor:
       - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
   - platform: template
     sensors:
-      electricity_total:
-        friendly_name: 'Total Power'
+      power_sum:
+        friendly_name: 'Power Sum'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float)}}"
         unit_of_measurement: w
-      electricity_cost_total:
-        friendly_name: 'Total Cost'
+      electricity_cost_sum:
+        friendly_name: 'Cost Sum'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy_cost')|float + states('sensor.shelly_em3_1_channel_b_energy_cost')|float + states('sensor.shelly_em3_1_channel_c_energy_cost')|float)|round(2)}}"
         unit_of_measurement: AUD
-      energy_total:
-        friendly_name: 'Total Energy'
+      energy_sum:
+        friendly_name: 'Energy Sum'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy')|float + states('sensor.shelly_em3_1_channel_b_energy')|float + states('sensor.shelly_em3_1_channel_c_energy')|float)|round(2)}}"
-        unit_of_measurement: kWh
   - platform: integration
     source: sensor.fridge_power
     name: 'Fridge'
@@ -406,11 +405,11 @@ sensor:
 utility_meter:
   energy:
     unique_id: sensor.energy
-    source: sensor.energy_total
+    source: sensor.energy_sum
     cycle: daily
   energy_cost:
     unique_id: sensor.energy_cost
-    source: sensor.electricity_cost_total
+    source: sensor.electricity_cost_sum
     cycle: daily
 
 
