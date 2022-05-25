@@ -356,7 +356,7 @@ sensor:
       - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
   - platform: template
     sensors:
-      power_total:
+      electricity_total:
         friendly_name: 'Power Total'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float)}}"
         unit_of_measurement: w
