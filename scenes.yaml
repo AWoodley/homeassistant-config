@@ -372,7 +372,7 @@
       min_mireds: 153
       state: 'off'
       supported_features: 3
-    switch.switch_study_1:
+    switch.monitors:
       friendly_name: Switch-Study-1
       state: 'on'
 - id: '1585068607563'
@@ -422,7 +422,7 @@
       icon: mdi:track-light
       supported_features: 43
       state: 'on'
-    switch.switch_study_1:
+    switch.monitors:
       friendly_name: Switch Study 1
       icon: mdi:monitor
       state: 'on'
@@ -461,7 +461,7 @@
       icon: mdi:track-light
       supported_features: 35
       state: 'off'
-    switch.switch_study_1:
+    switch.monitors:
       friendly_name: Switch-Study-1
       icon: mdi:desktop-classic
       state: 'off'
@@ -723,7 +723,7 @@
       min_mireds: 153
       state: 'on'
       supported_features: 3
-    switch.switch_study_1:
+    switch.monitors:
       friendly_name: Switch-Study-1
       state: 'on'
 - id: '1588665537146'
@@ -756,7 +756,7 @@
       min_mireds: 153
       state: 'on'
       supported_features: 3
-    switch.switch_study_1:
+    switch.monitors:
       friendly_name: Switch-Study-1
       state: 'on'
 - id: '1588940932480'
