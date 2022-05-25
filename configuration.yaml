@@ -367,6 +367,7 @@ sensor:
       energy_sum:
         friendly_name: 'Energy Sum'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy')|float + states('sensor.shelly_em3_1_channel_b_energy')|float + states('sensor.shelly_em3_1_channel_c_energy')|float)|round(2)}}"
+        unit_of_measurement: wH
   - platform: integration
     source: sensor.fridge_power
     name: 'Fridge'
