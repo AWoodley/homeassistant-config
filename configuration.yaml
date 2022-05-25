@@ -359,7 +359,7 @@ sensor:
       electricity_total:
         friendly_name: 'Power Total'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float)}}"
-        unit_of_measurement: w
+        unit_of_measurement: W
       electricity_cost_total:
         friendly_name: 'Cost Total'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy_cost')|float + states('sensor.shelly_em3_1_channel_b_energy_cost')|float + states('sensor.shelly_em3_1_channel_c_energy_cost')|float)|round(2)}}"
