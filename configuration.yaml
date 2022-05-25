@@ -404,10 +404,6 @@ sensor:
 
 
 utility_meter:
-  energy:
-    unique_id: sensor.energy
-    source: sensor.energy_total
-    cycle: daily
   energy_cost:
     unique_id: sensor.energy_cost
     source: sensor.electricity_cost_total
