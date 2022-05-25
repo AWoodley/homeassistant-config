@@ -368,6 +368,10 @@ sensor:
         friendly_name: 'Energy Total'
         value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy')|float + states('sensor.shelly_em3_1_channel_b_energy')|float + states('sensor.shelly_em3_1_channel_c_energy')|float)|round(2)}}"
         unit_of_measurement: wH
+      cost_per_hour:
+        friendly_name: 'Energy Cost per Hour'
+        value_template: "{{ (states('sensor.electricity_total')|float) / 1000 * 0.266612 | round(2) }}"
+        unit_of_measurement: AUD
   - platform: integration
     source: sensor.fridge_power
     name: 'Fridge'
