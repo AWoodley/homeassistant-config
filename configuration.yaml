@@ -382,6 +382,7 @@ sensor:
           {% else %}
             off
           {% endif %}
+        icon: mdi:washing-machine
   - platform: integration
     source: sensor.fridge_power
     name: 'Fridge'
