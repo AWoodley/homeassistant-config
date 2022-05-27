@@ -430,7 +430,7 @@ utility_meter:
     cycle: daily
   energy_cost:
     unique_id: sensor.energy_cost
-    source: sensor.electricity_cost_total
+    source: sensor.cost_total
     cycle: daily
 
 
