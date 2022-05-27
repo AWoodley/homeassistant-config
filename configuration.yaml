@@ -314,7 +314,7 @@ template:
         {% endif %}
       icon: mdi:washing-machine
   - sensor:
-    - name: 'Power Total'
+    - name: 'Electricity Total'
       unique_id: sensor.electricity_total
       state: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float)}}"
       unit_of_measurement: W
@@ -334,7 +334,7 @@ template:
       state: "{{ (states('sensor.electricity_total')|float / 1000 * 0.266612) | round(2) }}"
       unit_of_measurement: AUD
   - binary_sensor:
-    - name: "Active Instance"
+    - name: "Active"
       unique_id: binary_sensor.active
       state: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'offline') or is_state('sensor.partner', 'unavailable') }}"
   - binary_sensor:
