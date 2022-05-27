@@ -300,6 +300,49 @@ climate:
     initial_hvac_mode: 'off'
 
 
+template:
+  - sensor:
+    - name: 'Washing Machine'
+      unique_id: sensor.washing_machine_state
+      state: >
+        {% if states('sensor.washing_mahine_current')|float>=100 %}
+          on
+        {% elif states('sensor.washing_mahine_current')|float>=20 %}
+          standby
+        {% else %}
+          off
+        {% endif %}
+      icon: mdi:washing-machine
+  - sensor:
+    - name: 'Power Total'
+      unique_id: sensor.electricity_total
+      state: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float)}}"
+      unit_of_measurement: W
+  - sensor:
+    - name: 'Cost Total'
+      unique_id: sensor.electricity_cost_total
+      state: "{{ (states('sensor.shelly_em3_1_channel_a_energy_cost')|float + states('sensor.shelly_em3_1_channel_b_energy_cost')|float + states('sensor.shelly_em3_1_channel_c_energy_cost')|float)|round(2)}}"
+      unit_of_measurement: AUD
+  - sensor:
+    - name: 'Energy Sum'
+      unique_id: sensor.energy_sum
+      state: "{{ (states('sensor.shelly_em3_1_channel_a_energy')|float + states('sensor.shelly_em3_1_channel_b_energy')|float + states('sensor.shelly_em3_1_channel_c_energy')|float)|round(2)}}"
+      unit_of_measurement: kWh
+  - sensor:
+    - name: 'Energy Cost per Hour'
+      unique_id: sensor.cost_per_hour
+      state: "{{ (states('sensor.electricity_total')|float / 1000 * 0.266612) | round(2) }}"
+      unit_of_measurement: AUD
+  - binary_sensor:
+    - name: "Active Instance"
+      unique_id: binary_sensor.active
+      state: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'offline') or is_state('sensor.partner', 'unavailable') }}"
+  - binary_sensor:
+    - name: "Bathroom Light"
+      unique_id: binary_sensor.light_bathroom_1
+      state: "{{states('sun.sun') == 'below_horizon' and states('sensor.bathroom_shelly_luminosity') > '150'}}"
+
+
 binary_sensor:
   - platform: mqtt
     state_topic: "home/alarm/zones/0"
@@ -325,16 +368,7 @@ binary_sensor:
     state_topic: "home/alarm/zones/5"
     name: "Laundry/Garage Door"
     device_class: door
-  - platform: template
-    sensors:
-      active:
-        friendly_name: "Active IP"
-        value_template: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'offline') or is_state('sensor.partner', 'unavailable') }}"
-  - platform: template
-    sensors:
-      light_bathroom_1:
-        friendly_name: "Bathroom Light"
-        value_template: "{{states('sun.sun') == 'below_horizon' and states('sensor.bathroom_shelly_luminosity') > '150'}}"
+
 
 sensor:
   - platform: time_date
@@ -354,35 +388,6 @@ sensor:
       - sensor.ble_temperature_a4c138dfcf8d # Dining Room
       - sensor.ble_temperature_a4c13887d585 # Music Room
       - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
-  - platform: template
-    sensors:
-      electricity_total:
-        friendly_name: 'Power Total'
-        value_template: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float)}}"
-        unit_of_measurement: W
-      electricity_cost_total:
-        friendly_name: 'Cost Total'
-        value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy_cost')|float + states('sensor.shelly_em3_1_channel_b_energy_cost')|float + states('sensor.shelly_em3_1_channel_c_energy_cost')|float)|round(2)}}"
-        unit_of_measurement: AUD
-      energy_sum:
-        friendly_name: 'Energy Sum'
-        value_template: "{{ (states('sensor.shelly_em3_1_channel_a_energy')|float + states('sensor.shelly_em3_1_channel_b_energy')|float + states('sensor.shelly_em3_1_channel_c_energy')|float)|round(2)}}"
-        unit_of_measurement: kWh
-      cost_per_hour:
-        friendly_name: 'Energy Cost per Hour'
-        value_template: "{{ (states('sensor.electricity_total')|float / 1000 * 0.266612) | round(2) }}"
-        unit_of_measurement: AUD
-      washing_machine_state:
-        friendly_name: 'Washing Machine'
-        value_template: >
-          {% if states('sensor.washing_mahine_current')|float>=100 %}
-            on
-          {% elif states('sensor.washing_mahine_current')|float>=20 %}
-            standby
-          {% else %}
-            off
-          {% endif %}
-        icon: mdi:washing-machine
   - platform: integration
     source: sensor.fridge_power
     name: 'Fridge'
