@@ -372,6 +372,16 @@ sensor:
         friendly_name: 'Energy Cost per Hour'
         value_template: "{{ (states('sensor.electricity_total')|float / 1000 * 0.266612) | round(2) }}"
         unit_of_measurement: AUD
+      washing_machine_state:
+        friendly_name: 'Washing Machine'
+        value_template: >
+          {% if states('sensor.washing_mahine_current')|float>=100 %}
+            on
+          {% elif states('sensor.washing_mahine_current')|float>=20 %}
+            standby
+          {% else %}
+            off
+          {% endif %}
   - platform: integration
     source: sensor.fridge_power
     name: 'Fridge'
