@@ -422,7 +422,7 @@ sensor:
     source: sensor.dish_washer_power
     name: 'Dish Washer'    
   - platform: integration
-    source: sensor.cloths_dryer_power
+    source: sensor.clothes_dryer_power
     name: 'Clothes Dryer'  
   - platform: integration
     source: sensor.master_bedroom_air_conditioner_power
