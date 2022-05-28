@@ -301,18 +301,17 @@ climate:
 
 
 template:
-  - sensor:
+  - binary_sensor:
     - name: 'Washing Machine'
       unique_id: sensor.washing_machine_state
       state: >
         {% if states('sensor.washing_mahine_current')|float>=100 %}
           on
-        {% elif states('sensor.washing_mahine_current')|float>=20 %}
-          standby
         {% else %}
           off
         {% endif %}
       icon: mdi:washing-machine
+  - binary_sensor:
     - name: 'Clothes Dryer'
       unique_id: sensor.clothes_dryer_state
       state: >
@@ -322,7 +321,7 @@ template:
           off
         {% endif %}
       icon: mdi:washing-machine
-  - sensor:
+  - binary_sensor:
     - name: 'TV'
       unique_id: sensor.television
       state: >
