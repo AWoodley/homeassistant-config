@@ -331,7 +331,7 @@ template:
         {% else %}
           off
         {% endif %}
-      icon: mdi:tv
+      icon: mdi:television
   - sensor:
     - name: 'Electricity Total'
       unique_id: sensor.electricity_total
