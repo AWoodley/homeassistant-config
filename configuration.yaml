@@ -320,7 +320,7 @@ template:
         {% else %}
           off
         {% endif %}
-      icon: mdi:washing-machine
+      icon: mdi:tumble-dryer
   - binary_sensor:
     - name: 'TV'
       unique_id: sensor.television
