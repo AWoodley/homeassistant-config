@@ -326,7 +326,7 @@ template:
     - name: 'TV'
       unique_id: sensor.television
       state: >
-        {% if states('sensor.media_centre_current')|float>=1000 %}
+        {% if states('sensor.media_centre_current')|float>=750 %}
           on
         {% else %}
           off
