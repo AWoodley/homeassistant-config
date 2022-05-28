@@ -431,7 +431,7 @@ sensor:
     source: sensor.media_centre_power
     name: 'Media Centre'  
   - platform: integration
-    source: sensor.servers__power
+    source: sensor.servers_power
     name: 'Servers'                    
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
