@@ -322,6 +322,16 @@ template:
         {% endif %}
       icon: mdi:tumble-dryer
   - binary_sensor:
+    - name: 'Dish Washer'
+      unique_id: sensor.dish_washer_state
+      state: >
+        {% if states('sensor.dish_washer_current')|float>=100 %}
+          on
+        {% else %}
+          off
+        {% endif %}
+      icon: mdi:dishwasher
+  - binary_sensor:
     - name: 'TV'
       unique_id: sensor.television
       state: >
