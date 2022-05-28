@@ -313,6 +313,15 @@ template:
           off
         {% endif %}
       icon: mdi:washing-machine
+    - name: 'Clothes Dryer'
+      unique_id: sensor.clothes_dryer_state
+      state: >
+        {% if states('sensor.washing_mahine_current')|float>=100 %}
+          on
+        {% else %}
+          off
+        {% endif %}
+      icon: mdi:washing-machine
   - sensor:
     - name: 'TV'
       unique_id: sensor.television
