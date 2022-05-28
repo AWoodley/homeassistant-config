@@ -314,6 +314,16 @@ template:
         {% endif %}
       icon: mdi:washing-machine
   - sensor:
+    - name: 'TV'
+      unique_id: sensor.television
+      state: >
+        {% if states('sensor.media_centre_current')|float>=1000 %}
+          on
+        {% else %}
+          off
+        {% endif %}
+      icon: mdi:tv
+  - sensor:
     - name: 'Electricity Total'
       unique_id: sensor.electricity_total
       state: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float)}}"
@@ -341,6 +351,17 @@ template:
     - name: "Bathroom Light"
       unique_id: binary_sensor.light_bathroom_1
       state: "{{states('sun.sun') == 'below_horizon' and states('sensor.bathroom_shelly_luminosity') > '150'}}"
+
+
+utility_meter:
+  energy_total:
+    unique_id: sensor.energy_total
+    source: sensor.energy_sum
+    cycle: daily
+  energy_cost:
+    unique_id: sensor.energy_cost
+    source: sensor.cost_total
+    cycle: daily
 
 
 binary_sensor:
@@ -399,7 +420,19 @@ sensor:
     name: 'PC'
   - platform: integration
     source: sensor.dish_washer_power
-    name: 'Dish Washer'      
+    name: 'Dish Washer'    
+  - platform: integration
+    source: sensor.cloths_dryer_power
+    name: 'Clothes Dryer'  
+  - platform: integration
+    source: sensor.master_bedroom_air_conditioner_power
+    name: 'Master Bedroom Air-Conditioner'  
+  - platform: integration
+    source: sensor.media_centre_power
+    name: 'Media Centre'  
+  - platform: integration
+    source: sensor.servers__power
+    name: 'Servers'                    
   - platform: mqtt
     state_topic: "home/+/SRFBtoMQTT"
     name: 'RFB Button'
@@ -421,17 +454,6 @@ sensor:
     state_topic: "homeassistant/status"
     name: partner
     expire_after: 65
-
-
-utility_meter:
-  energy_total:
-    unique_id: sensor.energy_total
-    source: sensor.energy_sum
-    cycle: daily
-  energy_cost:
-    unique_id: sensor.energy_cost
-    source: sensor.cost_total
-    cycle: daily
 
 
 switch:
