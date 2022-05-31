@@ -115,6 +115,15 @@
           - condition: time
             after: '22:00'
             before: '07:00'
+          - condition: or
+            conditions:
+            - condition: state
+              entity_id: light.kitchen_lights
+              state: 'off'
+            - condition: numeric_state
+              entity_id: light.kitchen_lights
+              attribute: brightness
+              below: '100'
         sequence:
           - service: light.turn_on
             data:
@@ -133,3 +142,4 @@
     - service: light.turn_off
       target:
         entity_id: light.kitchen_lights
+  mode: restart
