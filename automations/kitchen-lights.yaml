@@ -83,7 +83,7 @@
                 - service: light.turn_on
                   data:
                     color_temp: 370
-                    brightness: 20
+                    brightness: 120
                   target:
                     entity_id: light.light_kitchen_2, light.light_kitchen_3
       default:
@@ -93,3 +93,43 @@
             brightness: 255
           target:
             entity_id: light.kitchen_lights
+- id: '20220531225501'
+  alias: Light:Kitchen Lights:PIR
+  description: ''
+  trigger:
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '14003020'
+    id: PIR
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  action:
+    - choose:
+      - conditions:
+          - condition: time
+            after: '22:00'
+            before: '07:00'
+        sequence:
+          - service: light.turn_on
+            data:
+              color_temp: 370
+              brightness: 120
+            target:
+              entity_id: light.light_kitchen_2, light.light_kitchen_3
+      default:
+        - service: light.turn_on
+          data:
+            color_temp: 370
+            brightness: 255
+          target:
+            entity_id: light.kitchen_lights
+    - delay: '00:10:00'
+    - service: light.turn_off
+      target:
+        entity_id: light.kitchen_lights

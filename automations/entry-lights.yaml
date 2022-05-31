@@ -13,12 +13,38 @@
   action:
   - data:
       entity_id: light.entry_lights
-    service: >
-      {% if is_state('light.entry_lights', 'on') %}
-      light.turn_off
-      {% else %}
-      light.turn_on
-      {% endif %}
+    service: light.toggle
+- id: '2022052122421'
+  alias: Light:Entry:PIR
+  description: ''
+  trigger:
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '8334156'
+    id: PIR
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: time
+    after: '19:30:00'
+    before: 07:30:00
+  - condition: state
+    entity_id: light.entry_lights
+    state: 'off'
+  action:
+  - service: light.turn_on
+    target:
+      entity_id: light.entry_lights
+  - delay: '00:05:00'
+  - service: light.turn_off
+    target:
+      entity_id: light.entry_lights
+  mode: restart
 - id: '20200514225301'
   alias: Light:Night:Toggle
   description: ''
