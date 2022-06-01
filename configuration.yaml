@@ -69,6 +69,8 @@ timer: !include timer.yaml
 # Text to speech
 tts:
   - platform: google_translate
+    cache: true
+    base_url: http://192.168.30.1:8123
 
 frontend:
   themes: !include themes.yaml
