@@ -79,7 +79,7 @@ discovery:
   ignore:
     - netgear_router
 
-#mqtt:
+mqtt:
 #  broker: localhost
 #  port: 1883
 #  username: hass
@@ -96,15 +96,13 @@ discovery:
 #    payload: 'OFFLINE'
 #    retain: false
 #    qos: 0
-
-
-device_tracker:
-  - platform: mqtt
-    devices:
-      adrian_keys: 'blecker/efa03eac2b0f'
-      adrian_vivosmart_4: 'blecker/d7be10bbfaf5'
-      adrian_instinct: 'blecker/dab46862ceea'
-      nancy_charge: 'blecker/e3eb8b55b045'
+  alarm_control_panel:
+  - state_topic: "home/alarm"
+    command_topic: "home/alarm/set"
+    code_arm_required: false
+    code_disarm_required: false
+  device_tracker:
+  - devices:
       adrian: 'location/adrian'
       david: 'location/david'
       guest: 'location/guest'
@@ -112,7 +110,131 @@ device_tracker:
       nancy: 'location/nancy'
     payload_home: 'present'
     payload_not_home: 'not_present'
-    source_type: bluetooth_le
+  binary_sensor:
+  - state_topic: "home/alarm/zones/0"
+    name: "Front Door"
+    device_class: door
+  - state_topic: "home/alarm/zones/1"
+    name: "Media Room"
+    device_class: moving
+  - state_topic: "home/alarm/zones/2"
+    name: "Family Room"
+    device_class: moving
+  - state_topic: "home/alarm/zones/3"
+    name: "Back Passage"
+    device_class: moving
+  - state_topic: "home/alarm/zones/4"
+    name: "Study"
+    device_class: moving
+  - state_topic: "home/alarm/zones/5"
+    name: "Laundry/Garage Door"
+    device_class: door
+  sensor:
+  - state_topic: "home/+/SRFBtoMQTT"
+    name: 'RFB Button'
+    value_template: '{{value_json.value}}'
+    qos: 1
+    expire_after: 1
+  - state_topic: "tele/tasmota/IR/+/RESULT"
+    name: 'IR Button'
+    value_template: "{{value_json.IrReceived.Data}}"
+    qos: 1
+    expire_after: 1
+  - state_topic: "tele/tasmota/IR/+/RESULT"
+    name: "IR Last"
+    value_template: "{{value_json.IrReceived.Data}}"
+    qos: 1
+  - state_topic: "homeassistant/status"
+    name: partner
+    expire_after: 65
+  switch:
+  - name: Sammy
+    command_topic: "cmnd/tasmotas/irsend"
+    payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
+  - state_topic: "homeassistant/status"
+    command_topic: "homeassistant/status"
+    name: Active
+    # payload_on: "{{ states('sensor.local_ip') }}"
+    payload_off: "offline"
+    value_template: "{{ states('sensor.local_ip') == value}}"
+  - name: TV
+    icon: mdi:television
+    optimistic: false
+    command_topic: "cmnd/tasmotas/irsend"
+    payload_on: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
+    payload_off: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
+  cover:
+  - unique_id: "D8BFC01A3A5F"
+    name: "Master Bedroom Rollershutter"
+    state_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0"
+    command_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command"
+    position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/pos"
+    set_position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command/pos"
+    payload_available: "true"
+    payload_not_available: "false"
+    payload_open: "open"
+    payload_close: "close"
+    payload_stop: "stop"
+    state_closed: "close"
+    state_stopped: "stop"
+    position_open: 100
+    position_closed: 0
+    qos: 1
+    retain: false
+    optimistic: false
+  - unique_id: "40F5200467D0"
+    name: "Jonathans Bedroom Rollershutter"
+    state_topic: "shellies/shellyswitch25-40F5200467D0/roller/0"
+    command_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command"
+    position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/pos"
+    set_position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command/pos"
+    payload_available: "true"
+    payload_not_available: "false"
+    payload_open: "open"
+    payload_close: "close"
+    payload_stop: "stop"
+    state_closed: "close"
+    state_stopped: "stop"
+    position_open: 100
+    position_closed: 0
+    qos: 1
+    retain: false
+    optimistic: false
+  - unique_id: "40F520055224"
+    name: "Davids Bedroom Rollershutter"
+    state_topic: "shellies/shellyswitch25-40F520055224/roller/0"
+    command_topic: "shellies/shellyswitch25-40F520055224/roller/0/command"
+    position_topic: "shellies/shellyswitch25-40F520055224/roller/0/pos"
+    set_position_topic: "shellies/shellyswitch25-40F520055224/roller/0/command/pos"
+    payload_available: "true"
+    payload_not_available: "false"
+    payload_open: "open"
+    payload_close: "close"
+    payload_stop: "stop"
+    state_closed: "close"
+    state_stopped: "stop"
+    position_open: 100
+    position_closed: 0
+    qos: 1
+    retain: false
+    optimistic: false
+  vacuum:
+  - name: "Sammy"
+    schema: state
+    supported_features:
+      # - turn_on
+      # - turn_off
+      - return_home
+      - start
+      - pause
+      - stop
+    command_topic: "cmnd/tasmotas/irsend"
+    # payload_turn_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
+    # payload_turn_off: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
+    payload_return_to_base: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x8181807F\",\"DataLSB\":\"0x818101FE\",\"Repeat\":0}"
+    payload_start: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
+    payload_pause: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
+    payload_stop: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
 
 
 lifx:
@@ -273,12 +395,12 @@ notify:
 #     - host: 192.168.29.75
 
 
-alarm_control_panel:
-  - platform: mqtt
-    state_topic: "home/alarm"
-    command_topic: "home/alarm/set"
-    code_arm_required: false
-    code_disarm_required: false
+# alarm_control_panel:
+#   - platform: mqtt
+#     state_topic: "home/alarm"
+#     command_topic: "home/alarm/set"
+#     code_arm_required: false
+#     code_disarm_required: false
 
 
 climate:
@@ -384,31 +506,31 @@ utility_meter:
     cycle: daily
 
 
-binary_sensor:
-  - platform: mqtt
-    state_topic: "home/alarm/zones/0"
-    name: "Front Door"
-    device_class: door
-  - platform: mqtt
-    state_topic: "home/alarm/zones/1"
-    name: "Media Room"
-    device_class: moving
-  - platform: mqtt
-    state_topic: "home/alarm/zones/2"
-    name: "Family Room"
-    device_class: moving
-  - platform: mqtt
-    state_topic: "home/alarm/zones/3"
-    name: "Back Passage"
-    device_class: moving
-  - platform: mqtt
-    state_topic: "home/alarm/zones/4"
-    name: "Study"
-    device_class: moving
-  - platform: mqtt
-    state_topic: "home/alarm/zones/5"
-    name: "Laundry/Garage Door"
-    device_class: door
+# binary_sensor:
+#   - platform: mqtt
+#     state_topic: "home/alarm/zones/0"
+#     name: "Front Door"
+#     device_class: door
+#   - platform: mqtt
+#     state_topic: "home/alarm/zones/1"
+#     name: "Media Room"
+#     device_class: moving
+#   - platform: mqtt
+#     state_topic: "home/alarm/zones/2"
+#     name: "Family Room"
+#     device_class: moving
+#   - platform: mqtt
+#     state_topic: "home/alarm/zones/3"
+#     name: "Back Passage"
+#     device_class: moving
+#   - platform: mqtt
+#     state_topic: "home/alarm/zones/4"
+#     name: "Study"
+#     device_class: moving
+#   - platform: mqtt
+#     state_topic: "home/alarm/zones/5"
+#     name: "Laundry/Garage Door"
+#     device_class: door
 
 
 sensor:
@@ -453,129 +575,129 @@ sensor:
   - platform: integration
     source: sensor.servers_power
     name: 'Servers'                    
-  - platform: mqtt
-    state_topic: "home/+/SRFBtoMQTT"
-    name: 'RFB Button'
-    value_template: '{{value_json.value}}'
-    qos: 1
-    expire_after: 1
-  - platform: mqtt
-    state_topic: "tele/tasmota/IR/+/RESULT"
-    name: 'IR Button'
-    value_template: "{{value_json.IrReceived.Data}}"
-    qos: 1
-    expire_after: 1
-  - platform: mqtt
-    state_topic: "tele/tasmota/IR/+/RESULT"
-    name: "IR Last"
-    value_template: "{{value_json.IrReceived.Data}}"
-    qos: 1
-  - platform: mqtt
-    state_topic: "homeassistant/status"
-    name: partner
-    expire_after: 65
+  # - platform: mqtt
+  #   state_topic: "home/+/SRFBtoMQTT"
+  #   name: 'RFB Button'
+  #   value_template: '{{value_json.value}}'
+  #   qos: 1
+  #   expire_after: 1
+  # - platform: mqtt
+  #   state_topic: "tele/tasmota/IR/+/RESULT"
+  #   name: 'IR Button'
+  #   value_template: "{{value_json.IrReceived.Data}}"
+  #   qos: 1
+  #   expire_after: 1
+  # - platform: mqtt
+  #   state_topic: "tele/tasmota/IR/+/RESULT"
+  #   name: "IR Last"
+  #   value_template: "{{value_json.IrReceived.Data}}"
+  #   qos: 1
+  # - platform: mqtt
+  #   state_topic: "homeassistant/status"
+  #   name: partner
+  #   expire_after: 65
 
 
-switch:
-  - platform: mqtt
-    name: Sammy
-    command_topic: "cmnd/tasmotas/irsend"
-    payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
-  - platform: mqtt
-    state_topic: "homeassistant/status"
-    command_topic: "homeassistant/status"
-    name: Active
-    # payload_on: "{{ states('sensor.local_ip') }}"
-    payload_off: "offline"
-    value_template: "{{ states('sensor.local_ip') == value}}"
-  - platform: mqtt
-    name: TV
-    icon: mdi:television
-    optimistic: false
-    command_topic: "cmnd/tasmotas/irsend"
-    payload_on: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
-    payload_off: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
-  - platform: flux
-    lights:
-      - light.light_familyroom_1
-      - light.light_musicroom_1
-      - light.lifx_study_1
-      - light.passage_lights
-      - light.dining_room_lights
-    name: Fluxer
-    start_time: '7:00'
-    stop_time: '20:00'
-    start_colortemp: 6500
-    sunset_colortemp: 3030
-    stop_colortemp: 2000
-    disable_brightness_adjust: true
-    mode: mired
+# switch:
+  # - platform: mqtt
+  #   name: Sammy
+  #   command_topic: "cmnd/tasmotas/irsend"
+  #   payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
+  # - platform: mqtt
+  #   state_topic: "homeassistant/status"
+  #   command_topic: "homeassistant/status"
+  #   name: Active
+  #   # payload_on: "{{ states('sensor.local_ip') }}"
+  #   payload_off: "offline"
+  #   value_template: "{{ states('sensor.local_ip') == value}}"
+  # - platform: mqtt
+  #   name: TV
+  #   icon: mdi:television
+  #   optimistic: false
+  #   command_topic: "cmnd/tasmotas/irsend"
+  #   payload_on: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
+  #   payload_off: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
+  # - platform: flux
+  #   lights:
+  #     - light.light_familyroom_1
+  #     - light.light_musicroom_1
+  #     - light.lifx_study_1
+  #     - light.passage_lights
+  #     - light.dining_room_lights
+  #   name: Fluxer
+  #   start_time: '7:00'
+  #   stop_time: '20:00'
+  #   start_colortemp: 6500
+  #   sunset_colortemp: 3030
+  #   stop_colortemp: 2000
+  #   disable_brightness_adjust: true
+  #   mode: mired
 
 
-cover:
+# cover:
   # - platform: mqtt
   #   name: "Dining Room Rollershutter"
   #   command_topic: cmnd/tasmotas/4A78A8/BACKLOG
   #   payload_open: "ShutterOpen1 1"
   #   payload_close: "ShutterClose1 1"
   #   payload_stop: "Power3 1"
-  - platform: mqtt
-    name: "Master Bedroom Rollershutter"
-    unique_id: "D8BFC01A3A5F"
-    state_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0"
-    command_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command"
-    position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/pos"
-    set_position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command/pos"
-    payload_available: "true"
-    payload_not_available: "false"
-    payload_open: "open"
-    payload_close: "close"
-    payload_stop: "stop"
-    state_closed: "close"
-    state_stopped: "stop"
-    position_open: 100
-    position_closed: 0
-    qos: 1
-    retain: false
-    optimistic: false
-  - platform: mqtt
-    unique_id: "40F5200467D0"
-    name: "Jonathans Bedroom Rollershutter"
-    state_topic: "shellies/shellyswitch25-40F5200467D0/roller/0"
-    command_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command"
-    position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/pos"
-    set_position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command/pos"
-    payload_available: "true"
-    payload_not_available: "false"
-    payload_open: "open"
-    payload_close: "close"
-    payload_stop: "stop"
-    state_closed: "close"
-    state_stopped: "stop"
-    position_open: 100
-    position_closed: 0
-    qos: 1
-    retain: false
-    optimistic: false
-  - platform: mqtt
-    unique_id: "40F520055224"
-    name: "Davids Bedroom Rollershutter"
-    state_topic: "shellies/shellyswitch25-40F520055224/roller/0"
-    command_topic: "shellies/shellyswitch25-40F520055224/roller/0/command"
-    position_topic: "shellies/shellyswitch25-40F520055224/roller/0/pos"
-    set_position_topic: "shellies/shellyswitch25-40F520055224/roller/0/command/pos"
-    payload_available: "true"
-    payload_not_available: "false"
-    payload_open: "open"
-    payload_close: "close"
-    payload_stop: "stop"
-    state_closed: "close"
-    state_stopped: "stop"
-    position_open: 100
-    position_closed: 0
-    qos: 1
-    retain: false
-    optimistic: false
+  # - platform: mqtt
+  #   name: "Master Bedroom Rollershutter"
+  #   unique_id: "D8BFC01A3A5F"
+  #   state_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0"
+  #   command_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command"
+  #   position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/pos"
+  #   set_position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command/pos"
+  #   payload_available: "true"
+  #   payload_not_available: "false"
+  #   payload_open: "open"
+  #   payload_close: "close"
+  #   payload_stop: "stop"
+  #   state_closed: "close"
+  #   state_stopped: "stop"
+  #   position_open: 100
+  #   position_closed: 0
+  #   qos: 1
+  #   retain: false
+  #   optimistic: false
+  # - platform: mqtt
+  #   unique_id: "40F5200467D0"
+  #   name: "Jonathans Bedroom Rollershutter"
+  #   state_topic: "shellies/shellyswitch25-40F5200467D0/roller/0"
+  #   command_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command"
+  #   position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/pos"
+  #   set_position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command/pos"
+  #   payload_available: "true"
+  #   payload_not_available: "false"
+  #   payload_open: "open"
+  #   payload_close: "close"
+  #   payload_stop: "stop"
+  #   state_closed: "close"
+  #   state_stopped: "stop"
+  #   position_open: 100
+  #   position_closed: 0
+  #   qos: 1
+  #   retain: false
+  #   optimistic: false
+  # - platform: mqtt
+  #   unique_id: "40F520055224"
+  #   name: "Davids Bedroom Rollershutter"
+  #   state_topic: "shellies/shellyswitch25-40F520055224/roller/0"
+  #   command_topic: "shellies/shellyswitch25-40F520055224/roller/0/command"
+  #   position_topic: "shellies/shellyswitch25-40F520055224/roller/0/pos"
+  #   set_position_topic: "shellies/shellyswitch25-40F520055224/roller/0/command/pos"
+  #   payload_available: "true"
+  #   payload_not_available: "false"
+  #   payload_open: "open"
+  #   payload_close: "close"
+  #   payload_stop: "stop"
+  #   state_closed: "close"
+  #   state_stopped: "stop"
+  #   position_open: 100
+  #   position_closed: 0
+  #   qos: 1
+  #   retain: false
+  #   optimistic: false
 
 
 #input_select:
