@@ -712,7 +712,7 @@ sensor:
 
 light: !include lights.yaml
 
-vacuum: !include vacuum.yaml
+# vacuum: !include vacuum.yaml
 
 media_player:
   - platform: yamaha # takes too long to restart if yamaha off
