@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace.lovelace_mobile",
     "data": {
         "config": {
@@ -242,6 +243,14 @@
                                         },
                                         {
                                             "type": "state-icon",
+                                            "entity": "binary_sensor.jonathans_bedroom_door",
+                                            "style": {
+                                                "top": "15.5%",
+                                                "left": "42%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
                                             "entity": "switch.jonathans_reading_light",
                                             "style": {
                                                 "top": "15.5%",
@@ -257,14 +266,6 @@
                                         },
                                         {
                                             "type": "state-icon",
-                                            "entity": "binary_sensor.jonathans_bedroom_door",
-                                            "style": {
-                                                "top": "15.5%",
-                                                "left": "42%"
-                                            }
-                                        },
-                                        {
-                                            "type": "state-icon",
                                             "entity": "cover.jonathans_bedroom_rollershutter",
                                             "style": {
                                                 "top": "9.75%",
@@ -276,6 +277,30 @@
                                                 "service_data": {
                                                     "entity_id": "cover.jonathans_bedroom_rollershutter"
                                                 }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "binary_sensor.bathroom_window",
+                                            "style": {
+                                                "top": "20%",
+                                                "left": "17%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "binary_sensor.bathroom_light",
+                                            "style": {
+                                                "top": "20%",
+                                                "left": "24%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-label",
+                                            "entity": "sensor.bathroom_shelly_temperature",
+                                            "style": {
+                                                "top": "25%",
+                                                "left": "24%"
                                             }
                                         },
                                         {
@@ -306,6 +331,14 @@
                                                 "service_data": {
                                                     "entity_id": "light.passage_lights"
                                                 }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-label",
+                                            "entity": "sensor.ble_temperature_sewing_room",
+                                            "style": {
+                                                "top": "29%",
+                                                "left": "48%"
                                             }
                                         },
                                         {
@@ -385,63 +418,20 @@
                                             }
                                         },
                                         {
-                                            "type": "conditional",
-                                            "conditions": [
-                                                {
-                                                    "entity": "sensor.washing_machine",
-                                                    "state": "Off"
-                                                }
-                                            ],
-                                            "elements": [
-                                                {
-                                                    "type": "state-icon",
-                                                    "entity": "sensor.washing_machine",
-                                                    "style": {
-                                                        "top": "39%",
-                                                        "left": "25%"
-                                                    }
-                                                }
-                                            ]
+                                            "type": "state-icon",
+                                            "entity": "binary_sensor.washing_machine",
+                                            "style": {
+                                                "top": "39%",
+                                                "left": "23%"
+                                            }
                                         },
                                         {
-                                            "type": "conditional",
-                                            "conditions": [
-                                                {
-                                                    "entity": "sensor.washing_machine",
-                                                    "state": "Running"
-                                                }
-                                            ],
-                                            "elements": [
-                                                {
-                                                    "type": "state-icon",
-                                                    "entity": "sensor.washing_machine",
-                                                    "style": {
-                                                        "top": "39%",
-                                                        "left": "25%",
-                                                        "--paper-item-icon-color": "green"
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "conditional",
-                                            "conditions": [
-                                                {
-                                                    "entity": "sensor.washing_machine",
-                                                    "state": "Standby"
-                                                }
-                                            ],
-                                            "elements": [
-                                                {
-                                                    "type": "state-icon",
-                                                    "entity": "sensor.washing_machine",
-                                                    "style": {
-                                                        "top": "39%",
-                                                        "left": "25%",
-                                                        "--paper-item-icon-color": "red"
-                                                    }
-                                                }
-                                            ]
+                                            "type": "state-icon",
+                                            "entity": "binary_sensor.clothes_dryer",
+                                            "style": {
+                                                "top": "39%",
+                                                "left": "27%"
+                                            }
                                         },
                                         {
                                             "type": "state-icon",
@@ -460,10 +450,18 @@
                                         },
                                         {
                                             "type": "state-icon",
-                                            "entity": "light.light_kitchen_1",
+                                            "entity": "binary_sensor.dish_washer",
                                             "style": {
                                                 "top": "50%",
                                                 "left": "20%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "light.light_kitchen_1",
+                                            "style": {
+                                                "top": "50%",
+                                                "left": "25%"
                                             },
                                             "tap_action": {
                                                 "action": "call-service",
@@ -508,7 +506,7 @@
                                             "entity": "media_player.kitchen_speaker",
                                             "style": {
                                                 "top": "56%",
-                                                "left": "20%",
+                                                "left": "25%",
                                                 "scale": "66%"
                                             }
                                         },
@@ -532,6 +530,21 @@
                                                 "service": "switch.toggle",
                                                 "service_data": {
                                                     "entity_id": "switch.garage_1"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-icon",
+                                            "entity": "switch.water_heater",
+                                            "style": {
+                                                "top": "75%",
+                                                "left": "20%"
+                                            },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "switch.toggle",
+                                                "service_data": {
+                                                    "entity_id": "switch.water_heater"
                                                 }
                                             }
                                         },
@@ -631,7 +644,7 @@
                                         },
                                         {
                                             "type": "state-label",
-                                            "entity": "sensor.ble_temperature_a4c13887d585",
+                                            "entity": "sensor.temperature_fe01191a0ae4e128",
                                             "style": {
                                                 "top": "47%",
                                                 "left": "82%"
@@ -643,6 +656,14 @@
                                             "style": {
                                                 "top": "44%",
                                                 "left": "98%"
+                                            }
+                                        },
+                                        {
+                                            "type": "state-label",
+                                            "entity": "sensor.ble_temperature_a4c138fbfa2a",
+                                            "style": {
+                                                "top": "60%",
+                                                "left": "47.25%"
                                             }
                                         },
                                         {
@@ -677,7 +698,7 @@
                                         },
                                         {
                                             "type": "state-icon",
-                                            "entity": "switch.tv",
+                                            "entity": "binary_sensor.tv",
                                             "style": {
                                                 "top": "58%",
                                                 "left": "83%"
@@ -718,6 +739,14 @@
                                                 "service_data": {
                                                     "entity_id": "light.light_media_1"
                                                 }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-label",
+                                            "entity": "sensor.ble_temperature_media_room_ble_sensor",
+                                            "style": {
+                                                "top": "69%",
+                                                "left": "81%"
                                             }
                                         },
                                         {
@@ -820,7 +849,7 @@
                                         },
                                         {
                                             "type": "state-icon",
-                                            "entity": "switch.switch_study_1",
+                                            "entity": "switch.monitors",
                                             "style": {
                                                 "top": "87.5%",
                                                 "left": "70%"
@@ -829,7 +858,7 @@
                                                 "action": "call-service",
                                                 "service": "switch.toggle",
                                                 "service_data": {
-                                                    "entity_id": "switch.switch_study_1"
+                                                    "entity_id": "switch.monitors"
                                                 }
                                             }
                                         },
@@ -846,6 +875,14 @@
                                                 "service_data": {
                                                     "entity_id": "switch.radios"
                                                 }
+                                            }
+                                        },
+                                        {
+                                            "type": "state-label",
+                                            "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                                            "style": {
+                                                "top": "79%",
+                                                "left": "61%"
                                             }
                                         },
                                         {
@@ -881,7 +918,7 @@
                                         },
                                         {
                                             "type": "state-icon",
-                                            "entity": "climate.master_bedroom_airconditioner",
+                                            "entity": "climate.master_bedroom_ac",
                                             "style": {
                                                 "top": "78%",
                                                 "left": "81%"
@@ -889,7 +926,7 @@
                                         },
                                         {
                                             "type": "state-label",
-                                            "entity": "sensor.ble_temperature_a4c138fbfa2a",
+                                            "entity": "sensor.temperature_843c01d60760f228",
                                             "style": {
                                                 "top": "82%",
                                                 "left": "81%"
@@ -1168,7 +1205,7 @@
                                 },
                                 {
                                     "type": "thermostat",
-                                    "entity": "climate.master_bedroom_airconditioner"
+                                    "entity": "climate.master_bedroom_ac"
                                 },
                                 {
                                     "type": "thermostat",
@@ -1215,7 +1252,11 @@
                                 },
                                 {
                                     "type": "media-control",
-                                    "entity": "media_player.googlehome4026"
+                                    "entity": "media_player.jonathans_speaker"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.davids_speaker"
                                 },
                                 {
                                     "type": "media-control",
@@ -1223,15 +1264,7 @@
                                 },
                                 {
                                     "type": "media-control",
-                                    "entity": "media_player.lias"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.jonathan_s_bedroom_2"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.david_s_bedroom_speaker"
+                                    "entity": "media_player.mended_drum"
                                 }
                             ]
                         }
@@ -1260,12 +1293,6 @@
                                         },
                                         {
                                             "entity": "sensor.moto_g_5s_battery_level"
-                                        },
-                                        {
-                                            "entity": "sensor.adrian_s_work_phone_battery_level"
-                                        },
-                                        {
-                                            "entity": "sensor.nancy_s_ipad_battery_level"
                                         }
                                     ],
                                     "hours_to_show": 24,
@@ -1297,8 +1324,8 @@
                                             "name": "Dining Room"
                                         },
                                         {
-                                            "entity": "sensor.ble_temperature_a4c13887d585",
-                                            "name": "Living Room"
+                                            "entity": "sensor.temperature_fe01191a0ae4e128",
+                                            "name": "Family Room"
                                         },
                                         {
                                             "entity": "sensor.ble_temperature_a4c138fbfa2a",
@@ -1313,7 +1340,7 @@
                                             "name": "David's Bedroom"
                                         },
                                         {
-                                            "entity": "sensor.ble_temperature_a4c1387f98b8",
+                                            "entity": "sensor.ble_temperature_sewing_room",
                                             "name": "Sewing Room"
                                         },
                                         {
@@ -1364,7 +1391,7 @@
                                     "type": "history-graph",
                                     "entities": [
                                         {
-                                            "entity": "climate.master_bedroom_airconditioner"
+                                            "entity": "climate.master_bedroom_ac"
                                         }
                                     ],
                                     "hours_to_show": 24,
@@ -1373,6 +1400,105 @@
                                 {
                                     "type": "entity",
                                     "entity": "climate.daikin_ac"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "theme": "Backend-selected",
+                    "title": "Cameras",
+                    "path": "cameras",
+                    "icon": "mdi:cctv",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.ellie"
+                        }
+                    ]
+                },
+                {
+                    "theme": "Backend-selected",
+                    "title": "Power",
+                    "path": "power",
+                    "icon": "mdi:lightning-bolt",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "custom:apexcharts-card",
+                                    "header": {
+                                        "show": true,
+                                        "title": "Daily Power Usage"
+                                    },
+                                    "graph_span": "24h",
+                                    "update_interval": "30sec",
+                                    "now": {
+                                        "show": true
+                                    },
+                                    "span": {
+                                        "start": "day",
+                                        "offset": "+1m"
+                                    },
+                                    "yaxis": [
+                                        {
+                                            "id": "left"
+                                        },
+                                        {
+                                            "id": "right",
+                                            "opposite": true
+                                        }
+                                    ],
+                                    "series": [
+                                        {
+                                            "entity": "sensor.electricity_total",
+                                            "name": "Current Power Draw",
+                                            "curve": "straight",
+                                            "type": "area",
+                                            "stroke_width": 2,
+                                            "yaxis_id": "left"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_cost",
+                                            "name": "Daily Power Cost",
+                                            "yaxis_id": "right"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "energy-date-selection"
+                                },
+                                {
+                                    "type": "energy-devices-graph"
+                                },
+                                {
+                                    "type": "history-graph",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.electricity_total"
+                                        },
+                                        {
+                                            "entity": "sensor.shelly_em3_1_channel_a_power"
+                                        },
+                                        {
+                                            "entity": "sensor.shelly_em3_1_channel_b_power"
+                                        },
+                                        {
+                                            "entity": "sensor.shelly_em3_1_channel_c_power"
+                                        }
+                                    ],
+                                    "hours_to_show": 24
+                                },
+                                {
+                                    "type": "history-graph",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.water_heater_power"
+                                        }
+                                    ]
                                 }
                             ]
                         }

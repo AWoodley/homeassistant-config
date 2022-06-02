@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace.lovelace_admin",
     "data": {
         "config": {
@@ -13,10 +14,10 @@
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.ble_battery_a4c1387f98b8"
+                                    "entity": "sensor.ble_battery_media_room_ble_sensor"
                                 },
                                 {
-                                    "entity": "sensor.ble_battery_a4c13887d585"
+                                    "entity": "sensor.ble_battery_sewing_room"
                                 },
                                 {
                                     "entity": "sensor.ble_battery_a4c13888821f"
