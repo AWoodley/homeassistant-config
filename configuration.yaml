@@ -102,14 +102,16 @@ mqtt:
     code_arm_required: false
     code_disarm_required: false
   device_tracker:
-  - devices:
-      adrian: 'location/adrian'
-      david: 'location/david'
-      guest: 'location/guest'
-      jonathan: 'location/jonathan'
-      nancy: 'location/nancy'
-    payload_home: 'present'
-    payload_not_home: 'not_present'
+  - name: adrian
+    state_topic: 'location/adrian'
+  - name: david
+    state_topic: 'location/david'
+  - name: guest
+    state_topic: 'location/guest'
+  - name: jonathan
+    state_topic: 'location/jonathan'
+  - name: nancy
+    state_topic: 'location/nancy'
   binary_sensor:
   - state_topic: "home/alarm/zones/0"
     name: "Front Door"
