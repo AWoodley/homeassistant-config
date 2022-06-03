@@ -599,6 +599,11 @@ sensor:
   #   name: partner
   #   expire_after: 65
 
+binary_sensor:
+  - platform: threshold
+    entity_id: sensor.water_heater_power
+    lower: 1500
+    name: water heating
 
 # switch:
   # - platform: mqtt
