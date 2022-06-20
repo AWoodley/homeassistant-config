@@ -4,3 +4,5 @@ binary_sensor.family_room:
   icon: mdi:eye-circle
 binary_sensor.media_room:
   icon: mdi:eye-circle
+binary_sensor.light_bathroom_1:
+  icon: mdi:lightbulb
