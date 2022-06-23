@@ -509,51 +509,51 @@ sensor:
       - sensor.ble_temperature_a4c138dfcf8d # Dining Room
       - sensor.ble_temperature_a4c13887d585 # Music Room
       - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
-  - platform: integration
-    source: sensor.fridge_power
-    name: 'Fridge'
-    unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.washing_machine_power
-    name: 'Washing Machine'
-    unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.pc_power
-    name: 'PC'
-    unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.dish_washer_power
-    name: 'Dish Washer'
-    unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.clothes_dryer_power
-    name: 'Clothes Dryer'
-    unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.master_bedroom_air_conditioner_power
-    name: 'Master Bedroom Air-Conditioner'
-    unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.media_centre_power
-    name: 'Media Centre'
-    unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.servers_power
-    name: 'Servers'
-    unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.unaccounted_power
-    name: 'Unaccounted'
-    unit_prefix: k
-    round: 2
+  # - platform: integration
+  #   source: sensor.fridge_power
+  #   name: 'Fridge'
+  #   unit_prefix: k
+  #   round: 2
+  # - platform: integration
+  #   source: sensor.washing_machine_power
+  #   name: 'Washing Machine'
+  #   unit_prefix: k
+  #   round: 2
+  # - platform: integration
+  #   source: sensor.pc_power
+  #   name: 'PC'
+  #   unit_prefix: k
+  #   round: 2
+  # - platform: integration
+  #   source: sensor.dish_washer_power
+  #   name: 'Dish Washer'
+  #   unit_prefix: k
+  #   round: 2
+  # - platform: integration
+  #   source: sensor.clothes_dryer_power
+  #   name: 'Clothes Dryer'
+  #   unit_prefix: k
+  #   round: 2
+  # - platform: integration
+  #   source: sensor.master_bedroom_air_conditioner_power
+  #   name: 'Master Bedroom Air-Conditioner'
+  #   unit_prefix: k
+  #   round: 2
+  # - platform: integration
+  #   source: sensor.media_centre_power
+  #   name: 'Media Centre'
+  #   unit_prefix: k
+  #   round: 2
+  # - platform: integration
+  #   source: sensor.servers_power
+  #   name: 'Servers'
+  #   unit_prefix: k
+  #   round: 2
+  # - platform: integration
+  #   source: sensor.unaccounted_power
+  #   name: 'Unaccounted'
+  #   unit_prefix: k
+  #   round: 2
 
 # binary_sensor:
 #   - platform: threshold
