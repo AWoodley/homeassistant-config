@@ -452,20 +452,20 @@ template:
       unique_id: sensor.unaccounted_energy
       state: >
         {{ (states('sensor.energy_sum')|float - 
-           (states('sensor.clothes_dryer') + 
-            states('sensor.david_s_bedroom_rollershutter_energy') + 
-            states('sensor.dish_washer') + 
-            states('sensor.fridge') + 
-            states('sensor.jonathan_s_bedroom_rollershutt_energy') + 
-            states('sensor.master_bedroom_air_conditioner') + 
-            states('sensor.master_bedroom_rollershutter_energy') + 
-            states('sensor.media_centre') + 
-            states('sensor.monitors_total_consumption') +
-            states('sensor.pc') +
-            states('sensor.radios_total_consumption') +
-            states('sensor.servers') +
-            states('sensor.washing_machine_2') +
-            states('sensor.water_heater_energy'))) }}
+           (states('sensor.clothes_dryer')|float/1000 + 
+            states('sensor.david_s_bedroom_rollershutter_energy')|float + 
+            states('sensor.dish_washer')|float/1000 + 
+            states('sensor.fridge')|float/1000 + 
+            states('sensor.jonathan_s_bedroom_rollershutt_energy')|float + 
+            states('sensor.master_bedroom_air_conditioner')|float/1000 + 
+            states('sensor.master_bedroom_rollershutter_energy')|float + 
+            states('sensor.media_centre')|float/1000 + 
+            states('sensor.monitors_total_consumption')|float +
+            states('sensor.pc')|float/1000 +
+            states('sensor.radios_total_consumption')|float +
+            states('sensor.servers')|float/1000 +
+            states('sensor.washing_machine_2')|float/1000 +
+            states('sensor.water_heater_energy')|float)) }}
       unit_of_measurement: kWh
   - binary_sensor:
     - name: "Active"
