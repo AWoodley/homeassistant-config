@@ -451,25 +451,25 @@ template:
       state: "{{ (states('sensor.electricity_total')|float / 1000 * 0.266612) | round(2) }}"
       unit_of_measurement: AUD
   - sensor:
-    - name: 'Unaccounted Energy'
-      unique_id: sensor.unaccounted_energy
+    - name: 'Unaccounted Power'
+      unique_id: sensor.unaccounted_power
       state: >
-        {{ (states('sensor.energy_sum')|float - 
-           (states('sensor.clothes_dryer')|float/1000 + 
-            states('sensor.david_s_bedroom_rollershutter_energy')|float + 
-            states('sensor.dish_washer')|float/1000 + 
-            states('sensor.fridge')|float/1000 + 
-            states('sensor.jonathan_s_bedroom_rollershutt_energy')|float + 
-            states('sensor.master_bedroom_air_conditioner')|float/1000 + 
-            states('sensor.master_bedroom_rollershutter_energy')|float + 
-            states('sensor.media_centre')|float/1000 + 
-            states('sensor.monitors_total_consumption')|float +
-            states('sensor.pc')|float/1000 +
-            states('sensor.radios_total_consumption')|float +
-            states('sensor.servers')|float/1000 +
-            states('sensor.washing_machine_2')|float/1000 +
-            states('sensor.water_heater_energy')|float)) }}
-      unit_of_measurement: kWh
+        {{ (states('sensor.electricity_total')|float - 
+           (states('sensor.clothes_dryer_power')|float +
+            states('sensor.david_s_bedroom_rollershutter_power')|float + 
+            states('sensor.dish_washer_power')|float + 
+            states('sensor.fridge_power')|float + 
+            states('sensor.jonathan_s_bedroom_rollershutt_power')|float + 
+            states('sensor.master_bedroom_air_conditioner_power')|float + 
+            states('sensor.master_bedroom_rollershutter_power')|float + 
+            states('sensor.media_centre_power')|float + 
+            states('sensor.monitors_current_consumption')|float +
+            states('sensor.pc_power')|float +
+            states('sensor.radios_current_consumption')|float +
+            states('sensor.servers_power')|float +
+            states('sensor.washing_machine_power')|float +
+            states('sensor.water_heater_power')|float)) }}
+      unit_of_measurement: W
   - binary_sensor:
     - name: "Active"
       unique_id: binary_sensor.active
@@ -540,14 +540,17 @@ sensor:
   - platform: integration
     source: sensor.servers_power
     name: 'Servers'
-    unit_prefix: k                    
+    unit_prefix: k       
+  - platform: integration
+    source: sensor.unaccounted_power
+    name: 'Unaccounted'
+    unit_prefix: k
 
-
-binary_sensor:
-  - platform: threshold
-    entity_id: sensor.water_heater_power
-    upper: 1500
-    name: water heating
+# binary_sensor:
+#   - platform: threshold
+#     entity_id: sensor.water_heater_power
+#     upper: 1500
+#     name: water heating
 
 
 media_player:
