@@ -399,21 +399,24 @@ template:
       unique_id: binary_sensor.washing_machine
       state: >
         {{ states('sensor.washing_mahine_current')|float > 0 }}
-      delay_off: minutes 5
+      delay_off:
+        minutes: 5
       icon: mdi:washing-machine
   - binary_sensor:
     - name: 'Clothes Dryer'
       unique_id: binary_sensor.clothes_dryer
       state: >
         {{ states('sensor.clothes_dryer_current')|float > 0 }}
-      delay_off: minutes 5
+      delay_off:
+        minutes: 5
       icon: mdi:tumble-dryer
   - binary_sensor:
     - name: 'Dish Washer'
       unique_id: binary_sensor.dish_washer
       state: >
         {{ states('sensor.dish_washer_current')|float > 0 }}
-      delay_off: minutes 5
+      delay_off:
+        minutes: 5
       icon: mdi:dishwasher
   - binary_sensor:
     - name: 'TV'
