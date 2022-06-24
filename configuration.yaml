@@ -398,7 +398,7 @@ template:
     - name: 'Washing Machine'
       unique_id: binary_sensor.washing_machine
       state: >
-        {{ states('sensor.washing_mahine_current')|float > 0 }}
+        {{ states('sensor.washing_mahine_current')|float(0) > 0 }}
       delay_off:
         minutes: 5
       icon: mdi:washing-machine
@@ -406,7 +406,7 @@ template:
     - name: 'Clothes Dryer'
       unique_id: binary_sensor.clothes_dryer
       state: >
-        {{ states('sensor.clothes_dryer_current')|float > 0 }}
+        {{ states('sensor.clothes_dryer_current')|float(0) > 0 }}
       delay_off:
         minutes: 5
       icon: mdi:tumble-dryer
@@ -414,7 +414,7 @@ template:
     - name: 'Dish Washer'
       unique_id: binary_sensor.dish_washer
       state: >
-        {{ states('sensor.dish_washer_current')|float > 0 }}
+        {{ states('sensor.dish_washer_current')|float(0) > 0 }}
       delay_off:
         minutes: 5
       icon: mdi:dishwasher
@@ -422,53 +422,53 @@ template:
     - name: 'TV'
       unique_id: binary_sensor.tv
       state: >
-        {{ states('sensor.media_centre_current')|float > 650 }}
+        {{ states('sensor.media_centre_current')|float(0) > 650 }}
       icon: mdi:television
   - binary_sensor:
     - name: 'Water Heater'
       unique_id: binary_sensor.water_heater
       state: >
-        {{ states('sensor.water_heater_power')|float > 0 }}
+        {{ states('sensor.water_heater_power')|float(0) > 0 }}
       icon: mdi:water-boiler
   - sensor:
     - name: 'Electricity Total'
       unique_id: sensor.electricity_total
-      state: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float + states('sensor.shelly_em3_1_channel_b_power')|float + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float)}}"
+      state: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float(0) + states('sensor.shelly_em3_1_channel_b_power')|float(0) + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float(0))}}"
       unit_of_measurement: W
   - sensor:
     - name: 'Cost Total'
       unique_id: sensor.electricity_cost_total
-      state: "{{ (states('sensor.shelly_em3_1_channel_a_energy_cost')|float + states('sensor.shelly_em3_1_channel_b_energy_cost')|float + states('sensor.shelly_em3_1_channel_c_energy_cost')|float)|round(2)}}"
+      state: "{{ (states('sensor.shelly_em3_1_channel_a_energy_cost')|float(0) + states('sensor.shelly_em3_1_channel_b_energy_cost')|float(0) + states('sensor.shelly_em3_1_channel_c_energy_cost')|float(0))|round(2)}}"
       unit_of_measurement: AUD
   - sensor:
     - name: 'Energy Sum'
       unique_id: sensor.energy_sum
-      state: "{{ (states('sensor.shelly_em3_1_channel_a_energy')|float + states('sensor.shelly_em3_1_channel_b_energy')|float + states('sensor.shelly_em3_1_channel_c_energy')|float)|round(2)}}"
+      state: "{{ (states('sensor.shelly_em3_1_channel_a_energy')|float(0) + states('sensor.shelly_em3_1_channel_b_energy')|float(0) + states('sensor.shelly_em3_1_channel_c_energy')|float(0))|round(2)}}"
       unit_of_measurement: kWh
   - sensor:
     - name: 'Energy Cost per Hour'
       unique_id: sensor.energy_cost_per_hour
-      state: "{{ (states('sensor.electricity_total')|float / 1000 * 0.266612) | round(2) }}"
+      state: "{{ (states('sensor.electricity_total')|float(0) / 1000 * 0.266612) | round(2) }}"
       unit_of_measurement: AUD
   - sensor:
     - name: 'Unaccounted Power'
       unique_id: sensor.unaccounted_power
       state: >
-        {{ (states('sensor.electricity_total')|float - 
-           (states('sensor.clothes_dryer_power')|float +
-            states('sensor.david_s_bedroom_rollershutter_power')|float + 
-            states('sensor.dish_washer_power')|float + 
-            states('sensor.fridge_power')|float + 
-            states('sensor.jonathan_s_bedroom_rollershutt_power')|float + 
-            states('sensor.master_bedroom_air_conditioner_power')|float + 
-            states('sensor.master_bedroom_rollershutter_power')|float + 
-            states('sensor.media_centre_power')|float + 
-            states('sensor.monitors_current_consumption')|float +
-            states('sensor.pc_power')|float +
-            states('sensor.radios_current_consumption')|float +
-            states('sensor.servers_power')|float +
-            states('sensor.washing_machine_power')|float +
-            states('sensor.water_heater_power')|float)) }}
+        {{ (states('sensor.electricity_total')|float(0) - 
+           (states('sensor.clothes_dryer_power')|float(0) +
+            states('sensor.david_s_bedroom_rollershutter_power')|float(0) + 
+            states('sensor.dish_washer_power')|float(0) + 
+            states('sensor.fridge_power')|float(0) + 
+            states('sensor.jonathan_s_bedroom_rollershutt_power')|float(0) + 
+            states('sensor.master_bedroom_air_conditioner_power')|float(0) + 
+            states('sensor.master_bedroom_rollershutter_power')|float(0) + 
+            states('sensor.media_centre_power')|float(0) + 
+            states('sensor.monitors_current_consumption')|float(0) +
+            states('sensor.pc_power')|float(0) +
+            states('sensor.radios_current_consumption')|float(0) +
+            states('sensor.servers_power')|float(0) +
+            states('sensor.washing_machine_power')|float(0) +
+            states('sensor.water_heater_power')|float(0))) }}
       unit_of_measurement: W
   - binary_sensor:
     - name: "Active"
