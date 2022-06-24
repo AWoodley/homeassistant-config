@@ -433,12 +433,12 @@ template:
   - sensor:
     - name: 'Electricity Total'
       unique_id: sensor.electricity_total
-      state: "{{ (states('sensor.shelly_em3_1_channel_a_power')|float(0) + states('sensor.shelly_em3_1_channel_b_power')|float(0) + states('sensor.shelly_em3_1_channel_c_power')|round(2)|float(0))}}"
+      state: "{{ ((states('sensor.shelly_em3_1_channel_a_power')|float(0) + states('sensor.shelly_em3_1_channel_b_power')|float(0) + states('sensor.shelly_em3_1_channel_c_power')|float(0))|round(2))}}"
       unit_of_measurement: W
   - sensor:
     - name: 'Cost Total'
       unique_id: sensor.electricity_cost_total
-      state: "{{ (states('sensor.shelly_em3_1_channel_a_energy_cost')|float(0) + states('sensor.shelly_em3_1_channel_b_energy_cost')|float(0) + states('sensor.shelly_em3_1_channel_c_energy_cost')|float(0))|round(2)}}"
+      state: "{{ ((states('sensor.shelly_em3_1_channel_a_energy_cost')|float(0) + states('sensor.shelly_em3_1_channel_b_energy_cost')|float(0) + states('sensor.shelly_em3_1_channel_c_energy_cost')|float(0))|round(2))}}"
       unit_of_measurement: AUD
   - sensor:
     - name: 'Energy Sum'
