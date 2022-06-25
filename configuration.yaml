@@ -468,6 +468,10 @@ template:
             states('sensor.radios_current_consumption')|float(0) +
             states('sensor.servers_power')|float(0) +
             states('sensor.washing_machine_power')|float(0) +
+            states('sensor.davids_heater_power')|float(0) +
+            states('sensor.jonathans_heater_power')|float(0) +
+            states('sensor.nancys_blanket_power')|float(0) +
+            states('sensor.fireplace_fan_power')|float(0) +
             states('sensor.water_heater_power')|float(0))) }}
       unit_of_measurement: W
   - binary_sensor:
