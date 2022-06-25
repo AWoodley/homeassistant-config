@@ -550,6 +550,26 @@ sensor:
     # unit_prefix: k
     round: 2
   - platform: integration
+    source: sensor.davids_heater_power
+    name: 'Davids Heater'
+    # unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.jonathans_heater_power
+    name: 'Jonathans Heater'
+    # unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.nancys_blanket_power
+    name: 'Nancys Blanket'
+    # unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.fireplace_fan_power
+    name: 'Fireplace Fan'
+    # unit_prefix: k
+    round: 2                
+  - platform: integration
     source: sensor.unaccounted_power
     name: 'Unaccounted'
     # unit_prefix: k
