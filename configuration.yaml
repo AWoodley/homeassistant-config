@@ -453,9 +453,10 @@ template:
   - sensor:
     - name: 'Unaccounted Power'
       unique_id: sensor.unaccounted_power
-      state: >
-        {{ (states('sensor.electricity_total')|float(0) - 
-           (states('sensor.clothes_dryer_power')|float(0) +
+      state: >-
+        {% set total = (states('sensor.electricity_total')|float(0)) %}
+        {%  set accounted = (
+            states('sensor.clothes_dryer_power')|float(0) +
             states('sensor.david_s_bedroom_rollershutter_power')|float(0) + 
             states('sensor.dish_washer_power')|float(0) + 
             states('sensor.fridge_power')|float(0) + 
@@ -472,7 +473,14 @@ template:
             states('sensor.jonathans_heater_power')|float(0) +
             states('sensor.nancys_blanket_power')|float(0) +
             states('sensor.fireplace_fan_power')|float(0) +
-            states('sensor.water_heater_power')|float(0))) }}
+            states('sensor.water_heater_power')|float(0)
+            ) %}
+        {%  set unaccounted = (total - accounted)|round(2) %}
+        {%  if unaccounted <= 0 %}
+            0
+        {%  else %}
+            {{ unaccounted }}
+        {%  endif %}
       unit_of_measurement: W
   - binary_sensor:
     - name: "Active"
