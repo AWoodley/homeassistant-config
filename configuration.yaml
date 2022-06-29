@@ -147,7 +147,6 @@ mqtt:
     payload_press: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
   - name: TV
     icon: mdi:television
-    optimistic: false
     command_topic: "cmnd/tasmotas/irsend"
     payload_press: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
     # payload_off: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
@@ -491,19 +490,22 @@ template:
             {{ unaccounted }}
         {%  endif %}
       unit_of_measurement: W
-  - switch:
-    - name: 'TV'
-      unique_id: switch.tv
-      icon: mdi:television
-      value_template: "{{ states('sensor.media_centre_current')|float(0) > 650 }}"
-      turn_on:
-        service: button.press
-        target:
-          entity_id: button.tv
-      turn_off:
-        service: button.press
-        target:
-          entity_id: button.tv   
+
+switch:
+  - platform: template
+    switches:
+      tv:
+        friendly_name: 'TV'
+        unique_id: switch.tv
+        value_template: "{{ states('sensor.media_centre_current')|float(0) > 650 }}"
+        turn_on:
+          service: button.press
+          target:
+            entity_id: button.tv
+        turn_off:
+          service: button.press
+          target:
+            entity_id: button.tv   
 
 
 utility_meter:
