@@ -135,21 +135,22 @@ mqtt:
     name: partner
     expire_after: 65
   switch:
-  - name: Sammy
-    command_topic: "cmnd/tasmotas/irsend"
-    payload_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
   - state_topic: "homeassistant/status"
     command_topic: "homeassistant/status"
     name: Active
     # payload_on: "{{ states('sensor.local_ip') }}"
     payload_off: "offline"
     value_template: "{{ states('sensor.local_ip') == value}}"
+  button:
+  - name: Sammy
+    command_topic: "cmnd/tasmotas/irsend"
+    payload_press: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
   - name: TV
     icon: mdi:television
     optimistic: false
     command_topic: "cmnd/tasmotas/irsend"
-    payload_on: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
-    payload_off: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
+    payload_press: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
+    # payload_off: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
   cover:
   - unique_id: "D8BFC01A3A5F"
     name: "Master Bedroom Rollershutter"
@@ -418,18 +419,26 @@ template:
       delay_off:
         minutes: 5
       icon: mdi:dishwasher
-  - binary_sensor:
-    - name: 'TV'
-      unique_id: binary_sensor.tv
-      state: >
-        {{ states('sensor.media_centre_current')|float(0) > 650 }}
-      icon: mdi:television
+  # - binary_sensor:
+  #   - name: 'TV'
+  #     unique_id: binary_sensor.tv
+  #     state: >
+  #       {{ states('sensor.media_centre_current')|float(0) > 650 }}
+  #     icon: mdi:television
   - binary_sensor:
     - name: 'Water Heater'
       unique_id: binary_sensor.water_heater
       state: >
         {{ states('sensor.water_heater_power')|float(0) > 0 }}
       icon: mdi:water-boiler
+  - binary_sensor:
+    - name: "Active"
+      unique_id: binary_sensor.active
+      state: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'offline') or is_state('sensor.partner', 'unavailable') }}"
+  - binary_sensor:
+    - name: "Bathroom Light"
+      unique_id: binary_sensor.light_bathroom_1
+      state: "{{states('sun.sun') == 'below_horizon' and states('sensor.bathroom_shelly_luminosity') > '150'}}"      
   - sensor:
     - name: 'Electricity Total'
       unique_id: sensor.electricity_total
@@ -482,14 +491,19 @@ template:
             {{ unaccounted }}
         {%  endif %}
       unit_of_measurement: W
-  - binary_sensor:
-    - name: "Active"
-      unique_id: binary_sensor.active
-      state: "{{ states('sensor.partner') == states('sensor.local_ip') or is_state('sensor.partner', 'offline') or is_state('sensor.partner', 'unavailable') }}"
-  - binary_sensor:
-    - name: "Bathroom Light"
-      unique_id: binary_sensor.light_bathroom_1
-      state: "{{states('sun.sun') == 'below_horizon' and states('sensor.bathroom_shelly_luminosity') > '150'}}"
+  - switch:
+    - name: 'TV'
+      unique_id: switch.tv
+      icon: mdi:television
+      value_template: "{{ states('sensor.media_centre_current')|float(0) > 650 }}"
+      turn_on:
+        service: button.press
+        target:
+          entity_id: button.tv
+      turn_off:
+        service: button.press
+        target:
+          entity_id: button.tv   
 
 
 utility_meter:
