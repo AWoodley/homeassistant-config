@@ -37,13 +37,32 @@
     entity_id: light.entry_lights
     state: 'off'
   action:
-  - service: light.turn_on
-    target:
-      entity_id: light.entry_lights
-  - delay: '00:05:00'
-  - service: light.turn_off
-    target:
-      entity_id: light.entry_lights
+    - choose:
+      - conditions:
+          - condition: time
+            after: '22:00'
+            before: '07:00'
+          - condition: state
+            entity_id: light.entry_lights
+            state: 'off'
+        sequence:
+          - service: light.turn_on
+            data:
+              color_temp: 370
+              brightness: 120
+            target:
+              entity_id: light.light_entry_4
+      default:
+        - service: light.turn_on
+          data:
+            color_temp: 370
+            brightness: 255
+          target:
+            entity_id: light.entry_lights
+    - delay: '00:05:00'
+    - service: light.turn_off
+      target:
+        entity_id: light.entry_lights
   mode: restart
 - id: '20200514225301'
   alias: Light:Night:Toggle
@@ -57,6 +76,9 @@
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
+  - condition: time
+    after: '22:00'
+    before: '07:00'
   action:
   - choose:
     - conditions:
