@@ -603,7 +603,10 @@ sensor:
     # unit_prefix: k
     round: 2
 
-# binary_sensor:
+binary_sensor:
+  - platform: workday
+    country: AUS
+    province: WA
 #   - platform: threshold
 #     entity_id: sensor.water_heater_power
 #     upper: 1500
