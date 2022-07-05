@@ -774,7 +774,7 @@
                                         },
                                         {
                                             "type": "state-icon",
-                                            "entity": "light.light_entry_2",
+                                            "entity": "light.light_entry_4",
                                             "style": {
                                                 "top": "74.5%",
                                                 "left": "60%"

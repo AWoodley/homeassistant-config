@@ -354,7 +354,7 @@ create_every_automation_group:
       - light.light_media_3
       - light.light_media_1
       - light.light_entry_1
-      - light.light_entry_2
+      - light.light_entry_4
       - light.light_entry_3
       - light.light_kitchen_1
       - light.light_kitchen_2
@@ -366,7 +366,7 @@ create_every_automation_group:
       entity_id:
       - light.light_media_3
       - light.light_entry_1
-      - light.light_entry_2
+      - light.light_entry_4
       - light.light_entry_3
       - light.light_kitchen_1
   - service: light.turn_on
@@ -465,7 +465,7 @@ create_every_automation_group:
       - light.light_media_3
       - light.light_media_1
       - light.light_entry_1
-      - light.light_entry_2
+      - light.light_entry_4
       - light.light_entry_3
       - light.light_kitchen_1
       - light.light_kitchen_2
@@ -477,7 +477,7 @@ create_every_automation_group:
       entity_id:
       - light.light_media_3
       - light.light_entry_1
-      - light.light_entry_2
+      - light.light_entry_4
       - light.light_entry_3
       - light.light_kitchen_1
   - service: light.turn_on

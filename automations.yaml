@@ -85,7 +85,7 @@
   action:
   - entity_id: light.light_entry_3
     service: light.turn_on
-  - entity_id: light.light_entry_2
+  - entity_id: light.light_entry_4
     service: light.turn_off
   mode: single
 - id: '1581407669990'

@@ -136,7 +136,7 @@
                                 },
                                 {
                                     "type": "state-label",
-                                    "entity": "sensor.light_entry_2_signal_strength",
+                                    "entity": "sensor.light_entry_4_signal_strength",
                                     "style": {
                                         "top": "74.5%",
                                         "left": "60%"

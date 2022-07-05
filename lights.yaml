@@ -15,7 +15,7 @@
   entities: 
     - light.lifx_front_door
     - light.light_entry_1
-    - light.light_entry_2
+    - light.light_entry_4
     - light.light_entry_3
 - platform: group
   name: Dining Room Lights
@@ -28,7 +28,7 @@
   name: Entry Lights
   entities:
     - light.light_entry_1
-    - light.light_entry_2
+    - light.light_entry_4
     - light.light_entry_3
 - platform: group
   name: Passage Lights

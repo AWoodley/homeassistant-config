@@ -5,7 +5,7 @@
       friendly_name: Entry 1
       state: 'off'
       supported_features: 0
-    light.light_entry_2:
+    light.light_entry_4:
       friendly_name: Entry 2
       state: 'on'
       supported_features: 0
@@ -20,7 +20,7 @@
       friendly_name: Entry 1
       state: 'on'
       supported_features: 0
-    light.light_entry_2:
+    light.light_entry_4:
       friendly_name: Entry 2
       state: 'off'
       supported_features: 0
@@ -35,7 +35,7 @@
       friendly_name: Entry 1
       state: 'off'
       supported_features: 0
-    light.light_entry_2:
+    light.light_entry_4:
       friendly_name: Entry 2
       state: 'off'
       supported_features: 0
@@ -676,7 +676,7 @@
       friendly_name: Entry 1
       state: 'on'
       supported_features: 0
-    light.light_entry_2:
+    light.light_entry_4:
       friendly_name: Entry 2
       state: 'off'
       supported_features: 0
@@ -806,7 +806,7 @@
       friendly_name: Light-Entry-1
       supported_features: 0
       state: 'off'
-    light.light_entry_2:
+    light.light_entry_4:
       friendly_name: Light-Entry-2
       supported_features: 0
       state: 'off'
@@ -923,7 +923,7 @@
       friendly_name: Light-Entry-1
       state: 'off'
       supported_features: 0
-    light.light_entry_2:
+    light.light_entry_4:
       friendly_name: Light Entry 2
       state: 'off'
       supported_features: 0
