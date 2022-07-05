@@ -707,7 +707,7 @@
                                                 },
                                                 {
                                                     "type": "state-icon",
-                                                    "entity": "binary_sensor.tv",
+                                                    "entity": "switch.tv",
                                                     "style": {
                                                         "top": "58%",
                                                         "left": "83%"
@@ -1157,18 +1157,26 @@
                                                     "opposite": true
                                                 }
                                             ],
+                                            "all_series_config": {
+                                                "stroke_width": 2
+                                            },
                                             "series": [
                                                 {
                                                     "entity": "sensor.electricity_total",
                                                     "name": "Current Power Draw",
-                                                    "curve": "straight",
                                                     "type": "area",
-                                                    "stroke_width": 2,
+                                                    "yaxis_id": "left"
+                                                },
+                                                {
+                                                    "entity": "sensor.unaccounted_power",
+                                                    "name": "Unaccounted Power Draw",
+                                                    "type": "line",
                                                     "yaxis_id": "left"
                                                 },
                                                 {
                                                     "entity": "sensor.energy_cost",
                                                     "name": "Daily Power Cost",
+                                                    "type": "line",
                                                     "yaxis_id": "right"
                                                 }
                                             ]

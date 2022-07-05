@@ -15,19 +15,6 @@
                             "type": "vertical-stack",
                             "cards": [
                                 {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "entity",
-                                            "entity": "sensor.time"
-                                        },
-                                        {
-                                            "type": "entity",
-                                            "entity": "sensor.date"
-                                        }
-                                    ]
-                                },
-                                {
                                     "type": "picture-elements",
                                     "elements": [
                                         {
@@ -698,7 +685,7 @@
                                         },
                                         {
                                             "type": "state-icon",
-                                            "entity": "binary_sensor.tv",
+                                            "entity": "switch.tv",
                                             "style": {
                                                 "top": "58%",
                                                 "left": "83%"
@@ -1114,102 +1101,493 @@
                                     "image": "local/lovelace/floorplan/floorplan.png"
                                 },
                                 {
-                                    "type": "entities",
-                                    "entities": [
+                                    "type": "grid",
+                                    "title": "Master Bedroom",
+                                    "columns": 4,
+                                    "cards": [
                                         {
-                                            "entity": "light.lifx_davids_room"
+                                            "type": "button",
+                                            "entity": "light.light_masterbedroom_1",
+                                            "show_name": false
                                         },
                                         {
-                                            "entity": "light.lifx_jonathans_bedroom"
+                                            "type": "button",
+                                            "entity": "cover.master_bedroom_rollershutter",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "cover.toggle",
+                                                "data": {
+                                                    "entity_id": "cover.master_bedroom_rollershutter"
+                                                }
+                                            }
                                         },
                                         {
-                                            "entity": "switch.jonathans_reading_light"
+                                            "type": "sensor",
+                                            "entity": "sensor.temperature_843c01d60760f228",
+                                            "name": "Temp",
+                                            "graph": "line"
                                         },
                                         {
+                                            "type": "button",
+                                            "entity": "climate.master_bedroom_ac",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "media_player.master_bedroom",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "light.light_bedside_2",
+                                            "name": "Nancy's"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "light.light_bedside_1",
+                                            "name": "Adrian's"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "switch.nancys_electric_blanket",
+                                            "show_name": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "grid",
+                                    "title": "David's Bedroom",
+                                    "columns": 4,
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "entity": "light.lifx_davids_room",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "cover.davids_bedroom_rollershutter",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "cover.toggle",
+                                                "data": {
+                                                    "entity_id": "cover.davids_bedroom_rollershutter"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.davids_bedroom_temperature",
+                                            "name": "Temp",
+                                            "graph": "line"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "climate.davids_thermostat",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "media_player.davids_speaker",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "binary_sensor.davids_bedroom_door",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "grid",
+                                    "title": "Jonathan's Bedroom",
+                                    "columns": 4,
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "entity": "light.lifx_jonathans_bedroom",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "cover.jonathans_bedroom_rollershutter",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "cover.toggle",
+                                                "data": {
+                                                    "entity_id": "cover.jonathans_bedroom_rollershutter"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.jonathans_bedroom_temperature",
+                                            "name": "Temp",
+                                            "graph": "line"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "climate.jonathans_thermostat",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "media_player.jonathan_s_speaker",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "binary_sensor.jonathans_bedroom_door",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "switch.jonathans_reading_light",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "grid",
+                                    "title": "Dining Room",
+                                    "columns": 4,
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "entity": "light.dining_room_lights",
+                                            "icon": "mdi:vanity-light",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "cover.dining_room_rollershutter",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "cover.toggle",
+                                                "data": {
+                                                    "entity_id": "cover.dining_room_rollershutter"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                                            "name": "Temp",
+                                            "graph": "line"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "switch.fireplace_fan",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "media_player.dining_room_display",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "grid",
+                                    "title": "Family Room",
+                                    "columns": 4,
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "entity": "light.family_room_lights",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.temperature_fe01191a0ae4e128",
+                                            "name": "Temp",
+                                            "graph": "line"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "climate.daikin_ac",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "binary_sensor.familyroom_door",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "grid",
+                                    "title": "Media Room",
+                                    "columns": 4,
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "entity": "light.media_room_lights",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.ble_temperature_media_room_ble_sensor",
+                                            "name": "Temp",
+                                            "graph": "line"
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "media_player.glod",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "switch.media_centre",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "switch.tv",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "grid",
+                                    "title": "Kitchen",
+                                    "columns": 4,
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "entity": "light.kitchen_lights",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "type": "sensor",
+                                            "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                                            "name": "Temp",
+                                            "graph": "line"
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "media_player.kitchen_speaker",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "entity": "binary_sensor.dish_washer",
+                                            "show_name": false
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        },
+                                        {
+                                            "show_name": false,
+                                            "show_icon": false,
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "toggle"
+                                            },
+                                            "entity": "input_text.blank"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "grid",
+                                    "title": "Misc",
+                                    "columns": 4,
+                                    "cards": [
+                                        {
+                                            "type": "button",
                                             "entity": "light.passage_lights"
                                         },
                                         {
-                                            "entity": "light.dining_room_lights"
+                                            "type": "button",
+                                            "entity": "light.alfresco_lights"
                                         },
                                         {
-                                            "entity": "light.family_room_lights"
+                                            "type": "sensor",
+                                            "entity": "sensor.average_indoor_temperature",
+                                            "name": "In",
+                                            "graph": "line",
+                                            "icon": "mdi:thermometer"
                                         },
                                         {
-                                            "entity": "switch.fireplace_fan"
+                                            "type": "sensor",
+                                            "entity": "sensor.ble_temperature_a4c138b45222",
+                                            "name": "Out",
+                                            "graph": "line"
                                         },
                                         {
-                                            "entity": "light.kitchen_lights"
-                                        },
-                                        {
-                                            "entity": "light.music_room_light"
-                                        },
-                                        {
-                                            "entity": "light.media_room_lights"
-                                        },
-                                        {
+                                            "type": "button",
                                             "entity": "light.entry_lights"
                                         },
                                         {
-                                            "entity": "light.light_alfresco_1"
+                                            "type": "button",
+                                            "entity": "binary_sensor.washing_machine",
+                                            "show_name": false
                                         },
                                         {
-                                            "entity": "light.light_alfresco_2"
+                                            "type": "button",
+                                            "entity": "binary_sensor.clothes_dryer",
+                                            "show_name": false
                                         },
                                         {
-                                            "entity": "light.light_alfresco_3"
-                                        },
-                                        {
-                                            "entity": "light.light_backverandah"
-                                        },
-                                        {
-                                            "entity": "light.light_masterbedroom_1"
-                                        },
-                                        {
-                                            "entity": "light.light_bedside_2"
-                                        },
-                                        {
-                                            "entity": "light.light_bedside_1"
-                                        },
-                                        {
+                                            "type": "button",
                                             "entity": "switch.garage_1",
-                                            "name": "Soldering Iron"
-                                        },
-                                        {
-                                            "entity": "cover.davids_bedroom_rollershutter"
-                                        },
-                                        {
-                                            "entity": "cover.jonathans_bedroom_rollershutter"
-                                        },
-                                        {
-                                            "entity": "cover.dining_room_rollershutter"
-                                        },
-                                        {
-                                            "entity": "cover.master_bedroom_rollershutter"
-                                        },
-                                        {
-                                            "entity": "input_select.study_scene",
-                                            "name": "Study Lights"
+                                            "show_name": false
                                         }
+                                    ]
+                                },
+                                {
+                                    "type": "alarm-panel",
+                                    "states": [
+                                        "arm_home",
+                                        "arm_away"
                                     ],
-                                    "state_color": false
-                                },
-                                {
-                                    "type": "thermostat",
-                                    "entity": "climate.davids_thermostat",
-                                    "name": "David's Room"
-                                },
-                                {
-                                    "type": "thermostat",
-                                    "entity": "climate.jonathans_thermostat",
-                                    "name": "Jonathans's Room"
-                                },
-                                {
-                                    "type": "thermostat",
-                                    "entity": "climate.master_bedroom_ac"
-                                },
-                                {
-                                    "type": "thermostat",
-                                    "entity": "climate.daikin_ac"
+                                    "entity": "alarm_control_panel.mqtt_alarm",
+                                    "name": "Alarm"
                                 }
                             ]
                         }
@@ -1452,18 +1830,29 @@
                                             "opposite": true
                                         }
                                     ],
+                                    "all_series_config": {
+                                        "stroke_width": 2
+                                    },
                                     "series": [
                                         {
                                             "entity": "sensor.electricity_total",
                                             "name": "Current Power Draw",
                                             "curve": "straight",
                                             "type": "area",
-                                            "stroke_width": 2,
+                                            "yaxis_id": "left"
+                                        },
+                                        {
+                                            "entity": "sensor.unaccounted_power",
+                                            "name": "Unaccounted Power Draw",
+                                            "curve": "straight",
+                                            "type": "line",
                                             "yaxis_id": "left"
                                         },
                                         {
                                             "entity": "sensor.energy_cost",
                                             "name": "Daily Power Cost",
+                                            "curve": "straight",
+                                            "type": "line",
                                             "yaxis_id": "right"
                                         }
                                     ]

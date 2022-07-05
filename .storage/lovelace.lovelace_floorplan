@@ -518,14 +518,14 @@
                                 },
                                 {
                                     "type": "state-icon",
-                                    "entity": "switch.water_heater",
+                                    "entity": "binary_sensor.water_heater",
                                     "style": {
                                         "top": "75%",
                                         "left": "20%"
                                     },
                                     "tap_action": {
                                         "action": "call-service",
-                                        "service": "switch.toggle",
+                                        "service": "switch.turn_on",
                                         "service_data": {
                                             "entity_id": "switch.water_heater"
                                         }
@@ -681,7 +681,7 @@
                                 },
                                 {
                                     "type": "state-icon",
-                                    "entity": "binary_sensor.tv",
+                                    "entity": "switch.tv",
                                     "style": {
                                         "top": "58%",
                                         "left": "83%"
