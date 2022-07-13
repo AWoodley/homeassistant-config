@@ -132,7 +132,7 @@
     state: 'on'
   - condition: numeric_state
     entity_id: sensor.ble_temperature_a4c138b45222
-    above: '20'
+    above: '15'
   - condition: numeric_state
     entity_id: sensor.darlington_rain_chance_0
     below: '50'
@@ -153,6 +153,9 @@
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
+  - condition: state
+    entity_id: cover.dining_room_rollershutter
+    state: 'open'
   - condition: or
     conditions:
     - condition: numeric_state
