@@ -616,7 +616,8 @@ binary_sensor:
 media_player:
   - platform: yamaha # takes too long to restart if yamaha off
     name: Yamaha Receiver
-    host: yamaha-proxy
+    # host: yamaha-proxy
+    host: 192.168.30.32
     zone_names:
       Main_Zone: "Media Room"
     source_ignore:
