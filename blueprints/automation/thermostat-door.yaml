@@ -1,0 +1,73 @@
+blueprint:
+  name: Light Door Trigger
+  description: 'Toggle light based on door open/close'
+  domain: automation
+  input:
+    door_id:
+      name: Door ID
+      description: ID of the triggering door sensor
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: door
+    light_id:
+      name: Target Light
+      description: Light to toggle
+      selector:
+        entity:
+          domain: light
+    cover_id:
+      name: Roller Shutter ID
+      description: Roller Shutter to monitor
+      default: {}
+      selector:
+        entity:
+          domain: cover
+    
+trigger:
+  - platform: state
+    entity_id: !input door_id
+
+condition:
+  - condition: time
+    after: 08:00:00
+    before: '20:30:00'
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: !input cover_id
+    state: closed
+
+action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: !input door_id
+        state: "off"
+      - condition: state
+        entity_id: !input light_id
+        state: "on"
+      - condition: numeric_state
+        entity_id: !input light_id
+        attribute: brightness
+        below: 255
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: !input light_id
+    - conditions:
+      - condition: state
+        entity_id: !input door_id
+        state: "on"
+      - condition: state
+        entity_id: !input light_id
+        state: "off"
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id: !input light_id
+        data:
+          color_temp: 250
+          brightness: 252
