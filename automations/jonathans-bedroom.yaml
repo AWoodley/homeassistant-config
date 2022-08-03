@@ -57,7 +57,7 @@
     entity_id: person.jonathan
     state: 'home'
   - condition: numeric_state
-    entity_id: sensor.temp_jonathans_bedroom_ds18b20_temperature
+    entity_id: sensor.jonathans_bedroom_temperature
     below: 24
   action:
   - service: climate.set_temperature
