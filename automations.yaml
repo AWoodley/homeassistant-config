@@ -557,3 +557,85 @@
         entity_id: input_boolean.test_switch
   mode: single
   max_exceeded: silent
+- id: '1658155227206'
+  alias: Low-Battery-Alarm
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      exclude:
+        entity_id:
+        - sensor.nokia_5_3_battery_level
+        - sensor.david_s_phone_battery_level
+        - sensor.jonathan_s_phone_battery_level
+        - sensor.nancys_phone_battery_level
+      actions:
+      - service: notify.mobile_app_adrian_s_phone
+        data:
+          title: 'Low Battery '
+          message: '{{sensors}}'
+- id: '1658506699917'
+  alias: Thermostat:Master Bedroom:Time
+  description: ''
+  trigger:
+  - platform: time
+    at: '19:30:00'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: numeric_state
+    entity_id: sensor.temperature_843c01d60760f228
+    below: '19'
+  action:
+  - service: climate.set_hvac_mode
+    data:
+      hvac_mode: heat
+    target:
+      device_id: 28c2ff856d68a09f870340d41b42ea48
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  - service: climate.set_temperature
+    data:
+      temperature: 24
+    target:
+      device_id: 28c2ff856d68a09f870340d41b42ea48
+  - wait_for_trigger:
+    - platform: time
+      at: '20:30:00'
+  - service: climate.set_temperature
+    data:
+      temperature: 19
+    target:
+      device_id: 28c2ff856d68a09f870340d41b42ea48
+  mode: single
+- id: '1660579474503'
+  alias: Media:Volume:Volumio
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.yamaha_receiver_media_room
+    attribute: source
+    to: Volumio
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: numeric_state
+    entity_id: media_player.yamaha_receiver_media_room
+    attribute: volume_level
+    above: '0.6'
+  action:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.6
+    target:
+      entity_id: media_player.yamaha_receiver_media_room
+  mode: single
