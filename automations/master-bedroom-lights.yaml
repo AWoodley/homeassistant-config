@@ -313,3 +313,68 @@
     entity_id: switch.nancy_s_phone_charger
   mode: single
   max_exceeded: silent
+- id: '1656090002268'
+  alias: Switch:Master Bedroom AirCon:Themostat
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - climate.master_bedroom_ac
+    from: 'off'
+    id: 'On'
+  - platform: state
+    entity_id:
+    - climate.master_bedroom_ac
+    to: 'off'
+    id: 'Off'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: 'On'
+      - condition: state
+        entity_id: switch.master_bedroom_air_conditioner
+        state: 'off'
+      sequence:
+      - service: scene.create
+        data:
+          scene_id: master_bedroom_ac
+          snapshot_entities: climate.master_bedroom_ac
+      - service: climate.turn_off
+        data: {}
+        target:
+          entity_id: climate.master_bedroom_ac
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.master_bedroom_air_conditioner
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 5
+          milliseconds: 0
+      - service: scene.turn_on
+        data: {}
+        target:
+          entity_id: scene.master_bedroom_ac
+    default:
+    - delay:
+        hours: 0
+        minutes: 5
+        seconds: 0
+        milliseconds: 0
+    - service: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.master_bedroom_air_conditioner
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  mode: single
+  max_exceeded: silent

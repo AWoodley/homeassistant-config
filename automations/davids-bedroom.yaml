@@ -5,7 +5,7 @@
   - platform: event
     event_type: esphome.rf_code_received
     event_data:
-      code: '1699048'
+      code: '1699042'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -46,7 +46,7 @@
   use_blueprint:
     path: light-step-brightness.yaml
     input:
-      button_id: '1699042'
+      button_id: '1699048'
       light_id: light.lifx_davids_room
 - id: '2573474201727'
   alias: Light:David's Bedroom:Colours
@@ -84,25 +84,6 @@
     state: 'on'
   action:
   - scene: scene.scene_davids_bedroom_off
-- id: '2608395976316'
-  alias: 'Switch:Davids-Fan:Temperature'
-  description: ''
-  trigger:
-  - platform: numeric_state
-    entity_id: sensor.davids_bedroom_temperature
-    below: 24
-    for: 00:05:00
-  - platform: time
-    at: 07:30:00
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-  - service: switch.turn_off
-    data: {}
-    entity_id: switch.David_s_fan
-  mode: single
 - id: '2589216051030'
   alias: Switch:David's Heater:Off
   description: ''
@@ -173,35 +154,12 @@
     data: {}
     entity_id: cover.davids_bedroom_rollershutter
   mode: single
-# - id: '1625843604157'
-#   alias: Light:Davids:Night-light
-#   description: ''
-#   trigger:
-#   - platform: time
-#     at: 00:30:00
-#   condition:
-#   - condition: state
-#     entity_id: binary_sensor.active
-#     state: 'on'
-#   - condition: state
-#     entity_id: person.david
-#     state: home
-#   action:
-#   - service: light.turn_on
-#     target:
-#       entity_id: light.lifx_davids_room
-#     data:
-#       color_temp: 360
-#       brightness_pct: 20
-#       transition: 5
-#   - delay:
-#       hours: 0
-#       minutes: 30
-#       seconds: 0
-#       milliseconds: 0
-#   - service: light.turn_off
-#     target:
-#       device_id: ea7b19a756d56cd28bfbe8b0293a73fc
-#     data:
-#       transition: 30
-#   mode: single
+- id: '1651730294763'
+  alias: Light:Davids Bedroom:Door
+  description: ''
+  use_blueprint:
+    path: light-door.yaml
+    input:
+      door_id: binary_sensor.davids_bedroom_door
+      light_id: light.lifx_davids_room
+      cover_id: cover.davids_bedroom_rollershutter

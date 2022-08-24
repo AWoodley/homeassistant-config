@@ -5,7 +5,7 @@
   - platform: event
     event_type: esphome.rf_code_received
     event_data:
-      code: '1058804'
+      code: '1058801'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -20,7 +20,7 @@
   use_blueprint:
     path: light-step-brightness.yaml
     input:
-      button_id: '1058802'
+      button_id: '1058804'
       light_id: light.lifx_jonathans_bedroom
 - id: '1573474201727'
   alias: Light:Jonathan's Bedroom:Colours
@@ -29,7 +29,7 @@
   - platform: event
     event_type: esphome.rf_code_received
     event_data:
-      code: '1058801'
+      code: '1058802'
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -116,3 +116,12 @@
     data: {}
     entity_id: cover.jonathans_bedroom_rollershutter
   mode: single
+- id: '1651730455246'
+  alias: Light:Jonathan's Bedroom:Door
+  description: ''
+  use_blueprint:
+    path: light-door.yaml
+    input:
+      door_id: binary_sensor.jonathans_bedroom_door
+      light_id: light.lifx_jonathans_bedroom
+      cover_id: cover.jonathans_bedroom_rollershutter
