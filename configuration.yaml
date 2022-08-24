@@ -279,6 +279,9 @@ google_assistant:
       expose: true
     switch.nancys_electric_blanket:
       expose: true
+    switch.water_heater:
+      expose: true
+      name: 'Hot Water System'
     input_boolean.guest:
       expose: true
       name: 'Guest'
@@ -305,11 +308,9 @@ google_assistant:
       expose: true
     cover.jonathans_bedroom_rollershutter:
       expose: true
-    # sensor.jonathans_bedroom_temperature:
-    #   expose: true
     cover.davids_bedroom_rollershutter:
       expose: true
-    sensor.ble_temperature_a4c13887d585 :
+    sensor.ble_temperature_a4c13887d585:
       expose: true
       name: 'Diningroom Temperature'
     sensor.rollershutter_diningroom_ds18b20_temperature:
