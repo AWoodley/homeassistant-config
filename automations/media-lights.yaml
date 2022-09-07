@@ -130,18 +130,11 @@
   alias: Switch:Media Centre:Toggle
   description: ''
   trigger:
-  - entity_id: sensor.ir_button
-    platform: state
-    to: '0xFE800AF5' # Yamaha Receiver remote Aux Power
-  - entity_id: sensor.ir_button
-    platform: state
-    to: '0x40040D00BCB1' # Panasonic TV Remote Aux Power
-  - entity_id: sensor.ir_button
-    platform: state
-    to: '0x40040190CB5A' # Panasonic TV Remote Aux Power alternate
-  - entity_id: sensor.ir_button
-    platform: state
-    to: '0x140A' # Cambridge Bluray Remote Aux Power
+  - platform: state
+    entity_id:
+      - binary_sensor.panasonic_tv_aux_power
+      - binary_sensor.yamaha_aux_power
+    to: "on"
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -153,15 +146,12 @@
   alias: Switch:Media Centre:IR
   description: ''
   trigger:
-  - entity_id: sensor.ir_button
-    platform: state
-    to: '0x40040100BCBD' # Panasonic TV Remote Main Power
-  - entity_id: sensor.ir_button
-    platform: state
-    to: '0x7E8154AB' # Yamaha Receiver Power Main Power
-  - entity_id: sensor.ir_button
-    platform: state
-    to: '0x926D20DF' # Cambridge Bluray Power Main Power
+  - platform: state
+    entity_id:
+      - binary_sensor.panasonic_tv_power
+      - binary_sensor.yamaha_power
+      - media_player.yamaha_receiver_media_room
+    to: "on"
   condition:
   - condition: state
     entity_id: binary_sensor.active
