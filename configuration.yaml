@@ -141,15 +141,6 @@ mqtt:
     # payload_on: "{{ states('sensor.local_ip') }}"
     payload_off: "offline"
     value_template: "{{ states('sensor.local_ip') == value}}"
-  button:
-  - name: Sammy
-    command_topic: "cmnd/tasmotas/irsend"
-    payload_press: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
-  - name: TV
-    icon: mdi:television
-    command_topic: "cmnd/tasmotas/irsend"
-    payload_press: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
-    # payload_off: "{\"Protocol\":\"PANASONIC\",\"Bits\":48,\"Data\":\"0x40040100BCBD\",\"DataLSB\":\"0x022080003DBD\",\"Repeat\":0}"
   cover:
   - unique_id: "D8BFC01A3A5F"
     name: "Master Bedroom Rollershutter"
@@ -502,11 +493,11 @@ switch:
         turn_on:
           service: button.press
           target:
-            entity_id: button.tv
+            entity_id: button.panasonic_tv_power
         turn_off:
           service: button.press
           target:
-            entity_id: button.tv   
+            entity_id: button.panasonic_tv_power   
 
 
 utility_meter:
