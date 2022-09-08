@@ -1,27 +1,118 @@
 {
-    "version": 1,
-    "minor_version": 1,
-    "key": "lovelace",
-    "data": {
-        "config": {
-            "title": "",
-            "views": [
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace",
+  "data": {
+    "config": {
+      "title": "",
+      "views": [
+        {
+          "panel": true,
+          "path": "",
+          "title": "Dashboard",
+          "visible": [
+            {
+              "user": "7e46c1b63b524b3b9069bcbf024a3ebb"
+            },
+            {
+              "user": "1880f61fdeaf4c4ba34709e2c6f00f1e"
+            },
+            {
+              "user": "92b3dd5fd4464e0e8352935995c0ee30"
+            },
+            {
+              "user": "c02988cc95274ca9a27768db0a23e498"
+            },
+            {
+              "user": "9618b73dddfc4121b82e207b4cd0ae1e"
+            }
+          ],
+          "badges": [],
+          "cards": [
+            {
+              "type": "grid",
+              "columns": 2,
+              "cards": [
                 {
-                    "panel": true,
-                    "path": "",
-                    "title": "Dashboard",
-                    "visible": [
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "type": "picture-elements",
+                      "elements": [
                         {
-                            "user": "7e46c1b63b524b3b9069bcbf024a3ebb"
+                          "type": "state-icon",
+                          "entity": "cover.davids_bedroom_rollershutter",
+                          "style": {
+                            "top": "1.5%",
+                            "left": "37%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "cover.toggle",
+                            "service_data": {
+                              "entity_id": "cover.davids_bedroom_rollershutter"
+                            }
+                          }
                         },
                         {
-                            "user": "1880f61fdeaf4c4ba34709e2c6f00f1e"
+                          "type": "state-label",
+                          "entity": "sensor.davids_bedroom_temperature",
+                          "style": {
+                            "top": "6%",
+                            "left": "26.5%"
+                          }
                         },
                         {
-                            "user": "92b3dd5fd4464e0e8352935995c0ee30"
+                          "type": "conditional",
+                          "conditions": [
+                            {
+                              "entity": "climate.davids_thermostat",
+                              "state": "heat"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "state-icon",
+                              "entity": "switch.davids_heater",
+                              "style": {
+                                "top": "6%",
+                                "left": "37%"
+                              },
+                              "tap_action": {
+                                "action": "call-service",
+                                "service": "climate.turn_off",
+                                "service_data": {
+                                  "entity_id": "climate.davids_thermostat"
+                                }
+                              }
+                            }
+                          ]
                         },
                         {
-                            "user": "c02988cc95274ca9a27768db0a23e498"
+                          "type": "conditional",
+                          "conditions": [
+                            {
+                              "entity": "climate.davids_thermostat",
+                              "state": "cool"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "state-icon",
+                              "entity": "switch.davids_fan",
+                              "style": {
+                                "top": "6%",
+                                "left": "37%"
+                              },
+                              "tap_action": {
+                                "action": "call-service",
+                                "service": "climate.turn_off",
+                                "service_data": {
+                                  "entity_id": "climate.davids_thermostat"
+                                }
+                              }
+                            }
+                          ]
                         },
                         {
                             "user": "9618b73dddfc4121b82e207b4cd0ae1e"
@@ -1246,11 +1337,1037 @@
                                         }
                                     ]
                                 }
-                            ]
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "conditional",
+                          "conditions": [
+                            {
+                              "entity": "climate.jonathans_thermostat",
+                              "state": "cool"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "state-icon",
+                              "entity": "switch.jonathans_fan",
+                              "style": {
+                                "top": "16%",
+                                "left": "52%"
+                              },
+                              "tap_action": {
+                                "action": "call-service",
+                                "service": "climate.turn_off",
+                                "service_data": {
+                                  "entity_id": "climate.jonathans_thermostat"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "conditional",
+                          "conditions": [
+                            {
+                              "entity": "climate.jonathans_thermostat",
+                              "state": "off"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "state-icon",
+                              "entity": "climate.jonathans_thermostat",
+                              "style": {
+                                "top": "16%",
+                                "left": "52%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.lifx_jonathans_bedroom",
+                          "style": {
+                            "top": "11%",
+                            "left": "49%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.lifx_jonathans_bedroom"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.jonathans_bedroom_door",
+                          "style": {
+                            "top": "15.5%",
+                            "left": "42%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.jonathans_reading_light",
+                          "style": {
+                            "top": "15.5%",
+                            "left": "46%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "switch.toggle",
+                            "service_data": {
+                              "entity_id": "switch.jonathans_reading_light"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "cover.jonathans_bedroom_rollershutter",
+                          "style": {
+                            "top": "9.75%",
+                            "left": "55.75%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "cover.toggle",
+                            "service_data": {
+                              "entity_id": "cover.jonathans_bedroom_rollershutter"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.bathroom_window",
+                          "style": {
+                            "top": "20%",
+                            "left": "17%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.bathroom_light",
+                          "style": {
+                            "top": "20%",
+                            "left": "24%"
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.bathroom_shelly_temperature",
+                          "style": {
+                            "top": "25%",
+                            "left": "24%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.lifx_passage_1",
+                          "style": {
+                            "top": "17%",
+                            "left": "38.25%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.passage_lights"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.lifx_passage_2",
+                          "style": {
+                            "top": "34%",
+                            "left": "38.25%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.passage_lights"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.ble_temperature_sewing_room",
+                          "style": {
+                            "top": "29%",
+                            "left": "48%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.back_passage",
+                          "style": {
+                            "top": "39%",
+                            "left": "38.25%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_alfresco_1",
+                          "style": {
+                            "top": "4%",
+                            "left": "61%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_alfresco_1"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_alfresco_3",
+                          "style": {
+                            "top": "9%",
+                            "left": "61%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_alfresco_3"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_alfresco_2",
+                          "style": {
+                            "top": "18%",
+                            "left": "77%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_alfresco_2"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_backverandah",
+                          "style": {
+                            "top": "33%",
+                            "left": "95%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_backverandah"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.laundry_garage_door",
+                          "style": {
+                            "top": "36%",
+                            "left": "17%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.washing_machine",
+                          "style": {
+                            "top": "39%",
+                            "left": "23%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.clothes_dryer",
+                          "style": {
+                            "top": "39%",
+                            "left": "27%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.fireplace_fan",
+                          "style": {
+                            "top": "44%",
+                            "left": "45%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "switch.toggle",
+                            "service_data": {
+                              "entity_id": "switch.fireplace_fan"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.dish_washer",
+                          "style": {
+                            "top": "50%",
+                            "left": "20%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_kitchen_1",
+                          "style": {
+                            "top": "50%",
+                            "left": "25%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.kitchen_lights"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_kitchen_2",
+                          "style": {
+                            "top": "49%",
+                            "left": "34%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.kitchen_lights"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_kitchen_3",
+                          "style": {
+                            "top": "56%",
+                            "left": "34%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.kitchen_lights"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "media_player.kitchen_speaker",
+                          "style": {
+                            "top": "56%",
+                            "left": "25%",
+                            "scale": "66%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.laundry_garage_door",
+                          "style": {
+                            "top": "60%",
+                            "left": "34%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.garage_1",
+                          "style": {
+                            "top": "64%",
+                            "left": "20%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "switch.toggle",
+                            "service_data": {
+                              "entity_id": "switch.garage_1"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.water_heater",
+                          "style": {
+                            "top": "75%",
+                            "left": "20%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "switch.toggle",
+                            "service_data": {
+                              "entity_id": "switch.water_heater"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.dining_room_lights",
+                          "icon": "mdi:vanity-light",
+                          "style": {
+                            "top": "46%",
+                            "left": "53%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.dining_room_lights"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                          "style": {
+                            "top": "49%",
+                            "left": "42%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "cover.dining_room_rollershutter",
+                          "style": {
+                            "top": "50%",
+                            "left": "62%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "cover.toggle",
+                            "service_data": {
+                              "entity_id": "cover.dining_room_rollershutter"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "media_player.dining_room_display",
+                          "style": {
+                            "top": "42%",
+                            "left": "58%",
+                            "scale": "66%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_familyroom_1",
+                          "style": {
+                            "top": "39.5%",
+                            "left": "69%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_familyroom_1"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "climate.daikin_ac",
+                          "style": {
+                            "top": "39.5%",
+                            "left": "82.5%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.family_room",
+                          "style": {
+                            "top": "39.5%",
+                            "left": "94%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.lifx_familyroom_stand",
+                          "style": {
+                            "top": "52%",
+                            "left": "95%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.lifx_familyroom_stand"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.temperature_fe01191a0ae4e128",
+                          "style": {
+                            "top": "47%",
+                            "left": "82%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.familyroom_door",
+                          "style": {
+                            "top": "44%",
+                            "left": "98%"
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.ble_temperature_a4c138fbfa2a",
+                          "style": {
+                            "top": "60%",
+                            "left": "47.25%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.music_room_light",
+                          "style": {
+                            "top": "64%",
+                            "left": "47.25%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.music_room_light"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.media_centre",
+                          "style": {
+                            "top": "58%",
+                            "left": "77%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "switch.toggle",
+                            "service_data": {
+                              "entity_id": "switch.media_centre"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.tv",
+                          "style": {
+                            "top": "58%",
+                            "left": "83%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "switch.toggle",
+                            "service_data": {
+                              "entity_id": "switch.tv"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_media_3",
+                          "style": {
+                            "top": "64%",
+                            "left": "80%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_media_3"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_media_1",
+                          "style": {
+                            "top": "69%",
+                            "left": "72%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_media_1"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.ble_temperature_media_room_ble_sensor",
+                          "style": {
+                            "top": "69%",
+                            "left": "81%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.media_room",
+                          "style": {
+                            "top": "69%",
+                            "left": "90%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_entry_1",
+                          "style": {
+                            "top": "78%",
+                            "left": "48%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.entry_lights"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_entry_4",
+                          "style": {
+                            "top": "74.5%",
+                            "left": "60%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.entry_lights"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_entry_3",
+                          "style": {
+                            "top": "74.5%",
+                            "left": "70%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.entry_lights"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.lifx_study_1",
+                          "style": {
+                            "top": "82.5%",
+                            "left": "64%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.lifx_study_1"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_study_2",
+                          "style": {
+                            "top": "87.5%",
+                            "left": "64.5%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_study_2"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_study_3",
+                          "style": {
+                            "top": "81%",
+                            "left": "70%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_study_3"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.monitors",
+                          "style": {
+                            "top": "87.5%",
+                            "left": "70%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "switch.toggle",
+                            "service_data": {
+                              "entity_id": "switch.monitors"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.radios",
+                          "style": {
+                            "top": "87.5%",
+                            "left": "58.5%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "switch.toggle",
+                            "service_data": {
+                              "entity_id": "switch.radios"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                          "style": {
+                            "top": "79%",
+                            "left": "61%"
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.ble_temperature_a4c138b45222",
+                          "style": {
+                            "top": "92%",
+                            "left": "45%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.front_door",
+                          "style": {
+                            "top": "81%",
+                            "left": "46%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.lifx_front_door",
+                          "style": {
+                            "top": "86%",
+                            "left": "52%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.lifx_front_door"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "climate.master_bedroom_ac",
+                          "style": {
+                            "top": "78%",
+                            "left": "81%"
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.temperature_843c01d60760f228",
+                          "style": {
+                            "top": "82%",
+                            "left": "81%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_masterbedroom_1",
+                          "style": {
+                            "top": "83%",
+                            "left": "89%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_masterbedroom_1"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_bedside_1",
+                          "style": {
+                            "top": "87.5%",
+                            "left": "96%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_bedside_1"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.nancys_electric_blanket",
+                          "style": {
+                            "top": "87.5%",
+                            "left": "86%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "switch.toggle",
+                            "service_data": {
+                              "entity_id": "switch.nancys_electric_blanket"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "light.light_bedside_2",
+                          "style": {
+                            "top": "87.5%",
+                            "left": "81%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_bedside_2"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "cover.master_bedroom_rollershutter",
+                          "style": {
+                            "top": "82.5%",
+                            "left": "98%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "cover.toggle",
+                            "service_data": {
+                              "entity_id": "cover.master_bedroom_rollershutter"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "alarm_control_panel.mqtt_alarm",
+                          "style": {
+                            "top": "90%",
+                            "left": "5%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "alarm_control_panel.alarm_disarm",
+                            "service_data": {
+                              "entity_id": "alarm_control_panel.mqtt_alarm"
+                            }
+                          },
+                          "double_tap_action": {
+                            "action": "call-service",
+                            "service": "alarm_control_panel.alarm_arm_away",
+                            "service_data": {
+                              "entity_id": "alarm_control_panel.mqtt_alarm"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "binary_sensor.active",
+                          "style": {
+                            "top": "90%",
+                            "left": "10%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "automation.trigger",
+                            "service_data": {
+                              "entity_id": "automation.hass_heartbeat"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-badge",
+                          "entity": "person.adrian",
+                          "style": {
+                            "top": "7%",
+                            "left": "7%",
+                            "scale": "75%"
+                          }
+                        },
+                        {
+                          "type": "state-badge",
+                          "entity": "person.nancy",
+                          "style": {
+                            "top": "18%",
+                            "left": "7%",
+                            "scale": "75%"
+                          }
+                        },
+                        {
+                          "type": "state-badge",
+                          "entity": "person.jonathan",
+                          "style": {
+                            "top": "29%",
+                            "left": "7%",
+                            "scale": "75%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "input_select.select_next",
+                            "service_data": {
+                              "entity_id": "input_select.jonathan"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-badge",
+                          "entity": "person.david",
+                          "style": {
+                            "top": "40%",
+                            "left": "7%",
+                            "scale": "75%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "input_select.select_next",
+                            "service_data": {
+                              "entity_id": "input_select.david"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-badge",
+                          "entity": "person.guest",
+                          "style": {
+                            "top": "51%",
+                            "left": "7%",
+                            "scale": "75%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "input_select.select_next",
+                            "service_data": {
+                              "entity_id": "input_select.guest"
+                            }
+                          }
                         }
-                    ]
+                      ],
+                      "image": "local/lovelace/floorplan/floorplan.png"
+                    },
+                    {
+                      "type": "weather-forecast",
+                      "entity": "weather.darlington",
+                      "show_forecast": false,
+                      "secondary_info_attribute": "wind_speed"
+                    },
+                    {
+                      "type": "glance",
+                      "entities": [
+                        {
+                          "entity": "sensor.temperature_fe01191a0ae4e128",
+                          "name": "Family Room"
+                        },
+                        {
+                          "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                          "name": "Study"
+                        },
+                        {
+                          "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                          "name": "Dining Room"
+                        },
+                        {
+                          "entity": "sensor.ble_temperature_a4c138fbfa2a",
+                          "name": "Master Bedroom"
+                        },
+                        {
+                          "entity": "sensor.davids_bedroom_temperature",
+                          "name": "David's Bedroom"
+                        },
+                        {
+                          "entity": "sensor.jonathans_bedroom_temperature",
+                          "name": "Jonathan's Bedroom"
+                        },
+                        {
+                          "entity": "sensor.ble_temperature_sewing_room",
+                          "name": "Sewing Room"
+                        },
+                        {
+                          "entity": "sensor.ble_temperature_media_room_ble_sensor",
+                          "name": "Media Room"
+                        },
+                        {
+                          "entity": "sensor.ble_temperature_a4c138fbfa2a",
+                          "name": "Music Room"
+                        },
+                        {
+                          "entity": "sensor.ble_temperature_a4c13888821f",
+                          "name": "Ceiling"
+                        },
+                        {
+                          "entity": "sensor.ble_temperature_a4c138b45222",
+                          "name": "Outside"
+                        },
+                        {
+                          "entity": "sensor.darlington_fire_danger_0",
+                          "name": "FDR"
+                        }
+                      ],
+                      "state_color": true,
+                      "show_icon": false,
+                      "show_state": true,
+                      "columns": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "vertical-stack",
+                  "cards": [
+                    {
+                      "chart_type": "line",
+                      "period": "day",
+                      "days_to_show": 14,
+                      "type": "statistics-graph",
+                      "entities": [
+                        "sensor.shelly_em3_1_channel_c_power",
+                        "sensor.shelly_em3_1_channel_a_power",
+                        "sensor.shelly_em3_1_channel_b_power"
+                      ],
+                      "stat_types": [
+                        "mean"
+                      ]
+                    },
+                    {
+                      "type": "energy-devices-graph"
+                    },
+                    {
+                      "type": "energy-date-selection"
+                    }
+                  ]
                 }
-            ]
+              ]
+            }
+          ]
         }
+      ]
     }
+  }
 }

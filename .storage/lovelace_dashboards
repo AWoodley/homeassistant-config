@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace_dashboards",
     "data": {
         "items": [
@@ -35,6 +36,15 @@
                 "url_path": "lovelace-admin",
                 "mode": "storage",
                 "id": "lovelace_admin"
+            },
+            {
+                "show_in_sidebar": true,
+                "icon": "mdi:home",
+                "title": "Rooms",
+                "require_admin": false,
+                "mode": "storage",
+                "url_path": "lovelace-rooms",
+                "id": "lovelace_rooms"
             }
         ]
     }

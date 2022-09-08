@@ -1,16 +1,100 @@
 {
-    "version": 1,
-    "minor_version": 1,
-    "key": "lovelace.lovelace_mobile",
-    "data": {
-        "config": {
-            "views": [
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.lovelace_mobile",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": "Overview",
+          "path": "overview",
+          "panel": true,
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
                 {
-                    "title": "Overview",
-                    "path": "overview",
-                    "panel": true,
-                    "badges": [],
-                    "cards": [
+                  "type": "picture-elements",
+                  "elements": [
+                    {
+                      "type": "state-icon",
+                      "entity": "cover.davids_bedroom_rollershutter",
+                      "style": {
+                        "top": "1.5%",
+                        "left": "37%"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "cover.toggle",
+                        "service_data": {
+                          "entity_id": "cover.davids_bedroom_rollershutter"
+                        }
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.davids_bedroom_temperature",
+                      "style": {
+                        "top": "6%",
+                        "left": "26.5%"
+                      }
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "climate.davids_thermostat",
+                          "state": "heat"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.davids_heater",
+                          "style": {
+                            "top": "6%",
+                            "left": "37%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "climate.turn_off",
+                            "service_data": {
+                              "entity_id": "climate.davids_thermostat"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "climate.davids_thermostat",
+                          "state": "cool"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "state-icon",
+                          "entity": "switch.davids_fan",
+                          "style": {
+                            "top": "6%",
+                            "left": "37%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "climate.turn_off",
+                            "service_data": {
+                              "entity_id": "climate.davids_thermostat"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
                         {
                             "type": "vertical-stack",
                             "cards": [
@@ -1591,310 +1675,865 @@
                                 }
                             ]
                         }
-                    ]
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "person.adrian",
+                      "style": {
+                        "top": "8%",
+                        "left": "7%",
+                        "scale": "50%"
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "person.nancy",
+                      "style": {
+                        "top": "22%",
+                        "left": "7%",
+                        "scale": "50%"
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "person.jonathan",
+                      "style": {
+                        "top": "36%",
+                        "left": "7%",
+                        "scale": "50%"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "input_select.select_next",
+                        "service_data": {
+                          "entity_id": "input_select.jonathan"
+                        }
+                      }
+                    },
+                    {
+                      "type": "state-badge",
+                      "entity": "person.david",
+                      "style": {
+                        "top": "50%",
+                        "left": "7%",
+                        "scale": "50%"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "input_select.select_next",
+                        "service_data": {
+                          "entity_id": "input_select.david"
+                        }
+                      }
+                    },
+                    {
+                      "type": "state-icon",
+                      "entity": "person.guest",
+                      "title": "Guest",
+                      "style": {
+                        "top": "90%",
+                        "left": "15%"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "input_select.select_next",
+                        "service_data": {
+                          "entity_id": "input_select.guest"
+                        }
+                      }
+                    }
+                  ],
+                  "image": "local/lovelace/floorplan/floorplan.png"
                 },
                 {
-                    "title": "Media",
-                    "path": "media",
-                    "panel": true,
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "vertical-stack",
-                            "cards": [
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "entity": "switch.media_centre"
-                                },
-                                {
-                                    "type": "button",
-                                    "tap_action": {
-                                        "action": "toggle"
-                                    },
-                                    "entity": "switch.tv"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.dining_room_display"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.glod"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.kitchen_speaker"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.jonathans_speaker"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.davids_speaker"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.imp"
-                                },
-                                {
-                                    "type": "media-control",
-                                    "entity": "media_player.mended_drum"
-                                }
-                            ]
+                  "type": "grid",
+                  "title": "Master Bedroom",
+                  "columns": 4,
+                  "cards": [
+                    {
+                      "type": "button",
+                      "entity": "light.light_masterbedroom_1",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "cover.master_bedroom_rollershutter",
+                      "show_name": false,
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "cover.toggle",
+                        "data": {
+                          "entity_id": "cover.master_bedroom_rollershutter"
                         }
-                    ]
+                      }
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.temperature_843c01d60760f228",
+                      "name": "Temp",
+                      "graph": "line"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "climate.master_bedroom_ac",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "media_player.master_bedroom",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "light.light_bedside_2",
+                      "name": "Nancy's"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "light.light_bedside_1",
+                      "name": "Adrian's"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "switch.nancys_electric_blanket",
+                      "show_name": false
+                    }
+                  ]
                 },
                 {
-                    "panel": true,
-                    "title": "Sensors",
-                    "path": "sensors",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "vertical-stack",
-                            "cards": [
-                                {
-                                    "type": "history-graph",
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.nokia_5_3_battery_level"
-                                        },
-                                        {
-                                            "entity": "sensor.nancys_phone_battery_level"
-                                        },
-                                        {
-                                            "entity": "sensor.david_s_phone_battery_level"
-                                        },
-                                        {
-                                            "entity": "sensor.moto_g_5s_battery_level"
-                                        }
-                                    ],
-                                    "hours_to_show": 24,
-                                    "refresh_interval": 60,
-                                    "title": "Sensors"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.average_indoor_temperature",
-                                    "graph": "line",
-                                    "icon": "hass:thermometer",
-                                    "name": "Inside Temperature"
-                                },
-                                {
-                                    "type": "sensor",
-                                    "entity": "sensor.ble_temperature_a4c138b45222",
-                                    "graph": "line",
-                                    "name": "Outside Temperature"
-                                },
-                                {
-                                    "type": "glance",
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
-                                            "name": "Study"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c138dfcf8d",
-                                            "name": "Dining Room"
-                                        },
-                                        {
-                                            "entity": "sensor.temperature_fe01191a0ae4e128",
-                                            "name": "Family Room"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c138fbfa2a",
-                                            "name": "Master Bedroom"
-                                        },
-                                        {
-                                            "entity": "sensor.jonathans_bedroom_temperature",
-                                            "name": "Jonathan's Bedroom"
-                                        },
-                                        {
-                                            "entity": "sensor.davids_bedroom_temperature",
-                                            "name": "David's Bedroom"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_sewing_room",
-                                            "name": "Sewing Room"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c13888821f",
-                                            "name": "Ceiling"
-                                        },
-                                        {
-                                            "entity": "sensor.ble_temperature_a4c138b45222",
-                                            "name": "Outside"
-                                        },
-                                        {
-                                            "entity": "sensor.darlington_fire_danger_0",
-                                            "name": "FDR"
-                                        }
-                                    ],
-                                    "state_color": true,
-                                    "show_icon": false,
-                                    "show_state": true,
-                                    "columns": 5
-                                },
-                                {
-                                    "type": "weather-forecast",
-                                    "entity": "weather.darlington",
-                                    "show_forecast": true,
-                                    "secondary_info_attribute": "wind_speed"
-                                },
-                                {
-                                    "type": "history-graph",
-                                    "entities": [
-                                        {
-                                            "entity": "climate.davids_thermostat"
-                                        }
-                                    ],
-                                    "hours_to_show": 24,
-                                    "refresh_interval": 0
-                                },
-                                {
-                                    "type": "history-graph",
-                                    "entities": [
-                                        {
-                                            "entity": "climate.jonathans_thermostat"
-                                        }
-                                    ],
-                                    "hours_to_show": 24,
-                                    "refresh_interval": 0
-                                },
-                                {
-                                    "type": "history-graph",
-                                    "entities": [
-                                        {
-                                            "entity": "climate.master_bedroom_ac"
-                                        }
-                                    ],
-                                    "hours_to_show": 24,
-                                    "refresh_interval": 0
-                                },
-                                {
-                                    "type": "entity",
-                                    "entity": "climate.daikin_ac"
-                                }
-                            ]
+                  "type": "grid",
+                  "title": "David's Bedroom",
+                  "columns": 4,
+                  "cards": [
+                    {
+                      "type": "button",
+                      "entity": "light.lifx_davids_room",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "cover.davids_bedroom_rollershutter",
+                      "show_name": false,
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "cover.toggle",
+                        "data": {
+                          "entity_id": "cover.davids_bedroom_rollershutter"
                         }
-                    ]
+                      }
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.davids_bedroom_temperature",
+                      "name": "Temp",
+                      "graph": "line"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "climate.davids_thermostat",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "media_player.davids_speaker",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "binary_sensor.davids_bedroom_door",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    }
+                  ]
                 },
                 {
-                    "theme": "Backend-selected",
-                    "title": "Cameras",
-                    "path": "cameras",
-                    "icon": "mdi:cctv",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "picture-entity",
-                            "entity": "camera.ellie"
+                  "type": "grid",
+                  "title": "Jonathan's Bedroom",
+                  "columns": 4,
+                  "cards": [
+                    {
+                      "type": "button",
+                      "entity": "light.lifx_jonathans_bedroom",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "cover.jonathans_bedroom_rollershutter",
+                      "show_name": false,
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "cover.toggle",
+                        "data": {
+                          "entity_id": "cover.jonathans_bedroom_rollershutter"
                         }
-                    ]
+                      }
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.jonathans_bedroom_temperature",
+                      "name": "Temp",
+                      "graph": "line"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "climate.jonathans_thermostat",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "entity": "media_player.jonathans_speaker"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "binary_sensor.jonathans_bedroom_door",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "switch.jonathans_reading_light",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    }
+                  ]
                 },
                 {
-                    "theme": "Backend-selected",
-                    "title": "Power",
-                    "path": "power",
-                    "icon": "mdi:lightning-bolt",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "vertical-stack",
-                            "cards": [
-                                {
-                                    "type": "custom:apexcharts-card",
-                                    "header": {
-                                        "show": true,
-                                        "title": "Daily Power Usage"
-                                    },
-                                    "graph_span": "24h",
-                                    "update_interval": "30sec",
-                                    "now": {
-                                        "show": true
-                                    },
-                                    "span": {
-                                        "start": "day",
-                                        "offset": "+1m"
-                                    },
-                                    "yaxis": [
-                                        {
-                                            "id": "left"
-                                        },
-                                        {
-                                            "id": "right",
-                                            "opposite": true
-                                        }
-                                    ],
-                                    "all_series_config": {
-                                        "stroke_width": 2
-                                    },
-                                    "series": [
-                                        {
-                                            "entity": "sensor.electricity_total",
-                                            "name": "Current Power Draw",
-                                            "curve": "straight",
-                                            "type": "area",
-                                            "yaxis_id": "left"
-                                        },
-                                        {
-                                            "entity": "sensor.unaccounted_power",
-                                            "name": "Unaccounted Power Draw",
-                                            "curve": "straight",
-                                            "type": "line",
-                                            "yaxis_id": "left"
-                                        },
-                                        {
-                                            "entity": "sensor.energy_cost",
-                                            "name": "Daily Power Cost",
-                                            "curve": "straight",
-                                            "type": "line",
-                                            "yaxis_id": "right"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "energy-date-selection"
-                                },
-                                {
-                                    "type": "energy-devices-graph"
-                                },
-                                {
-                                    "type": "history-graph",
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.electricity_total"
-                                        },
-                                        {
-                                            "entity": "sensor.shelly_em3_1_channel_a_power"
-                                        },
-                                        {
-                                            "entity": "sensor.shelly_em3_1_channel_b_power"
-                                        },
-                                        {
-                                            "entity": "sensor.shelly_em3_1_channel_c_power"
-                                        }
-                                    ],
-                                    "hours_to_show": 24
-                                },
-                                {
-                                    "type": "history-graph",
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.water_heater_power"
-                                        }
-                                    ]
-                                }
-                            ]
+                  "type": "grid",
+                  "title": "Dining Room",
+                  "columns": 4,
+                  "cards": [
+                    {
+                      "type": "button",
+                      "entity": "light.dining_room_lights",
+                      "icon": "mdi:vanity-light",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "cover.dining_room_rollershutter",
+                      "show_name": false,
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "cover.toggle",
+                        "data": {
+                          "entity_id": "cover.dining_room_rollershutter"
                         }
-                    ]
+                      }
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                      "name": "Temp",
+                      "graph": "line"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "switch.fireplace_fan",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "media_player.dining_room_display",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "title": "Family Room",
+                  "columns": 4,
+                  "cards": [
+                    {
+                      "type": "button",
+                      "entity": "light.family_room_lights",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.temperature_fe01191a0ae4e128",
+                      "name": "Temp",
+                      "graph": "line"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "climate.daikin_ac",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "binary_sensor.familyroom_door",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "title": "Media Room",
+                  "columns": 4,
+                  "cards": [
+                    {
+                      "type": "button",
+                      "entity": "light.media_room_lights",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.ble_temperature_media_room_ble_sensor",
+                      "name": "Temp",
+                      "graph": "line"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "media_player.glod",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "switch.media_centre",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "switch.tv",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "light.light_media_1",
+                      "name": "Light Stand"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "title": "Kitchen",
+                  "columns": 4,
+                  "cards": [
+                    {
+                      "type": "button",
+                      "entity": "light.kitchen_lights",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                      "name": "Temp",
+                      "graph": "line"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "media_player.kitchen_speaker",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "binary_sensor.dish_washer",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "title": "Misc",
+                  "columns": 4,
+                  "cards": [
+                    {
+                      "type": "button",
+                      "entity": "light.passage_lights"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "light.alfresco_lights"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.average_indoor_temperature",
+                      "name": "In",
+                      "graph": "line",
+                      "icon": "mdi:thermometer"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.ble_temperature_a4c138b45222",
+                      "name": "Out",
+                      "graph": "line"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "light.entry_lights"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "binary_sensor.washing_machine",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "binary_sensor.clothes_dryer",
+                      "show_name": false
+                    },
+                    {
+                      "type": "button",
+                      "entity": "switch.garage_1",
+                      "show_name": false
+                    }
+                  ]
+                },
+                {
+                  "type": "alarm-panel",
+                  "states": [
+                    "arm_home",
+                    "arm_away"
+                  ],
+                  "entity": "alarm_control_panel.mqtt_alarm",
+                  "name": "Alarm"
                 }
-            ],
-            "title": "Mobile View"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Media",
+          "path": "media",
+          "panel": true,
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.media_centre"
+                },
+                {
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.tv"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.glod"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.yamaha_receiver_media_room"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.dining_room_display"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.kitchen_speaker"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.jonathans_speaker"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.davids_speaker"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.imp"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.mended_drum"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "panel": true,
+          "title": "Sensors",
+          "path": "sensors",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "sensor.nokia_5_3_battery_level"
+                    },
+                    {
+                      "entity": "sensor.nancys_phone_battery_level"
+                    },
+                    {
+                      "entity": "sensor.david_s_phone_battery_level"
+                    },
+                    {
+                      "entity": "sensor.moto_g_5s_battery_level"
+                    }
+                  ],
+                  "hours_to_show": 24,
+                  "refresh_interval": 60,
+                  "title": "Sensors"
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.average_indoor_temperature",
+                  "graph": "line",
+                  "icon": "hass:thermometer",
+                  "name": "Inside Temperature"
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.ble_temperature_a4c138b45222",
+                  "graph": "line",
+                  "name": "Outside Temperature"
+                },
+                {
+                  "type": "glance",
+                  "entities": [
+                    {
+                      "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                      "name": "Study"
+                    },
+                    {
+                      "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                      "name": "Dining Room"
+                    },
+                    {
+                      "entity": "sensor.temperature_fe01191a0ae4e128",
+                      "name": "Family Room"
+                    },
+                    {
+                      "entity": "sensor.ble_temperature_a4c138fbfa2a",
+                      "name": "Master Bedroom"
+                    },
+                    {
+                      "entity": "sensor.jonathans_bedroom_temperature",
+                      "name": "Jonathan's Bedroom"
+                    },
+                    {
+                      "entity": "sensor.davids_bedroom_temperature",
+                      "name": "David's Bedroom"
+                    },
+                    {
+                      "entity": "sensor.ble_temperature_sewing_room",
+                      "name": "Sewing Room"
+                    },
+                    {
+                      "entity": "sensor.ble_temperature_a4c13888821f",
+                      "name": "Ceiling"
+                    },
+                    {
+                      "entity": "sensor.ble_temperature_a4c138b45222",
+                      "name": "Outside"
+                    },
+                    {
+                      "entity": "sensor.darlington_fire_danger_0",
+                      "name": "FDR"
+                    }
+                  ],
+                  "state_color": true,
+                  "show_icon": false,
+                  "show_state": true,
+                  "columns": 5
+                },
+                {
+                  "type": "weather-forecast",
+                  "entity": "weather.darlington",
+                  "show_forecast": true,
+                  "secondary_info_attribute": "wind_speed"
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "climate.davids_thermostat"
+                    }
+                  ],
+                  "hours_to_show": 24,
+                  "refresh_interval": 0
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "climate.jonathans_thermostat"
+                    }
+                  ],
+                  "hours_to_show": 24,
+                  "refresh_interval": 0
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "climate.master_bedroom_ac"
+                    }
+                  ],
+                  "hours_to_show": 24,
+                  "refresh_interval": 0
+                },
+                {
+                  "type": "entity",
+                  "entity": "climate.daikin_ac"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Power",
+          "path": "power",
+          "icon": "mdi:lightning-bolt",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "custom:apexcharts-card",
+                  "header": {
+                    "show": true,
+                    "title": "Daily Power Usage"
+                  },
+                  "graph_span": "24h",
+                  "update_interval": "30sec",
+                  "now": {
+                    "show": true
+                  },
+                  "span": {
+                    "start": "day",
+                    "offset": "+1m"
+                  },
+                  "yaxis": [
+                    {
+                      "id": "left"
+                    },
+                    {
+                      "id": "right",
+                      "opposite": true
+                    }
+                  ],
+                  "all_series_config": {
+                    "stroke_width": 2
+                  },
+                  "series": [
+                    {
+                      "entity": "sensor.electricity_total",
+                      "name": "Current Power Draw",
+                      "curve": "straight",
+                      "type": "area",
+                      "yaxis_id": "left"
+                    },
+                    {
+                      "entity": "sensor.unaccounted_power",
+                      "name": "Unaccounted Power Draw",
+                      "curve": "straight",
+                      "type": "line",
+                      "yaxis_id": "left"
+                    },
+                    {
+                      "entity": "sensor.energy_cost",
+                      "name": "Daily Power Cost",
+                      "curve": "straight",
+                      "type": "line",
+                      "yaxis_id": "right"
+                    }
+                  ]
+                },
+                {
+                  "type": "energy-date-selection"
+                },
+                {
+                  "type": "energy-devices-graph"
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "sensor.electricity_total"
+                    },
+                    {
+                      "entity": "sensor.shelly_em3_1_channel_a_power"
+                    },
+                    {
+                      "entity": "sensor.shelly_em3_1_channel_b_power"
+                    },
+                    {
+                      "entity": "sensor.shelly_em3_1_channel_c_power"
+                    }
+                  ],
+                  "hours_to_show": 24
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "sensor.water_heater_power"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
+      ],
+      "title": "Mobile View"
     }
+  }
 }
