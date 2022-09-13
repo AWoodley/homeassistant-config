@@ -230,6 +230,7 @@ create_every_automation_group:
   - service: input_boolean.turn_on
     target:
       entity_id: input_boolean.light_effect_running
+    data: {}
   - service: scene.create
     data:
       scene_id: pre_effect
@@ -237,22 +238,29 @@ create_every_automation_group:
       - light.lifx_dining_room_1
       - light.lifx_dining_room_2
       - light.lifx_dining_room_3
-      - light.lifx_diningroom_4
+      - light.lifx_dining_room_4
       - light.light_familyroom_1
       - light.lifx_familyroom_stand
       - light.music_room_light
-      - light.light_media_3
       - light.light_media_1
+      - light.light_media_3
       - light.light_kitchen_1
       - light.light_kitchen_2
       - light.light_kitchen_3
       - light.lifx_passage_1
       - light.lifx_passage_2
+      - light.light_entry_1
+      - light.light_entry_2
+      - light.light_entry_4
   - service: light.turn_off
     target:
       entity_id:
       - light.light_media_3
       - light.light_kitchen_1
+      - light.entry_lights
+      - light.lifx_passage_1
+      - light.lifx_passage_2
+    data: {}
   - service: light.turn_on
     data:
       effect: random
@@ -260,9 +268,7 @@ create_every_automation_group:
       entity_id:
       - light.light_kitchen_2
       - light.light_kitchen_3
-      - light.lifx_passage_1
-      - light.lifx_passage_2
-  - data_template:
+  - data:
       entity_id: light.lifx_dining_room_1
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
@@ -270,7 +276,7 @@ create_every_automation_group:
       power_on: true
       transition: 1
     service: lifx.effect_colorloop
-  - data_template:
+  - data:
       entity_id: light.lifx_dining_room_2
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
@@ -278,7 +284,7 @@ create_every_automation_group:
       power_on: true
       transition: 1
     service: lifx.effect_colorloop
-  - data_template:
+  - data:
       entity_id: light.lifx_dining_room_3
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
@@ -286,15 +292,15 @@ create_every_automation_group:
       power_on: true
       transition: 1
     service: lifx.effect_colorloop
-  - data_template:
-      entity_id: light.lifx_diningroom_4
+  - data:
+      entity_id: light.lifx_dining_room_4
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
       change: 138
       power_on: true
       transition: 1
     service: lifx.effect_colorloop
-  - data_template:
+  - data:
       entity_id: light.light_familyroom_1
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
@@ -302,7 +308,7 @@ create_every_automation_group:
       power_on: true
       transition: 1
     service: lifx.effect_colorloop
-  - data_template:
+  - data:
       entity_id: light.lifx_familyroom_stand
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
@@ -310,7 +316,7 @@ create_every_automation_group:
       power_on: true
       transition: 1
     service: lifx.effect_colorloop
-  - data_template:
+  - data:
       entity_id: light.music_room_light
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
@@ -318,8 +324,16 @@ create_every_automation_group:
       power_on: true
       transition: 1
     service: lifx.effect_colorloop
-  - data_template:
+  - data:
       entity_id: light.light_media_1
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+  - data:
+      entity_id: light.light_entry_4
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
       change: 138
@@ -328,11 +342,19 @@ create_every_automation_group:
     service: lifx.effect_colorloop
   - wait_for_trigger:
     - platform: state
-      entity_id: input_boolean.light_effect_running
+      entity_id:
+      - input_boolean.light_effect_running
       to: 'off'
+  - service: light.turn_off
+    target:
+      entity_id:
+      - light.light_kitchen_2
+      - light.light_kitchen_3
+    data: {}
   - service: scene.turn_on
     target:
       entity_id: scene.pre_effect
+    data: {}
   mode: single
 '1626880812487':
   alias: The Fuzz
