@@ -639,3 +639,33 @@
     target:
       entity_id: media_player.yamaha_receiver_media_room
   mode: single
+- id: '1661337897543'
+  alias: Light/Cover:Jonathan:Morning
+  description: ''
+  use_blueprint:
+    path: light-morning.yaml
+    input:
+      light_id: light.lifx_jonathans_bedroom
+      cover_id: cover.jonathans_bedroom_rollershutter
+      temperature_sensor_id: sensor.ble_temperature_a4c138b45222
+      person_id: person.jonathan
+- id: '1661337951517'
+  alias: Light/Cover:David:Morning
+  description: ''
+  use_blueprint:
+    path: light-morning.yaml
+    input:
+      light_id: light.lifx_davids_room
+      cover_id: cover.davids_bedroom_rollershutter
+      temperature_sensor_id: sensor.ble_temperature_a4c138b45222
+      person_id: person.david
+- id: '1661338159225'
+  alias: Light/Cover:Master Bedroom:Morning
+  description: ''
+  use_blueprint:
+    path: light-morning.yaml
+    input:
+      light_id: light.light_masterbedroom_1
+      cover_id: cover.master_bedroom_rollershutter_2
+      temperature_sensor_id: sensor.ble_temperature_a4c138b45222
+      person_id: person.adrian

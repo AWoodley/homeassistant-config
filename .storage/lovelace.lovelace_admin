@@ -224,8 +224,13 @@
                         }
                     ]
                 }
-            ],
-            "title": "Admin"
+              ],
+              "image": "local/lovelace/floorplan/floorplan.png"
+            }
+          ]
         }
+      ],
+      "title": "Admin"
     }
+  }
 }
