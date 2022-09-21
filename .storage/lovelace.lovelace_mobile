@@ -2119,6 +2119,70 @@
                 },
                 {
                   "type": "grid",
+                  "title": "Music Room",
+                  "columns": 4,
+                  "cards": [
+                    {
+                      "type": "button",
+                      "entity": "light.music_room_light",
+                      "show_name": false
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "type": "sensor",
+                      "entity": "sensor.ble_music_room_temperature",
+                      "name": "Temp",
+                      "graph": "line"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "type": "button",
+                      "entity": "switch.jonathans_laptop",
+                      "show_name": true
+                    },
+                    {
+                      "type": "button",
+                      "entity": "switch.davids_laptop",
+                      "show_name": true
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": false,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_text.blank"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
                   "title": "Kitchen",
                   "columns": 4,
                   "cards": [
