@@ -279,6 +279,9 @@ google_assistant:
     switch.davids_laptop:
       expose: true
       name: 'Davids Laptop'
+    switch.hex:
+      expose: true
+      name: 'Hex'
     input_boolean.guest:
       expose: true
       name: 'Guest'
