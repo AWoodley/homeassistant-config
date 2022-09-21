@@ -273,6 +273,12 @@ google_assistant:
     switch.water_heater:
       expose: true
       name: 'Hot Water System'
+    switch.jonathans_laptop:
+      expose: true
+      name: 'Jonathans Laptop'
+    switch.davids_laptop:
+      expose: true
+      name: 'Davids Laptop'
     input_boolean.guest:
       expose: true
       name: 'Guest'
