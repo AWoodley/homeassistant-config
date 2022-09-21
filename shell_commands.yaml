@@ -1,0 +1,2 @@
+turn_off_jonathans_laptop: "ssh -i /config/ssh_keys/id_rsa_homeassistant -o 'StrictHostKeyChecking=no' homeassistant@susan sudo shutdown -h now"
+turn_off_davids_laptop: "ssh -i /config/ssh_keys/id_rsa_homeassistant -o 'StrictHostKeyChecking=no' homeassistant@uberwald sudo shutdown -h now"

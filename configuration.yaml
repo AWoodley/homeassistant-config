@@ -62,7 +62,7 @@ automation: !include_dir_merge_list automations
 script: !include scripts.yaml
 scene: !include scenes.yaml
 timer: !include timer.yaml
-
+shell_command: !include shell_commands.yaml
 
 # Text to speech
 tts:
@@ -497,7 +497,17 @@ switch:
         turn_off:
           service: button.press
           target:
-            entity_id: button.panasonic_tv_power   
+            entity_id: button.panasonic_tv_power
+  - platform: wake_on_lan
+    mac: C8:60:00:37:F1:0B
+    name: Jonathans Laptop
+    turn_off:
+      service: shell_command.turn_off_jonathans_laptop
+  - platform: wake_on_lan
+    mac: E4:11:5B:3D:10:DF
+    name: Davids Laptop
+    turn_off:
+      service: shell_command.turn_off_davids_laptop
 
 
 utility_meter:
