@@ -507,13 +507,19 @@ switch:
   - platform: wake_on_lan
     mac: C8:60:00:37:F1:0B
     name: Jonathans Laptop
+    host: susan
     turn_off:
       service: shell_command.turn_off_jonathans_laptop
   - platform: wake_on_lan
     mac: E4:11:5B:3D:10:DF
     name: Davids Laptop
+    host: uberwald
     turn_off:
       service: shell_command.turn_off_davids_laptop
+  - platform: wake_on_lan
+    mac: 6C:0B:84:E2:8C:42
+    name: Hex
+    host: Hex
 
 
 utility_meter:
