@@ -631,6 +631,9 @@ binary_sensor:
 
 
 media_player:
+  - platform: mpd
+    host: 192.168.30.38
+    name: Imp
   - platform: yamaha # takes too long to restart if yamaha off
     name: Yamaha Receiver
     # host: yamaha-proxy
