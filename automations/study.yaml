@@ -40,6 +40,22 @@
         scene.scene_study_bright
         {% endif %}
     service: scene.turn_on
+- id: '2022102613311'
+  alias: Light:Study:Light-only
+  description: ''
+  trigger:
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '1153921'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+    service: light.toggle
+    data:
+      entity_id: light.lifx_study_1
 - id: '1587003968926'
   alias: Scene:Study:Input
   description: ''
@@ -78,21 +94,31 @@
     event_type: esphome.rf_code_received
     event_data:
       code: '9763474'
+    id: Volume_Up
   - platform: event
     event_type: esphome.rf_code_received
     event_data:
       code: '9763473'
+    id: Volume_Down
   condition:
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
   action:
-  - data_template:
-      volume_level: "{% set mapper =\n  { '9763474': state_attr('media_player.imp',\
-        \ 'volume_level') | float + 0.1,\n    '9763473': state_attr('media_player.imp',\
-        \ 'volume_level') | float - 0.1 } %}\n{{ mapper[trigger.to_state.state] }}\n"
-    entity_id: media_player.imp
-    service: media_player.volume_set
+    - choose:
+        - conditions:
+            - condition: trigger
+              id: Volume_Up
+          sequence:
+            - service: media_player.volume_up
+              data: {}
+              target:
+                entity_id: media_player.imp
+      default:
+        - service: media_player.volume_down
+          data: {}
+          target:
+            entity_id: media_player.imp
 - id: '1630909236404'
   alias: Lights:Toggle Study Lights:Button
   description: ''
