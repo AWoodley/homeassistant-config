@@ -149,16 +149,11 @@
   - platform: state
     entity_id:
       - binary_sensor.panasonic_tv_power
-      - binary_sensor.yamaha_power
-      - media_player.yamaha_receiver_media_room
     to: "on"
   condition:
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
-  - condition: state
-    entity_id: switch.media_centre
-    state: 'off'
   action:
   - entity_id: switch.media_centre
     service: switch.turn_on
