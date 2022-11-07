@@ -79,6 +79,7 @@ discovery:
   ignore:
     - netgear_router
 
+powercalc:
 
 mqtt:
   alarm_control_panel:

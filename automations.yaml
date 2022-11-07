@@ -398,6 +398,9 @@
   - condition: state
     entity_id: binary_sensor.active
     state: 'on'
+  - condition: state
+    entity_id: input_boolean.hot_water_system
+    state: 'on'
   action:
   - service: light.turn_off
     target:
@@ -647,7 +650,7 @@
     input:
       light_id: light.lifx_jonathans_bedroom
       cover_id: cover.jonathans_bedroom_rollershutter
-      temperature_sensor_id: sensor.ble_temperature_a4c138b45222
+      temperature_sensor_id: sensor.ble_outside_temperature
       person_id: person.jonathan
 - id: '1661337951517'
   alias: Light/Cover:David:Morning
@@ -657,7 +660,7 @@
     input:
       light_id: light.lifx_davids_room
       cover_id: cover.davids_bedroom_rollershutter
-      temperature_sensor_id: sensor.ble_temperature_a4c138b45222
+      temperature_sensor_id: sensor.ble_outside_temperature
       person_id: person.david
 - id: '1661338159225'
   alias: Light/Cover:Master Bedroom:Morning
@@ -667,5 +670,37 @@
     input:
       light_id: light.light_masterbedroom_1
       cover_id: cover.master_bedroom_rollershutter_2
-      temperature_sensor_id: sensor.ble_temperature_a4c138b45222
+      temperature_sensor_id: sensor.ble_outside_temperature
       person_id: person.adrian
+- id: '1667828983561'
+  alias: Switch:Media&TV:Yamaha
+  description: Turn on the Media Centre power switch and TV if the Yamaha is switch
+    to Chromecast or Blu-Ray
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.yamaha_receiver_media_room
+    attribute: Source
+    to: ChromeCast
+  - platform: state
+    entity_id:
+    - media_player.yamaha_receiver_media_room
+    attribute: Source
+    to: Blu-Ray
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.media_centre
+  - if:
+    - condition: state
+      entity_id: switch.tv
+      state: 'off'
+    then:
+    - service: switch.turn_on
+      data: {}
+  mode: single
