@@ -524,6 +524,10 @@ switch:
     mac: 6C:0B:84:E2:8C:42
     name: Hex
     host: Hex
+  - platform: wake_on_lan
+    mac: AC:E0:10:EA:1D:E7
+    name: Lias
+    host: Lias
 
 
 utility_meter:
@@ -638,6 +642,9 @@ media_player:
   - platform: mpd
     host: 192.168.30.38
     name: Imp
+  - platform: mpd
+    host: 192.168.30.41
+    name: Lias
   - platform: yamaha # takes too long to restart if yamaha off
     name: Yamaha Receiver
     # host: yamaha-proxy
