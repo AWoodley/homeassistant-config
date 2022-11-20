@@ -525,7 +525,7 @@ switch:
     name: Hex
     host: Hex
   - platform: wake_on_lan
-    mac: AC:E0:10:EA:1D:E7
+    mac: C8:CB:B8:09:54:B1
     name: Lias
     host: Lias
 
