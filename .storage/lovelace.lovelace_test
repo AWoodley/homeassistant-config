@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.lovelace_test",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": "Home",
+          "cards": []
+        }
+      ]
+    }
+  }
+}

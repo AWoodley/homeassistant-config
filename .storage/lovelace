@@ -1789,6 +1789,30 @@
                         },
                         {
                           "type": "state-icon",
+                          "entity": "light.christmas_1",
+                          "style": {
+                            "top": "43%",
+                            "left": "94%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.light_christmas_1"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
+                          "entity": "media_player.lias",
+                          "style": {
+                            "top": "51%",
+                            "left": "82%",
+                            "scale": "66%"
+                          }
+                        },
+                        {
+                          "type": "state-icon",
                           "entity": "light.lifx_familyroom_stand",
                           "style": {
                             "top": "52%",

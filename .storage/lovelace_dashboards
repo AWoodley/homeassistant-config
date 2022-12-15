@@ -1,51 +1,59 @@
 {
-    "version": 1,
-    "minor_version": 1,
-    "key": "lovelace_dashboards",
-    "data": {
-        "items": [
-            {
-                "require_admin": false,
-                "show_in_sidebar": false,
-                "title": "Boys",
-                "url_path": "lovelace-boys",
-                "mode": "storage",
-                "id": "lovelace_boys"
-            },
-            {
-                "require_admin": false,
-                "show_in_sidebar": true,
-                "title": "Mobile",
-                "url_path": "lovelace-mobile",
-                "mode": "storage",
-                "id": "lovelace_mobile",
-                "icon": "hass:cellphone"
-            },
-            {
-                "require_admin": false,
-                "show_in_sidebar": true,
-                "title": "Floorplan",
-                "url_path": "lovelace-floorplan",
-                "mode": "storage",
-                "id": "lovelace_floorplan"
-            },
-            {
-                "require_admin": true,
-                "show_in_sidebar": true,
-                "title": "Admin",
-                "url_path": "lovelace-admin",
-                "mode": "storage",
-                "id": "lovelace_admin"
-            },
-            {
-                "show_in_sidebar": true,
-                "icon": "mdi:home",
-                "title": "Rooms",
-                "require_admin": false,
-                "mode": "storage",
-                "url_path": "lovelace-rooms",
-                "id": "lovelace_rooms"
-            }
-        ]
-    }
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_dashboards",
+  "data": {
+    "items": [
+      {
+        "require_admin": false,
+        "show_in_sidebar": false,
+        "title": "Boys",
+        "url_path": "lovelace-boys",
+        "mode": "storage",
+        "id": "lovelace_boys"
+      },
+      {
+        "require_admin": false,
+        "show_in_sidebar": true,
+        "title": "Mobile",
+        "url_path": "lovelace-mobile",
+        "mode": "storage",
+        "id": "lovelace_mobile",
+        "icon": "hass:cellphone"
+      },
+      {
+        "require_admin": false,
+        "show_in_sidebar": true,
+        "title": "Floorplan",
+        "url_path": "lovelace-floorplan",
+        "mode": "storage",
+        "id": "lovelace_floorplan"
+      },
+      {
+        "require_admin": true,
+        "show_in_sidebar": true,
+        "title": "Admin",
+        "url_path": "lovelace-admin",
+        "mode": "storage",
+        "id": "lovelace_admin"
+      },
+      {
+        "show_in_sidebar": true,
+        "icon": "mdi:home",
+        "title": "Rooms",
+        "require_admin": false,
+        "mode": "storage",
+        "url_path": "lovelace-rooms",
+        "id": "lovelace_rooms"
+      },
+      {
+        "show_in_sidebar": false,
+        "title": "Test",
+        "require_admin": false,
+        "mode": "storage",
+        "url_path": "lovelace-test",
+        "id": "lovelace_test"
+      }
+    ]
+  }
 }
