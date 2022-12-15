@@ -105,7 +105,6 @@
       - data_template:
           color_name: '{{ ["white", "red", "green", "white"]|random }}'
           entity_id: light.light_entry_4
-          power: true
           transition: 2
           brightness: 255
         service: light.turn_on        
