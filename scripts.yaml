@@ -22,15 +22,21 @@
       - light.lifx_dining_room_1
       - light.lifx_dining_room_2
       - light.lifx_dining_room_3
-      - light.lifx_diningroom_4
+      - light.lifx_dining_room_4
       - light.light_familyroom_1
       - light.lifx_familyroom_stand
       - light.music_room_light
       - light.light_media_3
       - light.light_media_1
+      - light.light_entry_1
+      - light.light_entry_3
+      - light.light_entry_4
   - service: light.turn_off
     target:
-      entity_id: light.light_media_3
+      entity_id: 
+        - light.light_media_3
+        - light.light_entry_1
+        - light.light_entry_3
   - service: light.turn_on
     target:
       entity_id: light.light_christmas_1
@@ -63,7 +69,7 @@
         service: lifx.set_state
       - data_template:
           color_name: '{{ ["white", "red", "green", "white"]|random }}'
-          entity_id: light.lifx_diningroom_4
+          entity_id: light.lifx_dining_room_4
           power: true
           transition: 2
           brightness: 255
@@ -96,6 +102,13 @@
           transition: 2
           brightness: 255
         service: lifx.set_state
+      - data_template:
+          color_name: '{{ ["white", "red", "green", "white"]|random }}'
+          entity_id: light.light_entry_4
+          power: true
+          transition: 2
+          brightness: 255
+        service: light.turn_on        
   - service: scene.turn_on
     target:
       entity_id: scene.pre_effect
