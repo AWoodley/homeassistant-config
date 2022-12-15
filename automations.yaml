@@ -680,12 +680,12 @@
   - platform: state
     entity_id:
     - media_player.yamaha_receiver_media_room
-    attribute: Source
+    attribute: source
     to: ChromeCast
   - platform: state
     entity_id:
     - media_player.yamaha_receiver_media_room
-    attribute: Source
+    attribute: source
     to: Blu-Ray
   condition:
   - condition: state
@@ -696,11 +696,13 @@
     data: {}
     target:
       entity_id: switch.media_centre
-  - if:
-    - condition: state
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: switch.turn_on
+    data: {}
+    target:
       entity_id: switch.tv
-      state: 'off'
-    then:
-    - service: switch.turn_on
-      data: {}
   mode: single
