@@ -9,6 +9,7 @@ homeassistant:
   unit_system: metric
   currency: AUD
   time_zone: Australia/Perth
+  country: AU
   name: !secret name
   external_url: https://hass.na.id.au
   internal_url: !secret internal_url
@@ -638,7 +639,7 @@ binary_sensor:
 media_player:
   - platform: mpd
     host: 192.168.30.30
-    name: Mended-Drum
+    name: Buddy
   - platform: mpd
     host: 192.168.30.38
     name: Imp
