@@ -1,0 +1,35 @@
+blueprint:
+  name: Rollershutter Close Sunrise
+  description: 'Close a rollershutter at sunrise'
+  domain: automation
+  input:
+    cover_id:
+      name: Rollershutter ID
+      description: ID of the rollershutter to close
+      selector:
+        entity:
+          domain: cover
+    offset:
+      name: Sunrise Offset
+      description: Minutes before sunrise to trigger
+      default: -45
+      selector:
+        number:
+          min: -60
+          max: 60
+          unit_of_measurement: minutes
+    
+trigger:
+  - platform: sun
+    event: sunrise
+    offset: !input offset
+
+condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+
+action:
+  - service: cover.close_cover
+    data: {}
+    entity_id: !input cover_id

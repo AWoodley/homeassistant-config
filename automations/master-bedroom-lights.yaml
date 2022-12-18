@@ -188,22 +188,6 @@
     data: {}
     entity_id: cover.master_bedroom_rollershutter
   mode: single
-- id: '1613410356423'
-  alias: Rollershutters:Close:Sunrise
-  description: ''
-  trigger:
-  - platform: sun
-    event: sunrise
-    offset: -00:45:00
-  condition:
-  - condition: state
-    entity_id: binary_sensor.active
-    state: 'on'
-  action:
-  - service: cover.close_cover
-    data: {}
-    entity_id: cover.master_bedroom_rollershutter, cover.boys_bedroom_rollershutter
-  mode: single
 - id: '1620144351328'
   alias: Switch:Nancys Electric Blanket
   description: ''
