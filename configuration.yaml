@@ -525,10 +525,6 @@ switch:
     mac: 6C:0B:84:E2:8C:42
     name: Hex
     host: Hex
-  - platform: wake_on_lan
-    mac: C8:CB:B8:09:54:B1
-    name: Lias
-    host: Lias
 
 
 utility_meter:
@@ -638,14 +634,8 @@ binary_sensor:
 
 media_player:
   - platform: mpd
-    host: 192.168.30.30
-    name: Buddy
-  - platform: mpd
     host: 192.168.30.38
     name: Imp
-  - platform: mpd
-    host: 192.168.30.41
-    name: Lias
   - platform: yamaha # takes too long to restart if yamaha off
     name: Yamaha Receiver
     # host: yamaha-proxy
@@ -671,4 +661,32 @@ media_player:
       HDMI1: "Blu-Ray"
       HDMI2: "ChromeCast"
       HDMI3: "Volumio"
-
+  - platform: universal
+    name: Beocenter 7700
+    children:
+      - media_player.lias
+    device_class: receiver
+    unique_id: media_player.beocenter_7700
+    commands:
+      turn_on:
+        service: button.press
+        target:
+          entity_id: button.beocenter_tape_2
+      turn_off:
+        service: button.press
+        target:
+          entity_id: button.beocenter_power
+      volume_up:
+        service: button.press
+        target:
+          entity_id: button.beocenter_volume_up
+      volume_down:
+        service: button.press
+        target:
+          entity_id: button.beocenter_volume_down
+      volume_mute:
+        service: button.press
+        target:
+          entity_id: button.beocenter_mute
+    attributes:
+      volume_level: sensor.beocenter_volume
