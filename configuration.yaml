@@ -275,7 +275,7 @@ google_assistant:
     switch.water_heater:
       expose: true
       name: 'Hot Water System'
-      alias:
+      aliases:
         - 'Water Heater'
         - 'Hot Water'
     switch.jonathans_laptop:
@@ -332,13 +332,13 @@ google_assistant:
     media_player.beocenter_7700:
       expose: true
       name: "Beocenter 7700"
-      alias:
+      aliases:
         - "B and O"
       room: "Family Room"
     media_player.yamaha_receiver_media_room:
       expose: true
       name: "Yamaha"
-      alias:
+      aliases:
         - 'Media Center'
       room: "Media Room"
     alarm_control_panel.mqtt_alarm:
