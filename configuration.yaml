@@ -664,6 +664,7 @@ media_player:
   - platform: universal
     name: Beocenter 7700
     children:
+      - media_player.family_room
       - media_player.lias
     device_class: receiver
     unique_id: media_player.beocenter_7700
