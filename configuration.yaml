@@ -675,7 +675,7 @@ media_player:
       HDMI1: "Blu-Ray"
       HDMI2: "ChromeCast"
       HDMI3: "Volumio"
-      HDMI4: "Game"
+      HDMI4: "XBox"
   - platform: universal
     name: Beocenter 7700
     children:
