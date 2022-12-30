@@ -1,24 +1,24 @@
 {
-    "version": 1,
-    "minor_version": 1,
-    "key": "lovelace_resources",
-    "data": {
-        "items": [
-            {
-                "url": "/hacsfiles/battery-state-card/battery-state-card.js?hacstag=256292682211",
-                "type": "module",
-                "id": "b6b4e6493e8345d3a594a63480fe96af"
-            },
-            {
-                "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=1512800620110",
-                "type": "module",
-                "id": "d20f41905d1247a497c43c7ec21d1523"
-            },
-            {
-                "url": "/hacsfiles/apexcharts-card/apexcharts-card.js?hacstag=331701152201",
-                "type": "module",
-                "id": "bf29c2d8760c4125a895819acdd70e45"
-            }
-        ]
-    }
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "url": "/hacsfiles/battery-state-card/battery-state-card.js?hacstag=256292682211",
+        "type": "module",
+        "id": "b6b4e6493e8345d3a594a63480fe96af"
+      },
+      {
+        "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=1512800620110",
+        "type": "module",
+        "id": "d20f41905d1247a497c43c7ec21d1523"
+      },
+      {
+        "url": "/hacsfiles/apexcharts-card/apexcharts-card.js?hacstag=331701152202",
+        "type": "module",
+        "id": "bf29c2d8760c4125a895819acdd70e45"
+      }
+    ]
+  }
 }

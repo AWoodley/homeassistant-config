@@ -2720,9 +2720,10 @@
                   "columns": 4,
                   "cards": [
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "light.light_masterbedroom_1",
-                      "show_name": false
+                      "entity": "light.light_masterbedroom_1"
                     },
                     {
                       "type": "button",
@@ -2987,9 +2988,10 @@
                       "graph": "line"
                     },
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "climate.daikin_ac",
-                      "show_name": false
+                      "entity": "climate.daikin_ac"
                     },
                     {
                       "show_name": false,
@@ -2998,7 +3000,7 @@
                       "tap_action": {
                         "action": "toggle"
                       },
-                      "entity": "media_player.lias",
+                      "entity": "media_player.beocenter_7700",
                       "show_state": false
                     },
                     {
@@ -3052,16 +3054,17 @@
                       "graph": "line"
                     },
                     {
-                      "show_name": false,
+                      "show_name": true,
                       "show_icon": true,
                       "type": "button",
                       "tap_action": {
                         "action": "toggle"
                       },
-                      "entity": "media_player.mended_drum"
+                      "entity": "media_player.buddy",
+                      "show_state": false
                     },
                     {
-                      "show_name": false,
+                      "show_name": true,
                       "show_icon": true,
                       "type": "button",
                       "entity": "media_player.glod"
@@ -3347,6 +3350,8 @@
               "type": "vertical-stack",
               "cards": [
                 {
+                  "show_name": true,
+                  "show_icon": true,
                   "type": "button",
                   "tap_action": {
                     "action": "toggle"
@@ -3359,6 +3364,10 @@
                     "action": "toggle"
                   },
                   "entity": "switch.tv"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.beocenter_7700"
                 },
                 {
                   "type": "media-control",
@@ -3394,7 +3403,11 @@
                 },
                 {
                   "type": "media-control",
-                  "entity": "media_player.mended_drum"
+                  "entity": "media_player.buddy"
+                },
+                {
+                  "type": "media-control",
+                  "entity": "media_player.yamaha_receiver_media_room"
                 }
               ]
             }
