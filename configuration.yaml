@@ -660,7 +660,6 @@ media_player:
     source_ignore:
       - "AUX"
       - "Radio"
-      - "HDMI4"
       - "AV1"
       - "AV2"
       - "AV3"
@@ -676,6 +675,7 @@ media_player:
       HDMI1: "Blu-Ray"
       HDMI2: "ChromeCast"
       HDMI3: "Volumio"
+      HDMI4: "Game"
   - platform: universal
     name: Beocenter 7700
     children:
