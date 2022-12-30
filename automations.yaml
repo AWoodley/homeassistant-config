@@ -687,6 +687,11 @@
     - media_player.yamaha_receiver_media_room
     attribute: source
     to: Blu-Ray
+  - platform: state
+    entity_id:
+    - media_player.yamaha_receiver_media_room
+    attribute: source
+    to: Game
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -705,4 +710,65 @@
     data: {}
     target:
       entity_id: switch.tv
+  mode: single
+- id: '1671383260632'
+  alias: Masterbedroom-Rollershutter:Close:Sunrise
+  description: ''
+  use_blueprint:
+    path: rollershutter-sunrise.yaml
+    input:
+      cover_id: cover.master_bedroom_rollershutter_2
+- id: '1671383308349'
+  alias: Davids-Rollershutter:Close:Sunrise
+  description: ''
+  use_blueprint:
+    path: rollershutter-sunrise.yaml
+    input:
+      cover_id: cover.davids_bedroom_rollershutter
+- id: '1671383334492'
+  alias: Jonathans-Rollershutter:Close:Sunrise
+  description: ''
+  use_blueprint:
+    path: rollershutter-sunrise.yaml
+    input:
+      cover_id: cover.jonathans_bedroom_rollershutter
+- id: '1671643125291'
+  alias: Beocenter:Turn Off:Idle
+  description: Turn off the Beocenter when the media player is idle for 5 minutes.
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.beocenter_7700
+    to: idle
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'True'
+  action:
+  - service: media_player.turn_off
+    data: {}
+    target:
+      entity_id: media_player.beocenter_7700
+  mode: single
+- id: '1671782593308'
+  alias: Dinningroom-Display:Pause:Lias
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.lias
+    from: idle
+  condition:
+  - condition: state
+    entity_id: switch.active
+    state: 'True'
+  action:
+  - service: media_player.media_pause
+    data: {}
+    target:
+      device_id: 8f3ebf674da343f89b4d135432bf52f0
   mode: single
