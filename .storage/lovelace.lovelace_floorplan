@@ -1547,19 +1547,30 @@
                   }
                 },
                 {
-                  "type": "state-icon",
-                  "entity": "light.christmas_1",
-                  "style": {
-                    "top": "43%",
-                    "left": "94%"
-                  },
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "light.toggle",
-                    "service_data": {
-                      "entity_id": "light.light_christmas_1"
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "entity": "light.christmas_1",
+                      "state_not": "unavailable"
                     }
-                  }
+                  ],
+                  "elements": [
+                    {
+                      "type": "state-icon",
+                      "entity": "light.christmas_1",
+                      "style": {
+                        "top": "43%",
+                        "left": "94%"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "light.toggle",
+                        "service_data": {
+                          "entity_id": "light.light_christmas_1"
+                        }
+                      }
+                    }
+                  ]
                 },
                 {
                   "type": "state-icon",
@@ -1922,19 +1933,30 @@
                   }
                 },
                 {
-                  "type": "state-icon",
-                  "entity": "switch.nancys_electric_blanket",
-                  "style": {
-                    "top": "87.5%",
-                    "left": "86%"
-                  },
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "switch.toggle",
-                    "service_data": {
-                      "entity_id": "switch.nancys_electric_blanket"
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "entity": "switch.nancys_electric_blanket",
+                      "state_not": "unavailable"
                     }
-                  }
+                  ],
+                  "elements": [
+                    {
+                      "type": "state-icon",
+                      "entity": "switch.nancys_electric_blanket",
+                      "style": {
+                        "top": "87.5%",
+                        "left": "86%"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "switch.toggle",
+                        "service_data": {
+                          "entity_id": "switch.nancys_electric_blanket"
+                        }
+                      }
+                    }
+                  ]
                 },
                 {
                   "type": "state-icon",

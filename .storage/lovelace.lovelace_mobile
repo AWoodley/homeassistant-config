@@ -2083,14 +2083,14 @@
                 },
                 {
                   "type": "state-icon",
-                  "entity": "switch.water_heater",
+                  "entity": "binary_sensor.water_heater",
                   "style": {
                     "top": "75%",
                     "left": "20%"
                   },
                   "tap_action": {
                     "action": "call-service",
-                    "service": "switch.toggle",
+                    "service": "switch.turn_on",
                     "service_data": {
                       "entity_id": "switch.water_heater"
                     }
@@ -2176,19 +2176,30 @@
                   }
                 },
                 {
-                  "type": "state-icon",
-                  "entity": "light.christmas_1",
-                  "style": {
-                    "top": "43%",
-                    "left": "94%"
-                  },
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "light.toggle",
-                    "service_data": {
-                      "entity_id": "light.light_christmas_1"
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "entity": "light.christmas_1",
+                      "state_not": "unavailable"
                     }
-                  }
+                  ],
+                  "elements": [
+                    {
+                      "type": "state-icon",
+                      "entity": "light.christmas_1",
+                      "style": {
+                        "top": "43%",
+                        "left": "94%"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "light.toggle",
+                        "service_data": {
+                          "entity_id": "light.light_christmas_1"
+                        }
+                      }
+                    }
+                  ]
                 },
                 {
                   "type": "state-icon",
@@ -2551,19 +2562,30 @@
                   }
                 },
                 {
-                  "type": "state-icon",
-                  "entity": "switch.nancys_electric_blanket",
-                  "style": {
-                    "top": "87.5%",
-                    "left": "86%"
-                  },
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "switch.toggle",
-                    "service_data": {
-                      "entity_id": "switch.nancys_electric_blanket"
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "entity": "switch.nancys_electric_blanket",
+                      "state_not": "unavailable"
                     }
-                  }
+                  ],
+                  "elements": [
+                    {
+                      "type": "state-icon",
+                      "entity": "switch.nancys_electric_blanket",
+                      "style": {
+                        "top": "87.5%",
+                        "left": "86%"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "switch.toggle",
+                        "service_data": {
+                          "entity_id": "switch.nancys_electric_blanket"
+                        }
+                      }
+                    }
+                  ]
                 },
                 {
                   "type": "state-icon",
@@ -3367,15 +3389,15 @@
                 },
                 {
                   "type": "media-control",
+                  "entity": "media_player.yamaha_receiver_media_room"
+                },
+                {
+                  "type": "media-control",
                   "entity": "media_player.beocenter_7700"
                 },
                 {
                   "type": "media-control",
                   "entity": "media_player.glod"
-                },
-                {
-                  "type": "media-control",
-                  "entity": "media_player.yamaha_receiver_media_room"
                 },
                 {
                   "type": "media-control",
@@ -3407,7 +3429,7 @@
                 },
                 {
                   "type": "media-control",
-                  "entity": "media_player.yamaha_receiver_media_room"
+                  "entity": "media_player.family_room"
                 }
               ]
             }
