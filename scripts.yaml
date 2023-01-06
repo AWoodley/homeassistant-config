@@ -33,10 +33,10 @@
       - light.light_entry_4
   - service: light.turn_off
     target:
-      entity_id: 
-        - light.light_media_3
-        - light.light_entry_1
-        - light.light_entry_3
+      entity_id:
+      - light.light_media_3
+      - light.light_entry_1
+      - light.light_entry_3
   - service: light.turn_on
     target:
       entity_id: light.light_christmas_1
@@ -107,7 +107,7 @@
           entity_id: light.light_entry_4
           transition: 2
           brightness: 255
-        service: light.turn_on        
+        service: light.turn_on
   - service: scene.turn_on
     target:
       entity_id: scene.pre_effect
@@ -578,3 +578,29 @@ create_every_automation_group:
     target:
       entity_id: scene.pre_effect
   mode: single
+beocenter_on:
+  alias: Beocenter On
+  sequence:
+  - service: button.press
+    data: {}
+    target:
+      entity_id: button.beocenter_tape_2
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.subwoofer
+  mode: single
+  icon: mdi:record-player
+beocenter_off:
+  alias: Beocenter Off
+  sequence:
+  - service: button.press
+    data: {}
+    target:
+      entity_id: button.beocenter_power
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.subwoofer
+  mode: single
+  icon: mdi:record-player
