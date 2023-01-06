@@ -685,13 +685,19 @@ media_player:
     unique_id: media_player.beocenter_7700
     commands:
       turn_on:
-        service: button.press
-        target:
-          entity_id: button.beocenter_tape_2
+        - service: button.press
+          target:
+            entity_id: button.beocenter_tape_2
+        - service: switch.turn_on
+          target:
+            entity_id: switch.subwoofer      
       turn_off:
-        service: button.press
-        target:
-          entity_id: button.beocenter_power
+        - service: button.press
+          target:
+            entity_id: button.beocenter_power
+        - service: switch.turn_off
+          target:
+            entity_id: switch.subwoofer 
       volume_up:
         service: button.press
         target:
