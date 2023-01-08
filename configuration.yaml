@@ -508,6 +508,17 @@ template:
             {{ unaccounted }}
         {%  endif %}
       unit_of_measurement: W
+  - sensor:
+    - name: 'Oven'
+      unique_id: sensor.oven
+      state: >-
+        {% if states('sensor.shelly_em3_1_channel_a_current') > 9 %}
+          heating
+        {% elif states('sensor.shelly_em3_1_channel_a_current') > 0.2 %}
+          at_temperature
+        {% else %}
+          off
+        {% endif %}
 
 switch:
   - platform: template
