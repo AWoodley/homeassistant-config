@@ -16,12 +16,13 @@ blueprint:
       selector:
         entity:
           domain: cover
-    time_on:
-      name: Wake up
-      description: Time to trigger
-      default: '07:30:00'
+    schedule_ud:
+      name: Schedule ID
+      description: Schedule to determine wake up time
+      default: {}
       selector:
-        time:
+        entity:
+          domain: schedule
     temperature_threshold:
       name: Temperature Threshold
       description: Temperature below which the light will turn on, rather than the cover open.
@@ -49,8 +50,9 @@ blueprint:
           domain: person
 
 trigger:
-  - platform: time
-    at: !input time_on
+  - platform: state
+    entity_id: !input schedule_id
+    to: "on"
 
 condition:
   - condition: state
