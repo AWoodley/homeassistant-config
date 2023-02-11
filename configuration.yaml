@@ -514,9 +514,9 @@ template:
       state: >-
         {% set current = states('sensor.shelly_em3_1_channel_a_current')|float %}
         {% if current > 9 and current < 11 %}
-          heating
+          Heating
         {% elif current > 0.2 and current < 0.3 %}
-          at_temperature
+          At Temperature
         {% else %}
           off
         {% endif %}
@@ -713,5 +713,5 @@ media_player:
         target:
           entity_id: button.beocenter_mute
     attributes:
-      volume_level: sensor.beocenter_volume
+      volume_level: number.beocenter_volume
       state: binary_sensor.beocenter_power
