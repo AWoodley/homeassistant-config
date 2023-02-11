@@ -16,7 +16,7 @@ blueprint:
       selector:
         entity:
           domain: cover
-    schedule_ud:
+    schedule_id:
       name: Schedule ID
       description: Schedule to determine wake up time
       default: {}
