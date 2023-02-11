@@ -712,6 +712,12 @@ media_player:
         service: button.press
         target:
           entity_id: button.beocenter_mute
+      volume_set:
+        service: number.set_value
+        target:
+          entity_id: number.beocenter_volume
+        data:
+          value: "{{ volume_level }}"
     attributes:
       volume_level: number.beocenter_volume
       state: binary_sensor.beocenter_power
