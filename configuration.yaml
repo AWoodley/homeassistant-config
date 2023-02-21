@@ -543,11 +543,11 @@ switch:
     turn_off:
       service: shell_command.turn_off_jonathans_laptop
   - platform: wake_on_lan
-    mac: E4:11:5B:3D:10:DF
-    name: Davids Laptop
-    host: uberwald
+    mac: FC:4D:D4:3F:7C:FB
+    name: Davids Computer
+    host: nijel
     turn_off:
-      service: shell_command.turn_off_davids_laptop
+      service: shell_command.turn_off_davids_computer
   - platform: wake_on_lan
     mac: 6C:0B:84:E2:8C:42
     name: Hex
