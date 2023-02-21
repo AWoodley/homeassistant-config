@@ -3662,6 +3662,27 @@
                       "entity": "sensor.water_heater_power"
                     }
                   ]
+                },
+                {
+                  "type": "gauge",
+                  "entity": "sensor.shelly_em3_1_channel_a_power",
+                  "needle": true,
+                  "min": 0,
+                  "max": 4000
+                },
+                {
+                  "type": "gauge",
+                  "entity": "sensor.shelly_em3_1_channel_b_power",
+                  "needle": true,
+                  "min": 0,
+                  "max": 4000
+                },
+                {
+                  "type": "gauge",
+                  "entity": "sensor.shelly_em3_1_channel_c_power",
+                  "needle": true,
+                  "min": 0,
+                  "max": 4000
                 }
               ]
             }
