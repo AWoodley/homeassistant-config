@@ -1886,7 +1886,7 @@
                         },
                         {
                           "type": "state-icon",
-                          "entity": "switch.davids_laptop",
+                          "entity": "switch.davids_computer",
                           "style": {
                             "top": "69%",
                             "left": "51.5%"

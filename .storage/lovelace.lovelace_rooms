@@ -906,7 +906,7 @@
                     },
                     {
                       "type": "button",
-                      "entity": "switch.davids_laptop",
+                      "entity": "switch.davids_computer",
                       "show_name": true
                     },
                     {
