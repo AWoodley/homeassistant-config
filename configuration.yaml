@@ -552,6 +552,8 @@ switch:
     mac: 6C:0B:84:E2:8C:42
     name: Hex
     host: Hex
+    turn_off:
+      service: shell_command.suspend_hex
 
 
 utility_meter:
