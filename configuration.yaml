@@ -527,7 +527,7 @@ switch:
       tv:
         friendly_name: 'TV'
         unique_id: switch.tv
-        value_template: "{{ states('sensor.media_centre_current')|float(0) > 500 }}"
+        value_template: "{{ states('sensor.media_centre_current')|float(0) > 200 }}"
         turn_on:
           service: button.press
           target:
