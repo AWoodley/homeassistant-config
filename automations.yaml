@@ -691,7 +691,7 @@
     entity_id:
     - media_player.yamaha_receiver_media_room
     attribute: source
-    to: Game
+    to: XBox
   condition:
   - condition: state
     entity_id: binary_sensor.active
