@@ -652,6 +652,7 @@
       cover_id: cover.jonathans_bedroom_rollershutter
       temperature_sensor_id: sensor.ble_outside_temperature
       person_id: person.jonathan
+      schedule_id: schedule.roller_shutter_open
 - id: '1661337951517'
   alias: Light/Cover:David:Morning
   description: ''
@@ -662,6 +663,7 @@
       cover_id: cover.davids_bedroom_rollershutter
       temperature_sensor_id: sensor.ble_outside_temperature
       person_id: person.david
+      schedule_id: schedule.roller_shutter_open
 - id: '1661338159225'
   alias: Light/Cover:Master Bedroom:Morning
   description: ''
@@ -669,9 +671,10 @@
     path: light-morning.yaml
     input:
       light_id: light.light_masterbedroom_1
-      cover_id: cover.master_bedroom_rollershutter_2
+      cover_id: cover.master_bedroom_rollershutter
       temperature_sensor_id: sensor.ble_outside_temperature
       person_id: person.adrian
+      schedule_id: schedule.roller_shutter_open
 - id: '1667828983561'
   alias: Switch:Media&TV:Yamaha
   description: Turn on the Media Centre power switch and TV if the Yamaha is switch
@@ -747,7 +750,7 @@
   condition:
   - condition: state
     entity_id: binary_sensor.active
-    state: 'True'
+    state: 'on'
   action:
   - service: media_player.turn_off
     data: {}
@@ -771,4 +774,104 @@
     data: {}
     target:
       device_id: 8f3ebf674da343f89b4d135432bf52f0
+  mode: single
+- id: '1672664235994'
+  alias: Beocenter:Turn-On:Lias Playing
+  description: Turn off the Beocenter when the media player is idle for 5 minutes.
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.lias
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+    to: playing
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: media_player.turn_on
+    data: {}
+    target:
+      entity_id: media_player.beocenter_7700
+  mode: single
+- id: '1673271059602'
+  alias: Oven:TTS:At Temperature
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.oven
+    to: At Temperature
+  - platform: state
+    entity_id:
+    - sensor.oven
+    to: at_temperature
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.kitchen_speaker
+      message: The oven is warm.
+  - wait_for_trigger:
+    - platform: state
+      entity_id:
+      - sensor.oven
+      to: 'Off'
+    timeout:
+      hours: 3
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  mode: single
+- id: '1675437422682'
+  alias: Cover:Midnight:Close to 20%
+  description: Close the bedroom roller shutters to 20% at Midnight if they're still
+    open
+  trigger:
+  - platform: time
+    at: '23:30:00'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - if:
+    - condition: numeric_state
+      entity_id: cover.master_bedroom_rollershutter
+      attribute: current_position
+      above: 20
+    then:
+    - service: cover.set_cover_position
+      data:
+        position: 20
+      target:
+        device_id: bb0e513dc9863cc93d9d2adf84bdeac7
+  - if:
+    - condition: numeric_state
+      entity_id: cover.davids_bedroom_rollershutter
+      attribute: current_position
+      above: 20
+    then:
+    - service: cover.set_cover_position
+      data:
+        position: 17
+      target:
+        device_id: 2d5c4db90acaec27809fc493544258ab
+  - if:
+    - condition: numeric_state
+      entity_id: cover.jonathans_bedroom_rollershutter
+      attribute: current_position
+      above: 20
+    then:
+    - service: cover.set_cover_position
+      data:
+        position: 17
+      target:
+        device_id: feea1151d882acf2ed0fe9ecf078df26
   mode: single
