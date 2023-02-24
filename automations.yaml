@@ -700,19 +700,29 @@
     entity_id: binary_sensor.active
     state: 'on'
   action:
-  - service: switch.turn_on
-    data: {}
-    target:
+  - if:
+    - condition: state
       entity_id: switch.media_centre
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - service: switch.turn_on
-    data: {}
-    target:
+      state: 'off'
+    then:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.media_centre
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+  - if:
+    - condition: state
       entity_id: switch.tv
+      state: 'off'
+    then:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.tv
   mode: single
 - id: '1671383260632'
   alias: Masterbedroom-Rollershutter:Close:Sunrise
