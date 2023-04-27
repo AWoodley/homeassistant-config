@@ -7,6 +7,7 @@
       "title": "",
       "views": [
         {
+          "theme": "slate",
           "panel": true,
           "path": "",
           "title": "Dashboard",
@@ -2404,24 +2405,42 @@
                   "type": "vertical-stack",
                   "cards": [
                     {
-                      "chart_type": "line",
-                      "period": "day",
-                      "days_to_show": 14,
-                      "type": "statistics-graph",
-                      "entities": [
-                        "sensor.shelly_em3_1_channel_c_power",
-                        "sensor.shelly_em3_1_channel_a_power",
-                        "sensor.shelly_em3_1_channel_b_power"
-                      ],
-                      "stat_types": [
-                        "mean"
+                      "type": "gauge",
+                      "entity": "sensor.electricity_total",
+                      "needle": true,
+                      "min": 0,
+                      "max": 6000,
+                      "segments": [
+                        {
+                          "from": 0,
+                          "color": "#43a047"
+                        },
+                        {
+                          "from": 1000,
+                          "color": "#ffa600"
+                        },
+                        {
+                          "from": 2000,
+                          "color": "#db4437"
+                        }
                       ]
                     },
                     {
-                      "type": "energy-devices-graph"
+                      "type": "history-graph",
+                      "entities": [
+                        {
+                          "entity": "sensor.energy_cost"
+                        }
+                      ],
+                      "hours_to_show": 72,
+                      "show_names": false
                     },
                     {
-                      "type": "energy-date-selection"
+                      "show_current": false,
+                      "show_forecast": true,
+                      "type": "weather-forecast",
+                      "entity": "weather.darlington",
+                      "secondary_info_attribute": "wind_speed"
                     }
                   ]
                 }
