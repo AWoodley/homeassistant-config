@@ -885,3 +885,47 @@
       target:
         device_id: feea1151d882acf2ed0fe9ecf078df26
   mode: single
+- id: '1678691891721'
+  alias: Tag:Alarm:Toggle
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 0d3364de-a42f-4412-9fa0-d34111f39b77
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: alarm_control_panel.mqtt_alarm
+        state: disarmed
+      sequence:
+      - service: alarm_control_panel.alarm_arm_away
+        data: {}
+        target:
+          entity_id: alarm_control_panel.mqtt_alarm
+    default:
+    - service: alarm_control_panel.alarm_disarm
+      data: {}
+      target:
+        entity_id: alarm_control_panel.mqtt_alarm
+  mode: single
+- id: '1679062442122'
+  alias: Tag:DSOTM
+  description: Play DSOTM on Lias
+  trigger:
+  - platform: tag
+    tag_id: 6a935bdb-d2b8-430a-adb3-a7821332dafd
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: media_player.select_source
+    data:
+      source: DSOTM
+    target:
+      entity_id: media_player.lias
+  mode: single

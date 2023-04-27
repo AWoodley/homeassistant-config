@@ -604,3 +604,13 @@ beocenter_off:
       entity_id: switch.subwoofer
   mode: single
   icon: mdi:record-player
+google_hub_display:
+  alias: Google Hub Display
+  sequence:
+  - service: cast.show_lovelace_view
+    data:
+      entity_id: media_player.dining_room_display
+      dashboard_path: lovelace
+      view_path: '0'
+  mode: single
+  icon: mdi:monitor
