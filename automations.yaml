@@ -929,3 +929,33 @@
     target:
       entity_id: media_player.lias
   mode: single
+- id: '1683198098958'
+  alias: Person:Untracked:Start
+  description: Set the status of untracked person entities on startup.
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: device_tracker.see
+    data:
+      dev_id: guest
+      location_name: '{% set mapping = {''on'':''home'', ''off'':''not_home''} %}
+        {{ mapping[ states(''binary_sensor.switch_4'') ] }}
+
+        '
+  - service: device_tracker.see
+    data:
+      dev_id: david
+      location_name: '{% set mapping = {''on'':''home'', ''off'':''not_home''} %}
+        {{ mapping[ states(''binary_sensor.switch_1'') ] }}
+
+        '
+  - service: device_tracker.see
+    data:
+      dev_id: jonathan
+      location_name: '{% set mapping = {''on'':''home'', ''off'':''not_home''} %}
+        {{ mapping[ states(''binary_sensor.switch_3'') ] }}
+
+        '
+  mode: single
