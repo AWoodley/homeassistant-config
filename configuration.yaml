@@ -249,6 +249,9 @@ google_assistant:
       expose: true
     light.music_room_light:
       expose: true
+    light.lego_light:
+      expose: true
+      name: 'Lego Light'
     switch.switch_kettle:
       expose: true
     switch.fireplace_fan:
