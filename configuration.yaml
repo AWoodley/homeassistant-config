@@ -88,17 +88,6 @@ mqtt:
     command_topic: "home/alarm/set"
     code_arm_required: false
     code_disarm_required: false
-  device_tracker:
-  - name: adrian
-    state_topic: 'location/adrian'
-  - name: david
-    state_topic: 'location/david'
-  - name: guest
-    state_topic: 'location/guest'
-  - name: jonathan
-    state_topic: 'location/jonathan'
-  - name: nancy
-    state_topic: 'location/nancy'
   binary_sensor:
   - state_topic: "home/alarm/zones/0"
     name: "Front Door"
