@@ -651,9 +651,13 @@
       state: 'off'
     media_player.kitchen_speaker:
       state: 'off'
-    media_player.david_s_bedroom_speaker:
+    media_player.davids_speaker:
       state: 'off'
-    media_player.jonathan_s_bedroom_2:
+    media_player.jonathans_speaker:
+      state: 'off'
+    media_player.yamaha_receiver_media_room:
+      state: 'off'
+    media_player.beocenter_7700:
       state: 'off'
     cover.master_bedroom_rollershutter:
       state: closed
