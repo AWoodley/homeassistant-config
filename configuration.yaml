@@ -276,9 +276,18 @@ google_assistant:
     switch.davids_laptop:
       expose: true
       name: 'Davids Laptop'
+    switch.jonathans_computer:
+      expose: true
+      name: 'Jonathans Computer'
+    switch.davids_computer:
+      expose: true
+      name: 'Davids Computer'
     switch.hex:
       expose: true
       name: 'Hex'
+    switch.ponder:
+      expose: true
+      name: 'Ponder'
     input_boolean.guest:
       expose: true
       name: 'Guest'
@@ -529,11 +538,11 @@ switch:
           target:
             entity_id: button.panasonic_tv_power
   - platform: wake_on_lan
-    mac: C8:60:00:37:F1:0B
-    name: Jonathans Laptop
-    host: susan
+    mac: 6c:0b:84:e2:f6:19
+    name: Jonathans Computer
+    host: conina
     turn_off:
-      service: shell_command.turn_off_jonathans_laptop
+      service: shell_command.turn_off_jonathans_computer
   - platform: wake_on_lan
     mac: FC:4D:D4:3F:7C:FB
     name: Davids Computer
@@ -546,6 +555,12 @@ switch:
     host: Hex
     turn_off:
       service: shell_command.suspend_hex
+  - platform: wake_on_lan
+    mac: c8:d3:ff:a6:7a:f2
+    name: Ponder
+    host: Ponder
+    turn_off:
+      service: shell_command.suspend_ponder
 
 
 utility_meter:
