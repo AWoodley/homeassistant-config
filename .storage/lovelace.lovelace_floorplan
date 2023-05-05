@@ -1485,7 +1485,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_dining_room_temperature",
+                  "entity": "sensor.kitchen_temperature",
                   "style": {
                     "top": "49%",
                     "left": "42%"
@@ -1637,7 +1637,7 @@
                 },
                 {
                   "type": "state-icon",
-                  "entity": "switch.jonathans_laptop",
+                  "entity": "switch.jonathans_computer",
                   "style": {
                     "top": "69%",
                     "left": "42%"
@@ -1986,6 +1986,14 @@
                     "service_data": {
                       "entity_id": "cover.master_bedroom_rollershutter"
                     }
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                  "style": {
+                    "top": "95%",
+                    "left": "81%"
                   }
                 },
                 {
