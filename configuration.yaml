@@ -519,7 +519,7 @@ template:
     - name: 'Oven'
       unique_id: sensor.oven
       state: >-
-        {% set current = states('sensor.shelly_em3_1_channel_a_current')|float %}
+        {% set current = states('sensor.shelly_em3_1_channel_a_current')|float(0) %}
         {% if current > 9 and current < 11 %}
           Heating
         {% elif current > 0.2 and current < 0.3 %}

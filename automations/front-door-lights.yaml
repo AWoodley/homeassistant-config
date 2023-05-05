@@ -12,7 +12,7 @@
     to: home
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: sun.sun
@@ -33,7 +33,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: sun.sun
@@ -56,7 +56,7 @@
       code: '3692692'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - data:

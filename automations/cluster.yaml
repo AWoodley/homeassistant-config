@@ -2,12 +2,12 @@
 #   alias: HASS:Standby
 #   description: ''
 #   trigger:
-#   - entity_id: binary_sensor.active
+#   - entity_id: input_boolean.active
 #     to: 'off'
 #     platform: state
 #   condition:
 #   - condition: state
-#     entity_id: binary_sensor.active
+#     entity_id: input_boolean.active
 #     state: 'on'
 #   action:
 #   - data: {}
@@ -23,12 +23,12 @@
 #   alias: HASS:Active
 #   description: ''
 #   trigger:
-#   - entity_id: binary_sensor.active
+#   - entity_id: input_boolean.active
 #     to: 'on'
 #     platform: state
 #   condition:
 #   - condition: state
-#     entity_id: binary_sensor.active
+#     entity_id: input_boolean.active
 #     state: 'on'
 #   action:
 #   - data: {}
@@ -44,7 +44,7 @@
     seconds: '0'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - data:

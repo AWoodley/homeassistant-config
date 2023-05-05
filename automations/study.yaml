@@ -8,7 +8,7 @@
       code: '1153924'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - data_template:
@@ -29,7 +29,7 @@
       code: '1153922'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - data_template:
@@ -50,7 +50,7 @@
       code: '1153921'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
     service: light.toggle
@@ -64,7 +64,7 @@
     platform: state
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
     service: scene.turn_on
@@ -80,7 +80,7 @@
       code: '9763496'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - service: media_player.media_play_pause
@@ -102,7 +102,7 @@
     id: Volume_Down
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
     - choose:
@@ -129,7 +129,7 @@
       code: '9763476'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - choose:

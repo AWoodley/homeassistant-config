@@ -36,7 +36,7 @@ condition:
     after: '21:00:00'
     before: '08:00:00'
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
 
 action:

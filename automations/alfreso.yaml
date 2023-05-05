@@ -12,7 +12,7 @@
       code: '1764164' # Back door button Right
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
     service: light.toggle
@@ -37,7 +37,7 @@
       code: '1764162' # Back door button Middle
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - service: light.toggle
@@ -52,7 +52,7 @@
       code: '1764168' # Back door button Left
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - service: light.toggle
@@ -67,7 +67,7 @@
       code: '1172993'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - service: light.toggle
@@ -82,7 +82,7 @@
       code: '1172996' # Outside button
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - service: light.toggle

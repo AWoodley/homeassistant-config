@@ -8,7 +8,7 @@
       code: '1699042'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - data_template:
@@ -29,7 +29,7 @@
 #       code: '1699042'
 #   condition:
 #   - condition: state
-#     entity_id: binary_sensor.active
+#     entity_id: input_boolean.active
 #     state: 'on'
 #   action:
 #   - data_template:
@@ -58,7 +58,7 @@
       code: '1699044'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - data:
@@ -80,7 +80,7 @@
     type: turned_off
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - scene: scene.scene_davids_bedroom_off
@@ -91,7 +91,7 @@
   - at: 07:30:00
     platform: time
   # - condition: state
-  #   entity_id: binary_sensor.active
+  #   entity_id: input_boolean.active
   #   state: 'on'
   action:
   - entity_id: climate.davids_thermostat
@@ -104,7 +104,7 @@
     platform: time
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: person.david
@@ -130,7 +130,7 @@
     at: 07:30:00
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: group.family

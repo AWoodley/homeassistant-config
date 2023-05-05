@@ -14,7 +14,7 @@
     id: Button
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: group.family
@@ -42,7 +42,7 @@
     id: Button
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: group.family
@@ -104,7 +104,7 @@
     id: PIR
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: group.family

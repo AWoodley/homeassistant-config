@@ -26,7 +26,7 @@ trigger:
 
 condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
 
 action:

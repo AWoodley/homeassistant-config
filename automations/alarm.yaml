@@ -7,7 +7,7 @@
       code: '3692696'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: alarm_control_panel.mqtt_alarm
@@ -34,7 +34,7 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: group.family
@@ -65,7 +65,7 @@
     to: disarmed
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   action:
   - data:
@@ -85,7 +85,7 @@
       code: '3692696'
   condition:
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
   - condition: state
     entity_id: alarm_control_panel.mqtt_alarm

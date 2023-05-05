@@ -59,7 +59,7 @@ condition:
     entity_id: !input person_id
     state: 'home'
   - condition: state
-    entity_id: binary_sensor.active
+    entity_id: input_boolean.active
     state: 'on'
 
 action:
