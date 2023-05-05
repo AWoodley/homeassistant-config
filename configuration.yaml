@@ -80,6 +80,12 @@ discovery:
   ignore:
     - netgear_router
 
+rest_command:
+  heartbeat:
+    url: !secret heartbeat_url
+    method: GET
+    timeout: 5
+
 powercalc:
 
 mqtt:
