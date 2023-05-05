@@ -986,6 +986,10 @@
   trigger:
   - platform: time_pattern
     seconds: '0'
+  - platform: state
+    entity_id:
+    - input_boolean.active
+    to: 'on'
   condition:
   - condition: state
     entity_id: input_boolean.active
