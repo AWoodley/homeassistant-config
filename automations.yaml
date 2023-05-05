@@ -959,3 +959,38 @@
 
         '
   mode: single
+- id: '1683306290032'
+  alias: HASS:Heartbeat:Webhook
+  description: Receive the heartbeat via a webhook
+  trigger:
+  - platform: webhook
+    allowed_methods:
+    - GET
+    local_only: true
+    webhook_id: -RoEmpFdS7BtbJW7hijD-IM2z
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 5
+      milliseconds: 0
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.active
+  mode: restart
+- id: '1683307199507'
+  alias: HASS:Heartbeat:Timer
+  description: Pat the standby instance watchdog
+  trigger:
+  - platform: time_pattern
+    seconds: '0'
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - service: rest_command.heartbeat
+    data: {}
+  mode: single
