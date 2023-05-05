@@ -2027,9 +2027,9 @@
                   },
                   "tap_action": {
                     "action": "call-service",
-                    "service": "automation.trigger",
+                    "service": "input_boolean.toggle",
                     "service_data": {
-                      "entity_id": "automation.hass_heartbeat"
+                      "entity_id": "input_boolean.active"
                     }
                   }
                 },
