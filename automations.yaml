@@ -968,8 +968,14 @@
     - GET
     local_only: true
     webhook_id: -RoEmpFdS7BtbJW7hijD-IM2z
+  - platform: homeassistant
+    event: start
   condition: []
   action:
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.active
   - delay:
       hours: 0
       minutes: 1
