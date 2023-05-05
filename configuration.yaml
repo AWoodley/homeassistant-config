@@ -11,7 +11,7 @@ homeassistant:
   time_zone: Australia/Perth
   country: AU
   name: !secret name
-  external_url: https://hass.na.id.au
+  external_url: !secret external_url
   internal_url: !secret internal_url
   media_dirs:
     local: /Media
