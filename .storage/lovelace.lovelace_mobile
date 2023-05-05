@@ -2649,7 +2649,7 @@
                 },
                 {
                   "type": "state-icon",
-                  "entity": "binary_sensor.active",
+                  "entity": "input_boolean.active",
                   "style": {
                     "top": "90%",
                     "left": "10%"
