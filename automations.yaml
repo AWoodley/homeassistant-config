@@ -811,14 +811,9 @@
   alias: Oven:TTS:At Temperature
   description: ''
   trigger:
-  - platform: state
-    entity_id:
-    - sensor.oven
-    to: At Temperature
-  - platform: state
-    entity_id:
-    - sensor.oven
-    to: at_temperature
+  - platform: numeric_state
+    entity_id: sensor.red_phase_derivative
+    below: -7
   condition:
   - condition: state
     entity_id: binary_sensor.active
@@ -829,15 +824,15 @@
       entity_id: media_player.kitchen_speaker
       message: The oven is warm.
   - wait_for_trigger:
-    - platform: state
-      entity_id:
-      - sensor.oven
-      to: 'Off'
-    timeout:
-      hours: 3
-      minutes: 0
-      seconds: 0
-      milliseconds: 0
+    - platform: numeric_state
+      entity_id: sensor.red_phase_derivative
+      for:
+        hours: 1
+        minutes: 0
+        seconds: 0
+      above: -1
+      below: 1
+    continue_on_timeout: false
   mode: single
 - id: '1675437422682'
   alias: Cover:Midnight:Close to 20%
