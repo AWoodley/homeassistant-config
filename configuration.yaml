@@ -378,7 +378,8 @@ scrape:
     sensor:
       - name: "Next Recycling Date"
         select: ".form-group"
-        index: 2
+        index: 1
+        value_template: '{{ value.split(":")[1] }}'
 
 light: !include lights.yaml
 
