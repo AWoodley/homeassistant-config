@@ -375,13 +375,12 @@ notify:
 
 scrape:
   - resource: https://my.mundaring.wa.gov.au/BinLocationInfo/Info?parcelNumber=104527&suburb=DARLINGTON
-    scan_interval: 30
+    scan_interval: 21600
     sensor:
-      - name: "Next Recycling Date"
+      - name: "Recycling Days"
         select: ".form-group"
         index: 1
-        value_template: '{{ as_local(strptime(value.split(":")[1].strip(), "%d/%m/%Y")) }}'
-        device_class: timestamp
+        value_template: '{{ (as_datetime(strptime(value.split(":")[1].strip(), "%d/%m/%Y")).date() - now().date()).days }}'
 
 
 light: !include lights.yaml
