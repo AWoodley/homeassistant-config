@@ -138,13 +138,31 @@ mqtt:
     # payload_on: "{{ states('sensor.local_ip') }}"
     payload_off: "offline"
     value_template: "{{ states('sensor.local_ip') == value}}"
-  cover:
-  # - unique_id: "D8BFC01A3A5F"
-  #   name: "Master Bedroom Rollershutter"
-  #   state_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0"
-  #   command_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command"
-  #   position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/pos"
-  #   set_position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command/pos"
+  # cover:
+  # # - unique_id: "D8BFC01A3A5F"
+  # #   name: "Master Bedroom Rollershutter"
+  # #   state_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0"
+  # #   command_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command"
+  # #   position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/pos"
+  # #   set_position_topic: "shellies/shellyswitch25-D8BFC01A3A5F/roller/0/command/pos"
+  # #   payload_available: "true"
+  # #   payload_not_available: "false"
+  # #   payload_open: "open"
+  # #   payload_close: "close"
+  # #   payload_stop: "stop"
+  # #   state_closed: "close"
+  # #   state_stopped: "stop"
+  # #   position_open: 100
+  # #   position_closed: 0
+  # #   qos: 1
+  # #   retain: false
+  # #   optimistic: false
+  # - unique_id: "40F5200467D0"
+  #   name: "Jonathans Bedroom Rollershutter"
+  #   state_topic: "shellies/shellyswitch25-40F5200467D0/roller/0"
+  #   command_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command"
+  #   position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/pos"
+  #   set_position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command/pos"
   #   payload_available: "true"
   #   payload_not_available: "false"
   #   payload_open: "open"
@@ -157,42 +175,24 @@ mqtt:
   #   qos: 1
   #   retain: false
   #   optimistic: false
-  - unique_id: "40F5200467D0"
-    name: "Jonathans Bedroom Rollershutter"
-    state_topic: "shellies/shellyswitch25-40F5200467D0/roller/0"
-    command_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command"
-    position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/pos"
-    set_position_topic: "shellies/shellyswitch25-40F5200467D0/roller/0/command/pos"
-    payload_available: "true"
-    payload_not_available: "false"
-    payload_open: "open"
-    payload_close: "close"
-    payload_stop: "stop"
-    state_closed: "close"
-    state_stopped: "stop"
-    position_open: 100
-    position_closed: 0
-    qos: 1
-    retain: false
-    optimistic: false
-  - unique_id: "40F520055224"
-    name: "Davids Bedroom Rollershutter"
-    state_topic: "shellies/shellyswitch25-40F520055224/roller/0"
-    command_topic: "shellies/shellyswitch25-40F520055224/roller/0/command"
-    position_topic: "shellies/shellyswitch25-40F520055224/roller/0/pos"
-    set_position_topic: "shellies/shellyswitch25-40F520055224/roller/0/command/pos"
-    payload_available: "true"
-    payload_not_available: "false"
-    payload_open: "open"
-    payload_close: "close"
-    payload_stop: "stop"
-    state_closed: "close"
-    state_stopped: "stop"
-    position_open: 100
-    position_closed: 0
-    qos: 1
-    retain: false
-    optimistic: false
+  # - unique_id: "40F520055224"
+  #   name: "Davids Bedroom Rollershutter"
+  #   state_topic: "shellies/shellyswitch25-40F520055224/roller/0"
+  #   command_topic: "shellies/shellyswitch25-40F520055224/roller/0/command"
+  #   position_topic: "shellies/shellyswitch25-40F520055224/roller/0/pos"
+  #   set_position_topic: "shellies/shellyswitch25-40F520055224/roller/0/command/pos"
+  #   payload_available: "true"
+  #   payload_not_available: "false"
+  #   payload_open: "open"
+  #   payload_close: "close"
+  #   payload_stop: "stop"
+  #   state_closed: "close"
+  #   state_stopped: "stop"
+  #   position_open: 100
+  #   position_closed: 0
+  #   qos: 1
+  #   retain: false
+  #   optimistic: false
   vacuum:
   - name: "Sammy"
     schema: state
