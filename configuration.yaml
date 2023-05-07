@@ -373,6 +373,13 @@ notify:
       - service: mobile_app_nancy_s_phone
 
 
+scrape:
+  - resource: https://my.mundaring.wa.gov.au/BinLocationInfo/Info?parcelNumber=104527&suburb=DARLINGTON
+    sensor:
+      - name: "Next Recycling Date"
+        select: ".form-group"
+        index: 2
+
 light: !include lights.yaml
 
 
