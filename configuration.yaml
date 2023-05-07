@@ -380,7 +380,7 @@ scrape:
       - name: "Recycling Days"
         select: ".form-group"
         index: 1
-        value_template: '{{ (as_datetime(strptime(value.split(":")[1].strip(), "%d/%m/%Y")).date() - now().date()).days }}'
+        value_template: '{{ (strptime(value.split(":")[1].strip(), "%d/%m/%Y").date() - now().date()).days }}'
 
 
 light: !include lights.yaml
