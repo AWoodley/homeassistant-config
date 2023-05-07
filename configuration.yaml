@@ -381,7 +381,7 @@ scrape:
         select: ".form-group"
         index: 1
         # value_template: '{{ strptime(value.split(":")[1], "%d/%m/%Y") }}'
-        device_class: date
+        # device_class: date
 
 
 light: !include lights.yaml
