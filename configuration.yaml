@@ -380,8 +380,8 @@ scrape:
       - name: "Next Recycling Date"
         select: ".form-group"
         index: 1
-        # value_template: '{{ strptime(value.split(":")[1], "%d/%m/%Y") }}'
-        # device_class: date
+        value_template: '{{ strptime(value.split(":")[1].strip(), "%d/%m/%Y") }}'
+        device_class: date
 
 
 light: !include lights.yaml
