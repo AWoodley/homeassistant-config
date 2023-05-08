@@ -2727,6 +2727,62 @@
                       "entity_id": "input_select.guest"
                     }
                   }
+                },
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "entity": "binary_sensor.bin_day",
+                      "state": false
+                    }
+                  ],
+                  "elements": [
+                    {
+                      "type": "state-icon",
+                      "entity": "binary_sensor.bin_day",
+                      "title": "Bin",
+                      "style": {
+                        "top": "90%",
+                        "left": "20%",
+                        "--paper-item-icon-color": "green"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "input_boolean.toggle",
+                        "service_data": {
+                          "entity_id": "input_boolean.bin"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "entity": "binary_sensor.recycling_day",
+                      "state": false
+                    }
+                  ],
+                  "elements": [
+                    {
+                      "type": "state-icon",
+                      "entity": "binary_sensor.recycling_day",
+                      "title": "Bin",
+                      "style": {
+                        "top": "90%",
+                        "left": "25%",
+                        "--paper-item-icon-color": "yellow"
+                      },
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "input_boolean.toggle",
+                        "service_data": {
+                          "entity_id": "input_boolean.bin"
+                        }
+                      }
+                    }
+                  ]
                 }
               ],
               "image": "local/lovelace/floorplan/floorplan.png"
@@ -2948,10 +3004,11 @@
                       }
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.ble_temperature_a4c138dfcf8d",
                       "name": "Temp",
-                      "graph": "line"
+                      "detail": 1
                     },
                     {
                       "type": "button",
@@ -3156,9 +3213,10 @@
                       "entity": "input_text.blank"
                     },
                     {
+                      "show_name": true,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "switch.jonathans_laptop",
-                      "show_name": true
+                      "entity": "switch.jonathans_computer"
                     },
                     {
                       "type": "button",
@@ -3176,12 +3234,13 @@
                     },
                     {
                       "show_name": false,
-                      "show_icon": false,
+                      "show_icon": true,
                       "type": "button",
                       "tap_action": {
                         "action": "toggle"
                       },
-                      "entity": "input_text.blank"
+                      "entity": "light.lego_light",
+                      "show_state": false
                     }
                   ]
                 },
@@ -3191,9 +3250,10 @@
                   "columns": 4,
                   "cards": [
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "light.lifx_study_1",
-                      "show_name": false
+                      "entity": "light.lifx_study_1"
                     },
                     {
                       "show_name": false,
@@ -3266,10 +3326,11 @@
                       "entity": "input_text.blank"
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.ble_temperature_a4c138dfcf8d",
                       "name": "Temp",
-                      "graph": "line"
+                      "detail": 1
                     },
                     {
                       "show_name": false,

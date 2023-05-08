@@ -2340,6 +2340,62 @@
                               "entity_id": "input_select.guest"
                             }
                           }
+                        },
+                        {
+                          "type": "conditional",
+                          "conditions": [
+                            {
+                              "entity": "binary_sensor.bin_day",
+                              "state": false
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "state-icon",
+                              "entity": "binary_sensor.bin_day",
+                              "title": "Bin",
+                              "style": {
+                                "top": "90%",
+                                "left": "20%",
+                                "--paper-item-icon-color": "green"
+                              },
+                              "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.toggle",
+                                "service_data": {
+                                  "entity_id": "input_boolean.bin"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "conditional",
+                          "conditions": [
+                            {
+                              "entity": "binary_sensor.recycling_day",
+                              "state": false
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "state-icon",
+                              "entity": "binary_sensor.recycling_day",
+                              "title": "Bin",
+                              "style": {
+                                "top": "90%",
+                                "left": "25%",
+                                "--paper-item-icon-color": "yellow"
+                              },
+                              "tap_action": {
+                                "action": "call-service",
+                                "service": "input_boolean.toggle",
+                                "service_data": {
+                                  "entity_id": "input_boolean.bin"
+                                }
+                              }
+                            }
+                          ]
                         }
                       ],
                       "image": "local/lovelace/floorplan/floorplan.png"
