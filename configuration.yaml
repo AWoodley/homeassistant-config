@@ -478,7 +478,7 @@ template:
       unique_id: binary_sensor.bin_day
       state: "{{ states('sensor.recycling_days') == 8 or states('sensor.recycling_days') == 1 }}"
     - name: "Recycling Day"
-      unique_id: binary_sensor.bin_day
+      unique_id: binary_sensor.recycling_day
       state: "{{ states('sensor.recycling_days') == 1 }}"
   - sensor:
     - name: 'Electricity Total'
