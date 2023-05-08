@@ -472,7 +472,14 @@ template:
   - binary_sensor:
     - name: "Bathroom Light"
       unique_id: binary_sensor.light_bathroom_1
-      state: "{{states('sun.sun') == 'below_horizon' and states('sensor.bathroom_shelly_luminosity') > '150'}}"      
+      state: "{{states('sun.sun') == 'below_horizon' and states('sensor.bathroom_shelly_luminosity') > '150'}}"
+  - binary_sensor:
+    - name: "Bin Day"
+      unique_id: binary_sensor.bin_day
+      state: "{{ states('sensor.recycling_days') == 8 or states('sensor.recycling_days') == 1 }}"
+    - name: "Recycling Day"
+      unique_id: binary_sensor.bin_day
+      state: "{{ states('sensor.recycling_days') == 1 }}"
   - sensor:
     - name: 'Electricity Total'
       unique_id: sensor.electricity_total
