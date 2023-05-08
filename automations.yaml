@@ -999,3 +999,20 @@
   - service: rest_command.heartbeat
     data: {}
   mode: single
+- id: '1683545992974'
+  alias: Tag:Abbey Road
+  description: Play Abbey Road on Lias
+  trigger:
+  - platform: tag
+    tag_id: a871e45a-c4fe-48f5-9453-01fad12372e0
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - service: media_player.select_source
+    data:
+      source: Abbey Road
+    target:
+      entity_id: media_player.lias
+  mode: single
