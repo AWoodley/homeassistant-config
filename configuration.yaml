@@ -502,11 +502,11 @@ template:
             (
               states('sensor.recycling_days') == '1'
             )
-            and not(bool(states('input_boolean.bin_out')))
+            and not(bool(states('input_boolean.recycling_out')))
           )
         or
           (
-            bool(states('input_boolean.bin_out'))
+            bool(states('input_boolean.recycling_out'))
             and not(
               states('sensor.recycling_days') == '1'
             )
