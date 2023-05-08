@@ -2346,7 +2346,7 @@
                           "conditions": [
                             {
                               "entity": "binary_sensor.bin_day",
-                              "state": false
+                              "state": "on"
                             }
                           ],
                           "elements": [
@@ -2357,13 +2357,13 @@
                               "style": {
                                 "top": "90%",
                                 "left": "20%",
-                                "--paper-item-icon-color": "green"
+                                "--state-binary_sensor-on-color": "green"
                               },
                               "tap_action": {
                                 "action": "call-service",
                                 "service": "input_boolean.toggle",
                                 "service_data": {
-                                  "entity_id": "input_boolean.bin"
+                                  "entity_id": "input_boolean.bin_out"
                                 }
                               }
                             }
@@ -2374,24 +2374,24 @@
                           "conditions": [
                             {
                               "entity": "binary_sensor.recycling_day",
-                              "state": false
+                              "state": "on"
                             }
                           ],
                           "elements": [
                             {
                               "type": "state-icon",
                               "entity": "binary_sensor.recycling_day",
-                              "title": "Bin",
+                              "title": "Recycling",
                               "style": {
                                 "top": "90%",
                                 "left": "25%",
-                                "--paper-item-icon-color": "yellow"
+                                "--state-binary_sensor-on-color": "yellow"
                               },
                               "tap_action": {
                                 "action": "call-service",
                                 "service": "input_boolean.toggle",
                                 "service_data": {
-                                  "entity_id": "input_boolean.bin"
+                                  "entity_id": "input_boolean.recycling_out"
                                 }
                               }
                             }
