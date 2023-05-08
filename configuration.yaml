@@ -476,10 +476,42 @@ template:
   - binary_sensor:
     - name: "Bin Day"
       unique_id: binary_sensor.bin_day
-      state: "{{ (states('sensor.recycling_days') == 8 or states('sensor.recycling_days') == 1) and states('input_boolean.bin') }}"
+      state: >-
+      {{
+        (
+          (
+            states('sensor.recycling_days') == '8' or 
+            states('sensor.recycling_days') == '1'
+          )
+          and not(bool(states('input_boolean.bin_out')))
+        )
+      or
+        (
+          bool(states('input_boolean.bin_out'))
+          and not(
+            states('sensor.recycling_days') == '8' or 
+            states('sensor.recycling_days') == '1'
+          )
+        )
+      }}
     - name: "Recycling Day"
       unique_id: binary_sensor.recycling_day
-      state: "{{ states('sensor.recycling_days') == 1  and states('input_boolean.recycling') }}"
+      state:  >-
+      {{
+        (
+          (
+            states('sensor.recycling_days') == '1'
+          )
+          and not(bool(states('input_boolean.bin_out')))
+        )
+      or
+        (
+          bool(states('input_boolean.bin_out'))
+          and not(
+            states('sensor.recycling_days') == '1'
+          )
+        )
+      }}
   - sensor:
     - name: 'Electricity Total'
       unique_id: sensor.electricity_total
