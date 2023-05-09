@@ -516,7 +516,7 @@ template:
         }}
   - binary_sensor:
     - name: 'Open House'
-      unique_id: sensor.open_house
+      unique_id: binary_sensor.open_house
       state: >-
         {{
         (states('sensor.indoor_temperature_average') < states('input_number.house_target_temperature') and
