@@ -2663,72 +2663,6 @@
                   }
                 },
                 {
-                  "type": "state-badge",
-                  "entity": "person.adrian",
-                  "style": {
-                    "top": "8%",
-                    "left": "7%",
-                    "scale": "50%"
-                  }
-                },
-                {
-                  "type": "state-badge",
-                  "entity": "person.nancy",
-                  "style": {
-                    "top": "22%",
-                    "left": "7%",
-                    "scale": "50%"
-                  }
-                },
-                {
-                  "type": "state-badge",
-                  "entity": "person.jonathan",
-                  "style": {
-                    "top": "36%",
-                    "left": "7%",
-                    "scale": "50%"
-                  },
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "input_select.select_next",
-                    "service_data": {
-                      "entity_id": "input_select.jonathan"
-                    }
-                  }
-                },
-                {
-                  "type": "state-badge",
-                  "entity": "person.david",
-                  "style": {
-                    "top": "50%",
-                    "left": "7%",
-                    "scale": "50%"
-                  },
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "input_select.select_next",
-                    "service_data": {
-                      "entity_id": "input_select.david"
-                    }
-                  }
-                },
-                {
-                  "type": "state-icon",
-                  "entity": "person.guest",
-                  "title": "Guest",
-                  "style": {
-                    "top": "90%",
-                    "left": "15%"
-                  },
-                  "tap_action": {
-                    "action": "call-service",
-                    "service": "input_select.select_next",
-                    "service_data": {
-                      "entity_id": "input_select.guest"
-                    }
-                  }
-                },
-                {
                   "type": "conditional",
                   "conditions": [
                     {
@@ -2783,6 +2717,111 @@
                       }
                     }
                   ]
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.electricity_total",
+                  "style": {
+                    "top": "96%",
+                    "left": "9%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.cost_total",
+                  "style": {
+                    "top": "96%",
+                    "left": "28%"
+                  }
+                },
+                {
+                  "type": "state-badge",
+                  "entity": "person.adrian",
+                  "style": {
+                    "top": "2%",
+                    "left": "5%",
+                    "scale": "50%"
+                  }
+                },
+                {
+                  "type": "state-badge",
+                  "entity": "person.nancy",
+                  "style": {
+                    "top": "13%",
+                    "left": "5%",
+                    "scale": "50%"
+                  }
+                },
+                {
+                  "type": "state-badge",
+                  "entity": "person.jonathan",
+                  "style": {
+                    "top": "25%",
+                    "left": "5%",
+                    "scale": "50%"
+                  },
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.jonathan_toggle"
+                  },
+                  "double_tap_action": {
+                    "action": "call-service",
+                    "service": "counter.increment",
+                    "service_data": {
+                      "entity_id": "counter.jonathans_pocket_money"
+                    }
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "counter.jonathans_pocket_money",
+                  "prefix": "$",
+                  "style": {
+                    "top": "35%",
+                    "left": "8%"
+                  }
+                },
+                {
+                  "type": "state-badge",
+                  "entity": "person.david",
+                  "style": {
+                    "top": "37%",
+                    "left": "5%",
+                    "scale": "50%"
+                  },
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.david_toggle"
+                  },
+                  "double_tap_action": {
+                    "action": "call-service",
+                    "service": "counter.increment",
+                    "service_data": {
+                      "entity_id": "counter.davids_pocket_money"
+                    }
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "counter.davids_pocket_money",
+                  "prefix": "$",
+                  "style": {
+                    "top": "47%",
+                    "left": "8%"
+                  }
+                },
+                {
+                  "type": "state-badge",
+                  "entity": "person.guest",
+                  "style": {
+                    "top": "50%",
+                    "left": "5%",
+                    "scale": "50%"
+                  },
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.guest_toggle"
+                  }
                 }
               ],
               "image": "local/lovelace/floorplan/floorplan.png"

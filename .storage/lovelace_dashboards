@@ -53,6 +53,15 @@
         "mode": "storage",
         "url_path": "lovelace-test",
         "id": "lovelace_test"
+      },
+      {
+        "id": "dashboard_bank",
+        "show_in_sidebar": true,
+        "icon": "mdi:bank",
+        "title": "Bank",
+        "require_admin": false,
+        "mode": "storage",
+        "url_path": "dashboard-bank"
       }
     ]
   }

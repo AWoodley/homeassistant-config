@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.dashboard_bank",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": "Home",
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "gauge",
+                  "entity": "counter.jonathans_pocket_money",
+                  "max": 75,
+                  "needle": false,
+                  "severity": {
+                    "green": 50,
+                    "yellow": 25,
+                    "red": 0
+                  }
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "counter.increment",
+                        "target": {
+                          "entity_id": "counter.jonathans_pocket_money"
+                        },
+                        "data": {}
+                      },
+                      "entity": "input_text.blank",
+                      "icon": "mdi:arrow-up-circle"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "counter.decrement",
+                        "target": {
+                          "entity_id": "counter.jonathans_pocket_money"
+                        },
+                        "data": {}
+                      },
+                      "icon": "mdi:arrow-down-circle"
+                    }
+                  ]
+                },
+                {
+                  "type": "gauge",
+                  "entity": "counter.davids_pocket_money",
+                  "max": 75,
+                  "needle": false,
+                  "severity": {
+                    "green": 50,
+                    "yellow": 25,
+                    "red": 0
+                  }
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "counter.increment",
+                        "target": {
+                          "entity_id": "counter.davids_pocket_money"
+                        },
+                        "data": {}
+                      },
+                      "entity": "input_text.blank",
+                      "icon": "mdi:arrow-up-circle"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "counter.decrement",
+                        "target": {
+                          "entity_id": "counter.davids_pocket_money"
+                        },
+                        "data": {}
+                      },
+                      "icon": "mdi:arrow-down-circle"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

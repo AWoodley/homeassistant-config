@@ -2154,6 +2154,22 @@
                       }
                     }
                   ]
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.electricity_total",
+                  "style": {
+                    "top": "96%",
+                    "left": "9%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.cost_total",
+                  "style": {
+                    "top": "96%",
+                    "left": "28%"
+                  }
                 }
               ],
               "image": "local/lovelace/floorplan/floorplan.png"

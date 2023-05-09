@@ -614,3 +614,60 @@ google_hub_display:
       view_path: '0'
   mode: single
   icon: mdi:monitor
+guest_toggle:
+  alias: Guest:Toggle
+  sequence:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: person.guest
+        state: home
+      sequence:
+      - service: device_tracker.see
+        data:
+          dev_id: guest
+          location_name: not_home
+    default:
+    - service: device_tracker.see
+      data:
+        dev_id: guest
+        location_name: home
+  mode: single
+david_toggle:
+  alias: David:Toggle
+  sequence:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: person.david
+        state: home
+      sequence:
+      - service: device_tracker.see
+        data:
+          dev_id: david
+          location_name: not_home
+    default:
+    - service: device_tracker.see
+      data:
+        dev_id: david
+        location_name: home
+  mode: single
+jonathan_toggle:
+  alias: Jonathan:Toggle
+  sequence:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: person.jonathan
+        state: home
+      sequence:
+      - service: device_tracker.see
+        data:
+          dev_id: jonathan
+          location_name: not_home
+    default:
+    - service: device_tracker.see
+      data:
+        dev_id: jonathan
+        location_name: home
+  mode: single

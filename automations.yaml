@@ -503,63 +503,6 @@
       entity_id: media_player.kitchen_speaker, media_player.dining_room_display
       message: The water is hot
   mode: single
-- id: '1656167131814'
-  alias: Switch:Test
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - input_boolean.test
-    from: 'off'
-    id: 'On'
-  - platform: state
-    entity_id:
-    - input_boolean.test
-    to: 'off'
-    id: 'Off'
-  condition:
-  - condition: state
-    entity_id: input_boolean.active
-    state: 'on'
-  action:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: 'On'
-      sequence:
-      - service: scene.create
-        data:
-          snapshot_entities: input_boolean.test
-          scene_id: test_scene
-      - service: input_boolean.turn_off
-        data: {}
-        target:
-          entity_id: input_boolean.test
-      - service: input_boolean.turn_on
-        data: {}
-        target:
-          entity_id: input_boolean.test_switch
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 5
-          milliseconds: 0
-      - service: scene.turn_on
-        data: {}
-        target:
-          entity_id: scene.test_scene
-    default:
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 10
-        milliseconds: 0
-    - service: input_boolean.turn_off
-      data: {}
-      target:
-        entity_id: input_boolean.test_switch
-  mode: single
-  max_exceeded: silent
 - id: '1658155227206'
   alias: Low-Battery-Alarm
   description: ''
@@ -1015,4 +958,37 @@
       source: Abbey Road
     target:
       entity_id: media_player.lias
+  mode: single
+- id: '1683555439210'
+  alias: Tag:Bin:Toggle
+  description: Toggle the Bin input_boolean when the tag is scanned
+  trigger:
+  - platform: tag
+    tag_id: aa214b1c-41b7-4911-8c90-d20aa861fdb3
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - service: input_boolean.toggle
+    data: {}
+    target:
+      entity_id: input_boolean.bin_out
+  mode: single
+- id: '1683555482794'
+  alias: Tag:Recycling:Toggle
+  description: Toggle the Recycling input_boolean when the tag is scanned
+  trigger:
+  - platform: tag
+    tag_id: ae1dd00b-0ab3-43c6-9b83-ab6f07eaee3d
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - service: input_boolean.toggle
+    data: {}
+    target:
+      entity_id:
+      - input_boolean.recycling_out
   mode: single
