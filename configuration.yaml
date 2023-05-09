@@ -495,6 +495,7 @@ template:
             )
           )
         }}
+  - binary_sensor:
     - name: "Recycling Day"
       unique_id: binary_sensor.recycling_day
       state:  >-
@@ -512,6 +513,17 @@ template:
               states('sensor.recycling_days') == '1'
             )
           )
+        }}
+  - binary_sensor:
+    - name: 'Open House'
+      unique_id: sensor.open_house
+      state: >-
+        {{
+        (states('sensor.indoor_temperature_average') < states('input_number.house_target_temperature') and
+        states('sensor.ble_outside_temperature') > states('sensor.indoor_temperature_average'))
+        or
+        (states('sensor.indoor_temperature_average') > states('input_number.house_target_temperature') and
+        states('sensor.ble_outside_temperature') < states('sensor.indoor_temperature_average'))
         }}
   - sensor:
     - name: 'Electricity Total'
@@ -577,17 +589,7 @@ template:
         {% else %}
           off
         {% endif %}
-  - sensor:
-    - name: 'Open House'
-      unique_id: sensor.open_house
-      state: >-
-        {{
-        (states('sensor.indoor_temperature_average') < states('input_number.house_target_temperature') and
-        states('sensor.ble_outside_temperature') > states('sensor.indoor_temperature_average'))
-        or
-        (states('sensor.indoor_temperature_average') > states('input_number.house_target_temperature') and
-        states('sensor.ble_outside_temperature') < states('sensor.indoor_temperature_average'))
-        }}
+
 
 switch:
   - platform: template
