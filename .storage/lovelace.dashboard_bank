@@ -59,7 +59,7 @@
                 {
                   "type": "gauge",
                   "entity": "counter.davids_pocket_money",
-                  "max": 75,
+                  "max": 79,
                   "needle": false,
                   "severity": {
                     "green": 50,

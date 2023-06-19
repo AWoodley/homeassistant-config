@@ -2728,7 +2728,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.cost_total",
+                  "entity": "sensor.energy_cost",
                   "style": {
                     "top": "96%",
                     "left": "28%"
@@ -2863,10 +2863,11 @@
                       }
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.temperature_843c01d60760f228",
-                      "name": "Temp",
-                      "graph": "line"
+                      "name": " ",
+                      "detail": 1
                     },
                     {
                       "type": "button",
@@ -2919,10 +2920,11 @@
                       }
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.davids_bedroom_temperature",
-                      "name": "Temp",
-                      "graph": "line"
+                      "detail": 1,
+                      "name": " "
                     },
                     {
                       "type": "button",
@@ -2935,9 +2937,10 @@
                       "show_name": false
                     },
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "binary_sensor.davids_bedroom_door",
-                      "show_name": false
+                      "entity": "binary_sensor.davids_bedroom_door"
                     },
                     {
                       "show_name": false,
@@ -2982,15 +2985,17 @@
                       }
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.jonathans_bedroom_temperature",
-                      "name": "Temp",
-                      "graph": "line"
+                      "name": " ",
+                      "detail": 1
                     },
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "climate.jonathans_thermostat",
-                      "show_name": false
+                      "entity": "climate.jonathans_thermostat"
                     },
                     {
                       "show_name": false,
@@ -3108,10 +3113,11 @@
                       "entity": "input_text.blank"
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.temperature_fe01191a0ae4e128",
-                      "name": "Temp",
-                      "graph": "line"
+                      "name": " ",
+                      "detail": 1
                     },
                     {
                       "show_name": false,
@@ -3174,6 +3180,7 @@
                       "entity": "input_text.blank"
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.ble_temperature_media_room_ble_sensor",
                       "name": "Temp",
@@ -3237,10 +3244,11 @@
                       "entity": "input_text.blank"
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.ble_music_room_temperature",
-                      "name": "Temp",
-                      "graph": "line"
+                      "name": " ",
+                      "detail": 1
                     },
                     {
                       "show_name": false,
@@ -3304,10 +3312,11 @@
                       "entity": "input_text.blank"
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
-                      "name": "Temp",
-                      "graph": "line"
+                      "name": " ",
+                      "detail": 1
                     },
                     {
                       "show_name": false,
@@ -3351,9 +3360,10 @@
                   "columns": 4,
                   "cards": [
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "light.kitchen_lights",
-                      "show_name": false
+                      "entity": "light.kitchen_lights"
                     },
                     {
                       "show_name": false,
@@ -3416,6 +3426,8 @@
                   "columns": 4,
                   "cards": [
                     {
+                      "show_name": true,
+                      "show_icon": true,
                       "type": "button",
                       "entity": "light.passage_lights"
                     },
@@ -3451,20 +3463,74 @@
                       "show_name": false
                     },
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "switch.garage_1",
-                      "show_name": false
+                      "entity": "switch.garage_1"
+                    },
+                    {
+                      "show_name": true,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "input_boolean.hot_water_system",
+                      "name": "Timer"
+                    },
+                    {
+                      "show_name": true,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "switch.water_heater",
+                      "name": "Immediate"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "binary_sensor.bin_day",
+                      "hold_action": {
+                        "action": "call-service",
+                        "service": "input_boolean.toggle",
+                        "target": {
+                          "entity_id": "input_boolean.bin_out"
+                        },
+                        "data": {}
+                      }
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "input_boolean.toggle",
+                        "target": {
+                          "entity_id": "input_boolean.recycling_out"
+                        },
+                        "data": {}
+                      },
+                      "entity": "binary_sensor.recycling_day"
                     }
                   ]
                 },
                 {
-                  "type": "alarm-panel",
-                  "states": [
-                    "arm_home",
-                    "arm_away"
-                  ],
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
                   "entity": "alarm_control_panel.mqtt_alarm",
-                  "name": "Alarm"
+                  "name": "Alarm",
+                  "show_state": true
                 }
               ]
             }

@@ -38,23 +38,6 @@
         "id": "lovelace_admin"
       },
       {
-        "show_in_sidebar": true,
-        "icon": "mdi:home",
-        "title": "Rooms",
-        "require_admin": false,
-        "mode": "storage",
-        "url_path": "lovelace-rooms",
-        "id": "lovelace_rooms"
-      },
-      {
-        "show_in_sidebar": false,
-        "title": "Test",
-        "require_admin": false,
-        "mode": "storage",
-        "url_path": "lovelace-test",
-        "id": "lovelace_test"
-      },
-      {
         "id": "dashboard_bank",
         "show_in_sidebar": true,
         "icon": "mdi:bank",
