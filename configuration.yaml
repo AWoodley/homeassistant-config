@@ -295,6 +295,12 @@ google_assistant:
     switch.ponder:
       expose: true
       name: 'Ponder'
+    switch.ruby:
+      expose: true
+      name: 'Ruby'
+    media_player.ruby:
+      expose: true
+      name: 'Ruby'
     input_boolean.guest:
       expose: true
       name: 'Guest'
@@ -630,6 +636,15 @@ switch:
     host: Ponder
     turn_off:
       service: shell_command.suspend_ponder
+  - platform: wake_on_lan
+    mac: C8:CB:B8:05:5E:6F
+    name: Ruby
+    host: Ruby
+    turn_off:
+      service: media_player.turn_off
+      data: {}
+      target:
+        entity_id: media_player.ruby
 
 
 utility_meter:
