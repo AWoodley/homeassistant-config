@@ -94,6 +94,20 @@
     from: playing
     platform: state
     to: paused
+  - entity_id: media_player.ruby
+    for: 00:00:30
+    from: playing
+    platform: state
+    to: idle
+  - entity_id: media_player.ruby
+    for: 00:00:30
+    from: playing
+    platform: state
+    to: 'off'
+  - entity_id: media_player.ruby
+    from: playing
+    platform: state
+    to: paused
   condition:
   - condition: state
     entity_id: input_boolean.active
@@ -110,6 +124,9 @@
   description: ''
   trigger:
   - entity_id: media_player.glod
+    platform: state
+    to: playing
+  - entity_id: media_player.ruby
     platform: state
     to: playing
   condition:

@@ -638,6 +638,11 @@
     - media_player.yamaha_receiver_media_room
     attribute: source
     to: XBox
+  - platform: state
+    entity_id:
+    - media_player.yamaha_receiver_media_room
+    attribute: source
+    to: Kodi
   condition:
   - condition: state
     entity_id: input_boolean.active
