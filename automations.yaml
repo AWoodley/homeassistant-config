@@ -997,3 +997,94 @@
       entity_id:
       - input_boolean.recycling_out
   mode: single
+- id: '1683770514419'
+  alias: Switch:Water Heater:Off
+  description: Turn off the water heater after a single cycle
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.water_heater
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.water_heater
+  mode: single
+- id: '1684240631072'
+  alias: Light:Davids Bedroom Off:Light-on
+  description: Turn off the light in David's Bedroom after 30 minutes
+  trigger:
+  - platform: state
+    entity_id:
+    - light.lifx_davids_room
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.lifx_davids_room
+  mode: restart
+- id: '1684290109250'
+  alias: Light:Jonathans Bedroom Off:Light-on
+  description: Turn off the light in Jonathan's Bedroom after 30 minutes
+  trigger:
+  - platform: state
+    entity_id:
+    - light.lifx_jonathans_bedroom
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.lifx_jonathans_bedroom
+  mode: restart
+- id: '1685368433499'
+  alias: TTS:Laundry Door:Open
+  description: Send announcement if laundry door is left open for 5 minutes.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.laundry_garage_door
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.indoor_temperature_average
+    below: 22
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - service: tts.google_translate_say
+    data:
+      cache: false
+      entity_id: media_player.dining_room_display
+      message: The laundry door is open.
+  mode: single
