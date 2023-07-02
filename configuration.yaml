@@ -636,12 +636,12 @@ switch:
     host: Ponder
     turn_off:
       service: shell_command.suspend_ponder
-  - platform: wake_on_lan
-    mac: C8:CB:B8:05:5E:6F
-    name: Ruby
-    host: Ruby
-    turn_off:
-      service: script.ruby_suspend
+  # - platform: wake_on_lan
+  #   mac: C8:CB:B8:05:5E:6F
+  #   name: Ruby
+  #   host: Ruby
+  #   turn_off:
+  #     service: script.ruby_suspend
 
 
 utility_meter:
