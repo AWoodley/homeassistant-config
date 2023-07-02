@@ -641,8 +641,9 @@ switch:
     name: Ruby
     host: Ruby
     turn_off:
-      service: media_player.turn_off
-      data: {}
+      service: kodi.call_method
+      data:
+        method: System.Shutdown
       target:
         entity_id: media_player.ruby
 
