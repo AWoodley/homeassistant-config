@@ -641,11 +641,7 @@ switch:
     name: Ruby
     host: Ruby
     turn_off:
-      service: kodi.call_method
-      data:
-        method: System.Shutdown
-      target:
-        entity_id: media_player.ruby
+      service: script.ruby_suspend
 
 
 utility_meter:

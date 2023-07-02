@@ -171,8 +171,9 @@
     id: Chromecast
   - platform: state
     entity_id:
-      - switch.ruby
-    to: "on"
+      - media_player.ruby
+    to: "idle"
+    from: "off"
     id: Ruby
   condition:
   - condition: state
