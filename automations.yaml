@@ -670,10 +670,10 @@
       entity_id: media_player.ruby
       state: "off"
     then:
-    - service: switch.turn_on
+    - service: media_player.turn_on
       data: {}
       target:
-        entity_id: switch.ruby
+        entity_id: media_player.ruby
   - if:
     - condition: state
       entity_id: switch.tv

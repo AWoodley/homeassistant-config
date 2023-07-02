@@ -801,3 +801,20 @@ media_player:
     attributes:
       volume_level: number.beocenter_volume
       state: binary_sensor.beocenter_power
+  - platform: universal
+    name: Ruby
+    children:
+      - media_player.ruby_kodi
+    unique_id: media_player.ruby
+    commands:
+      turn_on:
+        service: wake_on_lan.send_magic_packet
+        data:
+          mac: C8:CB:B8:05:5E:6F
+      turn_off:
+        service: kodi.call_method
+        data:
+          method: System.Suspend
+        target:
+          entity_id: media_player.ruby_kodi
+        
