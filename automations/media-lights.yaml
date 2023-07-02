@@ -168,6 +168,12 @@
       - binary_sensor.panasonic_tv_aux_power
       - binary_sensor.yamaha_aux_power
     to: "on"
+    id: Chromecast
+  - platform: state
+    entity_id:
+      - switch.ruby
+    to: "on"
+    id: Ruby
   condition:
   - condition: state
     entity_id: input_boolean.active
