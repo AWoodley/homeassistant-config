@@ -362,7 +362,7 @@ create_every_automation_group:
       power_on: true
       transition: 1
     service: lifx.effect_colorloop
-    - data:
+  - data:
       entity_id: light.lifx-temp-1
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
@@ -370,7 +370,7 @@ create_every_automation_group:
       power_on: true
       transition: 1
     service: lifx.effect_colorloop
-    - data:
+  - data:
       entity_id: light.lifx-temp-2
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
