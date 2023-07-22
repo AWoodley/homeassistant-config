@@ -264,6 +264,8 @@ create_every_automation_group:
       - light.light_entry_1
       - light.light_entry_2
       - light.light_entry_4
+      - light.lifx-temp-1
+      - light.lifx-temp-1
   - service: light.turn_off
     target:
       entity_id:
@@ -354,6 +356,22 @@ create_every_automation_group:
     service: lifx.effect_colorloop
   - data:
       entity_id: light.light_entry_4
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+    - data:
+      entity_id: light.lifx-temp-1
+      brightness: 255
+      period: '{{ (range(1, 4)|random) }}'
+      change: 138
+      power_on: true
+      transition: 1
+    service: lifx.effect_colorloop
+    - data:
+      entity_id: light.lifx-temp-2
       brightness: 255
       period: '{{ (range(1, 4)|random) }}'
       change: 138
