@@ -265,7 +265,7 @@ create_every_automation_group:
       - light.light_entry_2
       - light.light_entry_4
       - light.lifx-temp-1
-      - light.lifx-temp-1
+      - light.lifx-temp-2
   - service: light.turn_off
     target:
       entity_id:
