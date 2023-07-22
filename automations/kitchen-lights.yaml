@@ -19,6 +19,9 @@
   - condition: state
     entity_id: group.family
     state: home
+  - condition: state
+    entity_id: input_boolean.light_effect_running
+    state: 'off'
   action:
   - service: light.toggle
     data:
@@ -47,6 +50,9 @@
   - condition: state
     entity_id: group.family
     state: home
+  - condition: state
+    entity_id: input_boolean.light_effect_running
+    state: 'off'
   action:
     - choose:
         - conditions:
@@ -106,6 +112,9 @@
   - condition: state
     entity_id: input_boolean.active
     state: 'on'
+  - condition: state
+    entity_id: input_boolean.light_effect_running
+    state: 'off'
   - condition: state
     entity_id: group.family
     state: home
