@@ -668,7 +668,7 @@
       id: Ruby
     - condition: state
       entity_id: media_player.ruby
-      state: "off"
+      state: 'off'
     then:
     - service: media_player.turn_on
       data: {}
@@ -1099,4 +1099,50 @@
       cache: false
       entity_id: media_player.dining_room_display
       message: The laundry door is open.
+  mode: single
+- id: '1688588261987'
+  alias: Switch:Media Centre On:IR
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.panasonic_tv_power
+    - binary_sensor.panasonic_tv_aux_power
+    - binary_sensor.yamaha_aux_power
+    to: 'on'
+    id: Chromecast
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - condition: state
+    entity_id: switch.media_centre
+    state: 'off'
+  - entity_id: switch.media_centre
+    service: switch.turn_on
+  - service: media_player.turn_on
+    data: {}
+    target:
+      entity_id: media_player.yamaha_receiver_media_room
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - if:
+    - condition: trigger
+      id: Chromecast
+    then:
+    - service: media_player.select_source
+      data:
+        source: ChromeCast
+      target:
+        entity_id: media_player.yamaha_receiver_media_room
+    else:
+    - service: media_player.select_source
+      data:
+        source: Kodi
+      target:
+        entity_id: media_player.yamaha_receiver_media_room
   mode: single
