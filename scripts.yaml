@@ -679,3 +679,12 @@ jonathan_toggle:
         dev_id: jonathan
         location_name: home
   mode: single
+ruby_suspend:
+  alias: Ruby Suspend
+  sequence:
+  - service: kodi.call_method
+    data:
+      method: System.Suspend
+    target:
+      entity_id: media_player.ruby
+  mode: single
