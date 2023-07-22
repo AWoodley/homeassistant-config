@@ -275,6 +275,14 @@ create_every_automation_group:
     data: {}
   - service: light.turn_on
     data:
+      color_name: blue
+      brightness_pct: 100
+    target:
+      entity_id:
+        - light.light_kitchen_2
+        - light.light_kitchen_3
+  - service: light.turn_on
+    data:
       effect: random
     target:
       entity_id:
