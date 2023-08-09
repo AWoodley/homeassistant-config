@@ -77,10 +77,6 @@ frontend:
   themes: !include themes.yaml
 
 
-discovery:
-  ignore:
-    - netgear_router
-
 rest_command:
   heartbeat:
     url: !secret heartbeat_url
