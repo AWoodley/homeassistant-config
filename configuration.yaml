@@ -438,7 +438,7 @@ template:
       state: >
         {{ states('sensor.washing_machine_current')|float(0) > 120 }}
       delay_off:
-        minutes: 2
+        minutes: 5
       icon: mdi:washing-machine
   - binary_sensor:
     - name: 'Clothes Dryer'
