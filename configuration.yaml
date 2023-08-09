@@ -436,9 +436,9 @@ template:
     - name: 'Washing Machine'
       unique_id: binary_sensor.washing_machine
       state: >
-        {{ states('sensor.washing_mahine_current')|float(0) > 120 }}
+        {{ states('sensor.washing_machine_current')|float(0) > 120 }}
       delay_off:
-        minutes: 0.5
+        minutes: 2
       icon: mdi:washing-machine
   - binary_sensor:
     - name: 'Clothes Dryer'
