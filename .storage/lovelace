@@ -1579,12 +1579,67 @@
                           }
                         },
                         {
-                          "type": "state-icon",
-                          "entity": "binary_sensor.washing_machine",
-                          "style": {
-                            "top": "39%",
-                            "left": "23%"
-                          }
+                          "type": "conditional",
+                          "conditions": [
+                            {
+                              "entity": "binary_sensor.washing_machine_running",
+                              "state": "on"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "state-icon",
+                              "entity": "binary_sensor.washing_machine_running",
+                              "style": {
+                                "top": "39%",
+                                "left": "23%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "conditional",
+                          "conditions": [
+                            {
+                              "entity": "binary_sensor.washing_machine_full",
+                              "state": "off"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "state-icon",
+                              "entity": "binary_sensor.washing_machine_running",
+                              "style": {
+                                "top": "39%",
+                                "left": "23%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "conditional",
+                          "conditions": [
+                            {
+                              "entity": "binary_sensor.washing_machine_running",
+                              "state": "off"
+                            },
+                            {
+                              "entity": "binary_sensor.washing_machine_full",
+                              "state": "on"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "state-icon",
+                              "entity": "binary_sensor.washing_machine_full",
+                              "state_color": false,
+                              "style": {
+                                "top": "39%",
+                                "left": "23%",
+                                "--paper-item-icon-color": "red"
+                              }
+                            }
+                          ]
                         },
                         {
                           "type": "state-icon",
