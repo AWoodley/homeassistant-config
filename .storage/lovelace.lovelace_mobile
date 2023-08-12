@@ -2251,6 +2251,21 @@
                 },
                 {
                   "type": "state-icon",
+                  "entity": "light.lego_light",
+                  "style": {
+                    "top": "64%",
+                    "left": "42%"
+                  },
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "light.toggle",
+                    "service_data": {
+                      "entity_id": "light.lego_light"
+                    }
+                  }
+                },
+                {
+                  "type": "state-icon",
                   "entity": "light.music_room_light",
                   "style": {
                     "top": "64%",
@@ -3303,13 +3318,13 @@
                       "entity": "light.lifx_study_1"
                     },
                     {
-                      "show_name": false,
-                      "show_icon": false,
+                      "show_name": true,
+                      "show_icon": true,
                       "type": "button",
                       "tap_action": {
                         "action": "toggle"
                       },
-                      "entity": "input_text.blank"
+                      "entity": "switch.ponder"
                     },
                     {
                       "graph": "line",
@@ -3328,9 +3343,10 @@
                       "entity": "switch.radios"
                     },
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "media_player.imp",
-                      "show_name": false
+                      "entity": "media_player.imp"
                     },
                     {
                       "type": "button",
@@ -3338,9 +3354,10 @@
                       "show_name": false
                     },
                     {
+                      "show_name": true,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "switch.hex",
-                      "show_name": false
+                      "entity": "switch.hex"
                     },
                     {
                       "show_name": false,
@@ -3596,10 +3613,6 @@
                 {
                   "type": "media-control",
                   "entity": "media_player.imp"
-                },
-                {
-                  "type": "media-control",
-                  "entity": "media_player.buddy"
                 },
                 {
                   "type": "media-control",
@@ -3912,6 +3925,90 @@
                       "color": "#db4437"
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Camera",
+          "path": "camera",
+          "icon": "mdi:cctv",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "camera_view": "live",
+                  "type": "picture-glance",
+                  "title": "Roof",
+                  "entities": [],
+                  "camera_image": "camera.roof_cam",
+                  "tap_action": {
+                    "action": "none"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Controls",
+          "path": "controls",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "input_boolean.light_effect_running"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.1626880666396"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "script.20230723004101"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "automation.light_cover_david_morning",
+                  "icon": "mdi:alarm",
+                  "name": "David's Morning Alarm"
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "automation.light_cover_jonathan_morning",
+                  "name": "Jonathan's Morning Alarm",
+                  "icon": "mdi:alarm"
                 }
               ]
             }

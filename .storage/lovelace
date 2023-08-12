@@ -1864,6 +1864,21 @@
                         },
                         {
                           "type": "state-icon",
+                          "entity": "light.lego_light",
+                          "style": {
+                            "top": "64%",
+                            "left": "42%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.lego_light"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
                           "entity": "light.music_room_light",
                           "style": {
                             "top": "64%",

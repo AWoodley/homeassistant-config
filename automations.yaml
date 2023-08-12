@@ -1146,3 +1146,36 @@
       target:
         entity_id: media_player.yamaha_receiver_media_room
   mode: single
+- id: '1691551475446'
+  alias: Washing Machine State:Full:Washing Machine Running
+  description: Set the Washing Machine to Full when it starts running.
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.washing_machine
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: input_select.select_option
+    data:
+      option: Full
+    target:
+      entity_id: input_select.washing_machine_state
+  mode: single
+- id: '1691551837051'
+  alias: Washing Machine State:Empty:Door Sensor
+  description: Set the washing machine to empty when the door is opened.
+  trigger:
+  - platform: event
+    event_type: esphome.rf_code_received
+    event_data:
+      code: '44556'
+  condition: []
+  action:
+  - service: input_select.select_option
+    data:
+      option: Empty
+    target:
+      entity_id: input_select.washing_machine_state
+  mode: single
