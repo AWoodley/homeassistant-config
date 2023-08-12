@@ -444,17 +444,17 @@ template:
     - platform: event
       event_type: esphome.rf_code_received
       event_data:
-        code: "44556"
-      id: "on"
+        code: '44556'
+      id: "off"
     - platform: state
       entity_id:
       - binary_sensor.washing_machine_running
       from: "off"
       to: "on"
-      id: "off"
+      id: "on"
     binary_sensor:
-    - name: 'Washing Machine Empty'
-      unique_id: binary_sensor.washing_machine_empty
+    - name: 'Washing Machine Full'
+      unique_id: binary_sensor.washing_machine_full
       state: "{{ trigger.id }}"
   - binary_sensor:
     - name: 'Clothes Dryer'
