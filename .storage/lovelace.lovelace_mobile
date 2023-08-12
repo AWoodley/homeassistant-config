@@ -3656,11 +3656,13 @@
                   "title": "Sensors"
                 },
                 {
-                  "type": "sensor",
-                  "entity": "sensor.average_indoor_temperature",
                   "graph": "line",
+                  "type": "sensor",
+                  "entity": "sensor.indoor_temperature_average",
                   "icon": "hass:thermometer",
-                  "name": "Inside Temperature"
+                  "name": "Inside Temperature",
+                  "detail": 1,
+                  "unit": "°C"
                 },
                 {
                   "type": "sensor",
