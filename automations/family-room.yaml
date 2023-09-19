@@ -94,3 +94,48 @@
         brightness: 255
       target:
         entity_id: light.family_room_lights
+- id: '1672664235994'
+  alias: Beocenter:Turn-On:Lias Playing
+  description: Turn off the Beocenter when the media player is idle for 5 minutes.
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.lias
+    - media_player.family_room
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+    to: playing
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - service: media_player.turn_on
+    data: {}
+    target:
+      entity_id: media_player.beocenter_7700
+  mode: single
+- id: '1671643125291'
+  alias: Beocenter:Turn Off:Idle
+  description: Turn off the Beocenter when the media player is idle for 5 minutes.
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.beocenter_7700
+    to: idle
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - service: media_player.turn_off
+    data: {}
+    target:
+      entity_id: media_player.beocenter_7700
+  mode: single

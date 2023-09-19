@@ -43,7 +43,7 @@ recorder:
     domains:
       - device_tracker
       - updater
-      - media_player
+      # - media_player
     entities:
       - sun.sun
       - binary_sensor.back_passage
