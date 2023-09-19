@@ -516,7 +516,7 @@
         - sensor.jonathan_s_phone_battery_level
         - sensor.nancys_phone_battery_level
       actions:
-      - service: notify.mobile_app_adrian_s_phone
+      - service: notify.mobile_app_adrian_s_pixel_6a
         data:
           title: 'Low Battery '
           message: '{{sensors}}'
@@ -1092,4 +1092,40 @@
         source: Kodi
       target:
         entity_id: media_player.yamaha_receiver_media_room
+  mode: single
+- id: '1691945017554'
+  alias: 'Kettle:Turn On: Nancy''s Phone Unplugged '
+  description: 'Turn on the kettle when Nancy unplugs her phone in the morning '
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.pixel_6a_is_charging
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  - condition: time
+    after: 04:30:00
+    before: 09:30:00
+  action:
+  - wait_for_trigger:
+    - platform: event
+      event_type: esphome.rf_code_received
+      event_data:
+        code: '8334156'
+    - platform: event
+      event_type: esphome.rf_code_received
+      event_data:
+        code: '14330700'
+    - platform: state
+      entity_id:
+      - binary_sensor.family_room
+      - binary_sensor.media_room
+      to: 'on'
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.switch_kitchen_kettle
   mode: single
