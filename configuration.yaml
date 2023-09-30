@@ -711,7 +711,7 @@ sensor:
     # unit_prefix: k
     round: 2
   - platform: integration
-    source: sensor.master_bedroom_air_conditioner_power
+    source: sensor.master_bedroom_airconditioner_power
     name: 'Master Bedroom Air-Conditioner'
     # unit_prefix: k
     round: 2
