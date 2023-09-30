@@ -701,7 +701,7 @@ sensor:
     # unit_prefix: k
     round: 2
   - platform: integration
-    source: sensor.dish_washer_power
+    source: sensor.dishwasher_power
     name: 'Dish Washer'
     # unit_prefix: k
     round: 2
