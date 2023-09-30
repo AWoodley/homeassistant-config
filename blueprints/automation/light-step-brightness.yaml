@@ -62,7 +62,7 @@ action:
               - service: light.turn_on
                 data:
                   color_temp: 370
-                  brightness: 15
+                  brightness: 6
                 target:
                   entity_id: !input light_id
     default:
