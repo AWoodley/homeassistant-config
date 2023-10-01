@@ -726,7 +726,7 @@ sensor:
     # unit_prefix: k
     round: 2
   - platform: integration
-    source: sensor.davids_heater_power
+    source: sensor.davids_thermostat_power
     name: 'Davids Heater'
     # unit_prefix: k
     round: 2
