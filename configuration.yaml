@@ -423,9 +423,9 @@ climate:
   - platform: dualmode_generic
     unique_id: climate.davids_thermostat
     name: Davids Thermostat
-    heater: switch.davids_heater
-    cooler: switch.davids_fan
-    target_sensor: sensor.davids_bedroom_temperature
+    heater: switch.davids_thermostat
+    cooler: switch.davids_thermostat
+    target_sensor: sensor.davids_thermostat_temperature
     target_temp: 21
     min_cycle_duration: '00:05:00'
     initial_hvac_mode: 'off'
