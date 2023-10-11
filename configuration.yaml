@@ -822,7 +822,7 @@ media_player:
       turn_on:
         service: wake_on_lan.send_magic_packet
         data:
-          mac: C8:CB:B8:05:5E:6F
+          mac: 6C:4B:90:4C:E0:C1
       turn_off:
         service: kodi.call_method
         data:
