@@ -563,38 +563,39 @@ template:
       unique_id: sensor.energy_cost_per_hour
       state: "{{ (states('sensor.electricity_total')|float(0) / 1000 * 0.266612) | round(2) }}"
       unit_of_measurement: AUD
-  - sensor:
-    - name: 'Unaccounted Power'
-      unique_id: sensor.unaccounted_power
-      state: >-
-        {% set total = (states('sensor.electricity_total')|float(0)) %}
-        {%  set accounted = (
-            states('sensor.clothes_dryer_power')|float(0) +
-            states('sensor.david_s_bedroom_rollershutter_power')|float(0) + 
-            states('sensor.dish_washer_power')|float(0) + 
-            states('sensor.fridge_power')|float(0) + 
-            states('sensor.jonathan_s_bedroom_rollershutt_power')|float(0) + 
-            states('sensor.master_bedroom_air_conditioner_power')|float(0) + 
-            states('sensor.master_bedroom_rollershutter_power')|float(0) + 
-            states('sensor.media_centre_power')|float(0) + 
-            states('sensor.monitors_current_consumption')|float(0) +
-            states('sensor.pc_power')|float(0) +
-            states('sensor.radios_current_consumption')|float(0) +
-            states('sensor.servers_power')|float(0) +
-            states('sensor.washing_machine_power')|float(0) +
-            states('sensor.davids_heater_power')|float(0) +
-            states('sensor.jonathans_heater_power')|float(0) +
-            states('sensor.nancys_blanket_power')|float(0) +
-            states('sensor.fireplace_fan_power')|float(0) +
-            states('sensor.water_heater_power')|float(0)
-            ) %}
-        {%  set unaccounted = (total - accounted)|round(2) %}
-        {%  if unaccounted <= 0 %}
-            0
-        {%  else %}
-            {{ unaccounted }}
-        {%  endif %}
-      unit_of_measurement: W
+  # - sensor:
+  #   - name: 'Unaccounted Power'
+  #     unique_id: sensor.unaccounted_power
+  #     state: >-
+  #       {% set total = (states('sensor.electricity_total')|float(0)) %}
+  #       {%  set accounted = (
+  #           states('sensor.servers_power')|float(0) +
+  #           states('sensor.media_centre_power')|float(0) + 
+  #           states('sensor.fridge_power')|float(0) + 
+  #           states('sensor.dishwasher_power')|float(0) + 
+  #           states('sensor.clothes_dryer_power')|float(0) + 
+  #           states('sensor.boys_pcs_power')|float(0) + 
+  #           states('sensor.pc_power')|float(0) + 
+  #           states('sensor.kettle_power')|float(0) + 
+  #           states('sensor.master_bedroom_airconditioner_power')|float(0) +
+  #           states('sensor.network_power')|float(0) +
+  #           states('sensor.radios_current_consumption')|float(0) +
+  #           states('sensor.servers_power')|float(0) +
+  #           states('sensor.washing_machine_power')|float(0) +
+  #           states('sensor.davids_heater_power')|float(0) +
+  #           states('sensor.jonathans_heater_power')|float(0) +
+  #           states('sensor.nancys_blanket_power')|float(0) +
+  #           states('sensor.fireplace_fan_power')|float(0) +
+  #           states('sensor.water_heater_power')|float(0) +
+  #           states('sensor.monitors_current_consumption')|float(0)
+  #           ) %}
+  #       {%  set unaccounted = (total - accounted)|round(2) %}
+  #       {%  if unaccounted <= 0 %}
+  #           0
+  #       {%  else %}
+  #           {{ unaccounted }}
+  #       {%  endif %}
+  #     unit_of_measurement: W
   - sensor:
     - name: 'Oven'
       unique_id: sensor.oven
@@ -686,65 +687,75 @@ sensor:
       - sensor.ble_temperature_a4c13887d585 # Music Room
       - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
   - platform: integration
-    source: sensor.fridge_power
+    source: sensor.servers_power # PC191HA (bf012dac0c9cee209dvmjj)
+    name: 'Servers'
+    # unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.media_centre_power # PC191HA (bf0a25ce6f7c8aab61vwq2)
+    name: 'Media Centre'
+    # unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.fridge_power # PC191HA (bf17f32c06256d34efjpmo)
     name: 'Fridge'
     # unit_prefix: k
     round: 2
-  - platform: integration
-    source: sensor.washing_machine_power
-    name: 'Washing Machine'
-    # unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.pc_power
-    name: 'PC'
-    # unit_prefix: k
-    round: 2
-  - platform: integration
+  - platform: integration # PC191HA (bf3396d64e6ddf40dbhrzw)
     source: sensor.dishwasher_power
     name: 'Dish Washer'
     # unit_prefix: k
     round: 2
   - platform: integration
-    source: sensor.clothes_dryer_power
+    source: sensor.clothes_dryer_power # PC191HA (bf4515197da95eb2fbnnt1)
     name: 'Clothes Dryer'
     # unit_prefix: k
     round: 2
   - platform: integration
-    source: sensor.master_bedroom_airconditioner_power
+    source: sensor.boys_pcs_power # PC191HA (bf81eb45e0bb24485dizc5)
+    name: 'Boys PC'
+    # unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.pc_power # PC191HA (bf88d927aab4af56e7jblh)
+    name: 'PC'
+    # unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.kettle_power # PC191HA (bfbb5c3a70eabdace6hewr)
+    name: 'Kettle'
+    # unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.master_bedroom_airconditioner_power # PC191HA (bfbe5b22167c47577f9dvj)
     name: 'Master Bedroom Air-Conditioner'
     # unit_prefix: k
     round: 2
   - platform: integration
-    source: sensor.media_centre_power
-    name: 'Media Centre'
+    source: sensor.network_power # PC191HA (bfcd8aea86ab6e5135r33d)
+    name: 'Network'
     # unit_prefix: k
     round: 2
   - platform: integration
-    source: sensor.servers_power
-    name: 'Servers'
+    source: sensor.lego_light_power # PC191HA (bfe5d7cd1a780671dcvxfl)
+    name: 'Lego Light'
     # unit_prefix: k
     round: 2
   - platform: integration
-    source: sensor.davids_thermostat_power
+    source: sensor.washing_machine_power # PC191HA (bffefd23341d564551zzg5)
+    name: 'Washing Machine'
+    # unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.davids_thermostat_power # PCTH01HA (bf150fc48d778cd4782sja)
     name: 'Davids Heater'
     # unit_prefix: k
     round: 2
   - platform: integration
-    source: sensor.jonathans_heater_power
+    source: sensor.jonathans_thermostat_power # PCTH01HA (bf70af88eb3f29e429dj1x)
     name: 'Jonathans Heater'
     # unit_prefix: k
     round: 2
-  - platform: integration
-    source: sensor.nancys_blanket_power
-    name: 'Nancys Blanket'
-    # unit_prefix: k
-    round: 2
-  - platform: integration
-    source: sensor.fireplace_fan_power
-    name: 'Fireplace Fan'
-    # unit_prefix: k
-    round: 2                
   - platform: integration
     source: sensor.unaccounted_power
     name: 'Unaccounted'
