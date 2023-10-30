@@ -1127,5 +1127,161 @@
   - service: switch.turn_on
     data: {}
     target:
-      entity_id: switch.switch_kitchen_kettle
+      entity_id: switch.kettle
+  mode: single
+- id: '1698205614482'
+  alias: Switch:Network:Voltage-Low
+  description: Switch on the Network power supply when the battery voltage drops below
+    12.5V
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.sensor_study_1_adc
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    below: 12.1
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  - condition: state
+    entity_id: switch.network
+    state: 'off'
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.network
+  mode: single
+- id: '1698205702578'
+  alias: Switch:Network:Voltage-High
+  description: Switch off the Network power supply when the battery voltage rises
+    above 12.7V
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.sensor_study_1_adc
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    above: 12.8
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  - condition: state
+    entity_id: switch.network
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.network
+  mode: single
+- id: '1698648866024'
+  alias: Switch:Davids Computer:Screentime
+  description: Turn off David's Computer at the end of screentime
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.davids_computer
+    to: 'on'
+    for: '{{ as_timedelta(''PT'' + states(''counter.davids_screen_time'') + ''M'')
+      + as_timedelta(''00:05:00'') }}'
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - variables:
+      action_shutdown: '{{ ''SHUTDOWN_'' ~ context.id }}'
+  - service: notify.mobile_app_adrian_s_pixel_6a
+    data:
+      message: David's screentime is up.
+      data:
+        channel: David's Computer
+        importance: high
+        visibility: public
+        notification_icon: mdi:desktop-classic
+        actions:
+        - action: ' {{ action_shutdown }}'
+          title: Turn off now
+  - wait_for_trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: '{{ action_shutdown }}'
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.davids_computer
+  mode: restart
+- id: '1698678437802'
+  alias: Switch:Jonathans Computer:Screen Time
+  description: Turn off Jonathan's Computer at the end of screentime
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.jonathans_computer
+    to: 'on'
+    for: '{{ as_timedelta(''PT'' + states(''counter.jonathans_screen_time'') + ''M'')
+      + as_timedelta(''00:05:00'') }}'
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - variables:
+      action_shutdown: '{{ ''SHUTDOWN_'' ~ context.id }}'
+  - service: notify.mobile_app_adrian_s_pixel_6a
+    data:
+      message: Jonathan's screentime is up.
+      data:
+        channel: Jonathan's Computer
+        importance: high
+        visibility: public
+        notification_icon: mdi:desktop-classic
+        actions:
+        - action: ' {{ action_shutdown }}'
+          title: Turn off now
+  - wait_for_trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: '{{ action_shutdown }}'
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.jonathans_computer
+  mode: restart
+- id: '1698678587465'
+  alias: Time:Screentime:Reset
+  description: Reset the screentime for the day at midnight
+  trigger:
+  - platform: time
+    at: 00:01:00
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: time
+        weekday:
+        - sat
+        - sun
+      sequence:
+      - service: counter.set_value
+        data:
+          value: 120
+        target:
+          entity_id:
+          - counter.davids_screen_time
+          - counter.jonathan_s_screen_time
+    default:
+    - service: counter.reset
+      data: {}
+      target:
+        entity_id:
+        - counter.davids_screen_time
+        - counter.jonathan_s_screen_time
   mode: single
