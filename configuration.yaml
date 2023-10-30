@@ -361,19 +361,11 @@ google_assistant:
 
 
 notify:
-  - platform: html5
-    name: Push
-    vapid_pub_key:
-      !secret vapid_pub
-    vapid_prv_key:
-      !secret vapid_prv
-    vapid_email:
-      Adrian.a.Woodley@gmail.com
-  - name: family
+  - name: parents
     platform: group
     services:
       - service: mobile_app_adrians_phone
-      - service: mobile_app_nancy_s_phone
+      - service: mobile_app_nancys_phone
 
 
 scrape:
@@ -465,10 +457,10 @@ template:
         minutes: 2
       icon: mdi:tumble-dryer
   - binary_sensor:
-    - name: 'Dish Washer'
-      unique_id: binary_sensor.dish_washer
+    - name: 'DishWasher'
+      unique_id: binary_sensor.dishwasher
       state: >
-        {{ states('sensor.dish_washer_current')|float(0) > 0 }}
+        {{ states('sensor.dishwasher_current')|float(0) > 0 }}
       delay_off:
         minutes: 2
       icon: mdi:dishwasher
