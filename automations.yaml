@@ -1196,7 +1196,7 @@
   action:
   - variables:
       action_shutdown: '{{ ''SHUTDOWN_'' ~ context.id }}'
-  - service: notify.mobile_app_adrian_s_pixel_6a
+  - service: notify.parents
     data:
       message: David's screentime is up.
       data:
@@ -1234,7 +1234,7 @@
   action:
   - variables:
       action_shutdown: '{{ ''SHUTDOWN_'' ~ context.id }}'
-  - service: notify.mobile_app_adrian_s_pixel_6a
+  - service: notify.parents
     data:
       message: Jonathan's screentime is up.
       data:
