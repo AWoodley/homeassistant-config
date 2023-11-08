@@ -255,6 +255,9 @@ google_assistant:
     light.lego_light:
       expose: true
       name: 'Lego Light'
+    light.puppy_light:
+      expose: true
+      name: 'Puppy Light'
     switch.switch_kettle:
       expose: true
     switch.fireplace_fan:
