@@ -770,7 +770,7 @@
     then:
     - service: cover.set_cover_position
       data:
-        position: 20
+        position: 3
       target:
         device_id: bb0e513dc9863cc93d9d2adf84bdeac7
   - if:
