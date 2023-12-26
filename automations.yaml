@@ -1187,13 +1187,47 @@
     entity_id:
     - switch.davids_computer
     to: 'on'
-    for: '{{ as_timedelta(''PT'' + states(''counter.davids_screen_time'') + ''M'')
-      + as_timedelta(''00:05:00'') }}'
   condition:
   - condition: state
     entity_id: input_boolean.active
     state: 'on'
   action:
+  - delay:
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
+  - repeat:
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
+      - service: counter.decrement
+        data: {}
+        target:
+          entity_id: counter.davids_screen_time
+      while:
+      - condition: numeric_state
+        entity_id: counter.davids_screen_time
+        above: 0
+      - condition: state
+        entity_id: switch.davids_computer
+        state: 'on'
+  - condition: state
+    entity_id: switch.davids_computer
+    state: 'on'
+  - service: lifx.effect_pulse
+    data:
+      period: 1
+      cycles: 3
+      power_on: true
+      mode: ping
+      brightness: 255
+      color_name: Red
+    target:
+      entity_id: light.music_room_light
   - variables:
       action_shutdown: '{{ ''SHUTDOWN_'' ~ context.id }}'
   - service: notify.parents
@@ -1204,6 +1238,7 @@
         importance: high
         visibility: public
         notification_icon: mdi:desktop-classic
+        tag: davids_computer
         actions:
         - action: ' {{ action_shutdown }}'
           title: Turn off now
@@ -1212,26 +1247,70 @@
       event_type: mobile_app_notification_action
       event_data:
         action: '{{ action_shutdown }}'
+    - platform: state
+      entity_id:
+      - switch.davids_computer
+      to: 'off'
+    continue_on_timeout: false
+  - service: notify.parents
+    data:
+      message: clear_notification
+      data:
+        tag: davids_computer
   - service: switch.turn_off
     data: {}
     target:
       entity_id: switch.davids_computer
   mode: restart
 - id: '1698678437802'
-  alias: Switch:Jonathans Computer:Screen Time
+  alias: Switch:Jonathans Computer:Screentime
   description: Turn off Jonathan's Computer at the end of screentime
   trigger:
   - platform: state
     entity_id:
     - switch.jonathans_computer
     to: 'on'
-    for: '{{ as_timedelta(''PT'' + states(''counter.jonathans_screen_time'') + ''M'')
-      + as_timedelta(''00:05:00'') }}'
   condition:
   - condition: state
     entity_id: input_boolean.active
     state: 'on'
   action:
+  - delay:
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
+  - repeat:
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
+      - service: counter.decrement
+        data: {}
+        target:
+          entity_id: counter.jonathans_screen_time
+      while:
+      - condition: numeric_state
+        entity_id: counter.jonathans_screen_time
+        above: 0
+      - condition: state
+        entity_id: switch.jonathans_computer
+        state: 'on'
+  - condition: state
+    entity_id: switch.jonathans_computer
+    state: 'on'
+  - service: lifx.effect_pulse
+    data:
+      period: 1
+      cycles: 3
+      power_on: true
+      mode: ping
+      brightness: 255
+      color_name: Blue
+    target:
+      entity_id: light.music_room_light
   - variables:
       action_shutdown: '{{ ''SHUTDOWN_'' ~ context.id }}'
   - service: notify.parents
@@ -1245,11 +1324,22 @@
         actions:
         - action: ' {{ action_shutdown }}'
           title: Turn off now
+        tag: jonathans_computer
   - wait_for_trigger:
     - platform: event
       event_type: mobile_app_notification_action
       event_data:
         action: '{{ action_shutdown }}'
+    - platform: state
+      entity_id:
+      - switch.jonathans_computer
+      to: 'off'
+    continue_on_timeout: false
+  - service: notify.parents
+    data:
+      message: clear_notification
+      data:
+        tag: jonathans_computer
   - service: switch.turn_off
     data: {}
     target:
@@ -1276,12 +1366,111 @@
         target:
           entity_id:
           - counter.davids_screen_time
-          - counter.jonathan_s_screen_time
+          - counter.jonathans_screen_time
     default:
     - service: counter.reset
       data: {}
       target:
         entity_id:
         - counter.davids_screen_time
-        - counter.jonathan_s_screen_time
+        - counter.jonathans_screen_time
   mode: single
+- id: '1698689435015'
+  alias: Timer:Tidy-room:Notification
+  description: Find out if the boys rooms are tidy
+  trigger:
+  - platform: time
+    at: '20:00:00'
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - variables:
+      action_david_clean: '{{ ''DAVID_CLEAN_'' ~ context.id }}'
+      action_david_messy: '{{ ''DAVID_MESSY_'' ~ context.id }}'
+      action_jono_clean: '{{ ''JONO_CLEAN_'' ~ context.id }}'
+      action_jono_messy: '{{ ''JONO_MESSY_'' ~ context.id }}'
+  - service: notify.parents
+    data:
+      message: Is David's room tidy?
+      data:
+        channel: David's Room
+        tag: davids_room
+        importance: high
+        visibility: public
+        notification_icon: mdi:comment-question
+        actions:
+        - action: ' {{ action_david_clean }}'
+          title: Clean
+        - action: ' {{ action_david_messy }}'
+          title: Messy
+  - wait_for_trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: '{{ action_david_clean }}'
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: '{{ action_david_messy }}'
+  - choose:
+    - conditions: '{{ wait.trigger.event.data.action == action_david_clean }}'
+      sequence:
+      - service: counter.increment
+        target:
+          entity_id: counter.davids_pocket_money
+        data: {}
+    - conditions: '{{ wait.trigger.event.data.action == action_david_messy }}'
+      sequence:
+      - service: counter.decrement
+        target:
+          entity_id: counter.davids_pocket_money
+        data: {}
+  - service: notify.parents
+    data:
+      message: clear_notification
+      data:
+        tag: davids_room
+  - service: notify.parents
+    data:
+      message: Is Jono's room tidy?
+      data:
+        channel: Jonathan's Room
+        tag: jonathans_room
+        importance: high
+        visibility: public
+        notification_icon: mdi:comment-question
+        actions:
+        - action: ' {{ action_jono_clean }}'
+          title: Clean
+        - action: ' {{ action_jono_messy }}'
+          title: Messy
+  - wait_for_trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: '{{ action_jono_clean }}'
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: '{{ action_jono_messy }}'
+  - choose:
+    - conditions: '{{ wait.trigger.event.data.action == action_jono_clean }}'
+      sequence:
+      - service: counter.increment
+        target:
+          entity_id: counter.jonathans_pocket_money
+        data: {}
+    - conditions: '{{ wait.trigger.event.data.action == action_jono_messy }}'
+      sequence:
+      - service: counter.decrement
+        target:
+          entity_id: counter.jonathans_pocket_money
+        data: {}
+  - service: notify.parents
+    data:
+      message: clear_notification
+      data:
+        tag: jonathans_room
+  mode: restart
