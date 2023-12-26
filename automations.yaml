@@ -643,7 +643,6 @@
     - media_player.yamaha_receiver_media_room
     attribute: source
     to: Kodi
-    id: Ruby
   condition:
   - condition: state
     entity_id: input_boolean.active
@@ -665,7 +664,7 @@
         milliseconds: 0
   - if:
     - condition: trigger
-      id: Ruby
+      id: TV_Off
     - condition: state
       entity_id: media_player.ruby
       state: 'off'
