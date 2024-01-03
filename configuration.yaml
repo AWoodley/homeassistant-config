@@ -373,7 +373,12 @@ notify:
 
 scrape:
   - resource: https://my.mundaring.wa.gov.au/BinLocationInfo/Info?parcelNumber=104527&suburb=DARLINGTON
-    scan_interval: 21600
+    scan_interval: 600 # 21600
+    sensor:
+      - name: "Bin Day"
+        select: ".form-group"
+        index: 0
+        value_template: '{{ value.split(":")[1] }}'
     sensor:
       - name: "Recycling Days"
         select: ".form-group"
