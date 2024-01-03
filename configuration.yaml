@@ -379,7 +379,6 @@ scrape:
         select: ".form-group"
         index: 0
         value_template: '{{ value.split(":")[1] }}'
-    sensor:
       - name: "Recycling Days"
         select: ".form-group"
         index: 1
