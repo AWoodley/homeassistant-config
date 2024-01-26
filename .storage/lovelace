@@ -1666,7 +1666,7 @@
                         },
                         {
                           "type": "state-icon",
-                          "entity": "binary_sensor.dish_washer",
+                          "entity": "binary_sensor.dishwasher",
                           "style": {
                             "top": "50%",
                             "left": "20%"
@@ -2161,7 +2161,7 @@
                         },
                         {
                           "type": "state-label",
-                          "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                          "entity": "sensor.study_temperature",
                           "style": {
                             "top": "79%",
                             "left": "61%"
@@ -2302,7 +2302,7 @@
                         },
                         {
                           "type": "state-label",
-                          "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                          "entity": "sensor.atc_ensuit_cf8d_temperature",
                           "style": {
                             "top": "95%",
                             "left": "81%"
@@ -2466,6 +2466,22 @@
                               }
                             }
                           ]
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.electricity_total",
+                          "style": {
+                            "top": "96%",
+                            "left": "9%"
+                          }
+                        },
+                        {
+                          "type": "state-label",
+                          "entity": "sensor.energy_cost",
+                          "style": {
+                            "top": "96%",
+                            "left": "28%"
+                          }
                         }
                       ],
                       "image": "local/lovelace/floorplan/floorplan.png"

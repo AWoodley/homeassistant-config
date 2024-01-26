@@ -22,7 +22,7 @@
         "icon": "hass:cellphone"
       },
       {
-        "require_admin": false,
+        "require_admin": true,
         "show_in_sidebar": true,
         "title": "Floorplan",
         "url_path": "lovelace-floorplan",

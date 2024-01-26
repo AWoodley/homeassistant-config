@@ -689,7 +689,7 @@
   use_blueprint:
     path: rollershutter-sunrise.yaml
     input:
-      cover_id: cover.master_bedroom_rollershutter_2
+      cover_id: cover.master_bedroom_rollershutter
 - id: '1671383308349'
   alias: Davids-Rollershutter:Close:Sunrise
   description: ''
@@ -796,8 +796,8 @@
         device_id: feea1151d882acf2ed0fe9ecf078df26
   mode: single
 - id: '1678691891721'
-  alias: Tag:Alarm:Toggle
-  description: ''
+  alias: Alarm:Tag:Toggle
+  description: Toggle the alarm and locks when the tag is scanned.
   trigger:
   - platform: tag
     tag_id: 0d3364de-a42f-4412-9fa0-d34111f39b77
@@ -806,17 +806,60 @@
     entity_id: input_boolean.active
     state: 'on'
   action:
+  - variables:
+      action_arm_alarm: '{{ ''ARM_ALARM_'' ~ context.id }}'
+      action_disarm_alarm: '{{ ''DISARM_ALARM_'' ~ context.id }}'
   - choose:
     - conditions:
       - condition: state
-        entity_id: alarm_control_panel.mqtt_alarm
-        state: disarmed
+        entity_id: lock.front_door
+        state: unlocked
       sequence:
-      - service: alarm_control_panel.alarm_arm_away
-        data: {}
+      - service: lock.lock
         target:
-          entity_id: alarm_control_panel.mqtt_alarm
+          entity_id: lock.front_door
+        data: {}
+      - service: notify.mobile_app_adrians_phone
+        data:
+          message: Arm the alarm?
+          data:
+            channel: Alarm
+            tag: alarm
+            importance: high
+            visibility: public
+            notification_icon: mdi:shield-house
+            actions:
+            - action: ' {{ action_disarm_alarm }} '
+              title: Home
+            - action: ' {{ action_arm_alarm }}'
+              title: Away
+      - wait_for_trigger:
+        - platform: event
+          event_type: mobile_app_notification_action
+          event_data:
+            action: '{{ action_arm_alarm }}'
+        - platform: event
+          event_type: mobile_app_notification_action
+          event_data:
+            action: '{{ action_disarm_alarm }}'
+      - choose:
+        - conditions: '{{ wait.trigger.event.data.action == action_arm_alarm }}'
+          sequence:
+          - service: alarm_control_panel.alarm_arm_away
+            data: {}
+            target:
+              entity_id: alarm_control_panel.mqtt_alarm
+        - conditions: '{{ wait.trigger.event.data.action == action_disarm_alarm }}'
+          sequence:
+          - service: alarm_control_panel.alarm_disarm
+            data: {}
+            target:
+              entity_id: alarm_control_panel.mqtt_alarm
     default:
+    - service: lock.unlock
+      target:
+        entity_id: lock.front_door
+      data: {}
     - service: alarm_control_panel.alarm_disarm
       data: {}
       target:

@@ -1254,7 +1254,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_sewing_room_temperature",
+                  "entity": "sensor.atc_sewing_98b8_temperature",
                   "style": {
                     "top": "29%",
                     "left": "48%"
@@ -1424,7 +1424,7 @@
                 },
                 {
                   "type": "state-icon",
-                  "entity": "binary_sensor.dish_washer",
+                  "entity": "binary_sensor.dishwasher",
                   "style": {
                     "top": "50%",
                     "left": "20%"
@@ -1669,7 +1669,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_music_room_temperature",
+                  "entity": "sensor.atc_music_fa2a_temperature",
                   "style": {
                     "top": "60%",
                     "left": "47.25%"
@@ -1783,7 +1783,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_media_room_temperature",
+                  "entity": "sensor.atc_media_d585_temperature",
                   "style": {
                     "top": "69%",
                     "left": "81%"
@@ -1919,7 +1919,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                  "entity": "sensor.study_temperature",
                   "style": {
                     "top": "79%",
                     "left": "61%"
@@ -1927,7 +1927,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_outside_temperature",
+                  "entity": "sensor.atc_outsid_5222_temperature",
                   "style": {
                     "top": "92%",
                     "left": "45%"
@@ -2060,7 +2060,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                  "entity": "sensor.atc_ensuit_cf8d_temperature",
                   "style": {
                     "top": "95%",
                     "left": "81%"

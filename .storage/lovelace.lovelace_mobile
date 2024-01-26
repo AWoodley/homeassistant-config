@@ -1883,7 +1883,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_sewing_room_temperature",
+                  "entity": "sensor.atc_sewing_98b8_temperature",
                   "style": {
                     "top": "29%",
                     "left": "48%"
@@ -2053,7 +2053,7 @@
                 },
                 {
                   "type": "state-icon",
-                  "entity": "binary_sensor.dish_washer",
+                  "entity": "binary_sensor.dishwasher",
                   "style": {
                     "top": "50%",
                     "left": "20%"
@@ -2216,6 +2216,21 @@
                 },
                 {
                   "type": "state-icon",
+                  "entity": "light.puppy_light",
+                  "style": {
+                    "top": "43%",
+                    "left": "66%"
+                  },
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "light.toggle",
+                    "service_data": {
+                      "entity_id": "light.puppy_light"
+                    }
+                  }
+                },
+                {
+                  "type": "state-icon",
                   "entity": "climate.daikin_ac",
                   "style": {
                     "top": "39.5%",
@@ -2298,7 +2313,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_music_room_temperature",
+                  "entity": "sensor.atc_music_fa2a_temperature",
                   "style": {
                     "top": "60%",
                     "left": "47.25%"
@@ -2412,7 +2427,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_media_room_temperature",
+                  "entity": "sensor.atc_media_d585_temperature",
                   "style": {
                     "top": "69%",
                     "left": "81%"
@@ -2548,7 +2563,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                  "entity": "sensor.study_temperature",
                   "style": {
                     "top": "79%",
                     "left": "61%"
@@ -2556,7 +2571,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_outside_temperature",
+                  "entity": "sensor.atc_outsid_5222_temperature",
                   "style": {
                     "top": "92%",
                     "left": "45%"
@@ -2564,10 +2579,10 @@
                 },
                 {
                   "type": "state-icon",
-                  "entity": "binary_sensor.front_door",
+                  "entity": "lock.front_door",
                   "style": {
                     "top": "81%",
-                    "left": "46%"
+                    "left": "46.5%"
                   }
                 },
                 {
@@ -2689,7 +2704,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.ble_temperature_a4c138dfcf8d",
+                  "entity": "sensor.atc_ensuit_cf8d_temperature",
                   "style": {
                     "top": "95%",
                     "left": "81%"
@@ -2940,9 +2955,10 @@
                       "detail": 1
                     },
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "climate.master_bedroom_ac",
-                      "show_name": false
+                      "entity": "climate.master_bedroom_ac"
                     },
                     {
                       "type": "button",
@@ -2960,9 +2976,10 @@
                       "name": "Adrian's"
                     },
                     {
+                      "show_name": false,
+                      "show_icon": false,
                       "type": "button",
-                      "entity": "switch.nancys_electric_blanket",
-                      "show_name": false
+                      "entity": "input_text.blank"
                     }
                   ]
                 },
@@ -2992,7 +3009,7 @@
                     {
                       "graph": "line",
                       "type": "sensor",
-                      "entity": "sensor.davids_bedroom_temperature",
+                      "entity": "sensor.davids_thermostat_temperature",
                       "detail": 1,
                       "name": " "
                     },
@@ -3169,18 +3186,20 @@
                   "columns": 4,
                   "cards": [
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "light.family_room_lights",
-                      "show_name": false
+                      "entity": "light.family_room_lights"
                     },
                     {
                       "show_name": false,
-                      "show_icon": false,
+                      "show_icon": true,
                       "type": "button",
                       "tap_action": {
                         "action": "toggle"
                       },
-                      "entity": "input_text.blank"
+                      "entity": "light.puppy_light",
+                      "show_state": false
                     },
                     {
                       "graph": "line",
@@ -3206,9 +3225,10 @@
                       "show_state": false
                     },
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "binary_sensor.familyroom_door",
-                      "show_name": false
+                      "entity": "binary_sensor.familyroom_door"
                     },
                     {
                       "show_name": false,
@@ -3221,12 +3241,12 @@
                     },
                     {
                       "show_name": false,
-                      "show_icon": true,
+                      "show_icon": false,
                       "type": "button",
                       "tap_action": {
                         "action": "toggle"
                       },
-                      "entity": "light.christmas_1"
+                      "entity": "input_text.blank"
                     }
                   ]
                 },
@@ -3316,7 +3336,7 @@
                     {
                       "graph": "line",
                       "type": "sensor",
-                      "entity": "sensor.ble_music_room_temperature",
+                      "entity": "sensor.atc_music_fa2a_temperature",
                       "name": " ",
                       "detail": 1
                     },
@@ -3384,7 +3404,7 @@
                     {
                       "graph": "line",
                       "type": "sensor",
-                      "entity": "sensor.rollershutter_diningroom_ds18b20_temperature",
+                      "entity": "sensor.temperature",
                       "name": " ",
                       "detail": 1
                     },
@@ -3468,9 +3488,10 @@
                       "show_name": false
                     },
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "binary_sensor.dish_washer",
-                      "show_name": false
+                      "entity": "binary_sensor.dishwasher"
                     },
                     {
                       "show_name": false,
@@ -3515,19 +3536,23 @@
                       "icon": "mdi:thermometer"
                     },
                     {
+                      "graph": "line",
                       "type": "sensor",
                       "entity": "sensor.ble_temperature_a4c138b45222",
                       "name": "Out",
-                      "graph": "line"
+                      "detail": 1
                     },
                     {
+                      "show_name": true,
+                      "show_icon": true,
                       "type": "button",
                       "entity": "light.entry_lights"
                     },
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "binary_sensor.washing_machine",
-                      "show_name": false
+                      "entity": "binary_sensor.washing_machine_running"
                     },
                     {
                       "type": "button",
@@ -3594,15 +3619,28 @@
                   ]
                 },
                 {
-                  "show_name": true,
-                  "show_icon": true,
-                  "type": "button",
-                  "tap_action": {
-                    "action": "toggle"
-                  },
-                  "entity": "alarm_control_panel.mqtt_alarm",
-                  "name": "Alarm",
-                  "show_state": true
+                  "square": true,
+                  "type": "grid",
+                  "cards": [
+                    {
+                      "states": [
+                        "arm_away"
+                      ],
+                      "type": "alarm-panel",
+                      "entity": "alarm_control_panel.mqtt_alarm",
+                      "name": "Alarm"
+                    },
+                    {
+                      "show_name": true,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "toggle"
+                      },
+                      "entity": "lock.front_door"
+                    }
+                  ],
+                  "columns": 2
                 }
               ]
             }
@@ -3982,6 +4020,46 @@
                       "color": "#db4437"
                     }
                   ]
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "sensor.network_power"
+                    }
+                  ]
+                },
+                {
+                  "type": "gauge",
+                  "entity": "sensor.sensor_study_1_adc",
+                  "min": 11,
+                  "max": 14,
+                  "needle": true,
+                  "severity": {
+                    "green": 12.8,
+                    "yellow": 12,
+                    "red": 0
+                  }
+                },
+                {
+                  "type": "history-graph",
+                  "entities": [
+                    {
+                      "entity": "sensor.sensor_study_1_adc"
+                    },
+                    {
+                      "entity": "sensor.sensor_study_2_adc"
+                    }
+                  ]
+                },
+                {
+                  "show_name": true,
+                  "show_icon": true,
+                  "type": "button",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "entity": "switch.network"
                 }
               ]
             }

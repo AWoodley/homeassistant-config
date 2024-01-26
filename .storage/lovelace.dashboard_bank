@@ -6,7 +6,9 @@
     "config": {
       "views": [
         {
-          "title": "Home",
+          "title": "Pocket Money",
+          "icon": "mdi:currency-usd",
+          "badges": [],
           "cards": [
             {
               "type": "vertical-stack",
@@ -14,7 +16,7 @@
                 {
                   "type": "gauge",
                   "entity": "counter.jonathans_pocket_money",
-                  "max": 75,
+                  "max": 40,
                   "needle": false,
                   "severity": {
                     "green": 50,
@@ -97,6 +99,109 @@
                         },
                         "data": {}
                       },
+                      "icon": "mdi:arrow-down-circle"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Screentime",
+          "path": "screentime",
+          "icon": "mdi:desktop-classic",
+          "badges": [],
+          "cards": [
+            {
+              "type": "vertical-stack",
+              "cards": [
+                {
+                  "type": "gauge",
+                  "entity": "counter.jonathans_screen_time",
+                  "max": 30,
+                  "needle": false,
+                  "unit": "minutes",
+                  "severity": {
+                    "green": 20,
+                    "yellow": 10,
+                    "red": 0
+                  }
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "counter.increment",
+                        "target": {
+                          "entity_id": "counter.jonathans_screen_time"
+                        }
+                      },
+                      "entity": "counter.jonathans_screen_time",
+                      "icon": "mdi:arrow-up-circle"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "counter.decrement",
+                        "target": {
+                          "entity_id": "counter.jonathans_screen_time"
+                        }
+                      },
+                      "entity": "counter.jonathans_screen_time",
+                      "icon": "mdi:arrow-down-circle"
+                    }
+                  ]
+                },
+                {
+                  "type": "gauge",
+                  "entity": "counter.davids_screen_time",
+                  "max": 30,
+                  "needle": false,
+                  "unit": "minutes",
+                  "severity": {
+                    "green": 20,
+                    "yellow": 10,
+                    "red": 0
+                  }
+                },
+                {
+                  "type": "horizontal-stack",
+                  "cards": [
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "counter.increment",
+                        "target": {
+                          "entity_id": "counter.davids_screen_time"
+                        }
+                      },
+                      "entity": "counter.davids_screen_time",
+                      "icon": "mdi:arrow-up-circle"
+                    },
+                    {
+                      "show_name": false,
+                      "show_icon": true,
+                      "type": "button",
+                      "tap_action": {
+                        "action": "call-service",
+                        "service": "counter.decrement",
+                        "target": {
+                          "entity_id": "counter.davids_screen_time"
+                        }
+                      },
+                      "entity": "counter.davids_screen_time",
                       "icon": "mdi:arrow-down-circle"
                     }
                   ]
