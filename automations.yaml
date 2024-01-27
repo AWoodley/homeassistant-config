@@ -819,20 +819,44 @@
         target:
           entity_id: lock.front_door
         data: {}
-      - service: notify.mobile_app_adrians_phone
-        data:
-          message: Arm the alarm?
+      - if:
+        - condition: state
+          entity_id: person.adrian
+          state: home
+        then:
+        - service: notify.mobile_app_adrians_phone
           data:
-            channel: Alarm
-            tag: alarm
-            importance: high
-            visibility: public
-            notification_icon: mdi:shield-house
-            actions:
-            - action: ' {{ action_disarm_alarm }} '
-              title: Home
-            - action: ' {{ action_arm_alarm }}'
-              title: Away
+            message: Arm the alarm?
+            data:
+              channel: Alarm
+              tag: alarm
+              importance: high
+              visibility: public
+              notification_icon: mdi:shield-house
+              actions:
+              - action: ' {{ action_disarm_alarm }} '
+                title: Home
+              - action: ' {{ action_arm_alarm }}'
+                title: Away
+      - if:
+        - condition: state
+          entity_id: person.nancy
+          state: home
+        then:
+        - service: notify.mobile_app_nancys_phone
+          data:
+            message: Arm the alarm?
+            data:
+              channel: Alarm
+              tag: alarm
+              importance: high
+              visibility: public
+              notification_icon: mdi:shield-house
+              actions:
+              - action: ' {{ action_disarm_alarm }} '
+                title: Home
+              - action: ' {{ action_arm_alarm }}'
+                title: Away
       - wait_for_trigger:
         - platform: event
           event_type: mobile_app_notification_action
