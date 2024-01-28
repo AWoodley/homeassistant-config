@@ -170,6 +170,20 @@
       position: 30
     target:
       device_id: 1c60da664cab4c512573a9be26c28737
+  - if:
+    - condition: state
+      entity_id: group.family
+      state: home
+    then:
+    - service: light.turn_on
+      data:
+        transition: 10
+        color_temp: 280
+        brightness: 255
+      target:
+        entity_id:
+        - light.dining_room_lights
+        - light.music_room_light
   mode: single
 - id: '1620376925668'
   alias: Light:DiningRoom:Off:Rollershutters:Open
