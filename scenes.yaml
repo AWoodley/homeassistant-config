@@ -804,6 +804,8 @@
       state: 'off'
     input_select.study_scene:
       state: scene.scene_study_off
+    lock.front_door:
+      state: 'locked'
 - id: '1585885759447'
   name: Scene:Entry:Night
   entities:
