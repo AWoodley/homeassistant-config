@@ -848,7 +848,7 @@
             message: Arm the alarm?
             data:
               channel: Alarm
-              tag: alarm
+              tag: arm_alarm
               importance: high
               visibility: public
               notification_icon: mdi:shield-house
@@ -879,6 +879,11 @@
             data: {}
             target:
               entity_id: alarm_control_panel.mqtt_alarm
+        - service: notify.parents
+          data:
+            message: clear_notification
+            data:
+              tag: arm_alarm
     default:
     - service: lock.unlock
       target:
