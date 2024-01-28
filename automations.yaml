@@ -801,6 +801,15 @@
   trigger:
   - platform: tag
     tag_id: 0d3364de-a42f-4412-9fa0-d34111f39b77
+    id: Tag
+  - platform: state
+    entity_id:
+    - group.family
+    id: Family
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
   condition:
   - condition: state
     entity_id: input_boolean.active
@@ -814,6 +823,9 @@
       - condition: state
         entity_id: lock.front_door
         state: unlocked
+      - condition: trigger
+        id:
+        - Tag
       sequence:
       - service: lock.lock
         target:
@@ -867,24 +879,51 @@
           event_data:
             action: '{{ action_disarm_alarm }}'
       - choose:
-        - conditions: '{{ wait.trigger.event.data.action == action_arm_alarm }}'
+        - conditions:
+          - condition: template
+            value_template: '{{ wait.trigger.event.data.action == action_arm_alarm
+              }}'
           sequence:
           - service: alarm_control_panel.alarm_arm_away
             data: {}
             target:
               entity_id: alarm_control_panel.mqtt_alarm
-        - conditions: '{{ wait.trigger.event.data.action == action_disarm_alarm }}'
+        - conditions:
+          - condition: template
+            value_template: '{{ wait.trigger.event.data.action == action_disarm_alarm
+              }}'
           sequence:
           - service: alarm_control_panel.alarm_disarm
             data: {}
             target:
               entity_id: alarm_control_panel.mqtt_alarm
-        - service: notify.parents
+      - service: notify.parents
+        data:
+          message: clear_notification
           data:
-            message: clear_notification
-            data:
-              tag: arm_alarm
+            tag: arm_alarm
+    - conditions:
+      - condition: state
+        entity_id: lock.front_door
+        state: unlocked
+      - condition: trigger
+        id:
+        - Family
+      sequence:
+      - service: lock.lock
+        metadata: {}
+        data: {}
+        target:
+          entity_id: lock.front_door
     default:
+    - condition: or
+      conditions:
+      - condition: trigger
+        id:
+        - Tag
+      - condition: state
+        entity_id: group.family
+        state: Home
     - service: lock.unlock
       target:
         entity_id: lock.front_door
