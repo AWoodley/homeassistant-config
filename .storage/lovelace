@@ -1829,6 +1829,21 @@
                         },
                         {
                           "type": "state-icon",
+                          "entity": "light.puppy_light",
+                          "style": {
+                            "top": "43%",
+                            "left": "66%"
+                          },
+                          "tap_action": {
+                            "action": "call-service",
+                            "service": "light.toggle",
+                            "service_data": {
+                              "entity_id": "light.puppy_light"
+                            }
+                          }
+                        },
+                        {
+                          "type": "state-icon",
                           "entity": "climate.daikin_ac",
                           "style": {
                             "top": "39.5%",
@@ -2177,10 +2192,10 @@
                         },
                         {
                           "type": "state-icon",
-                          "entity": "binary_sensor.front_door",
+                          "entity": "lock.front_door",
                           "style": {
                             "top": "81%",
-                            "left": "46%"
+                            "left": "46.5%"
                           }
                         },
                         {
@@ -2302,7 +2317,7 @@
                         },
                         {
                           "type": "state-label",
-                          "entity": "sensor.atc_ensuit_cf8d_temperature",
+                          "entity": "sensor.ensuite_temperature",
                           "style": {
                             "top": "95%",
                             "left": "81%"

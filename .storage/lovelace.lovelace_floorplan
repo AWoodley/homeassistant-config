@@ -1254,7 +1254,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.atc_sewing_98b8_temperature",
+                  "entity": "sensor.sewing_room_temperature",
                   "style": {
                     "top": "29%",
                     "left": "48%"
@@ -1587,6 +1587,21 @@
                 },
                 {
                   "type": "state-icon",
+                  "entity": "light.puppy_light",
+                  "style": {
+                    "top": "43%",
+                    "left": "66%"
+                  },
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "light.toggle",
+                    "service_data": {
+                      "entity_id": "light.puppy_light"
+                    }
+                  }
+                },
+                {
+                  "type": "state-icon",
                   "entity": "climate.daikin_ac",
                   "style": {
                     "top": "39.5%",
@@ -1669,7 +1684,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.atc_music_fa2a_temperature",
+                  "entity": "sensor.music_room_temperature",
                   "style": {
                     "top": "60%",
                     "left": "47.25%"
@@ -1783,7 +1798,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.atc_media_d585_temperature",
+                  "entity": "sensor.media_room_temperature",
                   "style": {
                     "top": "69%",
                     "left": "81%"
@@ -1927,7 +1942,7 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.atc_outsid_5222_temperature",
+                  "entity": "sensor.outside_temperature",
                   "style": {
                     "top": "92%",
                     "left": "45%"
@@ -1935,10 +1950,10 @@
                 },
                 {
                   "type": "state-icon",
-                  "entity": "binary_sensor.front_door",
+                  "entity": "lock.front_door",
                   "style": {
                     "top": "81%",
-                    "left": "46%"
+                    "left": "46.5%"
                   }
                 },
                 {
@@ -2060,10 +2075,32 @@
                 },
                 {
                   "type": "state-label",
-                  "entity": "sensor.atc_ensuit_cf8d_temperature",
+                  "entity": "sensor.ensuite_temperature",
                   "style": {
                     "top": "95%",
                     "left": "81%"
+                  }
+                },
+                {
+                  "type": "state-icon",
+                  "entity": "alarm_control_panel.mqtt_alarm",
+                  "style": {
+                    "top": "90%",
+                    "left": "5%"
+                  },
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "alarm_control_panel.alarm_disarm",
+                    "service_data": {
+                      "entity_id": "alarm_control_panel.mqtt_alarm"
+                    }
+                  },
+                  "double_tap_action": {
+                    "action": "call-service",
+                    "service": "alarm_control_panel.alarm_arm_away",
+                    "service_data": {
+                      "entity_id": "alarm_control_panel.mqtt_alarm"
+                    }
                   }
                 },
                 {
