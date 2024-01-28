@@ -602,6 +602,8 @@
 - id: '1585417143484'
   name: Scene:Away
   entities:
+    cover.all_covers:
+      state: 'close'
     light.all_lights:
       state: 'off'
     light.light_alfresco_2:
@@ -772,17 +774,21 @@
       icon: mdi:wall-sconce-flat
       supported_features: 191
       state: 'off'
-    media_player.googlehome4026:
-      state: 'off'
     media_player.kitchen_speaker:
       state: 'off'
     media_player.davids_speaker:
       state: 'off'
     media_player.jonathans_speaker:
       state: 'off'
+    media_player.master_bedroom:
+      state: 'off'
+    media_player.glod:
+      state: 'off'
     media_player.yamaha_receiver_media_room:
       state: 'off'
     media_player.beocenter_7700:
+      state: 'off'
+    switch.tv:
       state: 'off'
     cover.master_bedroom_rollershutter:
       state: closed

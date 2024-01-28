@@ -13,3 +13,6 @@
     - switch.radios
     - switch.switch_study_1
     - switch.garage_1
+    - switch.kettle
+    - switch.study_speakers
+    - switch.monitors
