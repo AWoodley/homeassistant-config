@@ -593,7 +593,7 @@
     input:
       light_id: light.lifx_jonathans_bedroom
       cover_id: cover.jonathans_bedroom_rollershutter
-      temperature_sensor_id: sensor.ble_outside_temperature
+      temperature_sensor_id: sensor.outside_temperature
       person_id: person.jonathan
       schedule_id: schedule.roller_shutter_open
 - id: '1661337951517'
@@ -604,7 +604,7 @@
     input:
       light_id: light.lifx_davids_room
       cover_id: cover.davids_bedroom_rollershutter
-      temperature_sensor_id: sensor.ble_outside_temperature
+      temperature_sensor_id: sensor.outside_temperature
       person_id: person.david
       schedule_id: schedule.roller_shutter_open
 - id: '1661338159225'
@@ -615,7 +615,7 @@
     input:
       light_id: light.light_masterbedroom_1
       cover_id: cover.master_bedroom_rollershutter
-      temperature_sensor_id: sensor.ble_outside_temperature
+      temperature_sensor_id: sensor.outside_temperature
       person_id: person.adrian
       schedule_id: schedule.roller_shutter_open
 - id: '1667828983561'

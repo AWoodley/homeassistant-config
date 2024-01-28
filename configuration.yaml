@@ -328,9 +328,9 @@ google_assistant:
       expose: true
     cover.davids_bedroom_rollershutter:
       expose: true
-    sensor.ble_temperature_a4c13887d585:
+    sensor.kitchen_temperature:
       expose: true
-      name: 'Diningroom Temperature'
+      name: 'Kitchen Temperature'
     sensor.rollershutter_diningroom_ds18b20_temperature:
       expose: true
       name: 'Study Temperature'
@@ -537,10 +537,10 @@ template:
       state: >-
         {{
         (states('sensor.indoor_temperature_average') < states('input_number.house_target_temperature') and
-        states('sensor.ble_outside_temperature') > states('sensor.indoor_temperature_average'))
+        states('sensor.outside_temperature') > states('sensor.indoor_temperature_average'))
         or
         (states('sensor.indoor_temperature_average') > states('input_number.house_target_temperature') and
-        states('sensor.ble_outside_temperature') < states('sensor.indoor_temperature_average'))
+        states('sensor.outside_temperature') < states('sensor.indoor_temperature_average'))
         }}
   - sensor:
     - name: 'Electricity Total'
