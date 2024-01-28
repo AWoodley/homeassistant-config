@@ -341,40 +341,88 @@
   name: Scene:Study:Normal
   entities:
     input_select.study_scene:
-      editable: false
-      friendly_name: Currently Active Scene for Study
       options:
       - unknown
       - scene.scene_study_off
       - scene.scene_study_normal
       - scene.scene_study_bright
+      editable: true
+      friendly_name: Study Scene
       state: scene.scene_study_normal
     light.lifx_study_1:
-      brightness: 255
-      color_temp: 250
+      min_color_temp_kelvin: 1500
+      max_color_temp_kelvin: 9000
+      min_mireds: 111
+      max_mireds: 666
       effect_list:
       - effect_pulse
       - effect_stop
-      friendly_name: Light-Study-1
-      max_mireds: 666
-      min_mireds: 250
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 255
+      color_temp_kelvin: 4000
+      color_temp: 250
+      hs_color:
+      - 26.812
+      - 34.87
+      rgb_color:
+      - 255
+      - 205
+      - 166
+      xy_color:
+      - 0.421
+      - 0.364
+      effect:
+      friendly_name: Study
+      supported_features: 36
       state: 'on'
-      supported_features: 39
     light.light_study_2:
-      friendly_name: Light-Study-2
-      max_mireds: 500
-      min_mireds: 153
+      min_color_temp_kelvin: 3000
+      max_color_temp_kelvin: 5700
+      min_mireds: 175
+      max_mireds: 333
+      supported_color_modes:
+      - color_temp
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      icon: mdi:track-light
+      friendly_name: Light Study 2
+      supported_features: 40
       state: 'off'
-      supported_features: 3
     light.light_study_3:
-      friendly_name: Light-Study-3
-      max_mireds: 500
-      min_mireds: 153
+      min_color_temp_kelvin: 3000
+      max_color_temp_kelvin: 5700
+      min_mireds: 175
+      max_mireds: 333
+      supported_color_modes:
+      - color_temp
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      icon: mdi:track-light
+      friendly_name: Light Study 3
+      supported_features: 40
       state: 'off'
-      supported_features: 3
     switch.monitors:
-      friendly_name: Switch-Study-1
+      icon: mdi:monitor-multiple
+      friendly_name: Monitors
       state: 'on'
+    switch.study_speakers:
+      friendly_name: Study Speakers
+      raw_state: true
+      icon: mdi:speaker-multiple
+      state: 'on'
+  metadata: {}
 - id: '1585068607563'
   name: Scene:Study:Bright
   entities:
@@ -388,44 +436,86 @@
       friendly_name: Study Scene
       state: scene.scene_study_bright
     light.lifx_study_1:
-      min_mireds: 250
+      min_color_temp_kelvin: 1500
+      max_color_temp_kelvin: 9000
+      min_mireds: 111
       max_mireds: 666
       effect_list:
       - effect_pulse
       - effect_stop
       supported_color_modes:
       - color_temp
-      friendly_name: Study Light 1
-      supported_features: 39
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      effect:
+      friendly_name: Study
+      supported_features: 36
       state: 'off'
     light.light_study_2:
-      min_mireds: 175.4385986328125
-      max_mireds: 333.3333435058594
+      min_color_temp_kelvin: 3000
+      max_color_temp_kelvin: 5700
+      min_mireds: 175
+      max_mireds: 333
       supported_color_modes:
       - color_temp
       color_mode: color_temp
       brightness: 255
+      color_temp_kelvin: 4000
       color_temp: 250
-      friendly_name: Light Study 2
+      hs_color:
+      - 26.812
+      - 34.87
+      rgb_color:
+      - 255
+      - 205
+      - 166
+      xy_color:
+      - 0.421
+      - 0.364
       icon: mdi:track-light
-      supported_features: 43
+      friendly_name: Light Study 2
+      supported_features: 40
       state: 'on'
     light.light_study_3:
-      min_mireds: 175.4385986328125
-      max_mireds: 333.3333435058594
+      min_color_temp_kelvin: 3000
+      max_color_temp_kelvin: 5700
+      min_mireds: 175
+      max_mireds: 333
       supported_color_modes:
       - color_temp
       color_mode: color_temp
       brightness: 255
+      color_temp_kelvin: 4000
       color_temp: 250
-      friendly_name: Light Study 3
+      hs_color:
+      - 26.812
+      - 34.87
+      rgb_color:
+      - 255
+      - 205
+      - 166
+      xy_color:
+      - 0.421
+      - 0.364
       icon: mdi:track-light
-      supported_features: 43
+      friendly_name: Light Study 3
+      supported_features: 40
       state: 'on'
     switch.monitors:
-      friendly_name: Switch Study 1
-      icon: mdi:monitor
+      icon: mdi:monitor-multiple
+      friendly_name: Monitors
       state: 'on'
+    switch.study_speakers:
+      friendly_name: Study Speakers
+      raw_state: false
+      icon: mdi:speaker-multiple
+      state: 'off'
+  metadata: {}
 - id: '1585068650709'
   name: Scene:Study:Off
   entities:
@@ -435,45 +525,80 @@
       - scene.scene_study_off
       - scene.scene_study_normal
       - scene.scene_study_bright
-      editable: false
-      friendly_name: Currently Active Scene for Study
+      editable: true
+      friendly_name: Study Scene
       state: scene.scene_study_off
     light.lifx_study_1:
-      min_mireds: 250
+      min_color_temp_kelvin: 1500
+      max_color_temp_kelvin: 9000
+      min_mireds: 111
       max_mireds: 666
       effect_list:
       - effect_pulse
       - effect_stop
-      friendly_name: Study Light 1
-      supported_features: 39
+      supported_color_modes:
+      - color_temp
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      effect:
+      friendly_name: Study
+      supported_features: 36
       state: 'off'
     light.light_study_2:
-      min_mireds: 153
-      max_mireds: 500
-      friendly_name: Study Flood Light 2
+      min_color_temp_kelvin: 3000
+      max_color_temp_kelvin: 5700
+      min_mireds: 175
+      max_mireds: 333
+      supported_color_modes:
+      - color_temp
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
       icon: mdi:track-light
-      supported_features: 35
+      friendly_name: Light Study 2
+      supported_features: 40
       state: 'off'
     light.light_study_3:
-      min_mireds: 153
-      max_mireds: 500
-      friendly_name: Light-Study-3
+      min_color_temp_kelvin: 3000
+      max_color_temp_kelvin: 5700
+      min_mireds: 175
+      max_mireds: 333
+      supported_color_modes:
+      - color_temp
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
       icon: mdi:track-light
-      supported_features: 35
+      friendly_name: Light Study 3
+      supported_features: 40
       state: 'off'
     switch.monitors:
-      friendly_name: Switch-Study-1
-      icon: mdi:desktop-classic
+      icon: mdi:monitor-multiple
+      friendly_name: Monitors
       state: 'off'
     switch.radios:
-      current_power_w: '0.00'
-      total_energy_kwh: '0.140'
-      voltage: '234.4'
-      current_a: '0.01'
-      today_energy_kwh: '0.140'
-      friendly_name: Radios
       icon: hass:radio
+      friendly_name: Radios
       state: 'off'
+    switch.study_speakers:
+      raw_state: false
+      icon: mdi:speaker-multiple
+      friendly_name: Study Speakers
+      state: 'off'
+  metadata: {}
 - id: '1585417143484'
   name: Scene:Away
   entities:
