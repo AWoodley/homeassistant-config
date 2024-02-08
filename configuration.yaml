@@ -190,23 +190,23 @@ mqtt:
   #   qos: 1
   #   retain: false
   #   optimistic: false
-  vacuum:
-  - name: "Sammy"
-    schema: state
-    supported_features:
-      # - turn_on
-      # - turn_off
-      - return_home
-      - start
-      - pause
-      - stop
-    command_topic: "cmnd/tasmotas/irsend"
-    # payload_turn_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
-    # payload_turn_off: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
-    payload_return_to_base: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x8181807F\",\"DataLSB\":\"0x818101FE\",\"Repeat\":0}"
-    payload_start: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
-    payload_pause: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
-    payload_stop: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
+  # vacuum:
+  # - name: "Sammy"
+  #   schema: state
+  #   supported_features:
+  #     # - turn_on
+  #     # - turn_off
+  #     - return_home
+  #     - start
+  #     - pause
+  #     - stop
+  #   command_topic: "cmnd/tasmotas/irsend"
+  #   # payload_turn_on: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
+  #   # payload_turn_off: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818100FF\",\"DataLSB\":\"0x818100FF\",\"Repeat\":0}"
+  #   payload_return_to_base: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x8181807F\",\"DataLSB\":\"0x818101FE\",\"Repeat\":0}"
+  #   payload_start: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
+  #   payload_pause: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
+  #   payload_stop: "{\"Protocol\":\"SAMSUNG\",\"Bits\":32,\"Data\":\"0x818110EF\",\"DataLSB\":\"0x818108F7\",\"Repeat\":0}"
 
 
 google_assistant:
@@ -318,8 +318,8 @@ google_assistant:
     script.20201106233201:
       expose: true
       name: 'Christmas Lights'
-    vacuum.sammy:
-      expose: true
+    # vacuum.sammy:
+    #   expose: true
     cover.dining_room_rollershutter:
       expose: true
     cover.master_bedroom_rollershutter:
