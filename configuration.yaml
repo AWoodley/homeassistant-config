@@ -686,80 +686,95 @@ sensor:
       - sensor.ble_temperature_a4c13887d585 # Music Room
       - sensor.ble_temperature_a4c1387f98b8 # Sewing Room
   - platform: integration
+    method: left
     source: sensor.servers_power # PC191HA (bf012dac0c9cee209dvmjj)
     name: 'Servers'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.media_centre_power # PC191HA (bf0a25ce6f7c8aab61vwq2)
     name: 'Media Centre'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.fridge_power # PC191HA (bf17f32c06256d34efjpmo)
     name: 'Fridge'
     # unit_prefix: k
     round: 2
-  - platform: integration # PC191HA (bf3396d64e6ddf40dbhrzw)
-    source: sensor.dishwasher_power
+  - platform: integration
+    method: left
+    source: sensor.dishwasher_power # PC191HA (bf3396d64e6ddf40dbhrzw)
     name: 'Dish Washer'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.clothes_dryer_power # PC191HA (bf4515197da95eb2fbnnt1)
     name: 'Clothes Dryer'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.boys_pcs_power # PC191HA (bf81eb45e0bb24485dizc5)
     name: 'Boys PC'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.pc_power # PC191HA (bf88d927aab4af56e7jblh)
     name: 'PC'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.kettle_power # PC191HA (bfbb5c3a70eabdace6hewr)
     name: 'Kettle'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.master_bedroom_airconditioner_power # PC191HA (bfbe5b22167c47577f9dvj)
     name: 'Master Bedroom Air-Conditioner'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.network_power # PC191HA (bfcd8aea86ab6e5135r33d)
     name: 'Network'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.lego_light_power # PC191HA (bfe5d7cd1a780671dcvxfl)
     name: 'Lego Light'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.washing_machine_power # PC191HA (bffefd23341d564551zzg5)
     name: 'Washing Machine'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.davids_thermostat_power # PCTH01HA (bf150fc48d778cd4782sja)
     name: 'Davids Heater'
     # unit_prefix: k
     round: 2
   - platform: integration
+    method: left
     source: sensor.jonathans_thermostat_power # PCTH01HA (bf70af88eb3f29e429dj1x)
     name: 'Jonathans Heater'
     # unit_prefix: k
     round: 2
-  - platform: integration
-    source: sensor.unaccounted_power
-    name: 'Unaccounted'
-    # unit_prefix: k
-    round: 2
+  # - platform: integration
+  #   method: left
+  #   source: sensor.unaccounted_power
+  #   name: 'Unaccounted'
+  #   # unit_prefix: k
+  #   round: 2
 
 media_player:
   # - platform: mpd
