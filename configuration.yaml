@@ -413,8 +413,8 @@ climate:
   - platform: dualmode_generic
     unique_id: climate.jonathans_thermostat
     name: Jonathans Thermostat
-    heater: switch.jonathans_heater
-    cooler: switch.jonathans_fan
+    heater: switch.jonathans_thermostat
+    cooler: switch.jonathans_thermostat
     target_sensor: sensor.jonathans_bedroom_temperature
     target_temp: 21
     min_cycle_duration: '00:05:00'
