@@ -20,7 +20,7 @@ zone:
   name: home
   latitude: -31.923172
   longitude: 116.082237
-  radius: 50
+  radius: 70
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
