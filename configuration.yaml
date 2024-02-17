@@ -3,9 +3,9 @@
 default_config:
 
 homeassistant:
-  latitude: -31.923172
-  longitude: 116.082237
-  elevation: 149
+  # latitude: -31.923172
+  # longitude: 116.082237
+  # elevation: 149
   unit_system: metric
   currency: AUD
   time_zone: Australia/Perth
