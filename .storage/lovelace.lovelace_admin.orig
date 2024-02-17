@@ -1,0 +1,432 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.lovelace_admin",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "title": "Batteries",
+          "path": "batteries",
+          "badges": [],
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                {
+<<<<<<< HEAD
+                  "entity": "sensor.outside_battery"
+||||||| 239e983
+                  "entity": "sensor.ble_battery_a4c13888821f"
+=======
+                  "entity": "sensor.ceiling_battery"
+>>>>>>> 6d32d0b22dc31ce651596e3428d405b12a98a6b4
+                },
+                {
+<<<<<<< HEAD
+                  "entity": "sensor.ceiling_battery"
+||||||| 239e983
+                  "entity": "sensor.ble_battery_a4c138dfcf8d"
+=======
+                  "entity": "sensor.ensuite_battery"
+>>>>>>> 6d32d0b22dc31ce651596e3428d405b12a98a6b4
+                },
+                {
+<<<<<<< HEAD
+                  "entity": "sensor.music_room_battery"
+||||||| 239e983
+                  "entity": "sensor.ble_battery_media_room_ble_sensor"
+=======
+                  "entity": "sensor.media_room_battery"
+>>>>>>> 6d32d0b22dc31ce651596e3428d405b12a98a6b4
+                },
+                {
+<<<<<<< HEAD
+                  "entity": "sensor.media_room_battery"
+||||||| 239e983
+                  "entity": "sensor.ble_battery_a4c138fbfa2a"
+=======
+                  "entity": "sensor.music_room_battery"
+>>>>>>> 6d32d0b22dc31ce651596e3428d405b12a98a6b4
+                },
+                {
+<<<<<<< HEAD
+                  "entity": "sensor.sewing_room_battery"
+||||||| 239e983
+                  "entity": "sensor.ble_battery_a4c138b45222"
+=======
+                  "entity": "sensor.outside_battery"
+>>>>>>> 6d32d0b22dc31ce651596e3428d405b12a98a6b4
+                },
+                {
+<<<<<<< HEAD
+                  "entity": "sensor.ensuite_battery"
+||||||| 239e983
+                  "entity": "sensor.ble_battery_sewing_room"
+=======
+                  "entity": "sensor.sewing_room_battery"
+>>>>>>> 6d32d0b22dc31ce651596e3428d405b12a98a6b4
+                },
+                {
+                  "entity": "sensor.davids_bedroom_shelly_battery"
+                },
+                {
+                  "entity": "sensor.familyroom_shelly_battery"
+                },
+                {
+                  "entity": "sensor.jonathans_bedroom_shelly_battery"
+                },
+                {
+                  "entity": "sensor.bathroom_shelly_battery"
+<<<<<<< HEAD
+                }
+||||||| 239e983
+                },
+                {
+                  "entity": "sensor.cyberpower_battery_charge"
+                },
+                {
+                  "entity": "sensor.powershield_battery_charge"
+                }
+=======
+                },
+>>>>>>> 6d32d0b22dc31ce651596e3428d405b12a98a6b4
+              ],
+              "state_color": true
+            }
+          ]
+        },
+        {
+          "title": "WiFi Heatmap",
+          "path": "wifi-heatmap",
+          "panel": false,
+          "badges": [],
+          "cards": [
+            {
+              "type": "picture-elements",
+              "elements": [
+                {
+                  "type": "state-label",
+                  "entity": "sensor.davids_bedroom_rollershutter_signal_strength",
+                  "style": {
+                    "top": "1.5%",
+                    "left": "37%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.davids_bedroom_sensor_signal_strength",
+                  "style": {
+                    "top": "6%",
+                    "left": "26.5%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.lifx_davids_room_rssi",
+                  "style": {
+                    "top": "9%",
+                    "left": "31%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.jonathans_bedroom_sensor_signal_strength",
+                  "style": {
+                    "top": "6%",
+                    "left": "49%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.lifx_jonathans_bedroom_rssi",
+                  "style": {
+                    "top": "11%",
+                    "left": "49%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.jonathans_bedroom_rollershutter_signal_strength",
+                  "style": {
+                    "top": "9.75%",
+                    "left": "55.75%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.lifx_passage1_rssi",
+                  "style": {
+                    "top": "17%",
+                    "left": "38.25%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.lifx_passage2_rssi",
+                  "style": {
+                    "top": "34%",
+                    "left": "38.25%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_alfresco_1_signal_strength",
+                  "style": {
+                    "top": "4%",
+                    "left": "61%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_alfresco_3_signal_strength",
+                  "style": {
+                    "top": "9%",
+                    "left": "61%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_alfresco_2_signal_strength",
+                  "style": {
+                    "top": "14%",
+                    "left": "61%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_backverandah_signal_strength",
+                  "style": {
+                    "top": "33%",
+                    "left": "95%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_kitchen_1_signal_strength",
+                  "style": {
+                    "top": "52.5%",
+                    "left": "34%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_kitchen_2_signal_strength",
+                  "style": {
+                    "top": "49%",
+                    "left": "34%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_kitchen_3_signal_strength",
+                  "style": {
+                    "top": "56%",
+                    "left": "34%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.garage_1_signal_strength",
+                  "style": {
+                    "top": "64%",
+                    "left": "20%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.lifx_dining_room_1_rssi",
+                  "style": {
+                    "top": "46%",
+                    "left": "53%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_familyroom_1_rssi",
+                  "style": {
+                    "top": "39.5%",
+                    "left": "69%"
+                  }
+                },
+                {
+                  "type": "conditional",
+                  "conditions": [
+                    {
+                      "entity": "sensor.christmas_1_signal_strength",
+                      "state_not": "unavailable"
+                    }
+                  ],
+                  "elements": [
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.christmas_1_signal_strength",
+                      "style": {
+                        "top": "43%",
+                        "left": "94%"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.ir_bridge_2_signal_strength",
+                  "style": {
+                    "top": "51%",
+                    "left": "82%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.lifx_familyroom_stand_rssi",
+                  "style": {
+                    "top": "52%",
+                    "left": "95%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.music_room_light_rssi",
+                  "style": {
+                    "top": "64%",
+                    "left": "47.25%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.ir_bridge_1_signal_strength",
+                  "style": {
+                    "top": "58%",
+                    "left": "77%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_media_3_signal_strength",
+                  "style": {
+                    "top": "64%",
+                    "left": "80%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_media_1_rssi",
+                  "style": {
+                    "top": "69%",
+                    "left": "72%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_entry_1_signal_strength",
+                  "style": {
+                    "top": "78%",
+                    "left": "48%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_entry_4_signal_strength",
+                  "style": {
+                    "top": "74.5%",
+                    "left": "60%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_entry_3_signal_strength",
+                  "style": {
+                    "top": "74.5%",
+                    "left": "70%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.lifx_mini_d_3e87c9_rssi",
+                  "style": {
+                    "top": "82.5%",
+                    "left": "64%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_study_2_signal_strength",
+                  "style": {
+                    "top": "87.5%",
+                    "left": "64.5%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_study_3_signal_strength",
+                  "style": {
+                    "top": "81%",
+                    "left": "70%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.dining_room_rollershutter_signal_strength",
+                  "style": {
+                    "top": "79%",
+                    "left": "61%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.lifx_front_door_rssi",
+                  "style": {
+                    "top": "86%",
+                    "left": "52%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.fujitsu_ir_thermostat_signal_strength",
+                  "style": {
+                    "top": "78%",
+                    "left": "81%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_masterbedroom_1_rssi",
+                  "style": {
+                    "top": "83%",
+                    "left": "89%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.adrians_bedside_light_signal_strength",
+                  "style": {
+                    "top": "87.5%",
+                    "left": "96%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.light_bedside_2_signal_strength",
+                  "style": {
+                    "top": "87.5%",
+                    "left": "81%"
+                  }
+                },
+                {
+                  "type": "state-label",
+                  "entity": "sensor.master_bedroom_rollershutter_signal_strength",
+                  "style": {
+                    "top": "82.5%",
+                    "left": "98%"
+                  }
+                }
+              ],
+              "image": "local/lovelace/floorplan/floorplan.png"
+            }
+          ]
+        }
+      ],
+      "title": "Admin"
+    }
+  }
+}

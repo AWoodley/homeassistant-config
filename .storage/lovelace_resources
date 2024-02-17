@@ -5,12 +5,12 @@
   "data": {
     "items": [
       {
-        "url": "/hacsfiles/battery-state-card/battery-state-card.js?hacstag=256292682315",
+        "url": "/hacsfiles/battery-state-card/battery-state-card.js?hacstag=256292682316",
         "type": "module",
         "id": "b6b4e6493e8345d3a594a63480fe96af"
       },
       {
-        "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=1512800620110",
+        "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=1512800620120",
         "type": "module",
         "id": "d20f41905d1247a497c43c7ec21d1523"
       },

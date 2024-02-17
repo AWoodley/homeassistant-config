@@ -2579,7 +2579,7 @@
                 },
                 {
                   "type": "state-icon",
-                  "entity": "lock.front_door",
+                  "entity": "lock.entry",
                   "style": {
                     "top": "81%",
                     "left": "46.5%"
@@ -3320,9 +3320,10 @@
                   "columns": 4,
                   "cards": [
                     {
+                      "show_name": false,
+                      "show_icon": true,
                       "type": "button",
-                      "entity": "light.music_room_light",
-                      "show_name": false
+                      "entity": "light.music_room_light"
                     },
                     {
                       "show_name": false,
@@ -3336,7 +3337,7 @@
                     {
                       "graph": "line",
                       "type": "sensor",
-                      "entity": "sensor.atc_music_fa2a_temperature",
+                      "entity": "sensor.music_room_temperature",
                       "name": " ",
                       "detail": 1
                     },
@@ -3404,7 +3405,7 @@
                     {
                       "graph": "line",
                       "type": "sensor",
-                      "entity": "sensor.temperature",
+                      "entity": "sensor.study_temperature",
                       "name": " ",
                       "detail": 1
                     },
@@ -3637,7 +3638,7 @@
                       "tap_action": {
                         "action": "toggle"
                       },
-                      "entity": "lock.front_door"
+                      "entity": "lock.entry"
                     }
                   ],
                   "columns": 2

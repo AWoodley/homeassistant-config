@@ -1950,7 +1950,7 @@
                 },
                 {
                   "type": "state-icon",
-                  "entity": "lock.front_door",
+                  "entity": "lock.entry",
                   "style": {
                     "top": "81%",
                     "left": "46.5%"
