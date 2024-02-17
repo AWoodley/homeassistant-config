@@ -1584,3 +1584,162 @@
       data:
         tag: jonathans_room
   mode: restart
+- id: '1707379195732'
+  alias: Door-Locks:Person:Away
+  description: Lock the entry doors when the last person leaves
+  trigger:
+  - platform: state
+    entity_id:
+    - person.adrian
+    to: not_home
+    id: Adrian_Away
+  - platform: state
+    entity_id:
+    - person.nancy
+    to: not_home
+    id: Nancy_Away
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: not_home
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: lifx.effect_pulse
+    metadata: {}
+    data:
+      period: 1
+      cycles: 2
+      power_on: true
+      mode: blink
+      brightness: 255
+    target:
+      entity_id: light.lifx_front_door
+  - parallel:
+    - if:
+      - condition: state
+        entity_id: alarm_control_panel.mqtt_alarm
+        state: disarmed
+      then:
+      - variables:
+          action_arm_alarm: '{{ ''ARM_ALARM_'' ~ context.id }}'
+          action_disarm_alarm: '{{ ''DISARM_ALARM_'' ~ context.id }}'
+      - choose:
+        - conditions:
+          - condition: trigger
+            id:
+            - Adrian_Away
+          sequence:
+          - service: notify.mobile_app_adrians_phone
+            metadata: {}
+            data:
+              message: Locking House
+              data:
+                channel: Arm Alarm
+                tag: arm_alarm
+                importance: high
+                visibility: public
+                notification_icon: mdi:shield-lock
+                actions:
+                - action: ' {{ action_arm_alarm }}'
+                  title: Arm Alarm
+                - action: ' {{ action_disarm_alarm }}'
+                  title: 'Off'
+        - conditions:
+          - condition: trigger
+            id:
+            - Nancy_Away
+          sequence:
+          - service: notify.mobile_app_nancys_phone
+            metadata: {}
+            data:
+              message: Locking House
+              data:
+                channel: Arm Alarm
+                tag: arm_alarm
+                importance: high
+                visibility: public
+                notification_icon: mdi:shield-lock
+                actions:
+                - action: ' {{ action_arm_alarm }}'
+                  title: Arm Alarm
+                - action: ' {{ action_disarm_alarm }}'
+                  title: 'Off'
+        default:
+        - service: notify.mobile_app_adrians_phone
+          metadata: {}
+          data:
+            message: Locking House
+            data:
+              channel: Arm Alarm
+              tag: arm_alarm
+              importance: high
+              visibility: public
+              notification_icon: mdi:shield-lock
+              actions:
+              - action: ' {{ action_arm_alarm }}'
+                title: Arm Alarm
+              - action: ' {{ action_disarm_alarm }}'
+                title: 'Off'
+      - wait_for_trigger:
+        - platform: event
+          event_type: mobile_app_notification_action
+          event_data:
+            action: ' {{ action_arm_alarm }}'
+        timeout:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
+        continue_on_timeout: false
+      - service: alarm_control_panel.alarm_arm_away
+        metadata: {}
+        data: {}
+        target:
+          entity_id: alarm_control_panel.mqtt_alarm
+    - service: lock.lock
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+        - lock.front_door
+    - service: lock.lock
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+        - lock.security_screen
+  mode: single
+- id: '1707379345650'
+  alias: Door-Locks:Person:Home
+  description: Unlock the front doors when someone comes home.
+  trigger:
+  - platform: state
+    entity_id:
+    - person.adrian
+    - person.nancy
+    to: home
+  condition:
+  - condition: state
+    entity_id: input_boolean.active
+    state: 'on'
+  action:
+  - service: lock.unlock
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - lock.security_screen
+      - lock.front_door
+  - service: lifx.effect_pulse
+    metadata: {}
+    data:
+      period: 1
+      cycles: 3
+      power_on: true
+      mode: blink
+      brightness: 255
+    target:
+      entity_id: light.lifx_front_door
+  mode: single
