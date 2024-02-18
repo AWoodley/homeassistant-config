@@ -17,10 +17,14 @@ homeassistant:
     local: /Media
 
 zone:
-  name: Home
-  latitude: -31.923172
-  longitude: 116.082237
-  radius: 70
+  - name: Home
+    latitude: -31.923172
+    longitude: 116.082237
+    radius: 70
+  - name: Home-Active
+    latitude: -31.823172
+    longitude: 116.182237
+
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
