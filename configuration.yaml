@@ -17,7 +17,7 @@ homeassistant:
     local: /Media
 
 zone:
-  name: !secret name
+  name: home
   latitude: -31.923172
   longitude: 116.082237
   radius: 70
