@@ -502,11 +502,11 @@ template:
               states('sensor.recycling_days') == '8' or 
               states('sensor.recycling_days') == '1'
             )
-            and not(bool(states('input_boolean.bin_out')))
+            and is_state('device_tracker.radbeacon_g_b62e', 'home')
           )
         or
           (
-            bool(states('input_boolean.bin_out'))
+            is_state('device_tracker.radbeacon_g_b62e', 'not_home')
             and not(
               states('sensor.recycling_days') == '8' or 
               states('sensor.recycling_days') == '1'
@@ -522,11 +522,11 @@ template:
             (
               states('sensor.recycling_days') == '1'
             )
-            and not(bool(states('input_boolean.recycling_out')))
+            and is_state('device_tracker.radbeacon_g_ba2a', 'home')
           )
         or
           (
-            bool(states('input_boolean.recycling_out'))
+            is_state('device_tracker.radbeacon_g_ba2a', 'not_home')
             and not(
               states('sensor.recycling_days') == '1'
             )
