@@ -27,10 +27,12 @@
   description: ''
   mode: restart
   trigger:
-  - entity_id: binary_sensor.front_door
-    from: 'off'
-    platform: state
-    to: 'on'
+  - platform: state
+    entity_id:
+      - binary_sensor.front_door
+      - binary_sensor.security_screen
+    from: "off"
+    to: "on"
   condition:
   - condition: state
     entity_id: input_boolean.active
