@@ -770,31 +770,51 @@ lock_entry:
   alias: Lock:Entry
   sequence:
   - parallel:
-    - service: lock.lock
-      metadata: {}
-      data: {}
-      target:
-        entity_id: lock.front_door
-    - service: lock.lock
-      metadata: {}
-      data: {}
-      target:
+    - if:
+      - condition: state
         entity_id: lock.security_screen
+        state: unlocked
+      then:
+      - service: lock.lock
+        metadata: {}
+        data: {}
+        target:
+          entity_id: lock.security_screen
+    - if:
+      - condition: state
+        entity_id: lock.front_door
+        state: unlocked
+      then:
+      - service: lock.lock
+        metadata: {}
+        data: {}
+        target:
+          entity_id: lock.front_door
   mode: single
   icon: mdi:home-lock
 unlock_entry:
   alias: Unlock:Entry
   sequence:
   - parallel:
-    - service: lock.unlock
-      metadata: {}
-      data: {}
-      target:
-        entity_id: lock.front_door
-    - service: lock.unlock
-      metadata: {}
-      data: {}
-      target:
+    - if:
+      - condition: state
         entity_id: lock.security_screen
+        state: locked
+      then:
+      - service: lock.unlock
+        metadata: {}
+        data: {}
+        target:
+          entity_id: lock.security_screen
+    - if:
+      - condition: state
+        entity_id: lock.front_door
+        state: locked
+      then:
+      - service: lock.unlock
+        metadata: {}
+        data: {}
+        target:
+          entity_id: lock.front_door
   mode: single
   icon: mdi:home-lock-open
