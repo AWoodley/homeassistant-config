@@ -1617,6 +1617,9 @@
     target:
       entity_id: light.lifx_front_door
   - parallel:
+    - service: script.lock_entry
+      metadata: {}
+      data: {}
     - if:
       - condition: state
         entity_id: alarm_control_panel.mqtt_alarm
@@ -1698,48 +1701,178 @@
         data: {}
         target:
           entity_id: alarm_control_panel.mqtt_alarm
-    - service: lock.lock
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-        - lock.front_door
-    - service: lock.lock
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-        - lock.security_screen
-  mode: single
-- id: '1707379345650'
+  mode: restart
+- id: '1708188979929'
   alias: Door-Locks:Person:Home
-  description: Unlock the front doors when someone comes home.
+  description: Unlock the entry doors when someone comes home, but re-lock of they
+    command.
   trigger:
   - platform: state
     entity_id:
     - person.adrian
+    to: home
+    id: Adrian
+  - platform: state
+    entity_id:
     - person.nancy
     to: home
+    id: Nancy
   condition:
   - condition: state
-    entity_id: input_boolean.active
+    entity_id: binary_sensor.active
     state: 'on'
   action:
-  - service: lock.unlock
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - lock.security_screen
-      - lock.front_door
+  - variables:
+      action_lock: '{{ ''LOCK_'' ~ context.id }}'
   - service: lifx.effect_pulse
     metadata: {}
     data:
       period: 1
-      cycles: 3
+      cycles: 2
       power_on: true
       mode: blink
       brightness: 255
     target:
       entity_id: light.lifx_front_door
+  - parallel:
+    - service: script.unlock_entry
+      metadata: {}
+      data: {}
+    - choose:
+      - conditions:
+        - condition: trigger
+          id:
+          - Adrian
+        sequence:
+        - service: notify.mobile_app_adrians_phone
+          metadata: {}
+          data:
+            message: Unlocking House
+            data:
+              channel: Unlock
+              tag: unlock
+              importance: high
+              visibility: public
+              notification_icon: mdi:shield-lock-open-outline
+              actions:
+              - action: ' {{ action_lock }}'
+                title: Keep Locked
+      - conditions:
+        - condition: trigger
+          id:
+          - Nancy
+        sequence:
+        - service: notify.mobile_app_nancys_phone
+          metadata: {}
+          data:
+            message: Unlocking House
+            data:
+              channel: Unlock
+              tag: unlock
+              importance: high
+              visibility: public
+              notification_icon: mdi:shield-lock-open-outline
+              actions:
+              - action: ' {{ action_lock }}'
+                title: Keep Locked
+      default:
+      - service: notify.mobile_app_adrians_phone
+        metadata: {}
+        data:
+          message: Unlocking House
+          data:
+            channel: Unlock
+            tag: unlock
+            importance: high
+            visibility: public
+            notification_icon: mdi:shield-lock-open-outline
+            actions:
+            - action: ' {{ action_lock }} '
+              title: Keep Locked
+  - wait_for_trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: ' {{ action_lock }}'
+    - platform: state
+      entity_id:
+      - binary_sensor.front_door
+      to: 'on'
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ wait.trigger.event.data.action == action_lock }}'
+      sequence:
+      - service: script.lock_entry
+        metadata: {}
+        data: {}
+    default:
+    - service: notify.parents
+      metadata: {}
+      data:
+        message: clear_notification
+        data:
+          tag: unlock
+  mode: restart
+- id: '1709902440634'
+  alias: Media:Lias_Playing:B&O_On
+  description: Pause Lias until the B&O is on.
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.lias
+    from: idle
+    to: playing
+  condition:
+  - condition: state
+    entity_id: media_player.beocenter_7700
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: media_player.media_pause
+    metadata: {}
+    data: {}
+    target:
+      entity_id: media_player.lias
+  - wait_for_trigger:
+    - platform: state
+      entity_id:
+      - media_player.beocenter_7700
+      from: 'off'
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 5
+  - service: media_player.media_previous_track
+    metadata: {}
+    data: {}
+    target:
+      entity_id: media_player.lias
+  - service: media_player.media_play
+    metadata: {}
+    data: {}
+    target:
+      entity_id: media_player.lias
+  mode: single
+- id: '1712063014325'
+  alias: Lock:Evening:Lock
+  description: Lock the entry lock at 23:00
+  trigger:
+  - platform: time
+    at: '23:00:00'
+  condition:
+  - condition: state
+    entity_id: lock.entry
+    state: unlocked
+  - condition: state
+    entity_id: binary_sensor.active
+    state: 'on'
+  action:
+  - service: lock.lock
+    metadata: {}
+    data: {}
+    target:
+      entity_id: lock.entry
   mode: single
