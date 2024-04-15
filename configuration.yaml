@@ -155,9 +155,9 @@ google_assistant:
       expose: true
     light.light_bedside_2:
       expose: true
-    light.light_jonathans_bedroom:
+    light.lifx_jonathans_bedroom:
       expose: true
-    light.light_davids_bedroom:
+    light.lifx_davids_room:
       expose: true
     light.light_christmas_1:
       expose: true
@@ -172,8 +172,6 @@ google_assistant:
     light.light_media_3:
       expose: true
     light.kitchen_lights:
-      expose: true
-    light.passage_lights:
       expose: true
     light.music_room_light:
       expose: true

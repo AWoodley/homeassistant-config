@@ -176,7 +176,7 @@
       editable: true
       friendly_name: Jonathan's Bedroom Scene
       state: scene.scene_jonathans_bedroom_off
-    light.light_jonathans_bedroom:
+    light.lifx_jonathans_bedroom:
       min_mireds: 111
       max_mireds: 666
       effect_list:
@@ -214,7 +214,7 @@
       - scene.scene_jonathans_bedroom_bright
       - scene.scene_jonathans_bedroom_disco
       state: scene.scene_jonathans_bedroom_bright
-    light.light_jonathans_bedroom:
+    light.lifx_jonathans_bedroom:
       brightness: 255
       color_temp: 242
       effect_list:
@@ -251,7 +251,7 @@
       friendly_name: Jonathan's Fan
       icon: hass:fan
       state: 'off'
-    light.light_jonathans_bedroom:
+    light.lifx_jonathans_bedroom:
       min_mireds: 111
       max_mireds: 666
       effect_list:
@@ -277,7 +277,7 @@
       - scene.scene_davids_bedroom_bright
       - scene.scene_davids_bedroom_disco
       state: scene.scene_davids_bedroom_off
-    light.light_davids_bedroom:
+    light.lifx_davids_room:
       effect_list:
       - effect_colorloop
       - effect_pulse
@@ -300,7 +300,7 @@
       - scene.scene_davids_bedroom_bright
       - scene.scene_davids_bedroom_disco
       state: scene.scene_davids_bedroom_bright
-    light.light_davids_bedroom:
+    light.lifx_davids_room:
       brightness: 255
       color_temp: 242
       effect_list:
@@ -325,7 +325,7 @@
       - scene.scene_davids_bedroom_bright
       - scene.scene_davids_bedroom_disco
       state: scene.scene_davids_bedroom_dim
-    light.light_davids_bedroom:
+    light.lifx_davids_room:
       brightness: 2
       color_temp: 400
       effect_list:
@@ -554,7 +554,7 @@
       icon: mdi:floor-lamp
       supported_features: 43
       state: 'off'
-    light.light_jonathans_bedroom:
+    light.lifx_jonathans_bedroom:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -670,7 +670,7 @@
       icon: mdi:track-light
       supported_features: 43
       state: 'off'
-    light.light_passage_1:
+    light.lifx_passage_1:
       min_mireds: 175
       max_mireds: 333
       effect_list:
@@ -683,7 +683,7 @@
       state: unavailable
       supported_features: 55
       state: 'off'
-    light.light_passage_2:
+    light.lifx_passage_2:
       min_mireds: 175
       max_mireds: 333
       effect_list:
@@ -717,7 +717,7 @@
       friendly_name: Media Centre
       icon: mdi:disc-player
       state: 'off'
-    light.light_davids_bedroom:
+    light.lifx_davids_room:
       min_mireds: 111
       max_mireds: 400
       effect_list:
@@ -1014,7 +1014,7 @@
       min_mireds: 111
       state: 'on'
       supported_features: 55
-    light.light_jonathans_bedroom:
+    light.lifx_jonathans_bedroom:
       brightness: 50
       color_temp: 400
       effect_list:
@@ -1026,7 +1026,7 @@
       min_mireds: 111
       state: 'on'
       supported_features: 55
-    light.light_davids_bedroom:
+    light.lifx_davids_room:
       brightness: 50
       color_temp: 400
       effect_list:
@@ -1066,7 +1066,7 @@
       min_mireds: 153
       state: 'on'
       supported_features: 3
-    light.light_passage_1:
+    light.lifx_passage_1:
       brightness: 25
       color_temp: 400
       effect_list:
@@ -1078,7 +1078,7 @@
       min_mireds: 111
       state: 'on'
       supported_features: 55
-    light.light_passage_2:
+    light.lifx_passage_2:
       brightness: 25
       color_temp: 400
       effect_list:

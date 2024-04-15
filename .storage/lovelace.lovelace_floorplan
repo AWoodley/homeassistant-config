@@ -108,7 +108,7 @@
                                 },
                                 {
                                     "type": "state-icon",
-                                    "entity": "light.light_davids_bedroom",
+                                    "entity": "light.lifx_davids_room",
                                     "style": {
                                         "top": "9%",
                                         "left": "31%"
@@ -117,7 +117,7 @@
                                         "action": "call-service",
                                         "service": "light.toggle",
                                         "service_data": {
-                                            "entity_id": "light.light_davids_bedroom"
+                                            "entity_id": "light.lifx_davids_room"
                                         }
                                     }
                                 },
@@ -210,7 +210,7 @@
                                 },
                                 {
                                     "type": "state-icon",
-                                    "entity": "light.light_jonathans_bedroom",
+                                    "entity": "light.lifx_jonathans_bedroom",
                                     "style": {
                                         "top": "11%",
                                         "left": "49%"
@@ -219,7 +219,7 @@
                                         "action": "call-service",
                                         "service": "light.toggle",
                                         "service_data": {
-                                            "entity_id": "light.light_jonathans_bedroom"
+                                            "entity_id": "light.lifx_jonathans_bedroom"
                                         }
                                     }
                                 },
@@ -263,7 +263,7 @@
                                 },
                                 {
                                     "type": "state-icon",
-                                    "entity": "light.light_passage_1",
+                                    "entity": "light.lifx_passage_1",
                                     "style": {
                                         "top": "17%",
                                         "left": "38.25%"
@@ -278,7 +278,7 @@
                                 },
                                 {
                                     "type": "state-icon",
-                                    "entity": "light.light_passage_2",
+                                    "entity": "light.lifx_passage_2",
                                     "style": {
                                         "top": "34%",
                                         "left": "38.25%"
