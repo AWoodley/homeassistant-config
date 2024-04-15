@@ -697,6 +697,10 @@
       friendly_name: Christmas Lights
       icon: mdi:vanity-light
       state: 'off'
+    switch.media_centre:
+      friendly_name: Media Centre
+      state: 'on'
+  icon: mdi:movie
 - id: '1589245592715'
   name: Scene:House:Away
   entities:

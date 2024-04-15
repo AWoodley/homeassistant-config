@@ -430,8 +430,7 @@
                                 {
                                     "type": "weather-forecast",
                                     "entity": "weather.darlington",
-                                    "show_forecast": false,
-                                    "secondary_info_attribute": "wind_speed"
+                                    "show_forecast": true
                                 }
                             ]
                         }

@@ -44,6 +44,8 @@ recorder:
       - binary_sensor.media_room
       - binary_sensor.study
 
+zeroconf:
+  default_interface: true
 
 group: !include groups.yaml
 automation: !include_dir_merge_list automations
@@ -232,6 +234,7 @@ sensor:
   - platform: min_max
     name: 'Average Indoor Temperature'
     type: mean
+    icon: hass:thermometer
     entity_ids:
       - sensor.temp_boys_bedroom_ds18b20_temperature
       - sensor.rollershutter_diningroom_ds18b20_temperature
