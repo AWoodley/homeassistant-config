@@ -298,7 +298,7 @@
                                                         "action": "call-service",
                                                         "service": "light.toggle",
                                                         "service_data": {
-                                                            "entity_id": "light.back_passage_lights"
+                                                            "entity_id": "light.passage_lights"
                                                         }
                                                     }
                                                 },
@@ -313,7 +313,7 @@
                                                         "action": "call-service",
                                                         "service": "light.toggle",
                                                         "service_data": {
-                                                            "entity_id": "light.back_passage_lights"
+                                                            "entity_id": "light.passage_lights"
                                                         }
                                                     }
                                                 },

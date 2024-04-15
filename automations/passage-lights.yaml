@@ -16,10 +16,10 @@
   - condition: or
     conditions:
     - condition: state
-      entity_id: light.back_passage_lights
+      entity_id: light.passage_lights
       state: 'off'
     - condition: numeric_state
-      entity_id: light.back_passage_lights
+      entity_id: light.passage_lights
       attribute: brightness
       below: '100'
   - condition: and
@@ -49,7 +49,7 @@
       sequence:
       - service: light.turn_on
         target:
-          entity_id: light.back_passage_lights
+          entity_id: light.passage_lights
         data:
           color_temp: 500
           brightness: 25
@@ -57,21 +57,21 @@
     default:
     - service: light.turn_on
       target:
-        entity_id: light.back_passage_lights
+        entity_id: light.passage_lights
       data:
         color_temp: 370
         brightness: 252
     - delay: '00:15:00'
   - condition: state
-    entity_id: light.back_passage_lights
+    entity_id: light.passage_lights
     state: 'on'
   - condition: numeric_state
-    entity_id: light.back_passage_lights
+    entity_id: light.passage_lights
     attribute: brightness
     below: 255
   - service: light.turn_off
     target:
-      entity_id: light.back_passage_lights
+      entity_id: light.passage_lights
   mode: restart
 - id: '20210721001201'
   alias: Light:Back Passage:Button
@@ -93,20 +93,20 @@
   - choose:
     - conditions:
       - condition: state
-        entity_id: light.back_passage_lights
+        entity_id: light.passage_lights
         state: 'on'
       - condition: numeric_state
-        entity_id: light.back_passage_lights
+        entity_id: light.passage_lights
         attribute: brightness
         above: 252
       sequence:
       - service: light.turn_off
         target:
-          entity_id: light.back_passage_lights
+          entity_id: light.passage_lights
     default:
     - service: light.turn_on
       data:
         color_temp: 370
         brightness: 255
       target:
-        entity_id: light.back_passage_lights
+        entity_id: light.passage_lights

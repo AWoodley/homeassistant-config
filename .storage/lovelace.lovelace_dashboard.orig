@@ -28,7 +28,7 @@
                                     "entity": "light.light_alfresco_2"
                                 },
                                 {
-                                    "entity": "light.back_passage_lights"
+                                    "entity": "light.passage_lights"
                                 },
                                 {
                                     "entity": "light.light_backverandah_1"

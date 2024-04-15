@@ -289,7 +289,7 @@
                                                 "action": "call-service",
                                                 "service": "light.toggle",
                                                 "service_data": {
-                                                    "entity_id": "light.back_passage_lights"
+                                                    "entity_id": "light.passage_lights"
                                                 }
                                             }
                                         },
@@ -304,7 +304,7 @@
                                                 "action": "call-service",
                                                 "service": "light.toggle",
                                                 "service_data": {
-                                                    "entity_id": "light.back_passage_lights"
+                                                    "entity_id": "light.passage_lights"
                                                 }
                                             }
                                         },
@@ -1089,7 +1089,7 @@
                                             "entity": "switch.jonathans_reading_light"
                                         },
                                         {
-                                            "entity": "light.back_passage_lights"
+                                            "entity": "light.passage_lights"
                                         },
                                         {
                                             "entity": "light.dining_room_lights"
